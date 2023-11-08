@@ -83,3 +83,17 @@ export function loginUser(req,res){
         }
        });
 };
+
+export function storyCharacters(req,res){
+  res.render("createstory1");
+};
+
+export function storyPost(req,res){
+  res.redirect("/createstory1");
+};
+
+export function createStory1Post(req,res){
+  const agegroup = req.body.agegroup;
+  console.log(agegroup);
+  console.log(req.body.charactername);
+}
