@@ -65,7 +65,11 @@ export function registerUser(req, res) {
   
 
 export function storyPage(req,res){
+  if(req.isAuthenticated()){
     res.render("story");
+}else{
+    res.redirect("/login");
+}
 };
 
 export function loginUser(req,res){
