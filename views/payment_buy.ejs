@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-<title>Stripe Payment Demo</title>
-<body>
+<%- include('partials/header') %>
 	<h3>Pay Rs <%= amount %></h3>
 	<form action="payment" method="POST">
     <input type="hidden" name="amount" value="<%= parseInt(amount)*100 %>">
@@ -17,5 +14,4 @@
 		data-locale="auto" >
 		</script>
 	</form>
-</body>
-</html>
+<%- include('partials/footer') %>
