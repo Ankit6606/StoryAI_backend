@@ -8,6 +8,24 @@ import { userApp } from './routes/user.js';
 import {connectDatabase} from './dbmongo.js';
 import User  from './models/users.js';
 
+// payment portion
+
+// require("dotenv").config();
+
+// const app = require('express')();
+// var http = require('http').Server(app);
+
+// const paymentRoute = require('./routes/paymentRoute');
+
+// app.use('/payment-dashboard',paymentRoute);
+
+// http.listen(3000, function(){
+//     console.log('Server is running');
+// });
+
+
+// ---------------
+
 const app = express();//For the main web application
 
 app.use(express.static("public"));
