@@ -1,5 +1,5 @@
 import express from 'express';
-import passport from 'passport';
+// import passport from 'passport';
 import {rootRender,
         loginRender, 
         registerRender, 
@@ -12,6 +12,8 @@ import {rootRender,
         storyPost,
         createStory1Post} from '../controllers/userReq.js';
 
+import {renderBuyPage,payment,success,failure} from '../controllers/paymentController.js';
+
 const router = express.Router();
 
 
@@ -22,10 +24,14 @@ router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
 router.get("/story",storyPage);
 router.get("/createstory1",storyCharacters);
+router.get("/payment",renderBuyPage);
+router.get("/success",success);
+router.get("/failure",failure);
 
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/story",storyPost);
 router.post("/createstory1",createStory1Post);
+router.post("/payment",payment);
 
 export { router as userApp };
