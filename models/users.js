@@ -6,7 +6,10 @@ import findOrCreate from 'mongoose-findorcreate';
 
 const userSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    googleId: String,
+    name: String,
+    phoneNumber: String
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'username' });

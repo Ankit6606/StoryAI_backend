@@ -38,6 +38,8 @@ export function oauthVerification(req, res) {
 export function registerUser(req, res) {
     const username = req.body.username;
     const password = req.body.password;
+    const name = req.body.name;
+    const phoneNumber = req.body.phoneNumber;
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -57,7 +59,20 @@ export function registerUser(req, res) {
         }
       } else {
         passport.authenticate("local")(req, res, () => {
-          res.redirect("/story");
+          User.findById(req.user.id)
+            .then((foundUser)=>{
+              foundUser.name = name;
+              foundUser.phoneNumber = phoneNumber;
+              foundUser.save()
+                .then(()=>{
+                  res.redirect("/story");
+                }).catch((err)=>{
+                  console.log(err);
+                });
+            }).catch((err)=>{
+              console.log(err);
+            });
+          
         });
       }
     });
