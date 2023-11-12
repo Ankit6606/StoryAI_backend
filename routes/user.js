@@ -17,7 +17,7 @@ import {renderBuyPage,payment,success,failure} from '../controllers/paymentContr
 const router = express.Router();
 
 
-router.get("/",rootRender)
+router.get("/",rootRender);
 router.get("/register",registerRender);
 router.get("/login",loginRender);
 router.get("/auth/google",oauthPage);

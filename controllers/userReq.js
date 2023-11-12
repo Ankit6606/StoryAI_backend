@@ -1,8 +1,8 @@
 import express from 'express';
 import User from '../models/users.js';
 import passport  from 'passport';
-import passportLocalMongoose from 'passport-local-mongoose';
-import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
+// import passportLocalMongoose from 'passport-local-mongoose';
+// import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
 
 const route = express.Router();
@@ -82,9 +82,9 @@ export function registerUser(req, res) {
 export function storyPage(req,res){
   if(req.isAuthenticated()){
     res.render("story");
-}else{
+  }else{
     res.redirect("/login");
-}
+  }
 };
 
 export function loginUser(req,res){
@@ -104,7 +104,11 @@ export function loginUser(req,res){
 };
 
 export function storyCharacters(req,res){
-  res.render("createstory1");
+  if(req.isAuthenticated()){
+    res.render("createstory1");
+  }else{
+    res.redirect("/login");
+  }
 };
 
 export function storyPost(req,res){

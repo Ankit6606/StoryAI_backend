@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import session from 'express-session';
+// import session from 'express-session';
 import passportLocalMongoose from 'passport-local-mongoose';
 import passport  from 'passport';
 import findOrCreate from 'mongoose-findorcreate';
