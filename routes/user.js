@@ -10,7 +10,9 @@ import {rootRender,
         loginUser,
         storyCharacters,
         storyPost,
-        createStory1Post} from '../controllers/userReq.js';
+        createStory1Post,
+        profileManage,
+        editProfile} from '../controllers/userReq.js';
 
 import {renderBuyPage,payment,success,failure} from '../controllers/paymentController.js';
 
@@ -27,11 +29,13 @@ router.get("/createstory1",storyCharacters);
 router.get("/payment",renderBuyPage);
 router.get("/success",success);
 router.get("/failure",failure);
+router.get("/profile",profileManage);
 
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/story",storyPost);
 router.post("/createstory1",createStory1Post);
 router.post("/payment",payment);
+router.post("/profile",editProfile);
 
 export { router as userApp };

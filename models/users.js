@@ -5,11 +5,16 @@ import passport  from 'passport';
 import findOrCreate from 'mongoose-findorcreate';
 
 const userSchema = new mongoose.Schema({
+    _id: String,
     username: String,
     password: String,
     googleId: String,
     name: String,
-    phoneNumber: String
+    phoneNumber: String,
+    // story : {
+    //     storyId : String,
+    //     titile : String
+    // }
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'username' });

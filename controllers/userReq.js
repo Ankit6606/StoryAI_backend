@@ -63,6 +63,7 @@ export function registerUser(req, res) {
             .then((foundUser)=>{
               foundUser.name = name;
               foundUser.phoneNumber = phoneNumber;
+              foundUser._id = Math.random()
               foundUser.save()
                 .then(()=>{
                   res.redirect("/story");
@@ -120,3 +121,30 @@ export function createStory1Post(req,res){
   console.log(agegroup);
   console.log(req.body.charactername);
 }
+
+export function profileManage(req,res){
+  if(req.isAuthenticated()){
+    res.render("profile");
+  }else{
+    res.redirect("/login");
+  }
+};
+
+export function editProfile(req,res){
+  const name = req.body.name;
+  const phoneNumber= req.body.phoneNumber;
+  User.findById(req.user.id)
+    .then((foundUser)=>{
+      foundUser.name = name;
+      foundUser.phoneNumber = phoneNumber;
+      foundUser.save()
+        .then(()=>{
+          res.redirect("/story");
+        }).catch((err)=>{
+          console.log(err);
+        });
+    }).catch((err)=>{
+      console.log(err);
+    });
+};
+
