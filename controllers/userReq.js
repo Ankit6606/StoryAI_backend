@@ -68,6 +68,7 @@ export function registerUser(req, res) {
             .then((foundUser)=>{
               foundUser.name = name;
               foundUser.phoneNumber = phoneNumber;
+              foundUser.authType = "email";
               foundUser.save()
                 .then(()=>{
                   res.redirect("/story");

@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     googleId: String,
     name: String,
     phoneNumber: String,
+    authType : String
     // story : {
     //     storyId : String,
     //     titile : String
