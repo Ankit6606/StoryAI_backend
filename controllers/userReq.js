@@ -8,7 +8,11 @@ import passport  from 'passport';
 const route = express.Router();
 
 export function rootRender(req,res){
-    res.render("home");
+    if(req.isAuthenticated()){
+      res.redirect("/story");
+    }else{
+      res.redirect("/login");
+    }
 };
 
 export function registerRender(req,res){
@@ -20,14 +24,15 @@ export function loginRender(req,res){
 };
 
 export function oauthPage(req, res) {
-    passport.authenticate('google', { scope: ["profile"] })(req, res);
+    passport.authenticate('google', { scope: ["profile" , "email"] })(req, res);
 };
   
 
 
 export function oauthVerification(req, res) {
     passport.authenticate('google', {
-      failureRedirect: '/login'
+      failureRedirect: '/login',
+      scope: ["profile", "email"]
     })(req, res, () => {
       // Successful authentication, redirect to /story.
       res.redirect('/story');
@@ -63,7 +68,6 @@ export function registerUser(req, res) {
             .then((foundUser)=>{
               foundUser.name = name;
               foundUser.phoneNumber = phoneNumber;
-              foundUser._id = Math.random()
               foundUser.save()
                 .then(()=>{
                   res.redirect("/story");
@@ -83,6 +87,7 @@ export function registerUser(req, res) {
 export function storyPage(req,res){
   if(req.isAuthenticated()){
     res.render("story");
+    
   }else{
     res.redirect("/login");
   }
@@ -147,4 +152,6 @@ export function editProfile(req,res){
       console.log(err);
     });
 };
+
+
 

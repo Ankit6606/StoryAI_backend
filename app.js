@@ -41,7 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Database connection established
-connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true})
+connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
 .then(()=>{
     console.log("Mongodb connected");
 });
@@ -65,13 +65,22 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/story"
+    callbackURL: "http://localhost:3000/auth/google/story",
+    scope: ['profile', 'email'],
   },
   function(accessToken, refreshToken, profile, cb) {
     // console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
+    const userEmail = profile.emails[0].value;
+    // console.log(userEmail);
+    User.findOrCreate({ googleId: profile.id, name: profile.displayName , username: userEmail }, function (err, user) {
+      if (err) {
+        console.error("Error in findOrCreate:", err);
+        return cb(err, null);
+      }
+      // console.log("User found or created:", user);
+      return cb(null, user);
     });
+    
   }
 ));
 
