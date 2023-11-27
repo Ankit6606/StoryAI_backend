@@ -7,6 +7,7 @@ import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 import { userApp } from './routes/user.js';
 import {connectDatabase} from './dbmongo.js';
 import User  from './models/users.js';
+import Payment from './models/users.js';
 
 // payment portion
 
@@ -72,7 +73,10 @@ passport.use(new GoogleStrategy({
     // console.log(profile);
     const userEmail = profile.emails[0].value;
     // console.log(userEmail);
-    User.findOrCreate({ googleId: profile.id, name: profile.displayName , username: userEmail, authType: "google" }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id, 
+                        name: profile.displayName , 
+                        username: userEmail, 
+                        authType: "google" }, function (err, user) {
       if (err) {
         console.error("Error in findOrCreate:", err);
         return cb(err, null);

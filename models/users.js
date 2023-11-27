@@ -10,12 +10,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: uuidv4,
     },
-    username: String, //email
+    username: String,
     password: String,
     googleId: String,
     name: String,
     phoneNumber: String,
-    authType : String
+    authType : String,
+    paymentAmount: Number,
     // story : {
     //     storyId : String,
     //     titile : String
@@ -27,5 +28,20 @@ userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User",userSchema);
 
+// const paymentSchema = new mongoose.Schema({
+//   userId: String,
+//   paymentAmount: Number,
+//   paymentDate: {
+//     type: Date,
+//     default: Date.now,
+//   },
+// });
+  
+// const Payment = new mongoose.model('Payment', paymentSchema);
+
+
+
+
 export default User;
+// export {Payment};
 export {passport};

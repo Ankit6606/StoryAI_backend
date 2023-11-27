@@ -1,0 +1,154 @@
+.text-style-head {
+    color: #FFF;
+    font-family: Volkhov;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 48px */
+}
+.header-text {
+    color: #FFF;
+    text-align: left;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+    margin-bottom: 2.6px;
+    margin-left: 0px;
+}
+
+.text-style-sub {
+    color: #FFF;
+    
+
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 27px */
+}
+
+.button-normal {
+    width: 411px;
+    height: 44.724px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 2px solid #A288CB;
+    background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
+    color: #FFF;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 44.724px;
+    cursor: pointer;
+
+    transition-duration: 0.5s;
+}
+
+.button-normal:hover {
+    background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(67, 4, 45, 0.86) 100%));
+    /* Change the background color on hover */
+    transform: translateY(-3px);
+}
+
+.text-field {
+    z-index: 103;
+    width: 411px;
+    height: 44.724px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 10px;
+    background: #FFF;
+
+
+    color: #767676;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+.next-button{
+    width: 468px;
+height: 45px;
+flex-shrink: 0;
+border-radius: 15px;
+background: #FFF;
+
+box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);
+
+color: #3A3A3A;
+
+font-family: Volkhov;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 30px */
+cursor: pointer;
+text-align: center;
+padding-top: 10px;
+margin-top: 28px;
+
+    transition-duration: 0.5s;
+}
+.next-button:hover{
+    
+    /* Change the background color on hover */
+    transform: translateY(-3px);
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px;
+    z-index: 1000; /* Ensure the navbar is above other elements */
+    margin-top: 50px; margin-left: 40px;
+}
+
+.nav-button {
+    width: 150.751px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #FDF0F2;
+    box-shadow: 0px 2px 15px 0px rgba(21, 14, 57, 0.60) inset;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #3A3A3A;
+    font-family: Volkhov;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.special-button {
+    width: 191.814px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 2px solid #FFF;
+    background: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
+    box-shadow: 8px 9px 12px 0px rgba(255, 255, 255, 0.25) inset;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FFF;
+
+font-family: Volkhov;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 27px */
+
+}

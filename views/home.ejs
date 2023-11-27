@@ -1,7 +1,63 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container mt-5">
-    <h1>Hello World! This is the home page.</h1>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="css/meta/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;1,700&family=Merriweather&family=Montserrat:wght@400;900&family=Noto+Sans:wght@400;700&family=Sacramento&family=Ubuntu&family=Zeyada&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/homepage.css">
+    
 
-<%- include('partials/footer') %>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#" class="nav-button">Subscription</a>
+        <a href="#" class="nav-button">Profile</a>
+        <a href="#" class="nav-button">Story History</a>
+        <a href="#" class="special-button">Create Story</a>
+    </div>
+    <div class="flex-box">
+        <div class="text-style-head" style="margin-top: 8%;">Create A New Story</div>
+        <div class="text-style-sub" style="margin-top: 11px;">Create the “Create” button to start your<br>story
+            creation, Enjoy.</div>
+        <a href="/story" style="text-decoration: none;"><div class="button-normal"
+            style="color: black; background: white; text-align: center;width: 223px; height: 48px;color: #3A3A3A; font-family: Volkhov; font-size: 24px; font-style: normal; font-weight: 700; margin-bottom: 30px ;line-height: 150%; padding-top: 07px; margin-top: 38px;">
+            Create
+            Story</div>
+        </a>
+        <!-- Card Container -->
+        <div class="card-container">
+            <div class="text-style-head"
+                style="color: #000; font-size: 30px; align-self: baseline; margin-top: 38px; margin-left:30px;margin-bottom: 22px;">
+                Your Stories</div>
+            <div class="card-box">
+    
+                <div class="card">
+                    <div class="card-text-1">
+                        <p>My First Story</p>
+                        <div class="card-text-2">
+                            <p>3:48 Sec</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+    <script src="js/homepage.js"></script>
+</body>
+
+</html>

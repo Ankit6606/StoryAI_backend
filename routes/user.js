@@ -12,9 +12,11 @@ import {rootRender,
         storyPost,
         createStory1Post,
         profileManage,
-        editProfile} from '../controllers/userReq.js';
+        editProfile,
+        selectSubscription
+        } from '../controllers/userReq.js';
 
-import {renderBuyPage,payment,success,failure} from '../controllers/paymentController.js';
+import {renderBuyPage,success,failure, handlePayment} from '../controllers/paymentController.js';
 
 const router = express.Router();
 
@@ -26,16 +28,19 @@ router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
 router.get("/story",storyPage);
 router.get("/createstory1",storyCharacters);
-router.get("/payment",renderBuyPage);
+router.get("/charge",renderBuyPage);
+// router.get("/paymentDashboard",userPay);
 router.get("/success",success);
 router.get("/failure",failure);
 router.get("/profile",profileManage);
+router.get("/subscribe",selectSubscription);
+
 
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/story",storyPost);
 router.post("/createstory1",createStory1Post);
-router.post("/payment",payment);
+router.post("/charge",handlePayment);
 router.post("/profile",editProfile);
 
 export { router as userApp };

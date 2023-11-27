@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/users.js';
 import passport  from 'passport';
+import fs from 'fs';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -8,11 +9,12 @@ import passport  from 'passport';
 const route = express.Router();
 
 export function rootRender(req,res){
-    if(req.isAuthenticated()){
-      res.redirect("/story");
-    }else{
-      res.redirect("/login");
-    }
+    // if(req.isAuthenticated()){
+    //   res.redirect("/story");
+    // }else{
+    //   res.redirect("/login");
+    // }
+    res.render("home");
 };
 
 export function registerRender(req,res){
@@ -56,11 +58,12 @@ export function registerUser(req, res) {
         if (err.code === 11000 && err.keyPattern.username === 1) {
           // Handle duplicate email error
           console.log('Duplicate email found.');
+          res.redirect("/login");
           // Redirect or show an error message
         } else {
           console.log(err);
           // Handle other errors
-          res.redirect("/register");
+          res.redirect("/login");
         }
       } else {
         passport.authenticate("local")(req, res, () => {
@@ -86,12 +89,13 @@ export function registerUser(req, res) {
   
 
 export function storyPage(req,res){
-  if(req.isAuthenticated()){
-    res.render("story");
+  // if(req.isAuthenticated()){
+  //   res.render("story");
     
-  }else{
-    res.redirect("/login");
-  }
+  // }else{
+  //   res.redirect("/login");
+  // }
+  res.render("story");
 };
 
 export function loginUser(req,res){
@@ -129,11 +133,12 @@ export function createStory1Post(req,res){
 }
 
 export function profileManage(req,res){
-  if(req.isAuthenticated()){
-    res.render("profile");
-  }else{
-    res.redirect("/login");
-  }
+  // if(req.isAuthenticated()){
+  //   res.render("profile");
+  // }else{
+  //   res.redirect("/login");
+  // }
+  res.render("profile");
 };
 
 export function editProfile(req,res){
@@ -154,5 +159,19 @@ export function editProfile(req,res){
     });
 };
 
+export function selectSubscription(req,res){
+  fs.readFile('items.json',function(error,data){
+    if(error){
+      res.status(500).end();
+    }else{
+      res.render("subscribe",{
+        items: JSON.parse(data)
+      });
+    }
+  })
+}
 
+// export function userPay(req,res){
+//   res.render("payment_dashboard");
+// };
 

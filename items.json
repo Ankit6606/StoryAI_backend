@@ -1,0 +1,19 @@
+{
+    "storyPackages":[
+        {
+            "id":1,
+            "name":"Starter",
+            "price":1697
+        },
+        {
+            "id":2,
+            "name":"Value",
+            "price":2497
+        },
+        {
+            "id":3,
+            "name":"Premium",
+            "price":4497
+        }
+    ]
+}
