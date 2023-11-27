@@ -6,3 +6,15 @@
 
 // create a schema to put transaction history json in mongodb
 
+import {mongoose, Schema} from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
+
+const paymentSchema = new mongoose.Schema({
+    userId : String,
+    paymentAmount : Number,
+    paymentDate : Date,
+});
+
+const Payment = new mongoose.model('Payment',paymentSchema);
+
+export default Payment;

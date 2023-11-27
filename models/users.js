@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import {mongoose, Schema} from 'mongoose';
 // import session from 'express-session';
 import passportLocalMongoose from 'passport-local-mongoose';
 import passport  from 'passport';
@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     name: String,
     phoneNumber: String,
     authType : String,
-    paymentAmount: Number,
+    paymentdetails: [{type:Schema.Types.ObjectId, ref : 'Payment'}],
+    stories : [{type:Schema.Types.ObjectId, ref : 'Story'}],
     // story : {
     //     storyId : String,
     //     titile : String
@@ -28,16 +29,7 @@ userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User",userSchema);
 
-// const paymentSchema = new mongoose.Schema({
-//   userId: String,
-//   paymentAmount: Number,
-//   paymentDate: {
-//     type: Date,
-//     default: Date.now,
-//   },
-// });
-  
-// const Payment = new mongoose.model('Payment', paymentSchema);
+
 
 
 

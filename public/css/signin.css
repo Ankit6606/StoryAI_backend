@@ -1,0 +1,131 @@
+.background {
+    background-image: url('assets/signin-bg.png');
+    background-repeat: no-repeat;
+    background-position: top -285px;
+    background: linear-gradient(180deg, rgba(42, 32, 101, 0.7) 0%, rgba(91, 70, 145, 0.8) 100%),
+        url('assets/signin-bg.png');
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.svg-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.background-svg,
+.foreground-svg-animation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    height: auto;
+}
+
+/* Make the SVGs responsive */
+@media (max-width: 768px) {
+    .background-svg,
+    .foreground-svg-animation {
+        min-height: 80vh;
+         /* Adjust this value for smaller screens */
+    }
+    /* Additional styling for smaller screens if needed */
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button {
+    font-weight: bolder;
+    width: 90%;
+    max-width: 490px;
+    height: 55px;
+    border-radius: 16px;
+    border-color: #A288CB;
+    background: white;
+    color: rgba(0, 0, 0, 0.792);
+    font-size: 16px;
+    line-height: 55px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.button:nth-child(2) {
+    background: #22185B;
+    color: white;
+}
+
+.line {
+    margin-top: 25px;
+    height: 3px;
+    width: 100%;
+    max-width: 490px;
+    border: 3px;
+    transform: rotate(0deg);
+    background: linear-gradient(270deg, #C0A9FF 0%, rgba(132, 110, 189, 0) 49.77%, #C0A9FF 100%);
+}
+
+.text {
+    margin-top: 25px;
+    color: #FFF;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.sign-in-text {
+    color: #D1B5FE;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translateY(20%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.foreground-svg-animation {
+    animation: moveBackground 1s linear;
+    animation-fill-mode: forwards;
+}
+
+.img-box {
+    width: 154px;
+    height: 57px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+    background-image: url("assets/brandmark.png");
+    z-index: 999;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
+}
+
+.text-box {
+    color: #FFF;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 490px;
+}
+
+/* Make the SVGs responsive */
