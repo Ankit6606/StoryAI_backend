@@ -5,5 +5,3 @@ async function connectDatabase(url){
 };
 
 export {connectDatabase};
-
-// <!-- <a href="/scenario" style="text-decoration: none;"><div class="next-button">Next Scenerio</div></a> -->
