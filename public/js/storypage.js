@@ -27,4 +27,3 @@ let characterCount = 2; // Start with 2
             }, 10);
         }
 
-        

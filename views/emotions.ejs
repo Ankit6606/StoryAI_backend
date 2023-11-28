@@ -25,37 +25,39 @@
         <div class="sub-text">Select a preferred emotion for<br>your story</div>
 
         <!-- Flexbox and Textbox -->
-        <div class="flex-box">
-            <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Emotions</div>
-            <input type="text" class="text-box" placeholder="Start typing here">
-            
-        </div>
-        <div class="card-container">
-            <div class="text-style-head"
-                style="color: #000; font-size: 30px; align-self: baseline; margin-top: 38px; margin-left:30px;margin-bottom: 22px;">
-                Select From 10 Emotions</div>
-            <div class="card-box">
-
-                <div class="card">
-                    <div class="card-text-1">
-                        <p>My First Story</p>
-                        <div class="card-text-2">
-                            <p>3:48 Sec</p>
-
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+        <form method="POST" action="/emotions">
+            <div class="flex-box">
+                <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Emotions</div>
+                <input type="text" class="text-box" placeholder="Start typing here" name="emotions">
+                
             </div>
-
-            <!-- Add more cards as needed -->
-        </div>
-        <div class="next-button" onclick="showNextPage()">Next Values</div>
+            <div class="card-container">
+                <div class="text-style-head"
+                    style="color: #000; font-size: 30px; align-self: baseline; margin-top: 38px; margin-left:30px;margin-bottom: 22px;">
+                    Select From 10 Emotions</div>
+                <div class="card-box">
+    
+                    <div class="card">
+                        <div class="card-text-1">
+                            <p>My First Story</p>
+                            <div class="card-text-2">
+                                <p>3:48 Sec</p>
+    
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+    
+                <!-- Add more cards as needed -->
+            </div>
+            <button type="submit" class="next-button" style="margin-left: 43rem;padding-bottom: 45px;">Next Scenario</button>
+        </form>
         <a href="/scenerio" style="color: #FFF;
 
         font-family: Volkhov;
@@ -68,3 +70,4 @@
 </body>
 
 </html>
+

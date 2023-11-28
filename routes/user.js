@@ -17,7 +17,10 @@ import {rootRender,
         renderEmotions,
         renderScenario,
         renderValues,
-        renderlandingPage
+        renderlandingPage,
+        postScenario,
+        postEmotions,
+        postValues
         } from '../controllers/userReq.js';
 
 import {renderBuyPage,success,failure, handlePayment} from '../controllers/paymentController.js';
@@ -48,6 +51,9 @@ router.get("/subscribe",selectSubscription);
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/story",storyPost);
+router.post("/scenario",postScenario);
+router.post("/emotions",postEmotions);
+router.post("/values",postValues);
 router.post("/createstory1",createStory1Post);
 router.post("/charge",handlePayment);
 router.post("/profile",editProfile);

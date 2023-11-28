@@ -8,8 +8,11 @@ import fs from 'fs';
 
 const route = express.Router();
 
-const age = "0";
-const character = "";
+let age = "";
+let character = "";
+let scenario = "";
+let emotions = "hb";
+let values = "";
 
 
 export function rootRender(req,res){
@@ -131,9 +134,29 @@ export function storyCharacters(req,res){
 };
 
 export function storyPost(req,res){
-  // age = req.body.option;
-  console.log(req.body.character);
+  // age = req.breq.body.characterody.option;
+  character = req.body.character;
+  age = req.body.age;
+  console.log(age);
+  console.log(character);
   res.redirect("/scenario");
+};
+
+export function postScenario(req,res){
+  scenario = req.body.scenario;
+  console.log(scenario);
+  res.redirect("/emotions");
+};
+
+export function postEmotions(req,res){
+  emotions = req.body.emotions;
+  console.log(emotions);
+  res.redirect("/values");
+};
+
+export function postValues(req,res){
+  values = req.body.values;
+  console.log(values);
 };
 
 export function createStory1Post(req,res){
