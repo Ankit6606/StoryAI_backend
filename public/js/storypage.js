@@ -26,3 +26,5 @@ let characterCount = 2; // Start with 2
                 characterNameInput.style.transform = 'translateY(0)';
             }, 10);
         }
+
+        

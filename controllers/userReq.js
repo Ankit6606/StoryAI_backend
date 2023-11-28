@@ -8,6 +8,10 @@ import fs from 'fs';
 
 const route = express.Router();
 
+const age = "0";
+const character = "";
+
+
 export function rootRender(req,res){
     // if(req.isAuthenticated()){
     //   res.redirect("/story");
@@ -15,6 +19,10 @@ export function rootRender(req,res){
     //   res.redirect("/login");
     // }
     res.render("home");
+};
+
+export function renderlandingPage(req,res){
+  res.render("landing-page");
 };
 
 export function registerRender(req,res){
@@ -123,7 +131,9 @@ export function storyCharacters(req,res){
 };
 
 export function storyPost(req,res){
-  res.redirect("/createstory1");
+  // age = req.body.option;
+  console.log(req.body.character);
+  res.redirect("/scenario");
 };
 
 export function createStory1Post(req,res){
@@ -170,6 +180,18 @@ export function selectSubscription(req,res){
     }
   })
 }
+
+export function renderScenario(req,res){
+  res.render("scenario");
+}
+
+export function renderEmotions(req,res){
+  res.render("emotions");
+};
+
+export function renderValues(req,res){
+  res.render("values");
+};
 
 // export function userPay(req,res){
 //   res.render("payment_dashboard");

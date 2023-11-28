@@ -13,7 +13,11 @@ import {rootRender,
         createStory1Post,
         profileManage,
         editProfile,
-        selectSubscription
+        selectSubscription,
+        renderEmotions,
+        renderScenario,
+        renderValues,
+        renderlandingPage
         } from '../controllers/userReq.js';
 
 import {renderBuyPage,success,failure, handlePayment} from '../controllers/paymentController.js';
@@ -22,13 +26,18 @@ const router = express.Router();
 
 
 router.get("/",rootRender);
+router.get("/landingpage",renderlandingPage);
 router.get("/register",registerRender);
 router.get("/login",loginRender);
 router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
 router.get("/story",storyPage);
+router.get("/scenario",renderScenario);
+router.get("/emotions",renderEmotions);
+router.get("/values",renderValues);
 router.get("/createstory1",storyCharacters);
 router.get("/charge",renderBuyPage);
+
 // router.get("/paymentDashboard",userPay);
 router.get("/success",success);
 router.get("/failure",failure);
