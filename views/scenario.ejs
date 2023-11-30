@@ -20,12 +20,13 @@
     </div>
     <div class="image-box"></div>
     <div class="ellipse"></div>
+    <form method="POST" action="/scenario">
     <div class="content-box" id="content-box-1">
         <div class="header-text">Step 2 : Scenario</div>
         <div class="sub-text">Select a preferred scenario for<br>your story</div>
 
         <!-- Flexbox and Textbox -->
-       <form method="POST" action="/scenario">
+       
         <div class="flex-box">
             <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Emotions</div>
             <input type="text" class="text-box" placeholder="Start typing here" name="scenario">
@@ -56,8 +57,8 @@
 
             <!-- Add more cards as needed -->
         </div>
-        <button type="submit" class="next-button" style="margin-left: 43rem;padding-bottom: 45px;">Next Scenario</button>
-       </form>
+        <button type="submit" class="next-button">Next Scenario</button>
+       
         <a href="/" style="color: #FFF;
 
         font-family: Volkhov;
@@ -66,6 +67,7 @@
         font-weight: 700;
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
     </div> 
+</form>
 <script src="js/scenario.js"></script>
 </body>
 
