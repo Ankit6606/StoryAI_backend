@@ -90,6 +90,7 @@ line-height: 150%; /* 30px */
 cursor: pointer;
 text-align: center;
 padding-top: 10px;
+padding-bottom: 40px;
 margin-top: 28px;
 
     transition-duration: 0.5s;

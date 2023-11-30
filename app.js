@@ -42,10 +42,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Database connection established
-connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
-.then(()=>{
-    console.log("Mongodb connected");
-});
+// connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
+// .then(()=>{
+//     console.log("Mongodb connected");
+// });
 
 passport.use(User.createStrategy());
 
