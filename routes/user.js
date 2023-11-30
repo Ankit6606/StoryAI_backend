@@ -1,6 +1,7 @@
 import express from 'express';
 // import passport from 'passport';
 import {rootRender,
+        authenticateRender,
         loginRender, 
         registerRender, 
         oauthPage, 
@@ -30,6 +31,7 @@ const router = express.Router();
 
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
+router.get("/authenticate",authenticateRender);
 router.get("/register",registerRender);
 router.get("/login",loginRender);
 router.get("/auth/google",oauthPage);

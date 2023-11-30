@@ -28,6 +28,10 @@ export function renderlandingPage(req,res){
   res.render("landing-page");
 };
 
+export function authenticateRender(req,res){
+  res.render("authenticate");
+};
+
 export function registerRender(req,res){
     res.render("register");
 };
@@ -48,7 +52,7 @@ export function oauthVerification(req, res) {
       scope: ["profile", "email"]
     })(req, res, () => {
       // Successful authentication, redirect to /story.
-      res.redirect('/story');
+      res.redirect('/');
     });
 };
   

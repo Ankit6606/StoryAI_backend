@@ -2,61 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Page</title>
-    <link rel="stylesheet" href="css/meta/custom-button.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
-    <link rel="stylesheet" href="css/signin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp Page</title>
+  <link rel="stylesheet" type="text/css" href="css/meta/global.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+  <link rel="stylesheet" href="css/signup.css">
 </head>
 
 <body>
-    <div class="background">
-        <div class="svg-container">
-            <!-- Background SVG -->
-            
-            <svg class="background-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 805" 
-                 >
-                <defs>
-                    <linearGradient id="paint0_linear_519_7" x1="977.294" y1="89.5217" x2="2021.01" y2="89.5217"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#C394FF" />
-                        <stop offset="1" stop-color="#00F0FF" />
-                    </linearGradient>
-                </defs>
-                <path
-                    d="M1072.69 164.986C411.814 71.4694 -7.80204 472.023 -135 683.99V1407.56C618.562 1416.19 2118.47 1428.28 2089.59 1407.56C2060.71 1386.85 2077.56 460.556 2089.59 0C2025.99 93.9608 1733.57 258.503 1072.69 164.986Z"
-                    fill="url(#paint0_linear_519_7)" />
-            </svg>
+  <div class="background">
+    <div class="svg-container">
+      <!-- Background SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="827" viewBox="0 0 1920 827" fill="none"
+        class="background-svg">
+        <path
+          d="M1061.79 50.8208C395.688 -83.657 -122.319 214.401 -298.061 380.24L-447.635 983.478C332.14 1055.11 1885.27 1193.45 1859.61 1173.71C1833.94 1153.97 2042.89 383.164 2150.57 0.229522C2065.19 73.1257 1727.89 185.299 1061.79 50.8208Z"
+          fill="url(#paint0_linear_519_62)" />
+        <defs>
+          <linearGradient id="paint0_linear_519_62" x1="978.447" y1="-20.2514" x2="2019.09" y2="237.778"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#C194FF" />
+            <stop offset="1" stop-color="#03EEFF" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-            <!-- Foreground SVG -->
-            <svg class="foreground-svg-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 798" 
-                >
-                <defs>
-                    <linearGradient id="paint0_linear_519_8" x1="941.81" y1="180.12" x2="941.81" y2="1960.5"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2A2065" />
-                        <stop offset="1" stop-color="#D7A7FF" />
-                    </linearGradient>
-                </defs>
-                <path
-                    d="M1036.69 198.986C375.814 105.469 -43.802 506.023 -171 717.99V1441.56C582.562 1450.19 2082.47 1462.28 2053.59 1441.56C2024.71 1420.85 2041.56 494.556 2053.59 34C1989.99 127.961 1697.57 292.503 1036.69 198.986Z"
-                    fill="url(#paint0_linear_519_8)" stroke="white" stroke-width="20" />
-            </svg>
-<form action="/login" method="post">
-            <!-- Button Container -->
-            <div class="button-container">
-                <div class="img-box"></div>
-                <div class="text-box">Stories Like Never Before</div>
-                <a href="/auth/google" class="btn1 btn1-white btn1-animated" role="button">Sign In With Google</a>
-                <a href="/register" class="btn btn-white btn-animated">Sign Up With Email</a>
-                <div class="line"></div>
-                <div class="text">Already have an Account? <a href=""><span class="sign-in-text">Sign In</span></a>
-                </div>
+      <!-- Foreground SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="916" viewBox="0 0 1920 916" fill="none"
+        class="foreground-svg">
+        <path
+          d="M1079.23 167.752C386.864 88.9311 -52.7423 426.537 -186 605.192V1215.05C603.462 1222.33 2174.82 1232.51 2144.57 1215.05C2114.32 1197.59 2131.96 416.871 2144.57 28.6934C2077.94 107.888 1771.59 246.572 1079.23 167.752Z"
+          fill="url(#paint0_linear_519_63)" stroke="white" stroke-width="20" />
+        <defs>
+          <linearGradient id="paint0_linear_519_63" x1="979.825" y1="315.852" x2="979.825" y2="1769"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2A2065" />
+            <stop offset="1" stop-color="#D7A7FF" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="ellipse"></div>
+
+      <!-- Button Container -->
+      
+      <form action="/login" method="post">
+        <div class="flexbox" id="flexbox-2" style="display: none;">
+          <div class="title">Email Sign In</div>
+          <div class="subtitle">Login to Your Account using email and <br> password method</div>
+          <div class="signup-box">
+            <!-- Sign-in fields and button -->
+
+            <div class="boxz">
+              <div class="header-text">Email</div>
+              <input id="signInEmail" class="input-field" type="email" placeholder="Email">
             </div>
-          </form>
+            <div class="boxz">
+              <div class="header-text">Password</div>
+              <div class="password-container">
+                <input id="signInPasswordInput" class="input-field" type="password" placeholder="Password">
+                <div class="password-toggle" onclick="togglePasswordVisibility()">
+                  <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
+                </div>
+              </div>
+            </div>
+            <a href="/story" id="signInButton" class="btn btn-white btn-animated" type="submit">Continue
+              Sign
+              In</a>
+          </div>
+
+          <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Dont Have an Account? <span
+              class="sign-in-text" id="toggle-text">Sign Up</span></div>
         </div>
+      </form>
+
+      
     </div>
+  </div>
 </body>
 
 </html>

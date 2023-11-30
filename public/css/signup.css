@@ -2,7 +2,7 @@
     background-image: url('assets/signin-bg.png');
     background-repeat: no-repeat;
     background-position: top -285px;
-    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('/Client/assets/signin-bg.png');
+    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png');
     overflow: hidden;
 }
 
