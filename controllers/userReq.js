@@ -62,6 +62,8 @@ export function registerUser(req, res) {
     const password = req.body.password;
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
+    const prephoneNumber  = req.body.prephoneNumber;
+    console.log(prephoneNumber);
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -85,11 +87,11 @@ export function registerUser(req, res) {
           User.findById(req.user.id)
             .then((foundUser)=>{
               foundUser.name = name;
-              foundUser.phoneNumber = phoneNumber;
+              foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
               foundUser.authType = "email";
               foundUser.save()
                 .then(()=>{
-                  res.redirect("/story");
+                  res.redirect("/");
                 }).catch((err)=>{
                   console.log(err);
                 });
@@ -170,12 +172,13 @@ export function createStory1Post(req,res){
 }
 
 export function profileManage(req,res){
-  // if(req.isAuthenticated()){
-  //   res.render("profile");
-  // }else{
-  //   res.redirect("/login");
-  // }
-  res.render("profile");
+  if(req.isAuthenticated()){
+    console.log(req.user.id);
+    res.render("profile");
+  }else{
+    res.redirect("/authenticate");
+  }
+  // res.render("profile");
 };
 
 export function editProfile(req,res){
@@ -220,6 +223,9 @@ export function renderValues(req,res){
   res.render("values");
 };
 
+export function getStoryOutput(req,res){
+  res.render("storyoutput");
+}
 // export function userPay(req,res){
 //   res.render("payment_dashboard");
 // };

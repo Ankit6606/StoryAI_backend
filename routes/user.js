@@ -21,7 +21,8 @@ import {rootRender,
         renderlandingPage,
         postScenario,
         postEmotions,
-        postValues
+        postValues,
+        getStoryOutput
         } from '../controllers/userReq.js';
 
 import {renderBuyPage,success,failure, handlePayment} from '../controllers/paymentController.js';
@@ -42,6 +43,7 @@ router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
 router.get("/createstory1",storyCharacters);
 router.get("/charge",renderBuyPage);
+router.get("/storyoutput",getStoryOutput);
 
 // router.get("/paymentDashboard",userPay);
 router.get("/success",success);

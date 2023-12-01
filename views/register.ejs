@@ -53,45 +53,46 @@
             <!-- Sign-up fields and button -->
             <div class="boxz">
               <div class="header-text">Full Name</div>
-              <input id="signUpFullName" class="input-field" type="text" placeholder="Name">
+              <input id="signUpFullName" class="input-field" type="text" placeholder="Name" name="name">
             </div>
             <div class="boxz">
               <div class="header-text">Email</div>
-              <input id="signUpEmail" class="input-field" type="email" placeholder="Email">
+              <input id="signUpEmail" class="input-field" type="email" placeholder="Email" name="username">
             </div>
             <div class="boxz">
               <div class="header-text">Phone Number</div>
               <!-- Country code and phone input fields -->
               <div style="display: flex; align-items: center;">
-                <select id="signUpCountryCode" class="country-code">
+                <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
                   <option value="+1">+1</option>
                   <option value="+44">+44</option>
                   <option value="+49">+49</option>
                   <!-- Add more options as needed -->
                 </select>
-                <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone"
+                <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone" name="phoneNumber"
                   style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
               </div>
             </div>
             <div class="boxz">
               <div class="header-text">Password</div>
               <div class="password-container">
-                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Password">
+                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Password" name="password">
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
               </div>
             </div>
 
-            <a href="/" id="signUpButton" class="btn btn-white btn-animated" onclick="collectSignUpInput()">Continue
+            <a href="/" id="signUpButton" class="btn btn-white btn-animated" type="submit">Continue
               Sign
               Up</a>
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Already have an Account? <span
-              class="sign-in-text" id="toggle-text">Sign In</span></div>
+            class="sign-in-text" id="toggle-text">Sign In</span></div>
         </div>
       </form>
+
       <form action="/register" method="post">
         <div class="flexbox" id="flexbox-2" style="display: none;">
           <div class="title">Email Sign In</div>
@@ -112,15 +113,17 @@
                 </div>
               </div>
             </div>
-            <a href="/" id="signInButton" class="btn btn-white btn-animated" onclick="collectSignInInput()">Continue
+            <a href="/" id="signInButton" class="btn btn-white btn-animated" type="submit">Continue
               Sign
               In</a>
           </div>
-
+          
           <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Dont Have an Account? <span
-              class="sign-in-text" id="toggle-text">Sign Up</span></div>
+            class="sign-in-text" id="toggle-text">Sign Up</span></div>
         </div>
       </form>
+
+   
 
       <script src="js/signup.js"></script>
     </div>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Output</title>
+    <link rel="stylesheet" href="css/meta/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+
+
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
+            url('css/assets/story-page-bg.png') center/cover no-repeat;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+
+    }
+
+    .image-box {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        max-width: 100%;
+        width: 100%;
+        height: 44%;
+        max-height: 500px;
+        background: url('css/assets/Ellipse\ 17.png') center/cover no-repeat;
+        box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+
+    }
+
+
+
+
+    .flex-container {
+        position: relative;
+        top: -7%;
+        margin-left: 3.3%;
+        display: flex;
+       
+        /* To create a 40px margin between the boxes */
+    }
+
+    .box {
+        width: 900px;
+        height: 900px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: #FDF0F2;
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .box-audio {
+        width: 900px;
+        height: 900px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: url("css/assets/story-pic-dynamic.png");
+        background-size: cover;
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-end;
+    }
+    .audio-player{width: 90%;
+        margin-bottom: 3.5%;
+height: 143.232px;
+flex-shrink: 0;
+border-radius: 30px;
+border: 5px solid #A288CB;
+align-self: center;
+
+background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));}
+    
+
+    .text-box {
+        text-align: center;
+    }
+
+    .box-heading {
+        font-family: Arial, sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .box-subtext {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #555;
+    }
+
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+
+        }
+
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+ 
+
+
+
+    
+
+
+    @keyframes containerSlideOut {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes cardsSlideIn {
+        0% {
+
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .ellipse {
+        width: 692px;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+
+    @keyframes ellipseMoveUp {
+        0% {
+            transform: translateY(-500px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(-10px);
+            /* Move the ellipse up */
+            opacity: 1;
+            /* Make it visible */
+        }
+
+
+    }
+
+    @keyframes ellipseGlitter {
+        0% {
+            opacity: 1;
+        }
+
+        10% {
+            opacity: 0.9;
+        }
+
+        20% {
+            opacity: 0.8;
+        }
+
+        30% {
+            opacity: 0.7;
+        }
+
+        40% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 0.35;
+        }
+
+        60% {
+            opacity: 0.5;
+        }
+
+        70% {
+            opacity: 0.7;
+        }
+
+        80% {
+            opacity: 0.8;
+        }
+
+        90% {
+            opacity: 0.9;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    
+    .progress-bar {
+        width: 90%;
+        height: 6.428px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: linear-gradient(270deg, #BB80FF 0%, #FFA8CF 0%);
+        position: relative;
+        margin-left: 5%;
+    }
+
+    .slider {
+        width: 9.165px;
+        height: 14.61px;
+        flex-shrink: 0;
+        fill: #FFF;
+        cursor: pointer;
+        position: absolute;
+        top: -4.5px; /* Adjust position as needed */
+    }
+
+    .play-pause-container {
+    height: 95px;
+    width: 95px;
+    margin-left: 50%;
+    margin-top: -47.5px; /* Half of the button's height */
+     /* Center horizontally */
+    transform: translateX(-50%);
+    z-index: 2; /* Ensure it's above other elements */
+    margin-bottom: 3%;
+}
+
+/* Add this style to center the button inside the container */
+.play-pause-button {
+    width: 95px;
+    height: 95px;
+    cursor: pointer;
+}
+</style>
+
+<body>
+    <body>
+        <div class="navbar">
+            <a href="#" class="nav-button">Subscription</a>
+            <a href="/profile" class="nav-button">Profile</a>
+            <a href="#" class="nav-button">Story History</a>
+            <a href="/story" class="special-button">Create Story</a>
+        </div>
+    
+        <div class="ellipse"></div>
+        <div class="flex-container">
+            <!-- Image Box -->
+            <div class="box-audio">
+                <div class="audio-player">
+                    <audio id="audio" style="width: 70%;">
+                        <!-- Replace 'your-audio-file.mp3' with the actual URL of your audio file -->
+                        <source src="css/assets/Client_assets_test.mp3" type="audio/mp3">
+                        Your browser does not support the audio tag.
+                    </audio>
+                    <div class="play-pause-container" onclick="togglePlayPause()">
+                        <div class="play-pause-button">
+                        <svg id="play-pause-icon" xmlns="http://www.w3.org/2000/svg" width="95" height="95" viewBox="0 0 95 95" fill="none">
+                            <circle cx="47.5" cy="47.5" r="47.5" fill="white" />
+                            <circle cx="47.7915" cy="47.7913" r="37.0491" fill="white" stroke="#2A2065" stroke-width="4" />
+                            <path d="M62.4861 46.9572L62.4861 46.9573L62.4904 46.9601C62.7426 47.1282 62.9635 47.5124 63.0268 47.9551C63.0173 48.3098 62.8402 48.6379 62.4814 48.8957L40.8077 63.6669L40.7984 63.6733L40.7893 63.6801C40.6324 63.7978 40.4094 63.8563 40.1228 63.8563C39.9208 63.8563 39.7474 63.8043 39.6407 63.7331L39.6148 63.7159L39.5869 63.7019C39.2027 63.5098 38.9658 63.1298 38.9658 62.6993V33.1504C38.9658 32.7199 39.2027 32.3399 39.5869 32.1478L39.6082 32.1372L39.6283 32.1246C39.9915 31.8976 40.4626 31.9364 40.7987 32.1765L40.7986 32.1766L40.8077 32.1828L62.4861 46.9572Z" fill="#2A2065" stroke="#2A2065" />
+                        </svg>
+                    </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="progress-bar" id="progress-bar">
+                        <!-- Slider -->
+                        <svg class="slider" id="slider" draggable="true" xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none">
+                            <ellipse cx="4.91647" cy="7.35289" rx="4.58248" ry="7.30504" fill="white" />
+                        </svg>
+                    </div>
+                    <div id="timer" style="color: white; margin-top: 10px; text-align: center;"></div>
+                    <!-- Play/Pause Button -->
+                    
+
+                </div>
+            </div>
+    
+            <!-- Text Box -->
+            <div class="box text-box">
+                <div class="box-heading">Heading</div>
+                <div class="box-subtext">Subtext goes here</div>
+            </div>
+        </div>
+        <script src="js/story-output.js"></script>
+    </body>
+
+</html>
