@@ -29,6 +29,15 @@
     width: 100%;
     height: auto;
 }
+@media (max-width: 768px) {
+    .background-svg,
+    .foreground-svg {
+        bottom: 0;
+        min-height: 100vh;
+         /* Adjust this value for smaller screens */
+    }
+    /* Additional styling for smaller screens if needed */
+}
 
 .line {
     margin-top: 10px;
@@ -54,8 +63,9 @@
 
 .flexbox {
     position: absolute;
-    top: 137px;
-    left: 38%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 99;
     display: flex;
     flex-direction: column;
@@ -68,8 +78,9 @@
 
 .flexbox-2 {
     position: absolute;
-    top: 137px;
-    left: 38%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 99;
     display: none;
     /* Initially hidden */
@@ -310,7 +321,7 @@
     width: 792px;
     height: 299.844px;
     flex-shrink: 0;
-    background-image: url("assets/ellipse.png");
+    background-image: url("/Client/assets/ellipse.png");
 
     background-size: cover;
     position: relative;

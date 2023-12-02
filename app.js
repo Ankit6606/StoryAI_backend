@@ -42,10 +42,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
-.then(()=>{
-    console.log("Mongodb connected");
-});
+// connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
+// .then(()=>{
+//     console.log("Mongodb connected");
+// });
 
 passport.use(User.createStrategy());
 
@@ -56,7 +56,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
     User.findById(id)
       .then(function(user) {
-        done(null, user);
+        done(null, user);21
       })
       .catch(function(err) {
         done(err, null);

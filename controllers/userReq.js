@@ -172,12 +172,13 @@ export function createStory1Post(req,res){
 }
 
 export function profileManage(req,res){
-  if(req.isAuthenticated()){
-    console.log(req.user.id);
-    res.render("profile");
-  }else{
-    res.redirect("/authenticate");
-  }
+  res.render("profile");
+  // if(req.isAuthenticated()){
+  //   console.log(req.user.id);
+  //   res.render("profile");
+  // }else{
+  //   res.redirect("/authenticate");
+  // }
   // res.render("profile");
 };
 
