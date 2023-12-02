@@ -12,13 +12,13 @@ const route = express.Router();
 let age = "";
 let character = "";
 let scenario = "";
-let emotions = "hb";
+let emotions = "";
 let values = "";
 
 
 export function rootRender(req,res){
     // if(req.isAuthenticated()){
-    //   res.redirect("/story");
+    //   res.redirect("/");
     // }else{
     //   res.redirect("/login");
     // }
@@ -42,7 +42,7 @@ export function registerRender(req,res){
 };
 
 export function loginRender(req,res){
-    res.render("register2");
+    res.render("login");
 };
 
 export function oauthPage(req, res) {
@@ -53,17 +53,11 @@ export function oauthPage(req, res) {
 
 export function oauthVerification(req, res) {
   passport.authenticate('google', {
-    failureRedirect: '/authenticate',
+    failureRedirect: '/authenticate2',
     scope: ["profile", "email"]
-  }, (err, user) => {
-    if (err) {
-      console.error("Error during Google authentication:", err);
-      return res.redirect('/authenticate');
-    }
-    
-    console.log("User authenticated:", user); // Log user object after successful authentication
-    res.redirect('/story'); // Redirect to story page after successful authentication
-  })(req, res);
+  })(req, res, () => {
+    res.redirect('/story');
+  });
 };
 
 
@@ -112,17 +106,15 @@ export function registerUser(req, res) {
         });
       }
     });
-  }
+  };
   
 
   export function storyPage(req, res) {
-    console.log("Authentication status:", req.isAuthenticated());
-    console.log("User:", req.user); // Log user details
-    
+    // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
       res.render("story");
     } else {
-      res.redirect("/authenticate");
+      res.redirect("/authenticate2");
     }
   };
   
@@ -143,13 +135,6 @@ export function loginUser(req,res){
        });
 };
 
-export function storyCharacters(req,res){
-  if(req.isAuthenticated()){
-    res.render("createstory1");
-  }else{
-    res.redirect("/login");
-  }
-};
 
 export function storyPost(req,res){
   character = req.body.character;
@@ -186,8 +171,6 @@ export async function postValues(req,res){
     userId: "test"
   });
 
- 
-
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {
       method: 'POST',
@@ -214,39 +197,49 @@ export async function postValues(req,res){
 
 export function profileManage(req,res){
   if(req.isAuthenticated()){
-    console.log(req.user.id);
     res.render("profile");
   }else{
-    res.redirect("/authenticate");
+    res.redirect("/authenticate2");
   }
-  // res.render("profile");
 };
 
-export function editProfile(req, res) {
+export async function editProfile(req, res) {
   const name = req.body.name;
   const prephoneNumber = req.body.prephoneNumber;
   const phoneNumber = req.body.phoneNumber;
+  if(req.isAuthenticated()){
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        { 
+          $set: { 
+            name: name,
+            phoneNumber: prephoneNumber + "-" + phoneNumber
+          }
+        },
+        { new: true } // To return the updated document
+      );
 
-  User.findByIdAndUpdate(
-    req.user.id,
-    { 
-      $set: { 
-        name: name,
-        phoneNumber: prephoneNumber + "-" + phoneNumber
-      }
-    },
-    { new: true }, // To return the updated document
-    (err, updatedUser) => {
-      if (err) {
-        console.log(err);
+      if (!updatedUser) {
+        // Handle the case where the user is not found
+        console.log("not found");
         return res.redirect("/story"); // Redirect or handle the error appropriately
-      }
+    }
+
       // Successfully updated user
-      console.log("Updated User:", updatedUser);
+      // console.log("Updated User:", updatedUser);
+      res.redirect("/story");
+    } catch (err) {
+      console.log(err);
+      res.redirect("/story"); // Redirect or handle the error appropriately
+      }
+    }
+    else{
+      console.log("User cannot be authenticated");
       res.redirect("/story");
     }
-  );
-}
+};
+
 
 
 export function selectSubscription(req,res){
@@ -276,12 +269,5 @@ export function renderValues(req,res){
 export function getStoryOutput(req,res){
   res.render("storyoutput");
 }
-// export function userPay(req,res){
-//   res.render("payment_dashboard");
-// };
 
 
-
-export function userlogin(req,res){
-  res.render("register2");
-}

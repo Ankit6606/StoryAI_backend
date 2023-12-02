@@ -64,72 +64,83 @@ passport.serializeUser(function(user, done) {
   });
   
 
+  // passport.use(new GoogleStrategy({
+  //   clientID: process.env.CLIENT_ID,
+  //   clientSecret: process.env.CLIENT_SECRET,
+  //   callbackURL: "http://localhost:3000/auth/google/story",
+  //   scope: ['profile', 'email'],
+  // },
+  // function(accessToken, refreshToken, profile, cb) {
+  //   const userEmail = profile.emails[0].value;
+  
+  //   User.findOne({ googleId: profile.id })
+  //     .then(existingUser => {
+  //       if (existingUser) {
+  //         // User already exists, return the user
+  //         return cb(null, existingUser);
+  //       } else {
+  //         // Create a new user
+  //         const newUser = new User({ 
+  //           googleId: profile.id, 
+  //           name: profile.displayName, 
+  //           username: userEmail, 
+  //           authType: "google"
+  //         });
+  
+  //         return newUser.save()
+  //           .then(savedUser => {
+  //             // New user created successfully
+  //             return cb(null, savedUser);
+  //           })
+  //           .catch(saveErr => {
+  //             console.error("Error creating new user:", saveErr);
+  //             return cb(saveErr, null);
+  //           });
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.error("Error finding user:", err);
+  //       return cb(err, null);
+  //     });
+  // }));
+  
+  
+  
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/story",
     scope: ['profile', 'email'],
   },
-  function(accessToken, refreshToken, profile, cb) {
+  async function(accessToken, refreshToken, profile, cb) {
     const userEmail = profile.emails[0].value;
   
-    User.findOne({ googleId: profile.id })
-      .then(existingUser => {
-        if (existingUser) {
-          // User already exists, return the user
-          return cb(null, existingUser);
-        } else {
-          // Create a new user
-          const newUser = new User({ 
-            googleId: profile.id, 
-            name: profile.displayName, 
-            username: userEmail, 
-            authType: "google"
-          });
+    try {
+      // Check if a user with the same Google ID or username already exists
+      const existingUser = await User.findOne({ $or: [{ googleId: profile.id }, { username: userEmail }] });
   
-          return newUser.save()
-            .then(savedUser => {
-              // New user created successfully
-              return cb(null, savedUser);
-            })
-            .catch(saveErr => {
-              console.error("Error creating new user:", saveErr);
-              return cb(saveErr, null);
-            });
-        }
-      })
-      .catch(err => {
-        console.error("Error finding user:", err);
-        return cb(err, null);
-      });
+      if (existingUser) {
+        // User already exists, return the user
+        return cb(null, existingUser);
+      } else {
+        // Create a new user
+        const newUser = new User({ 
+          googleId: profile.id, 
+          name: profile.displayName, 
+          username: userEmail, 
+          authType: "google"
+        });
+  
+        const savedUser = await newUser.save();
+        // New user created successfully
+        return cb(null, savedUser);
+      }
+    } catch (err) {
+      console.error("Error during Google authentication:", err);
+      return cb(err, null);
+    }
   }));
   
-  
-  
-
-// passport.use(new GoogleStrategy({
-//     clientID: process.env.CLIENT_ID,
-//     clientSecret: process.env.CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/google/story",
-//     scope: ['profile', 'email'],
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     // console.log(profile.displayName);
-//     const userEmail = profile.emails[0].value;
-//     // console.log(userEmail);
-//     User.findOrCreate({ googleId: profile.id, 
-//                         name: profile.displayName , 
-//                         username: userEmail, 
-//                         authType: "google" }, function (err, user) {
-     
-//       // console.log("User found or created:", user);
-//       return cb(err, user);
-
-//     });
-    
-//   }
-// ));
-
 
 app.use("/",userApp);
 

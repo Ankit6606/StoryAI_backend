@@ -52,7 +52,7 @@
                 </defs>
             </svg>
             <div class="ellipse"></div>
-<form action="/Profile" method="post">
+<form action="/profile" method="post">
             <!-- Button Container -->
             <div class="flexbox" id="flexbox" style="display: block;">
                 <div class="title">Profile Settings</div>
@@ -61,20 +61,20 @@
                     <!-- Sign-up fields and button -->
                     <div class="boxz">
                         <div class="header-text">Full Name</div>
-                        <input id="signUpFullName" class="input-field" type="text" placeholder="Name">
+                        <input id="signUpFullName" class="input-field" type="text" placeholder="Name" name="name">
                     </div>
 
                     <div class="boxz">
                         <div class="header-text">Phone Number</div>
                         <!-- Country code and phone input fields -->
                         <div style="display: flex; align-items: center;">
-                            <select id="signUpCountryCode" class="country-code">
+                            <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
                                 <option value="+1">+1</option>
                                 <option value="+44">+44</option>
                                 <option value="+49">+49</option>
                                 <!-- Add more options as needed -->
                             </select>
-                            <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone"
+                            <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone" name="phoneNumber"
                                 style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                     <div class="line"></div>
                     <div class="button-box">
                         <a href="" class="nav-button">Cancel Plan</a>
-                        <a href="" class="nav-button">Upgrade</a>
+                        <button type="submit" class="nav-button">Upgrade</button>
                     </div>
 
 

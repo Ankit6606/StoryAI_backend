@@ -10,7 +10,6 @@ import {rootRender,
         registerUser,
         storyPage,
         loginUser,
-        storyCharacters,
         storyPost,
         
         profileManage,
@@ -43,7 +42,6 @@ router.get("/story",storyPage);
 router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
-router.get("/createstory1",storyCharacters);
 router.get("/charge",renderBuyPage);
 router.get("/storyoutput",getStoryOutput);
 

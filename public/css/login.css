@@ -29,6 +29,15 @@
     width: 100%;
     height: auto;
 }
+@media (max-width: 768px) {
+    .background-svg,
+    .foreground-svg {
+        bottom: 0;
+        min-height: 100vh;
+         /* Adjust this value for smaller screens */
+    }
+    /* Additional styling for smaller screens if needed */
+}
 
 .line {
     margin-top: 10px;
@@ -52,21 +61,22 @@
     color: #D1B5FE;
 }
 
-
-
-.flexbox-2 {
+.flexbox {
+    z-index: 888888;
     position: absolute;
-    top: 137px;
-    left: 38%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 99;
-    
-    /* Initially hidden */
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+    opacity: 1;
+    transition: opacity 0.5s ease;
     /* Add a transition for smoother and slower opacity change */
 }
+
 
 .title {
     color: #FFF;
@@ -297,7 +307,7 @@
     width: 792px;
     height: 299.844px;
     flex-shrink: 0;
-    background-image: url("assets/ellipse.png");
+    background-image: url("/Client/assets/ellipse.png");
 
     background-size: cover;
     position: relative;
