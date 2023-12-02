@@ -32,12 +32,16 @@ export function authenticateRender(req,res){
   res.render("authenticate");
 };
 
+export function authenticateRender2(req,res){
+  res.render("authenticate2");
+};
+
 export function registerRender(req,res){
     res.render("register");
 };
 
 export function loginRender(req,res){
-    res.render("login");
+    res.render("register2");
 };
 
 export function oauthPage(req, res) {

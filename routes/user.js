@@ -2,6 +2,7 @@ import express from 'express';
 // import passport from 'passport';
 import {rootRender,
         authenticateRender,
+        authenticateRender2,
         loginRender, 
         registerRender, 
         oauthPage, 
@@ -22,7 +23,8 @@ import {rootRender,
         postScenario,
         postEmotions,
         postValues,
-        getStoryOutput
+        getStoryOutput,
+     
         } from '../controllers/userReq.js';
 
 import {renderBuyPage,success,failure, handlePayment} from '../controllers/paymentController.js';
@@ -33,6 +35,7 @@ const router = express.Router();
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
 router.get("/authenticate",authenticateRender);
+router.get("/authenticate2",authenticateRender2);
 router.get("/register",registerRender);
 router.get("/login",loginRender);
 router.get("/auth/google",oauthPage);
@@ -50,7 +53,6 @@ router.get("/success",success);
 router.get("/failure",failure);
 router.get("/profile",profileManage);
 router.get("/subscribe",selectSubscription);
-
 
 router.post("/register",registerUser);
 router.post("/login",loginUser);
