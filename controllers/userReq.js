@@ -187,7 +187,7 @@ export async function postValues(req,res){
     const responseData = await response.json();
     // console.log(responseData);
 
-    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story});
+    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
