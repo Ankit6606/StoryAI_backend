@@ -66,8 +66,7 @@
         height: 900px;
         flex-shrink: 0;
         border-radius: 30px;
-        background: url("http://20.84.90.82:8000/content/1e8b8a3f-17dd-4d78-b9a9-5da6c3e31c4a/image.png");
-        background-size: cover;
+        
         box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
         margin: 0 20px;
         /* Adjust as needed */
@@ -295,7 +294,12 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         <div class="ellipse"></div>
         <div class="flex-container">
             <!-- Image Box -->
-            <div class="box-audio">
+            <div class="box-audio" id="audio-box">
+                <img src="css/assets/story-pic-dynamic.png" alt="Background Image" style="width: 900px;
+                height: 900px;
+                flex-shrink: 0;
+                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;">
+                <!-- ... (your existing audio player code) ... -->
                 <div class="audio-player">
                     <audio id="audio" style="width: 70%;">
                         <!-- Replace 'your-audio-file.mp3' with the actual URL of your audio file -->
@@ -332,6 +336,19 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
             </div>
         </div>
         <script src="js/storyoutput.js"></script>
+        <script>
+    //         function setAudioBoxBackground(imageUrl) {
+    //     var audioBox = document.getElementById('audio-box');
+    //     if (audioBox) {
+    //         audioBox.style.backgroundImage = 'url(' + imageUrl + ')';
+    //         audioBox.style.backgroundSize = 'cover'; 
+    //     }
+    // }
+
+    
+    // var backgroundImageUrl = '"css/assets/story-pic-dynamic.png"';
+    // setAudioBoxBackground(backgroundImageUrl);
+        </script>
     </body>
 
 </html>
