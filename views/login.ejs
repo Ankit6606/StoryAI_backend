@@ -65,7 +65,7 @@
                 </div>
               </div>
             </div>
-            <button id="signInButton" type="submit" class="next-button">Continue Sign In</button>
+            <button id="signInButton" type="submit" class="next-button" style="width: 421px;">Continue Sign In</button>
           </div>
           
           <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Dont Have an Account? <span
@@ -75,7 +75,21 @@
 
    
 
-      <script src="js/signup.js"></script>
+      <script>
+        function togglePasswordVisibility() {
+                    var passwordInput = document.getElementById("signInPasswordInput");
+                    var eyeIcon = document.getElementById("eye-icon");
+
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        eyeIcon.textContent = "\u{1F441}"; // Show the crossed eye icon
+                    } else {
+                        passwordInput.type = "password";
+                        eyeIcon.textContent = "\u{1F440}"; // Show the open eye icon
+                    }
+                }
+      </script>
+
     </div>
   </div>
 </body>
