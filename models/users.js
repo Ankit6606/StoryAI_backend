@@ -18,11 +18,10 @@ const userSchema = new mongoose.Schema({
     authType : String,
     paymentdetails: [{type:Schema.Types.ObjectId, ref : 'Payment'}],
     stories : [{type:Schema.Types.ObjectId, ref : 'Story'}],
-    // story : {
-    //     storyId : String,
-    //     titile : String
-    // }
+    gems: { type: Number, default: 5 }, // Default value for gems is set to 0
+    parrots: { type: Number, default: 2 }, // Default value for parrots is set to 0
 });
+
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'username' });
 userSchema.plugin(findOrCreate);

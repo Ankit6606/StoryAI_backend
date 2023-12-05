@@ -1,6 +1,8 @@
 import express from 'express';
 import User from '../models/users.js';
 import passport  from 'passport';
+import Story from '../models/stories.js';
+import mongoose from 'mongoose';
 import fs from 'fs';
 import fetch from 'node-fetch';
 // import passportLocalMongoose from 'passport-local-mongoose';
@@ -17,12 +19,12 @@ let values = "";
 
 
 export function rootRender(req,res){
-    // if(req.isAuthenticated()){
-    //   res.redirect("/");
-    // }else{
-    //   res.redirect("/login");
-    // }
-    res.render("home");
+    if(req.isAuthenticated()){
+      res.render("home");
+    }else{
+      res.redirect("/authenticate2");
+    }
+
 };
 
 export function renderlandingPage(req,res){
@@ -56,7 +58,7 @@ export function oauthVerification(req, res) {
     failureRedirect: '/authenticate2',
     scope: ["profile", "email"]
   })(req, res, () => {
-    res.redirect('/story');
+    res.redirect('/');
   });
 };
 
@@ -67,7 +69,8 @@ export function registerUser(req, res) {
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const prephoneNumber  = req.body.prephoneNumber;
-    console.log(prephoneNumber);
+    const gems = 5;
+    const parrots = 2;
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -93,6 +96,8 @@ export function registerUser(req, res) {
               foundUser.name = name;
               foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
               foundUser.authType = "email";
+              foundUser.gems = gems;
+              foundUser.parrots = parrots;
               foundUser.save()
                 .then(()=>{
                   res.redirect("/");
@@ -112,7 +117,13 @@ export function registerUser(req, res) {
   export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
+     if(req.user.gems>=5 && req.user.parrots>=2){
       res.render("story");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+      
     } else {
       res.redirect("/authenticate2");
     }
@@ -139,26 +150,26 @@ export function loginUser(req,res){
 export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
-  console.log(age);
-  console.log(character);
+  // console.log(age);
+  // console.log(character);
   res.redirect("/scenario");
 };
 
 export function postScenario(req,res){
   scenario = req.body.scenario;
-  console.log(scenario);
+  // console.log(scenario);
   res.redirect("/emotions");
 };
 
 export function postEmotions(req,res){
   emotions = req.body.emotions;
-  console.log(emotions);
+  // console.log(emotions);
   res.redirect("/values");
 };
 
 export async function postValues(req,res){
   values = req.body.values;
-  console.log(values);
+  // console.log(values);
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
   // Define multiple parameters
@@ -186,7 +197,55 @@ export async function postValues(req,res){
 
     const responseData = await response.json();
 
-    res.json(responseData);
+    //Storing the story in database after it is generated
+
+    const uname = req.user.username;
+    const uid = req.user.id;
+    const createstory = await Story.create({
+      userId : uid,
+      title: responseData.title,
+      story: responseData.story,
+      thumb_img_path : responseData.thumb_img_path,
+      audiopath : responseData.audio_path,
+    }); 
+
+    const gemstodeduct = 5;
+    const parrotstodeduct = 2;
+
+    const user = await User.findOne({ username: uname });
+    if (user) {
+      // Check if the user has enough gems and parrots
+      if (user.gems >= 5 && user.parrots >= 2) {
+        user.gems -= gemstodeduct;
+        user.parrots -= parrotstodeduct;
+        await user.save(); // Save the updated user
+      } else {
+        console.log("Insufficient gems or parrots");
+        // Handle insufficient gems or parrots error scenario
+        // You can redirect or send an error response as needed
+        return res.status(400).send("Insufficient gems or parrots");
+      }
+    } else {
+      console.log("User not found");
+      // Handle the case where the user is not found
+      return res.status(404).send("User not found");
+    }
+   
+    let objId = new mongoose.Types.ObjectId(createstory.id);
+    await User.updateOne({
+      username:uname
+    },
+    {
+      $push:{
+        stories : objId,
+      },
+    },
+    {upsert : false, new : true},
+    );
+
+    //After storing the story in database, it is displayed in frontend
+    
+    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -202,6 +261,7 @@ export function profileManage(req,res){
     res.redirect("/authenticate2");
   }
 };
+
 
 export async function editProfile(req, res) {
   const name = req.body.name;
@@ -241,33 +301,57 @@ export async function editProfile(req, res) {
 };
 
 
-
-export function selectSubscription(req,res){
-  fs.readFile('items.json',function(error,data){
-    if(error){
-      res.status(500).end();
-    }else{
-      res.render("subscribe",{
-        items: JSON.parse(data)
-      });
-    }
-  })
-}
-
 export function renderScenario(req,res){
-  res.render("scenario");
-}
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("scenario");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+};
 
 export function renderEmotions(req,res){
-  res.render("emotions");
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("emotions");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+  
 };
 
 export function renderValues(req,res){
-  res.render("values");
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("values");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+
 };
 
 export function getStoryOutput(req,res){
-  res.render("storyoutput");
+  if(req.user.gems>=5 && req.user.parrots>=2){
+    res.render("storyoutput");
+   }
+   else{
+    res.redirect("/subscribe");
+   }
 }
 
 

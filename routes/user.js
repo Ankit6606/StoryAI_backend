@@ -23,7 +23,7 @@ import {rootRender,
         getStoryOutput
         } from '../controllers/userReq.js';
 
-import {renderBuyPage,success,failure, handlePayment, selectSubscription, makepayment} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
 
 const router = express.Router();
 
@@ -41,7 +41,6 @@ router.get("/story",storyPage);
 router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
-router.get("/charge",renderBuyPage);
 router.get("/storyoutput",getStoryOutput);
 router.get("/success",success);
 router.get("/failure",failure);
@@ -56,7 +55,6 @@ router.post("/story",storyPost);
 router.post("/scenario",postScenario);
 router.post("/emotions",postEmotions);
 router.post("/values",postValues);
-router.post("/charge",handlePayment);
 router.post("/profile",editProfile);
 router.post("/subscribe",makepayment);
 
