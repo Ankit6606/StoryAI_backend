@@ -24,7 +24,7 @@
         .box-m {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+           
             z-index: 101;
             position: absolute;
             top: 50%;
@@ -96,10 +96,11 @@
     <div class="ellipse"></div>
     <form action="/subscribe" method="post">
         <div class="box-m">
-            <div class="box box-1" id="basic"></div>
-            <div class="box box-2" id="starter"></div>
-            <div class="box box-3" id="value"></div>
-            <div class="box box-4" id="premium"></div>
+            
+            <option value="basix"></option><div class="box box-1" id="basic"></div></option>
+            <option value="starter"></option><div class="box box-2" id="starter"></div></option>
+            <option value="value"></option><div class="box box-3" id="value"></div></option>
+            <option value="premium"></option><div class="box box-4" id="premium"></div></option>
             <button class="next-button" type="submit" style="width: 513px;
         height: 63px;
         flex-shrink: 0;

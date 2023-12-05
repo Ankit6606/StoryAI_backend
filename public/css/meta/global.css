@@ -90,7 +90,6 @@ line-height: 150%; /* 30px */
 cursor: pointer;
 text-align: center;
 padding-top: 10px;
-padding-bottom: 40px;
 margin-top: 28px;
 
     transition-duration: 0.5s;
@@ -129,6 +128,11 @@ margin-top: 28px;
     font-style: normal;
     font-weight: 700;
     line-height: 150%;
+    transition: box-shadow 0.3s ease; 
+}
+.nav-button:hover {
+    box-shadow: 0px 30px 20px 0px rgba(192, 169, 255, 0.9) inset;
+
 }
 
 .special-button {
@@ -138,18 +142,22 @@ margin-top: 28px;
     border-radius: 12px;
     border: 2px solid #FFF;
     background: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
-    box-shadow: 8px 9px 12px 0px rgba(255, 255, 255, 0.25) inset;
+    box-shadow: 0px 10px 5px 0px rgba(230, 223, 223, 0.25) inset;
     margin-right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: #FFF;
-
+    transition: box-shadow 0.3s ease; 
 font-family: Volkhov;
 font-size: 18px;
 font-style: normal;
 font-weight: 700;
 line-height: 150%; /* 27px */
 
+}
+.special-button:hover {
+    box-shadow: 0px -10px 5px 0px rgba(230, 223, 223, 0.25) inset;
+   
 }

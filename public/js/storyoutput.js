@@ -5,16 +5,29 @@ var slider = document.getElementById("slider");
 var timer = document.getElementById("timer");
 
 function togglePlayPause() {
+    var icon = document.getElementById('play-pause-icon');
+    var image = document.getElementById('play-pause-image');
+
+    // Toggle visibility of the SVG and image
+    if (icon.style.display !== 'none') {
+        icon.style.display = 'none';
+        image.style.display = 'block';
+    } else {
+        icon.style.display = 'block';
+        image.style.display = 'none';
+    }
+
     if (audio.paused) {
         audio.play();
-        playPauseIcon.style.animationName = "none";
+        icon.style.animationName = "none";  // Fix here: changed playPauseIcon to icon
         animateProgressBar();
         updateTimer();
     } else {
         audio.pause();
-        playPauseIcon.style.animationName = "rotate";
+        icon.style.animationName = "rotate";  // Fix here: changed playPauseIcon to icon
     }
 }
+
 
 function animateProgressBar() {
     var duration = audio.duration;

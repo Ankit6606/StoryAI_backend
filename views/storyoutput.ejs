@@ -308,12 +308,9 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
                     </audio>
                     <div class="play-pause-container" onclick="togglePlayPause()">
                         <div class="play-pause-button">
-                        <svg id="play-pause-icon" xmlns="http://www.w3.org/2000/svg" width="95" height="95" viewBox="0 0 95 95" fill="none">
-                            <circle cx="47.5" cy="47.5" r="47.5" fill="white" />
-                            <circle cx="47.7915" cy="47.7913" r="37.0491" fill="white" stroke="#2A2065" stroke-width="4" />
-                            <path d="M62.4861 46.9572L62.4861 46.9573L62.4904 46.9601C62.7426 47.1282 62.9635 47.5124 63.0268 47.9551C63.0173 48.3098 62.8402 48.6379 62.4814 48.8957L40.8077 63.6669L40.7984 63.6733L40.7893 63.6801C40.6324 63.7978 40.4094 63.8563 40.1228 63.8563C39.9208 63.8563 39.7474 63.8043 39.6407 63.7331L39.6148 63.7159L39.5869 63.7019C39.2027 63.5098 38.9658 63.1298 38.9658 62.6993V33.1504C38.9658 32.7199 39.2027 32.3399 39.5869 32.1478L39.6082 32.1372L39.6283 32.1246C39.9915 31.8976 40.4626 31.9364 40.7987 32.1765L40.7986 32.1766L40.8077 32.1828L62.4861 46.9572Z" fill="#2A2065" stroke="#2A2065" />
-                        </svg>
-                    </div>
+                            <img id="play-pause-icon" src="css/assets/pause.png" style="object-fit: cover; height: 95px ; width:95px ;" alt="">
+                            <img id="play-pause-image" src="css/assets/play.png" style="object-fit: cover; height: 95px ; width:95px ; display: none;" alt="">
+                        </div>
                     </div>
                     <!-- Progress Bar -->
                     <div class="progress-bar" id="progress-bar">
