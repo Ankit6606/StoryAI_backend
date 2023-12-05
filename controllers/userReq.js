@@ -193,6 +193,52 @@ export async function postValues(req,res){
 
     const responseData = await response.json();
 
+    //Storing the story in database after it is generated
+
+    const uname = req.user.username;
+    const uid = req.user.id;
+    const createstory = await Story.create({
+      userId : uid,
+      title: responseData.title,
+      story: responseData.story,
+      thumb_img_path : responseData.thumb_img_path,
+      audiopath : responseData.audio_path,
+    }); 
+
+    const user = await User.findOne({ username: uname });
+    if (user) {
+      // Check if the user has enough gems and parrots
+      if (user.gems >= 5 && user.parrots >= 2) {
+        user.gems -= 5;
+        user.parrots -= 2;
+        await user.save(); // Save the updated user
+      } else {
+        console.log("Insufficient gems or parrots");
+        // Handle insufficient gems or parrots error scenario
+        // You can redirect or send an error response as needed
+        return res.status(400).send("Insufficient gems or parrots");
+      }
+    } else {
+      console.log("User not found");
+      // Handle the case where the user is not found
+      return res.status(404).send("User not found");
+    }
+   
+    let objId = new mongoose.Types.ObjectId(createstory.id);
+    await User.updateOne({
+      username:uname
+    },
+    {
+      $push:{
+        stories : objId,
+      },
+    },
+    {upsert : false, new : true},
+    );
+
+    //After storing the story in database, it is displayed in frontend
+    
+    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
     res.json(responseData);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
