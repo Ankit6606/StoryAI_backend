@@ -17,12 +17,12 @@ let values = "";
 
 
 export function rootRender(req,res){
-    // if(req.isAuthenticated()){
-    //   res.redirect("/");
-    // }else{
-    //   res.redirect("/login");
-    // }
-    res.render("home");
+    if(req.isAuthenticated()){
+      res.redirect("/");
+    }else{
+      res.redirect("/authenticate2");
+    }
+
 };
 
 export function renderlandingPage(req,res){
@@ -67,6 +67,8 @@ export function registerUser(req, res) {
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const prephoneNumber  = req.body.prephoneNumber;
+    const gems = 5;
+    const parrots = 2;
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -92,8 +94,8 @@ export function registerUser(req, res) {
               foundUser.name = name;
               foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
               foundUser.authType = "email";
-              foundUser.gems = 5;
-              foundUser.parrots = 2;
+              foundUser.gems = gems;
+              foundUser.parrots = parrots;
               foundUser.save()
                 .then(()=>{
                   res.redirect("/");
@@ -146,26 +148,26 @@ export function loginUser(req,res){
 export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
-  console.log(age);
-  console.log(character);
+  // console.log(age);
+  // console.log(character);
   res.redirect("/scenario");
 };
 
 export function postScenario(req,res){
   scenario = req.body.scenario;
-  console.log(scenario);
+  // console.log(scenario);
   res.redirect("/emotions");
 };
 
 export function postEmotions(req,res){
   emotions = req.body.emotions;
-  console.log(emotions);
+  // console.log(emotions);
   res.redirect("/values");
 };
 
 export async function postValues(req,res){
   values = req.body.values;
-  console.log(values);
+  // console.log(values);
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
   // Define multiple parameters
@@ -205,12 +207,15 @@ export async function postValues(req,res){
       audiopath : responseData.audio_path,
     }); 
 
+    const gemstodeduct = 5;
+    const parrotstodeduct = 2;
+
     const user = await User.findOne({ username: uname });
     if (user) {
       // Check if the user has enough gems and parrots
       if (user.gems >= 5 && user.parrots >= 2) {
-        user.gems -= 5;
-        user.parrots -= 2;
+        user.gems -= gemstodeduct;
+        user.parrots -= parrotstodeduct;
         await user.save(); // Save the updated user
       } else {
         console.log("Insufficient gems or parrots");
@@ -239,7 +244,6 @@ export async function postValues(req,res){
     //After storing the story in database, it is displayed in frontend
     
     res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
-    res.json(responseData);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -255,6 +259,7 @@ export function profileManage(req,res){
     res.redirect("/authenticate2");
   }
 };
+
 
 export async function editProfile(req, res) {
   const name = req.body.name;
@@ -294,33 +299,57 @@ export async function editProfile(req, res) {
 };
 
 
-
-export function selectSubscription(req,res){
-  fs.readFile('items.json',function(error,data){
-    if(error){
-      res.status(500).end();
-    }else{
-      res.render("subscribe",{
-        items: JSON.parse(data)
-      });
-    }
-  })
-}
-
 export function renderScenario(req,res){
-  res.render("scenario");
-}
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("scenario");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+};
 
 export function renderEmotions(req,res){
-  res.render("emotions");
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("emotions");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+  
 };
 
 export function renderValues(req,res){
-  res.render("values");
+  if(req.isAuthenticated()){
+    if(req.user.gems>=5 && req.user.parrots>=2){
+      res.render("values");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+
 };
 
 export function getStoryOutput(req,res){
-  res.render("storyoutput");
+  if(req.user.gems>=5 && req.user.parrots>=2){
+    res.render("storyoutput");
+   }
+   else{
+    res.redirect("/subscribe");
+   }
 }
 
 
