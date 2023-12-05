@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/users.js';
 import passport  from 'passport';
+import Story from '../models/stories.js';
 import fs from 'fs';
 import fetch from 'node-fetch';
 // import passportLocalMongoose from 'passport-local-mongoose';
