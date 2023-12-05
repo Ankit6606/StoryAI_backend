@@ -31,6 +31,7 @@
     .background-svg,
     .foreground-svg-animation {
         min-height: 80vh;
+        max-width: 70%;
          /* Adjust this value for smaller screens */
     }
     /* Additional styling for smaller screens if needed */
@@ -49,7 +50,7 @@
 
 .button {
     font-weight: bolder;
-    width: 90%;
+    width: 70%;
     max-width: 490px;
     height: 55px;
     border-radius: 16px;
