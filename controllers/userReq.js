@@ -1,15 +1,13 @@
 import express from 'express';
 import User from '../models/users.js';
-import Story from '../models/stories.js';
 import passport  from 'passport';
 import fs from 'fs';
 import fetch from 'node-fetch';
-import mongoose from 'mongoose';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
 
-
+const route = express.Router();
 
 let age = "";
 let character = "";
@@ -188,37 +186,12 @@ export async function postValues(req,res){
 
     const responseData = await response.json();
 
-    //Storing the story in database after it is generated
-
-    const uname = req.user.username;
-    const uid = req.user.id;
-    const createstory = await Story.create({
-      userId : uid,
-      title: responseData.title,
-      story: responseData.story,
-      thumb_img_path : responseData.thumb_img_path,
-      audiopath : responseData.audio_path,
-    }); 
-   
-    let objId = new mongoose.Types.ObjectId(createstory.id);
-    await User.updateOne({
-      username:uname
-    },
-    {
-      $push:{
-        stories : objId,
-      },
-    },
-    {upsert : false, new : true},
-    );
-
-    //After storing the story in database, it is displayed in frontend
-    
-    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
+    res.json(responseData);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+  
 };
 
 
@@ -231,49 +204,59 @@ export function profileManage(req,res){
 };
 
 export async function editProfile(req, res) {
-  if (req.isAuthenticated()) {
+  const name = req.body.name;
+  const prephoneNumber = req.body.prephoneNumber;
+  const phoneNumber = req.body.phoneNumber;
+  if(req.isAuthenticated()){
     try {
-      const userId = req.user.id;
-      const updateFields = {};
-
-      if (req.body.name) {
-        updateFields.name = req.body.name;
-      }
-
-      if (req.body.phoneNumber && req.body.prephoneNumber) {
-        updateFields.phoneNumber = req.body.prephoneNumber + "-" + req.body.phoneNumber;
-      }
-
       const updatedUser = await User.findByIdAndUpdate(
-        userId,
-        { $set: updateFields },
-        { new: true }
+        req.user.id,
+        { 
+          $set: { 
+            name: name,
+            phoneNumber: prephoneNumber + "-" + phoneNumber
+          }
+        },
+        { new: true } // To return the updated document
       );
 
       if (!updatedUser) {
         // Handle the case where the user is not found
-        console.log("User not found");
-        return res.redirect("/story");
-      }
+        console.log("not found");
+        return res.redirect("/story"); // Redirect or handle the error appropriately
+    }
 
       // Successfully updated user
       // console.log("Updated User:", updatedUser);
       res.redirect("/story");
     } catch (err) {
-      console.error(err);
+      console.log(err);
+      res.redirect("/story"); // Redirect or handle the error appropriately
+      }
+    }
+    else{
+      console.log("User cannot be authenticated");
       res.redirect("/story");
     }
-  } else {
-    console.log("User cannot be authenticated");
-    res.redirect("/landingpage");
-  }
 };
 
 
+
+export function selectSubscription(req,res){
+  fs.readFile('items.json',function(error,data){
+    if(error){
+      res.status(500).end();
+    }else{
+      res.render("subscribe",{
+        items: JSON.parse(data)
+      });
+    }
+  })
+}
 
 export function renderScenario(req,res){
   res.render("scenario");
-};
+}
 
 export function renderEmotions(req,res){
   res.render("emotions");
