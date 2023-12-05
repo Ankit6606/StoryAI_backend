@@ -18,7 +18,7 @@ let values = "";
 
 export function rootRender(req,res){
     if(req.isAuthenticated()){
-      res.redirect("/");
+      res.render("home");
     }else{
       res.redirect("/authenticate2");
     }
@@ -56,7 +56,7 @@ export function oauthVerification(req, res) {
     failureRedirect: '/authenticate2',
     scope: ["profile", "email"]
   })(req, res, () => {
-    res.redirect('/story');
+    res.redirect('/');
   });
 };
 
