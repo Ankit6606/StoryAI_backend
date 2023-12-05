@@ -103,6 +103,7 @@ const success = async (req, res) => {
     {upsert : false, new : true},
     );
     res.render("success");
+    flag = 0;
     }
     else{
       res.send("pay first");

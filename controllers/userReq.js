@@ -69,7 +69,6 @@ export function registerUser(req, res) {
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const prephoneNumber  = req.body.prephoneNumber;
-    console.log(prephoneNumber);
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -95,6 +94,8 @@ export function registerUser(req, res) {
               foundUser.name = name;
               foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
               foundUser.authType = "email";
+              foundUser.gems = 5;
+              foundUser.parrots = 2;
               foundUser.save()
                 .then(()=>{
                   res.redirect("/");
@@ -114,7 +115,13 @@ export function registerUser(req, res) {
   export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
+     if(req.user.gems>=5 && req.user.parrots>=2){
       res.render("story");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+      
     } else {
       res.redirect("/authenticate2");
     }
@@ -199,6 +206,25 @@ export async function postValues(req,res){
       thumb_img_path : responseData.thumb_img_path,
       audiopath : responseData.audio_path,
     }); 
+
+    const user = await User.findOne({ username: uname });
+    if (user) {
+      // Check if the user has enough gems and parrots
+      if (user.gems >= 5 && user.parrots >= 2) {
+        user.gems -= 5;
+        user.parrots -= 2;
+        await user.save(); // Save the updated user
+      } else {
+        console.log("Insufficient gems or parrots");
+        // Handle insufficient gems or parrots error scenario
+        // You can redirect or send an error response as needed
+        return res.status(400).send("Insufficient gems or parrots");
+      }
+    } else {
+      console.log("User not found");
+      // Handle the case where the user is not found
+      return res.status(404).send("User not found");
+    }
    
     let objId = new mongoose.Types.ObjectId(createstory.id);
     await User.updateOne({
