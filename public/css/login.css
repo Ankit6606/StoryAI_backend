@@ -346,7 +346,7 @@
     width: 792px;
     height: 299.844px;
     flex-shrink: 0;
-    background-image: url("/Client/assets/ellipse.png");
+    background-image: url("assets/ellipse.png");
 
     background-size: cover;
     position: relative;
