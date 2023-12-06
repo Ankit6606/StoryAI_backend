@@ -1,10 +1,14 @@
 .background {
-    background-image: url('assets/signin-bg.png');
+    background-image: url('/Client/assets/signin-bg.png');
     background-repeat: no-repeat;
     background-position: top -285px;
-    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png');
+    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('/Client/assets/signin-bg.png');
     overflow: hidden;
+    height: 100vh;
 }
+.body{ height: 100vh;
+margin: 0;
+padding: 0;}
 
 .svg-container {
     position: relative;
@@ -29,18 +33,78 @@
     width: 100%;
     height: auto;
 }
+
+
+
+
 @media (max-width: 768px) {
+    .flexbox,
+    .flexbox-2 {
+        top: 10%;
+    }
+.text{margin-top: 0px !important;}
+    .signup-box {
+        margin-top:150px !important;
+    }
+.boxz{width: 100%;
+    max-width: 300px;
+    margin-top: 5px !important;
+    
+
+}
+#signUpPhoneNumber{
+    width: 100%;
+    max-width: 210px
+
+}
+#signUpButton{
+   
+    height: 20px !important;
+    width: 100%;
+        max-width: 220px;
+}
+    .input-field,
+    .country-code,
+
+    .line {
+        height: 100%;
+        max-height: 35px;
+        width: 100%;
+        max-width: 300px; /* Adjust the maximum width as needed */
+         /* Center the elements */
+    }
+
     .background-svg,
     .foreground-svg {
         bottom: 0;
-        min-height: 100vh;
-         /* Adjust this value for smaller screens */
+        min-height: 50vh;
     }
-    .signup-button {
-        width: 80%;
-    max-width: 90%;
+
+    /* .ellipse {
+        width: 200px;
+        height: 75px;
+        top: 10%;
+        left: 20%;
+    } */
+    .title{
+        color: #FFF;
+    font-family: 'Volkhov', serif;
+    font-size: 26px !important;
+    font-weight: 700;
+    line-height: 48px;
     }
-    /* Additional styling for smaller screens if needed */
+    .subtitle {
+        color: #FFF;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 17px !important;
+        font-weight: 500;
+        line-height: 27px;
+    }
+    .next-button{
+        width: 100%;
+        max-width: 310px;
+        margin-bottom: 10px !important;
+    }
 }
 
 .line {
@@ -121,8 +185,7 @@
 
 .input-field {
     z-index: 103;
-    width: 80%;
-    max-width: 411px;
+    width: 411px;
     height: 44.724px;
     flex-shrink: 0;
     border: none;
@@ -191,8 +254,7 @@
 }
 
 .signup-button {
-    width: 80%;
-    max-width: 411px;
+    width: 411px;
     height: 44.724px;
     flex-shrink: 0;
     border-radius: 10px;

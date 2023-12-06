@@ -36,7 +36,46 @@
         min-height: 100vh;
          /* Adjust this value for smaller screens */
     }
+    .text{margin-top: 0px !important;}
+    .signup-box {
+        margin-top:150px !important;
+    }
+.boxz{width: 100%;
+    max-width: 300px;
+    margin-top: 5px !important;
+    
+
+}
+.input-field
+    
+
+     {
+        height: 100%;
+        max-height: 35px;
+        width: 100%;
+        max-width: 300px; /* Adjust the maximum width as needed */
+         /* Center the elements */
+    }
     /* Additional styling for smaller screens if needed */
+    .title{
+        color: #FFF;
+    font-family: 'Volkhov', serif;
+    font-size: 26px !important;
+    font-weight: 700;
+    line-height: 48px;
+    }
+    .subtitle {
+        color: #FFF;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 17px !important;
+        font-weight: 500;
+        line-height: 27px;
+    }
+    .next-button{
+        width: 100%;
+        max-width: 310px;
+        margin-bottom: 10px !important;
+    }
 }
 
 .line {
