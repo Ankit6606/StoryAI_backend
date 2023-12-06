@@ -23,6 +23,7 @@ flex-shrink: 0;
     background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
 }
 
+
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

@@ -7,6 +7,15 @@
     line-height: 150%;
     /* 48px */
 }
+.text-style-head-xx {
+    color: #FFF;
+    font-family: Volkhov;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 48px */
+}
 .header-text {
     color: #FFF;
     text-align: left;
