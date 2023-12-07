@@ -76,8 +76,11 @@ padding: 0;}
 
     .background-svg,
     .foreground-svg {
-        bottom: 0;
-        min-height: 50vh;
+        width: 950px;
+        height: 90vh;
+        position: absolute;
+        bottom: 0 !important;
+        left: -450px;
     }
 
     /* .ellipse {
