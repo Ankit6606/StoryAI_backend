@@ -2,15 +2,16 @@
 
 import stripeModule from 'stripe';
 import passport from 'passport';
+import 'dotenv/config';
 import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
 import mongoose from 'mongoose';
 import { createInterface } from 'readline';
 import initializeTwilioClient from './twilioclient.js';
 
-const accountSid = "ACb61af9778e7e0bf7736fe2cd8edeff8e";
-const authToken = "d9738cde6f03808c1d6c644466497aac";
-const verifySid = "VA0e0a249b8fe42cdd3b249002a49bc89a";
+const accountSid = process.env.accountSid;
+const authToken = process.env.authToken;
+const verifySid = process.env.verifySid;
 
 const client = initializeTwilioClient(accountSid, authToken);
 

@@ -20,7 +20,9 @@ import {rootRender,
         postScenario,
         postEmotions,
         postValues,
-        getStoryOutput
+        getStoryOutput,
+        getphoneNumber,
+        getVerification
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, getr, getotp} from '../controllers/paymentController.js';
@@ -41,6 +43,8 @@ router.get("/register",registerRender);
 router.get("/login",loginRender);
 router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
+router.get("/phonenumber",getphoneNumber);
+router.get("/verifyotp",getVerification);
 router.get("/story",storyPage);
 router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);

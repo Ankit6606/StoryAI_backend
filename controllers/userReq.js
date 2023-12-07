@@ -351,3 +351,10 @@ export function getStoryOutput(req,res){
 }
 
 
+export function getphoneNumber(req,res){
+  res.render("otp1");
+};
+
+export function getVerification(req,res){
+  res.render("otp2");
+};
