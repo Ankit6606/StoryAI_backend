@@ -50,45 +50,121 @@ const success = async (req, res) => {
     if(req.isAuthenticated()){
       const uname = req.user.username;
       const uid = req.user.id;
+      //For "starter" package
       if(flag===1 && plan==="starter"){
         const payUser = await Payment.create({
         userId : uid,
-        paymentAmount:16.99,
+        paymentAmount:16.97,
         paymentDate: new Date(),
-      }); 
+        }); 
       // console.log(payUser.id);
-      let objId = new mongoose.Types.ObjectId(payUser.id);
-      await User.updateOne({
-        username:uname
-      },
-      {
-        $push:{
-          paymentdetails : objId,
+        let objId = new mongoose.Types.ObjectId(payUser.id);
+        await User.updateOne({
+          username:uname
         },
-      },
-      {upsert : false, new : true},
-      );
+        {
+          $push:{
+            paymentdetails : objId,
+          },
+        },
+        {upsert : false, new : true},
+        );
 
-      const gemstoadd = 5;
-      const parrotstoadd = 2;
-      const user = await User.findOne({ username: uname });
-      if (user) {
+        const gemstoadd = 10;
+        const parrotstoadd = 10;
+        const user = await User.findOne({ username: uname });
+        if (user) {
       
-        user.gems += gemstoadd;
-        user.parrots += parrotstoadd;
-        await user.save(); // Save the updated user
+          user.gems += gemstoadd;
+          user.parrots += parrotstoadd;
+          await user.save(); // Save the updated user
       
-    } else {
-      console.log("User not found");
+        } else {
+          console.log("User not found");
       // Handle the case where the user is not found
-      return res.status(404).send("User not found");
-    }
-      res.redirect("/story");
-      flag = 0;
+          return res.status(404).send("User not found");
+        }
+        res.redirect("/story");
+        flag = 0;
+      }
+      //For "value" package
+      else if(flag===1 && plan==="value"){
+        const payUser = await Payment.create({
+          userId : uid,
+          paymentAmount:24.97,
+          paymentDate: new Date(),
+          }); 
+        // console.log(payUser.id);
+          let objId = new mongoose.Types.ObjectId(payUser.id);
+          await User.updateOne({
+            username:uname
+          },
+          {
+            $push:{
+              paymentdetails : objId,
+            },
+          },
+          {upsert : false, new : true},
+          );
+  
+          const gemstoadd = 20;
+          const parrotstoadd = 20;
+          const user = await User.findOne({ username: uname });
+          if (user) {
+        
+            user.gems += gemstoadd;
+            user.parrots += parrotstoadd;
+            await user.save(); // Save the updated user
+        
+          } else {
+            console.log("User not found");
+        // Handle the case where the user is not found
+            return res.status(404).send("User not found");
+          }
+          res.redirect("/story");
+          flag = 0;
+      }
+      //For "premium" package
+      else if(flag===1 && plan==="premium"){
+        const payUser = await Payment.create({
+          userId : uid,
+          paymentAmount:44.97,
+          paymentDate: new Date(),
+          }); 
+        // console.log(payUser.id);
+          let objId = new mongoose.Types.ObjectId(payUser.id);
+          await User.updateOne({
+            username:uname
+          },
+          {
+            $push:{
+              paymentdetails : objId,
+            },
+          },
+          {upsert : false, new : true},
+          );
+  
+          const gemstoadd = 30;
+          const parrotstoadd = 30;
+          const user = await User.findOne({ username: uname });
+          if (user) {
+        
+            user.gems += gemstoadd;
+            user.parrots += parrotstoadd;
+            await user.save(); // Save the updated user
+        
+          } else {
+            console.log("User not found");
+        // Handle the case where the user is not found
+            return res.status(404).send("User not found");
+          }
+          res.redirect("/story");
+          flag = 0;
       }
       else{
         res.send("pay first");
       }
+
     }else{
       res.redirect("/authenticate2");
     }
@@ -100,6 +176,7 @@ const success = async (req, res) => {
 };
 
 
+
 const failure = async (req, res) => {
     try {
         res.render('payment_failure');
@@ -107,6 +184,7 @@ const failure = async (req, res) => {
         console.log(error.message);
     }
 };
+
 
 export { success, failure };
 
