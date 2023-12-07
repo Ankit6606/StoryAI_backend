@@ -190,9 +190,9 @@ body {
 
     100% {
         transform: translateY(-10px);
-        /* Move the ellipse up */
+        
         opacity: 1;
-        /* Make it visible */
+        
     }
 
 

@@ -70,9 +70,7 @@
         
     /* Additional styling for smaller screens if needed */
 }
-.btn1 btn1-white btn1-animated{
-    height: 300px;
-}
+
 }
 
 
@@ -87,25 +85,7 @@
     text-align: center;
 }
 
-.button {
-    font-weight: bolder;
-    width: 70%;
-    max-width: 490px;
-    height: 55px;
-    border-radius: 16px;
-    border-color: #A288CB;
-    background: white;
-    color: rgba(0, 0, 0, 0.792);
-    font-size: 16px;
-    line-height: 55px;
-    cursor: pointer;
-    margin: 10px auto;
-}
 
-.button:nth-child(2) {
-    background: #22185B;
-    color: white;
-}
 
 .line {
     margin-top: 25px;

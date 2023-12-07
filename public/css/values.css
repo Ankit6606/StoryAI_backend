@@ -1,28 +1,41 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
-        url('assets/story-page-bg.png') center/cover no-repeat;
+    background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.68) 100%),
+        url('assets/homepic.png') center/cover no-repeat;
     height: 100vh;
     font-family: Arial, sans-serif;
     overflow: hidden;
-
 }
 
 .image-box {
     position: absolute;
-    top: 0%;
-    left: 0%;
-    max-width: 100%;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 44%;
+    height: 44vh; /* Adjust as needed */
     max-height: 500px;
     background: url('assets/Ellipse17.png') center/cover no-repeat;
     box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
-    
+    animation: fadeInDown 1s ease-out forwards;
 }
 
 
+
+/* Rest of your CSS remains unchanged */
+
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
 .content-box {
@@ -31,11 +44,163 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
 
     transform: translate(-50%, -50%);
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+@media (max-width: 768px) {
+
+
+    .header-text {
+        margin-top: 40px;
+        color: #FFF;
+        font-family: Volkhov;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    
+    .sub-text {
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 0px !important;
+    }
+    
+    .flex-box {
+        width: 96%;
+        max-width: 1805px;
+        max-height: 150px;
+        flex-shrink: 0;
+        border-radius: 25px;
+        border: 3px solid #A288CB;
+        background: linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%);
+        margin-top: 20px; /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .text-box {
+        width: 96%;
+        max-width: 1736px;
+        height: 94px;
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #FFF;
+        color: #767676;
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        padding: 16px; /* Adjust as needed */
+        box-sizing: border-box;
+    }
+    .text-head {
+        color: #FFF;
+        text-align: center !important;
+        margin-top: 5px !important;
+        margin-left: 10px !important;
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 150%;
+        margin-bottom: 8px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    .navbar{
+        visibility: hidden;
+    }
+    .ellipse {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        max-width: 292px !important;
+        max-height: 199.844px !important;
+        flex-shrink: 0;
+        background-image: url("assets/stars.png");
+    
+    
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+    
+    }
+    .card-container {
+        
+       max-width: 98VW;
+height: 260px;
+flex-shrink: 0;
+margin-bottom: 0px !important;
+
+
+    }
+    .text-style-head{
+        font-size: 20px !important;
+        margin-bottom: 5px !important;
+        margin-top: 10px !important;
+    }
+    .card-box{
+        overflow-x: scroll;
+    }
+    .card{
+        max-height: 90%;
+        max-width: 40%;
+        margin-left: 10px !important;
+    }
+    
+   
+.image-box{ max-width: 100%;
+max-height: 32%;}
+.next-button{
+    max-width: 300px;
+    width: 90%;
+}
+
+
 }
 
 
@@ -44,7 +209,7 @@ body {
         opacity: 0;
 
     }
-    
+    50%{opacity: 0;}
 
     100% {
         opacity: 1;
@@ -83,7 +248,8 @@ body {
 }
 
 .flex-box {
-    width: 1805px;
+    width: 96%;
+    max-width: 1805px;
     height: 190px;
     flex-shrink: 0;
     border-radius: 25px;
@@ -97,7 +263,8 @@ body {
 }
 
 .text-box {
-    width: 1736px;
+    width: 96%;
+    max-width: 1736px;
     height: 94px;
     flex-shrink: 0;
     border-radius: 15px;
@@ -164,7 +331,7 @@ body {
     /* Add margin for spacing */
 
     box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%), url("assets/card.png");
+    background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%), url("/Client/assets/card.png");
     background-size: cover;
     margin-bottom: 30px;
     margin-left: 30px;
@@ -194,49 +361,6 @@ body {
     line-height: 150%;
     /* 27px */
 }
-
-@keyframes containerSlideOut {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes cardsSlideIn {
-    0% {
-        
-        opacity: 0;
-    }
-    50%{transform: translateX(100%);
-    opacity: 0;}
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-@media (max-width: 768px) {
-    .card-container {
-    
-        /* Make it full-width */
-        max-width: 95vw;
-    }
-    .flex-box {
-        max-width: 93vw;
-    }
-    
-    .text-box {
-        max-width: 91vw ;
-    }
-.image-box{ max-width: 100vw;
-max-height: 32vh;}
-}
-
 .ellipse {
     width: 692px;
     height: 299.844px;
@@ -313,6 +437,32 @@ max-height: 32vh;}
     }
 
     100% {
+        opacity: 1;
+    }
+}
+
+@keyframes containerSlideOut {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cardsSlideIn {
+    0% {
+        
+        opacity: 0;
+    }
+    50%{transform: translateX(100%);
+    opacity: 0;}
+
+    100% {
+        transform: translateX(0);
         opacity: 1;
     }
 }
