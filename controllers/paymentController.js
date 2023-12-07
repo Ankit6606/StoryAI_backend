@@ -5,7 +5,18 @@ import passport from 'passport';
 import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
 import mongoose from 'mongoose';
+import { createInterface } from 'readline';
+import initializeTwilioClient from './twilioclient.js';
 
+const accountSid = "ACb61af9778e7e0bf7736fe2cd8edeff8e";
+const authToken = "d9738cde6f03808c1d6c644466497aac";
+const verifySid = "VA0e0a249b8fe42cdd3b249002a49bc89a";
+
+const client = initializeTwilioClient(accountSid, authToken);
+
+
+
+// const client = require("twilio")(accountSid, authToken);
 let flag = 0;
 let plan = " ";
 
@@ -188,3 +199,29 @@ const failure = async (req, res) => {
 
 export { success, failure };
 
+export function getr(req,res){
+  res.render("random");
+};
+
+export function getotp(req,res){
+res.redirect("/register");
+
+client.verify.v2
+  .services(verifySid)
+  .verifications.create({ to: "+919836760380", channel: "sms" })
+  .then((verification) => console.log(verification.status))
+  .then(() => {
+
+  const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+    rl.question("Please enter the OTP:", (otpCode) => {
+      client.verify.v2
+        .services(verifySid)
+        .verificationChecks.create({ to: "+919836760380", code: otpCode })
+        .then((verification_check) => console.log(verification_check.status))
+        .then(() => rl.close());
+    });
+  });
+}
