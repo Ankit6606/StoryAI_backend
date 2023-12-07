@@ -69,8 +69,6 @@ export function registerUser(req, res) {
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const prephoneNumber  = req.body.prephoneNumber;
-    const gems = 5;
-    const parrots = 2;
   
     if (!username || !password) {
       // Handle validation error, e.g., show an error message or redirect to the registration page
@@ -96,8 +94,6 @@ export function registerUser(req, res) {
               foundUser.name = name;
               foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
               foundUser.authType = "email";
-              foundUser.gems = gems;
-              foundUser.parrots = parrots;
               foundUser.save()
                 .then(()=>{
                   res.redirect("/");
@@ -117,7 +113,7 @@ export function registerUser(req, res) {
   export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
-     if(req.user.gems>=5 && req.user.parrots>=2){
+     if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("story");
      }
      else{
@@ -209,13 +205,13 @@ export async function postValues(req,res){
       audiopath : responseData.audio_path,
     }); 
 
-    const gemstodeduct = 5;
-    const parrotstodeduct = 2;
+    const gemstodeduct = 1;
+    const parrotstodeduct = 1;
 
     const user = await User.findOne({ username: uname });
     if (user) {
       // Check if the user has enough gems and parrots
-      if (user.gems >= 5 && user.parrots >= 2) {
+      if (user.gems >= 1 && user.parrots >= 1) {
         user.gems -= gemstodeduct;
         user.parrots -= parrotstodeduct;
         await user.save(); // Save the updated user
@@ -303,7 +299,7 @@ export async function editProfile(req, res) {
 
 export function renderScenario(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=5 && req.user.parrots>=2){
+    if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("scenario");
      }
      else{
@@ -317,7 +313,7 @@ export function renderScenario(req,res){
 
 export function renderEmotions(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=5 && req.user.parrots>=2){
+    if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("emotions");
      }
      else{
@@ -332,7 +328,7 @@ export function renderEmotions(req,res){
 
 export function renderValues(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=5 && req.user.parrots>=2){
+    if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("values");
      }
      else{
@@ -346,7 +342,7 @@ export function renderValues(req,res){
 };
 
 export function getStoryOutput(req,res){
-  if(req.user.gems>=5 && req.user.parrots>=2){
+  if(req.user.gems>=1 && req.user.parrots>=1){
     res.render("storyoutput");
    }
    else{

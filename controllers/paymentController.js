@@ -5,7 +5,18 @@ import passport from 'passport';
 import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
 import mongoose from 'mongoose';
+import { createInterface } from 'readline';
+import initializeTwilioClient from './twilioclient.js';
 
+const accountSid = "ACb61af9778e7e0bf7736fe2cd8edeff8e";
+const authToken = "d9738cde6f03808c1d6c644466497aac";
+const verifySid = "VA0e0a249b8fe42cdd3b249002a49bc89a";
+
+const client = initializeTwilioClient(accountSid, authToken);
+
+
+
+// const client = require("twilio")(accountSid, authToken);
 let flag = 0;
 let plan = " ";
 
@@ -50,45 +61,121 @@ const success = async (req, res) => {
     if(req.isAuthenticated()){
       const uname = req.user.username;
       const uid = req.user.id;
+      //For "starter" package
       if(flag===1 && plan==="starter"){
         const payUser = await Payment.create({
         userId : uid,
-        paymentAmount:16.99,
+        paymentAmount:16.97,
         paymentDate: new Date(),
-      }); 
+        }); 
       // console.log(payUser.id);
-      let objId = new mongoose.Types.ObjectId(payUser.id);
-      await User.updateOne({
-        username:uname
-      },
-      {
-        $push:{
-          paymentdetails : objId,
+        let objId = new mongoose.Types.ObjectId(payUser.id);
+        await User.updateOne({
+          username:uname
         },
-      },
-      {upsert : false, new : true},
-      );
+        {
+          $push:{
+            paymentdetails : objId,
+          },
+        },
+        {upsert : false, new : true},
+        );
 
-      const gemstoadd = 5;
-      const parrotstoadd = 2;
-      const user = await User.findOne({ username: uname });
-      if (user) {
+        const gemstoadd = 10;
+        const parrotstoadd = 10;
+        const user = await User.findOne({ username: uname });
+        if (user) {
       
-        user.gems += gemstoadd;
-        user.parrots += parrotstoadd;
-        await user.save(); // Save the updated user
+          user.gems += gemstoadd;
+          user.parrots += parrotstoadd;
+          await user.save(); // Save the updated user
       
-    } else {
-      console.log("User not found");
+        } else {
+          console.log("User not found");
       // Handle the case where the user is not found
-      return res.status(404).send("User not found");
-    }
-      res.redirect("/story");
-      flag = 0;
+          return res.status(404).send("User not found");
+        }
+        res.redirect("/story");
+        flag = 0;
+      }
+      //For "value" package
+      else if(flag===1 && plan==="value"){
+        const payUser = await Payment.create({
+          userId : uid,
+          paymentAmount:24.97,
+          paymentDate: new Date(),
+          }); 
+        // console.log(payUser.id);
+          let objId = new mongoose.Types.ObjectId(payUser.id);
+          await User.updateOne({
+            username:uname
+          },
+          {
+            $push:{
+              paymentdetails : objId,
+            },
+          },
+          {upsert : false, new : true},
+          );
+  
+          const gemstoadd = 20;
+          const parrotstoadd = 20;
+          const user = await User.findOne({ username: uname });
+          if (user) {
+        
+            user.gems += gemstoadd;
+            user.parrots += parrotstoadd;
+            await user.save(); // Save the updated user
+        
+          } else {
+            console.log("User not found");
+        // Handle the case where the user is not found
+            return res.status(404).send("User not found");
+          }
+          res.redirect("/story");
+          flag = 0;
+      }
+      //For "premium" package
+      else if(flag===1 && plan==="premium"){
+        const payUser = await Payment.create({
+          userId : uid,
+          paymentAmount:44.97,
+          paymentDate: new Date(),
+          }); 
+        // console.log(payUser.id);
+          let objId = new mongoose.Types.ObjectId(payUser.id);
+          await User.updateOne({
+            username:uname
+          },
+          {
+            $push:{
+              paymentdetails : objId,
+            },
+          },
+          {upsert : false, new : true},
+          );
+  
+          const gemstoadd = 30;
+          const parrotstoadd = 30;
+          const user = await User.findOne({ username: uname });
+          if (user) {
+        
+            user.gems += gemstoadd;
+            user.parrots += parrotstoadd;
+            await user.save(); // Save the updated user
+        
+          } else {
+            console.log("User not found");
+        // Handle the case where the user is not found
+            return res.status(404).send("User not found");
+          }
+          res.redirect("/story");
+          flag = 0;
       }
       else{
         res.send("pay first");
       }
+
     }else{
       res.redirect("/authenticate2");
     }
@@ -100,6 +187,7 @@ const success = async (req, res) => {
 };
 
 
+
 const failure = async (req, res) => {
     try {
         res.render('payment_failure');
@@ -108,5 +196,32 @@ const failure = async (req, res) => {
     }
 };
 
+
 export { success, failure };
 
+export function getr(req,res){
+  res.render("random");
+};
+
+export function getotp(req,res){
+res.redirect("/register");
+
+client.verify.v2
+  .services(verifySid)
+  .verifications.create({ to: "+919836760380", channel: "sms" })
+  .then((verification) => console.log(verification.status))
+  .then(() => {
+
+  const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+    rl.question("Please enter the OTP:", (otpCode) => {
+      client.verify.v2
+        .services(verifySid)
+        .verificationChecks.create({ to: "+919836760380", code: otpCode })
+        .then((verification_check) => console.log(verification_check.status))
+        .then(() => rl.close());
+    });
+  });
+}

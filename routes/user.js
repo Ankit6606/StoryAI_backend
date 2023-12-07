@@ -23,10 +23,14 @@ import {rootRender,
         getStoryOutput
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment, getr, getotp} from '../controllers/paymentController.js';
 
 const router = express.Router();
 
+
+
+router.get("/r",getr);
+router.post("/r",getotp);
 //Get requests
 
 router.get("/",rootRender);

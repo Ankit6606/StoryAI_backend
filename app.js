@@ -109,7 +109,7 @@ passport.serializeUser(function(user, done) {
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/story",
+    callbackURL: "https://storyia.app/auth/google/story",
     scope: ['profile', 'email'],
   },
   async function(accessToken, refreshToken, profile, cb) {
