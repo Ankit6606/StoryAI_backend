@@ -63,53 +63,11 @@ passport.serializeUser(function(user, done) {
       });
   });
   
-
-  // passport.use(new GoogleStrategy({
-  //   clientID: process.env.CLIENT_ID,
-  //   clientSecret: process.env.CLIENT_SECRET,
-  //   callbackURL: "http://localhost:3000/auth/google/story",
-  //   scope: ['profile', 'email'],
-  // },
-  // function(accessToken, refreshToken, profile, cb) {
-  //   const userEmail = profile.emails[0].value;
-  
-  //   User.findOne({ googleId: profile.id })
-  //     .then(existingUser => {
-  //       if (existingUser) {
-  //         // User already exists, return the user
-  //         return cb(null, existingUser);
-  //       } else {
-  //         // Create a new user
-  //         const newUser = new User({ 
-  //           googleId: profile.id, 
-  //           name: profile.displayName, 
-  //           username: userEmail, 
-  //           authType: "google"
-  //         });
-  
-  //         return newUser.save()
-  //           .then(savedUser => {
-  //             // New user created successfully
-  //             return cb(null, savedUser);
-  //           })
-  //           .catch(saveErr => {
-  //             console.error("Error creating new user:", saveErr);
-  //             return cb(saveErr, null);
-  //           });
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.error("Error finding user:", err);
-  //       return cb(err, null);
-  //     });
-  // }));
-  
-  
   
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://storyia.app/auth/google/story",
+    callbackURL: "http://localhost:3000/auth/google/story",
     scope: ['profile', 'email'],
   },
   async function(accessToken, refreshToken, profile, cb) {
