@@ -1,20 +1,11 @@
 // paymentModule.mjs
 
 import stripeModule from 'stripe';
-import passport from 'passport';
+// import passport from 'passport';
 import 'dotenv/config';
 import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
 import mongoose from 'mongoose';
-import { createInterface } from 'readline';
-import initializeTwilioClient from './twilioclient.js';
-
-const accountSid = process.env.accountSid;
-const authToken = process.env.authToken;
-const verifySid = process.env.verifySid;
-
-const client = initializeTwilioClient(accountSid, authToken);
-
 
 
 // const client = require("twilio")(accountSid, authToken);
@@ -200,29 +191,3 @@ const failure = async (req, res) => {
 
 export { success, failure };
 
-export function getr(req,res){
-  res.render("random");
-};
-
-export function getotp(req,res){
-res.redirect("/register");
-
-client.verify.v2
-  .services(verifySid)
-  .verifications.create({ to: "+919836760380", channel: "sms" })
-  .then((verification) => console.log(verification.status))
-  .then(() => {
-
-  const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-    rl.question("Please enter the OTP:", (otpCode) => {
-      client.verify.v2
-        .services(verifySid)
-        .verificationChecks.create({ to: "+919836760380", code: otpCode })
-        .then((verification_check) => console.log(verification_check.status))
-        .then(() => rl.close());
-    });
-  });
-}

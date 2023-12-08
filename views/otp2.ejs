@@ -537,36 +537,36 @@
             <!-- Button Container -->
             <form action="/register" method="POST">
                 <div class="flexbox" id="flexbox" style="display: block;">
-                    <div class="title">Otp Varification</div>
-                    <div class="subtitle">Varify Your account with Phone <br>number & Otp</div>
+                    <div class="title">Otp Verification</div>
+                    <div class="subtitle">Verify Your account with Phone <br>number & Otp</div>
                     <div class="signup-box">
                         <!-- Sign-up fields and button -->
 
                         <div class="boxz">
-                            <div class="header-text">Phone Number</div>
-                            <!-- Country code and phone input fields -->
-                            <div style="display: flex; align-items: center;">
-                                <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
+                            <!-- <div class="header-text">Phone Number</div> -->
+                            <!-- Country code and phone input fields
+                            <div style="display: flex; align-items: center;"> -->
+                                <!-- <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
                                     <option value="+1">+1</option>
                                     <option value="+44">+44</option>
-                                    <option value="+49">+49</option>
+                                    <option value="+49">+49</option> -->
                                     <!-- Add more options as needed -->
-                                </select>
+                               <!-- </select>
                                 <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone"
                                     name="phoneNumber"
-                                    style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
+                                     style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="text" id="toggle-sign-in" onclick="showNextPage()">Didnt Recieve OTP?
-                            <a href="/login"><span class="sign-in-text" id="toggle-text">Send Again</span></a>
+                            <a href="/verifyotp"><span class="sign-in-text" id="toggle-text">Send Again</span></a>
                         </div>
                         <div class="otp-container">
-                            <input type="text" class="otp-input" maxlength="1" id="digit1" oninput="moveToNext(this)">
-                            <input type="text" class="otp-input" maxlength="1" id="digit2" oninput="moveToNext(this)">
-                            <input type="text" class="otp-input" maxlength="1" id="digit3" oninput="moveToNext(this)">
-                            <input type="text" class="otp-input" maxlength="1" id="digit4" oninput="moveToNext(this)">
-                            <input type="text" class="otp-input" maxlength="1" id="digit5" oninput="moveToNext(this)">
-                            <input type="text" class="otp-input" maxlength="1" id="digit6" oninput="moveToNext(this)">
+                            <input type="text" class="otp-input" maxlength="1" id="digit1" oninput="moveToNext(this)" required>
+                            <input type="text" class="otp-input" maxlength="1" id="digit2" oninput="moveToNext(this)" required>
+                            <input type="text" class="otp-input" maxlength="1" id="digit3" oninput="moveToNext(this)" required>
+                            <input type="text" class="otp-input" maxlength="1" id="digit4" oninput="moveToNext(this)" required>
+                            <input type="text" class="otp-input" maxlength="1" id="digit5" oninput="moveToNext(this)" required>
+                            <input type="text" class="otp-input" maxlength="1" id="digit6" oninput="moveToNext(this)" required>
                         </div>
 
 

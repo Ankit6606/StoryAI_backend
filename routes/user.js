@@ -22,10 +22,13 @@ import {rootRender,
         postValues,
         getStoryOutput,
         getphoneNumber,
-        getVerification
+        getVerification,
+        getr, 
+        getotp,
+        postPhonenumber
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment, getr, getotp} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
 
 const router = express.Router();
 
@@ -59,6 +62,7 @@ router.get("/subscribe",selectSubscription);
 
 router.post("/register",registerUser);
 router.post("/login",loginUser);
+router.post("/phonenumber",postPhonenumber);
 router.post("/story",storyPost);
 router.post("/scenario",postScenario);
 router.post("/emotions",postEmotions);

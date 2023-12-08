@@ -9,22 +9,6 @@ import {connectDatabase} from './dbmongo.js';
 import User  from './models/users.js';
 import Payment from './models/users.js';
 
-// payment portion
-
-// require("dotenv").config();
-
-// const app = require('express')();
-// var http = require('http').Server(app);
-
-// const paymentRoute = require('./routes/paymentRoute');
-
-// app.use('/payment-dashboard',paymentRoute);
-
-// http.listen(3000, function(){
-//     console.log('Server is running');
-// });
-
-
 
 const app = express();//For the main web application
 
@@ -72,6 +56,7 @@ passport.serializeUser(function(user, done) {
   },
   async function(accessToken, refreshToken, profile, cb) {
     const userEmail = profile.emails[0].value;
+    // console.log(profile);
   
     try {
       // Check if a user with the same Google ID or username already exists
