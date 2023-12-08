@@ -52,6 +52,13 @@ body {
 }
 @media (max-width: 768px) {
 
+    .navbar{
+        visibility: hidden;
+    }
+   
+    .navTrigger active{
+        opacity: 1 !important;
+    }
 
     .header-text {
         margin-top: 40px;
