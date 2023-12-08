@@ -51,7 +51,13 @@ body {
     animation: fadeIn 2s ease-out;
 }
 @media (max-width: 768px) {
-
+    .navbar{
+        visibility: hidden;
+    }
+   
+    .navTrigger{
+        opacity: 1 !important;
+    }
 
     .header-text {
         margin-top: 40px;

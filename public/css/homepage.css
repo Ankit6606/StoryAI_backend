@@ -103,7 +103,14 @@ flex-shrink: 0;
         margin-bottom: 23px !important;
         margin-left: 10px !important;
     
-    }    
+    }   
+    .navbar{
+        visibility: hidden;
+    }
+   
+    .navTrigger{
+        opacity: 1 !important;
+    }
 
 }
 .card-text-1 {
