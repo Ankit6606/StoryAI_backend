@@ -54,12 +54,12 @@
 
             <div class="boxz">
               <div class="header-text">Email</div>
-              <input id="signInEmail" class="input-field" type="email" placeholder="Email" name="username">
+              <input id="signInEmail" class="input-field" type="email" placeholder="Email" name="username" required>
             </div>
             <div class="boxz">
               <div class="header-text">Password</div>
               <div class="password-container">
-                <input id="signInPasswordInput" class="input-field" type="password" placeholder="Password" name="password">
+                <input id="signInPasswordInput" class="input-field" type="password" placeholder="Password" name="password" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
@@ -73,7 +73,7 @@
           </div>
           
           <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Dont Have an Account? 
-            <a href="/register"><span
+            <a href="/authenticate"><span
             class="sign-in-text" id="toggle-text">Sign Up</span> </a></div>
         </div>
       </form>

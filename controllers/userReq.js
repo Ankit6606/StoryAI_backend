@@ -5,8 +5,16 @@ import Story from '../models/stories.js';
 import mongoose from 'mongoose';
 import fs from 'fs';
 import fetch from 'node-fetch';
+import { createInterface } from 'readline';
+import initializeTwilioClient from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
+
+const accountSid = process.env.accountSid;
+const authToken = process.env.authToken;
+const verifySid = process.env.verifySid;
+
+const client = initializeTwilioClient(accountSid, authToken);
 
 
 const route = express.Router();
@@ -16,6 +24,7 @@ let character = "";
 let scenario = "";
 let emotions = "";
 let values = "";
+let mobileNumber = "";
 
 
 export function rootRender(req,res){
@@ -47,68 +56,135 @@ export function loginRender(req,res){
     res.render("login");
 };
 
+export function getphoneNumber(req,res){
+  // console.log(req.user.phoneNumber);
+  if(req.isAuthenticated()){
+    if(!req.user.phoneNumber){
+      res.render("otp1");
+    }
+    else{
+      res.redirect("/");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+};
+
+export async function postPhonenumber(req, res) {
+  try {
+    const mobileNumber = req.body.phoneNumber;
+    const foundUser = await User.findOne({ phoneNumber: mobileNumber });
+
+    if (foundUser) {
+      // If a user with the same phone number exists
+      const errorMessage = "Duplicate contact number found. Please use a different contact number.";
+      const script = `<script>alert("${errorMessage}"); window.location.href="/phonenumber";</script>`;
+      return res.send(script);
+    } else {
+      // No user found with the provided phone number
+      console.log("No duplicate contact number found. Proceeding...");
+    }
+  } catch (err) {
+    console.log(err);
+    return res.redirect("/error");
+  }
+};
+
+export function getVerification(req,res){
+  res.render("otp2");
+};
+
+export function getr(req,res){
+  res.render("random");
+};
+
+export function getotp(req,res){
+res.redirect("/register");
+
+client.verify.v2
+  .services(verifySid)
+  .verifications.create({ to: "+919836760380", channel: "sms" })
+  .then((verification) => console.log(verification.status))
+  .then(() => {
+
+  const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+    rl.question("Please enter the OTP:", (otpCode) => {
+      client.verify.v2
+        .services(verifySid)
+        .verificationChecks.create({ to: "+919836760380", code: otpCode })
+        .then((verification_check) => console.log(verification_check.status))
+        .then(() => rl.close());
+    });
+  });
+}
 export function oauthPage(req, res) {
     passport.authenticate('google', { scope: ["profile" , "email"] })(req, res);
 };
-  
-
 
 export function oauthVerification(req, res) {
   passport.authenticate('google', {
     failureRedirect: '/authenticate2',
     scope: ["profile", "email"]
   })(req, res, () => {
-    res.redirect('/');
+    res.redirect('/phonenumber');
   });
 };
 
 
 export function registerUser(req, res) {
-    const username = req.body.username;
-    const password = req.body.password;
-    const name = req.body.name;
-    const phoneNumber = req.body.phoneNumber;
-    const prephoneNumber  = req.body.prephoneNumber;
-  
-    if (!username || !password) {
-      // Handle validation error, e.g., show an error message or redirect to the registration page
-      return res.redirect("/register");
-    }
-  
-    User.register({ username: username }, password, (err, user) => {
-      if (err) {
-        if (err.code === 11000 && err.keyPattern.username === 1) {
-          // Handle duplicate email error
-          console.log('Duplicate email found.');
-          res.redirect("/login");
-          // Redirect or show an error message
-        } else {
-          console.log(err);
-          // Handle other errors
-          res.redirect("/login");
-        }
+  const username = req.body.username;
+  const password = req.body.password;
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
+  const prephoneNumber = req.body.prephoneNumber;
+  const contactNumber = prephoneNumber + "-" + phoneNumber;
+
+  if (!username || !password) {
+    // Handle validation error, e.g., show an error message or redirect to the registration page
+    return res.redirect("/register");
+  }
+
+  User.register({ username: username }, password, (err, user) => {
+    if (err) {
+      if (err.code === 11000 && err.keyPattern.username === 1) {
+        // Handle duplicate email error
+        console.log('Duplicate email found.');
+        return res.redirect("/login");
+        // Redirect or show an error message
+      } else if (err.code === 11000 && err.keyPattern.phoneNumber === 1) {
+        // Handle duplicate contact number error
+        console.log('Duplicate contact number found.');
+        return res.redirect("/login");
+        // Redirect or show an error message
       } else {
-        passport.authenticate("local")(req, res, () => {
-          User.findById(req.user.id)
-            .then((foundUser)=>{
-              foundUser.name = name;
-              foundUser.phoneNumber = prephoneNumber + "-" + phoneNumber;
-              foundUser.authType = "email";
-              foundUser.save()
-                .then(()=>{
-                  res.redirect("/");
-                }).catch((err)=>{
-                  console.log(err);
-                });
-            }).catch((err)=>{
-              console.log(err);
-            });
-          
-        });
+        console.log(err);
+        // Handle other errors
+        return res.redirect("/login");
       }
-    });
-  };
-  
+    } else {
+      passport.authenticate("local")(req, res, () => {
+        User.findById(req.user.id)
+          .then((foundUser) => {
+            foundUser.name = name;
+            foundUser.phoneNumber = contactNumber;
+            foundUser.authType = "email";
+            foundUser.save()
+              .then(() => {
+                res.redirect("/");
+              }).catch((err) => {
+                console.log(err);
+              });
+          }).catch((err) => {
+            console.log(err);
+          });
+
+      });
+    }
+  });
+};
 
   export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
@@ -351,10 +427,3 @@ export function getStoryOutput(req,res){
 }
 
 
-export function getphoneNumber(req,res){
-  res.render("otp1");
-};
-
-export function getVerification(req,res){
-  res.render("otp2");
-};

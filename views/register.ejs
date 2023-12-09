@@ -53,30 +53,30 @@
             <!-- Sign-up fields and button -->
             <div class="boxz">
               <div class="header-text">Full Name</div>
-              <input id="signUpFullName" class="input-field" type="text" placeholder="Name" name="name">
+              <input id="signUpFullName" class="input-field" type="text" placeholder="Name" name="name" required>
             </div>
             <div class="boxz">
               <div class="header-text">Email</div>
-              <input id="signUpEmail" class="input-field" type="email" placeholder="Email" name="username">
+              <input id="signUpEmail" class="input-field" type="email" placeholder="Email" name="username" required>
             </div>
             <div class="boxz">
               <div class="header-text">Phone Number</div>
               <!-- Country code and phone input fields -->
               <div style="display: flex; align-items: center;">
-                <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
+                <select id="signUpCountryCode" class="country-code" name="prephoneNumber" required>
                   <option value="+1">+1</option>
                   <option value="+44">+44</option>
                   <option value="+49">+49</option>
                   <!-- Add more options as needed -->
                 </select>
-                <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone" name="phoneNumber"
+                <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone" name="phoneNumber" required
                   style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
               </div>
             </div>
             <div class="boxz">
               <div class="header-text">Password</div>
               <div class="password-container">
-                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Password" name="password">
+                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Password" name="password" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
@@ -91,7 +91,7 @@
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="showNextPage()">Already have an Account? 
-            <a href="/login"><span
+            <a href="/authenticate2"><span
               class="sign-in-text" id="toggle-text">Sign In</span></a></div>
         </div>
       </form>
