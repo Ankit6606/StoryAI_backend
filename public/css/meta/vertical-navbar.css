@@ -9,6 +9,7 @@ html {
   :root {
     --color: #1950FF;
     --white: #fff;
+    --tras: transparent;
   }
   
 
@@ -26,6 +27,7 @@ html {
     background: none;
     border: 0;
     outline: none;
+    opacity: 0;
     border: none;
     cursor: pointer;
     -webkit-appearence: none;
@@ -39,7 +41,8 @@ html {
     height: 48px;
     top: -6px;
     left: -14px;
-    stroke: var(--color);
+    stroke:#D1B5FE;
+    
     stroke-width: 4px;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -48,6 +51,7 @@ html {
     position: absolute;
   }
   .navTrigger svg path {
+
     transition: stroke-dasharray var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s), stroke-dashoffset var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s);
     stroke-dasharray: var(--array-1, 26px) var(--array-2, 100px);
     stroke-dashoffset: var(--offset, 126px);
@@ -64,7 +68,7 @@ html {
     --array-2: 107px;
   }
   .navTrigger.active svg {
-    stroke: var(--white);
+    stroke: white !important; 
   }
   .navTrigger.active svg path {
     --offset: 57px;
@@ -83,13 +87,15 @@ html {
   }
   
   .navMenu {
+    z-index: 1001;
+    
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     text-align: center;
-    background: #FFF;
+    background: rgba(0, 0, 0, 0);
     opacity: 0;
     z-index: -1;
     visibility: hidden;
@@ -108,20 +114,29 @@ html {
     transform: translateY(0);
   }
   .navMenu::before {
+ 
+    /* filter: blur(5px); */
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+   box-shadow: 20px 0 20px 0 rgba(0, 0, 0, 0.3);
+   border: 2px solid ;
+   border-image: linear-gradient(to right, rgba(150, 101, 211, 0.62), rgba(150, 101, 211, 0.541));
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: -15px;
-    background: #1950FF;
+    right: 95px;
+    background: linear-gradient(-45deg, rgba(255,255,255,0.2), rgba(57, 28, 92, 0.3), rgba(150, 101, 211, 0.6));
+
     transform-origin: 0 0;
     transform: skew(-14deg) translateX(-120%);
     transition: all 0.275s 0.1s;
   }
   .navMenu ul {
     list-style: none;
-    padding: 0;
+    padding-RIGHT: 20%;
+
     display: inline-flex;
     flex-direction: column;
     height: 93%;
@@ -137,20 +152,53 @@ html {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   .navMenu ul li a {
     position: relative;
-    left: 0;
-    display: block;
-    padding: 12px 0;
+    display: inline-block;
+    padding: 12px 20px;
     color: var(--white);
-    font-size: 1.4em;
+    font-family: Volkhov;
+    font-size: 1.9em;
     text-decoration: none;
     transform: skew(16deg);
-    transition: 0.25s;
-  }
-  .navMenu ul li a:hover {
-    left: 10px;
-  }
+    z-index: 1; /* Ensure the text appears above the ::before pseudo-element */
+}
+
+
+
+.navMenu ul li a::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 370px);
+    height: 110%;
+    background-color: rgba(0, 0, 0, 0); /* Adjust color and transparency as needed */
+    z-index: -1;
+    transform: skew(-16deg);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in, opacity 0.3s ease; /* Transition duration and easing function */
+    top: 0%; /* Center vertically within the box */
+    margin-left: -400px; /* Negative margin to fill the width towards the left */
+    opacity: 0; /* Initial opacity set to 0 */
+}
+
+.navMenu ul li a:hover::before {
+    /* Scale on hover */
+    border-radius: 10px;
+    border: 1px solid rgba(224, 139, 255, 0.40);
+    background: linear-gradient(107deg, rgba(224, 139, 255, 0.20) 3.92%, rgba(224, 139, 255, 0.10) 49.51%);
+    box-shadow: 4px 6px 20px 0px rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(4px);
+    opacity: 1; /* Change opacity on hover */
+    
+}
+
+
+
+
+
+
+
   .navMenu ul li:nth-child(1) {
     transition: all 275ms 275ms;
   }

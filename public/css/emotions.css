@@ -56,7 +56,7 @@ body {
         visibility: hidden;
     }
    
-    .navTrigger active{
+    .navTrigger{
         opacity: 1 !important;
     }
 
