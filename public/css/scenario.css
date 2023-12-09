@@ -191,6 +191,7 @@ margin-bottom: 0px !important;
     }
     .card-box{
         overflow-x: scroll;
+        overflow-y: hidden;
     }
     .card{
         max-height: 90%;
