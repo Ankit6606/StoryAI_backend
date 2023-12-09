@@ -7,9 +7,13 @@
     <title>Story Generation Page 4</title>
     <link rel="stylesheet" href="css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
-    <link rel="stylesheet" href="css/values.css">
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/meta/vertical-navbar.css">
 
+
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -20,17 +24,89 @@
             overflow: hidden;
         }
 
+        @media (max-width: 768px) {
+
+            .navbar {
+                visibility: hidden;
+            }
+
+            .navTrigger {
+                opacity: 1 !important;
+            }
+
+            .box {
+
+                max-width: 95.5vw;
+                flex-shrink: 0;
+                border-radius: 20px;
+                
+
+            }
+
+            .box-1 {
+                max-height: 75px;
+                border: 2px solid #FFF;
+                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%)), url("/Client/assets/temp1.png");
+                background-size: cover, cover;
+                /* Set background-size for both layers */
+                background-repeat: no-repeat;
+                background-image: url("css/assets/temp1.png")
+            }
+
+            .box-2 {
+                max-height: 100px;
+                /* New height for box-4 */
+                border: 2px solid #FFF;
+                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+                background-size: cover, cover;
+                /* Set background-size for both layers */
+                background-repeat: no-repeat;
+                background-image: url("css/assets/temp2.png")
+            }
+
+            .box-4 {
+                max-height: 120px;
+                /* New height for box-4 */
+                border: 2px solid #FFF;
+                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+                background-size: cover, cover;
+                /* Set background-size for both layers */
+                background-repeat: no-repeat;
+                background-image: url("css/assets/temp4.png");
+            }
+
+            .box-3 {
+                max-height: 160px;
+                background: #FDF0F2;
+                background-size: cover, cover;
+                /* Set background-size for both layers */
+                background-repeat: no-repeat;
+                background-image: url("css/assets/temp3.png");
+
+            }
+
+            .next-button {
+                max-height: 50px;
+                max-width: 95.5vw;
+                margin-left: 3px !important;
+            }
+
+
+        }
+
         .box-m {
+            gap: 5PX;
             display: flex;
             flex-direction: column;
-           
-            z-index: 101;
+
+            z-index: 1;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
 
         }
+
 
         .box {
             width: 513px;
@@ -72,6 +148,7 @@
         }
 
         .box-3 {
+            border: 2px solid #FFF;
             height: 213px;
             background: #FDF0F2;
             background-size: cover, cover;
@@ -85,6 +162,32 @@
 </head>
 
 <body>
+    <button class="navTrigger" id="navTrigger">
+        <svg viewBox="0 0 64 48">
+            <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+            <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+            <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+        </svg>
+    </button>
+    <nav class="navMenu" id="navMenu">
+        <ul>
+            <li>
+                <a href="/home">Home</a>
+            </li>
+            <li>
+                <a href="/story">Create Story</a>
+            </li>
+            <li>
+                <a href="#">Story History</a>
+            </li>
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+            <li>
+                <a href="/subscribe">Subscription</a>
+            </li>
+        </ul>
+    </nav>
     <div class="navbar">
         <a href="/subscribe" class="special-button">Subscription</a>
         <a href="/profile" class="nav-button">Profile</a>
@@ -95,11 +198,19 @@
     <div class="ellipse"></div>
     <form action="/subscribe" method="post">
         <div class="box-m">
-            
-            <option value="basic"></option><div class="box box-1" id="basic"></div></option>
-            <option value="starter"></option><div class="box box-2" id="starter"></div></option>
-            <option value="value"></option><div class="box box-3" id="value"></div></option>
-            <option value="premium"></option><div class="box box-4" id="premium"></div></option>
+
+
+            <div class="box box-1" id="basic"></div>
+
+
+            <div class="box box-2" id="starter"></div>
+
+
+            <div class="box box-3" id="value"></div>
+
+
+            <div class="box box-4" id="premium"></div>
+
             <button class="next-button" type="submit" style="width: 513px;
         height: 63px;
         flex-shrink: 0;
@@ -114,7 +225,7 @@
     <!-- Modal -->
 
 
-    <script src="js/values.js"></script>
+    <script src="js/vnav.js"></script>
 
     <script>
 

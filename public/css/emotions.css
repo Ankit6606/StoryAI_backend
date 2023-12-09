@@ -3,9 +3,11 @@ body {
     padding: 0;
     background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.68) 100%),
         url('assets/homepic.png') center/cover no-repeat;
-    height: 100vh;
-    font-family: Arial, sans-serif;
+    height: 100vh;font-family: Arial, sans-serif;
+    width: 100vw;
     overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .image-box {
