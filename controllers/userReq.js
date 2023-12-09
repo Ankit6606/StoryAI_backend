@@ -83,6 +83,7 @@ export async function postPhonenumber(req, res) {
     } else {
       // No user found with the provided phone number
       console.log("No duplicate contact number found. Proceeding...");
+      res.redirect("/");
     }
   } catch (err) {
     console.log(err);
