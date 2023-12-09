@@ -33,15 +33,15 @@ export function makepayment(req,res){
   // console.log(plan);
   if(plan==="starter"){
     flag = 1;
-    res.redirect("https://buy.stripe.com/test_5kA7vA4CKclC9Ms5km");
+    res.redirect("https://buy.stripe.com/4gw2aG1lO5txaA0dQQ");
   }
   else if(plan==="value"){
     flag = 1;
-    res.redirect("");
+    res.redirect("https://buy.stripe.com/7sIg1w6G87BFdMc5kl");
   }
-  else{
+  else if(plan==="premium"){
     flag = 1;
-    res.redirect("");
+    res.redirect("https://buy.stripe.com/4gw9D89Sk2hleQgdQS");
   }
 };
 
