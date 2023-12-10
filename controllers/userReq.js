@@ -190,6 +190,7 @@ export function registerUser(req, res) {
   export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
+      res.render("story");
      if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("story");
      }
@@ -419,6 +420,7 @@ export function renderValues(req,res){
 };
 
 export function getStoryOutput(req,res){
+ 
   if(req.user.gems>=1 && req.user.parrots>=1){
     res.render("storyoutput");
    }
