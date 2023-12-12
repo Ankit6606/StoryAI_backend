@@ -24,21 +24,17 @@ let character = "";
 let scenario = "";
 let emotions = "";
 let values = "";
-let mobileNumber = "";
+let globalNumber = "";
+let justNumber= "";
 
 
-export function rootRender(req,res){
-    if(req.isAuthenticated()){
-      res.render("home");
-    }else{
-      res.redirect("/authenticate2");
-    }
 
-};
 
 export function renderlandingPage(req,res){
   res.render("landing-page");
 };
+
+//--Authentication pages--//
 
 export function authenticateRender(req,res){
   res.render("authenticate");
@@ -56,6 +52,88 @@ export function loginRender(req,res){
     res.render("login");
 };
 
+//Google Authentication
+
+export function oauthPage(req, res) {
+  passport.authenticate('google', { scope: ["profile" , "email"] })(req, res);
+};
+
+export function oauthVerification(req, res) {
+passport.authenticate('google', {
+  failureRedirect: '/authenticate2',
+  scope: ["profile", "email"]
+})(req, res, () => {
+  res.redirect('/phonenumber');
+});
+};
+
+//Email Authentication
+
+export function registerUser(req, res) {
+const username = req.body.username;
+const password = req.body.password;
+const name = req.body.name;
+
+if (!username || !password) {
+  // Handle validation error, e.g., show an error message or redirect to the registration page
+  return res.redirect("/register");
+}
+
+User.register({ username: username }, password, (err, user) => {
+  if (err) {
+    if (err.code === 11000 && err.keyPattern.username === 1) {
+      // Handle duplicate email error
+      console.log('Duplicate email found.');
+      return res.redirect("/login");
+      // Redirect or show an error message
+    } 
+    else {
+      console.log(err);
+      // Handle other errors
+      return res.redirect("/login");
+    }
+  } else {
+    passport.authenticate("local")(req, res, () => {
+      User.findById(req.user.id)
+        .then((foundUser) => {
+          foundUser.name = name;
+          foundUser.authType = "email";
+          foundUser.save()
+            .then(() => {
+              res.redirect("/phonenumber");
+            }).catch((err) => {
+              console.log(err);
+            });
+        }).catch((err) => {
+          console.log(err);
+        });
+    });
+  }
+});
+};
+
+//Email login
+
+export function loginUser(req,res){
+  const loginuser = new User({
+      username: req.body.username,
+      password: req.body.password
+     });
+     req.login(loginuser,function(err){
+      if(err){
+          console.log(err);
+      }else{
+          passport.authenticate("local")(req,res,()=>{
+              res.redirect("/");
+          });
+      }
+     });
+};
+
+
+//--OTP Verification pages and functions for new users--//
+
+
 export function getphoneNumber(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
@@ -70,9 +148,14 @@ export function getphoneNumber(req,res){
   }
 };
 
+//OTP is send to the given number
+
 export async function postPhonenumber(req, res) {
   try {
-    const mobileNumber = req.body.phoneNumber;
+    const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
+    globalNumber = mobileNumber;
+    justNumber = req.body.prephoneNumber + req.body.phoneNumber;
+    // console.log(mobileNumber);
     const foundUser = await User.findOne({ phoneNumber: mobileNumber });
 
     if (foundUser) {
@@ -83,7 +166,14 @@ export async function postPhonenumber(req, res) {
     } else {
       // No user found with the provided phone number
       console.log("No duplicate contact number found. Proceeding...");
-      res.redirect("/");
+       // Trigger Twilio verification process
+       const verification = await client.verify.v2.services(verifySid)
+       .verifications.create({ to: justNumber, channel: "sms" });
+     
+     console.log(verification.status); // Log the verification status
+
+     // Render the OTP verification page
+     res.render("otp2");
     }
   } catch (err) {
     console.log(err);
@@ -91,106 +181,95 @@ export async function postPhonenumber(req, res) {
   }
 };
 
-export function getVerification(req,res){
-  res.render("otp2");
+//Verification
+
+export async function otpVerification(req,res){
+  try {
+    if(req.isAuthenticated()){
+      const otp = req.body.digit1 + req.body.digit2 + req.body.digit3 + req.body.digit4 + req.body.digit5 + req.body.digit6;
+    // Perform Twilio verification check
+    const verification_check = await client.verify.v2
+      .services(verifySid)
+      .verificationChecks.create({ 
+        to: justNumber, 
+        code: otp,
+        channel : "sms",
+        customCode: "Storyia: Your verification code is {{code}}. Please enter this code to verify your account."
+       });
+
+    // Check verification status
+    if (verification_check.status === 'approved') {
+      // Verification successful
+      console.log('Verification successful!'); 
+      await User.findOneAndUpdate({ _id: req.user.id }, { phoneNumber: globalNumber });
+      const message = "Your phone number is verified";
+      const script = `<script>alert("${message}"); window.location.href="/";</script>`;
+      return res.send(script);
+    } 
+    else {
+      // Verification failed
+      console.log('Verification failed. Please try again.'); // You can also redirect to a failure page
+      const errorMessage = "Verification failed. Please try again.";
+      const script = `<script>alert("${errorMessage}"); window.location.href="/phonenumber";</script>`;
+      return res.send(script);
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+    
+  } catch (err) {
+    console.error(err);
+    res.redirect('/error'); // Redirect to an error page
+  }
+
 };
 
 export function getr(req,res){
   res.render("random");
+  client.verify.v2
+  .services(verifySid)
+  .verifications.create({ to: justNumber, channel: "sms" })
+  .then((verification) => console.log(verification.status))
+  .then(() => {
+    const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+rl.question("Please enter the OTP:", (otpCode) => {
+  client.verify.v2
+    services(verifySid)
+    .verificationChecks.create({ to: justNumber, code: otpCode })
+    .then((verification_check) => console.log(verification_check.status))
+    .then(() => rl.close());
+  });
+});
 };
 
 export function getotp(req,res){
 res.redirect("/register");
-
-client.verify.v2
-  .services(verifySid)
-  .verifications.create({ to: "+919836760380", channel: "sms" })
-  .then((verification) => console.log(verification.status))
-  .then(() => {
-
-  const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-    rl.question("Please enter the OTP:", (otpCode) => {
-      client.verify.v2
-        .services(verifySid)
-        .verificationChecks.create({ to: "+919836760380", code: otpCode })
-        .then((verification_check) => console.log(verification_check.status))
-        .then(() => rl.close());
-    });
-  });
 }
-export function oauthPage(req, res) {
-    passport.authenticate('google', { scope: ["profile" , "email"] })(req, res);
-};
 
-export function oauthVerification(req, res) {
-  passport.authenticate('google', {
-    failureRedirect: '/authenticate2',
-    scope: ["profile", "email"]
-  })(req, res, () => {
-    res.redirect('/phonenumber');
-  });
-};
+//-- Home page --//
 
-
-export function registerUser(req, res) {
-  const username = req.body.username;
-  const password = req.body.password;
-  const name = req.body.name;
-  const phoneNumber = req.body.phoneNumber;
-  const prephoneNumber = req.body.prephoneNumber;
-  const contactNumber = prephoneNumber + "-" + phoneNumber;
-
-  if (!username || !password) {
-    // Handle validation error, e.g., show an error message or redirect to the registration page
-    return res.redirect("/register");
-  }
-
-  User.register({ username: username }, password, (err, user) => {
-    if (err) {
-      if (err.code === 11000 && err.keyPattern.username === 1) {
-        // Handle duplicate email error
-        console.log('Duplicate email found.');
-        return res.redirect("/login");
-        // Redirect or show an error message
-      } else if (err.code === 11000 && err.keyPattern.phoneNumber === 1) {
-        // Handle duplicate contact number error
-        console.log('Duplicate contact number found.');
-        return res.redirect("/login");
-        // Redirect or show an error message
-      } else {
-        console.log(err);
-        // Handle other errors
-        return res.redirect("/login");
-      }
-    } else {
-      passport.authenticate("local")(req, res, () => {
-        User.findById(req.user.id)
-          .then((foundUser) => {
-            foundUser.name = name;
-            foundUser.phoneNumber = contactNumber;
-            foundUser.authType = "email";
-            foundUser.save()
-              .then(() => {
-                res.redirect("/");
-              }).catch((err) => {
-                console.log(err);
-              });
-          }).catch((err) => {
-            console.log(err);
-          });
-
-      });
+export function rootRender(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      res.render("home");
+    }else{
+      res.redirect("/phonenumber");
     }
-  });
+  }else{
+    res.redirect("/authenticate2");
+  }
 };
 
-  export function storyPage(req, res) {
+
+//--Story Generation Pages--//
+
+//Story - GET,POST
+export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
-      res.render("story");
      if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("story");
      }
@@ -198,29 +277,15 @@ export function registerUser(req, res) {
       res.redirect("/subscribe");
      }
       
+      }else{
+        res.redirect("/phonenumber");
+      }
     } else {
       res.redirect("/authenticate2");
     }
-  };
-  
- 
-export function loginUser(req,res){
-    const loginuser = new User({
-        username: req.body.username,
-        password: req.body.password
-       });
-       req.login(loginuser,function(err){
-        if(err){
-            console.log(err);
-        }else{
-            passport.authenticate("local")(req,res,()=>{
-                res.redirect("/story");
-            });
-        }
-       });
+    
 };
-
-
+  
 export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
@@ -229,10 +294,45 @@ export function storyPost(req,res){
   res.redirect("/scenario");
 };
 
+
+//Scenario - GET,POST
+
+export function renderScenario(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("scenario");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+};
+
 export function postScenario(req,res){
   scenario = req.body.scenario;
   // console.log(scenario);
   res.redirect("/emotions");
+};
+
+
+//Emotions - GET,POST
+
+export function renderEmotions(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("emotions");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+  // res.render("emotions");
 };
 
 export function postEmotions(req,res){
@@ -241,6 +341,25 @@ export function postEmotions(req,res){
   res.redirect("/values");
 };
 
+
+//Values- GET,POST
+
+export function renderValues(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("values");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+
+};
+
+//Main story creation with api call and updation in database//
 export async function postValues(req,res){
   values = req.body.values;
   // console.log(values);
@@ -255,6 +374,7 @@ export async function postValues(req,res){
     values: JSON.stringify(values),
     userId: "test"
   });
+  // console.log(`${endpoint}?${params.toString()}`);
 
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {
@@ -327,7 +447,18 @@ export async function postValues(req,res){
   
 };
 
+//Storyoutput
+// export function getStoryOutput(req,res){
+//   if(req.user.gems>=1 && req.user.parrots>=1){
+//     res.render("storyoutput");
+//    }
+//    else{
+//     res.redirect("/subscribe");
+//    }
+// }
 
+
+//--Profile management--// 
 export function profileManage(req,res){
   if(req.isAuthenticated()){
     res.render("profile");
@@ -336,55 +467,49 @@ export function profileManage(req,res){
   }
 };
 
-
+//Profile - POST
 export async function editProfile(req, res) {
   const name = req.body.name;
   const prephoneNumber = req.body.prephoneNumber;
   const phoneNumber = req.body.phoneNumber;
-  if(req.isAuthenticated()){
+  
+  if (req.isAuthenticated()) {
     try {
+      let updateFields = {}; // Object to store fields to update
+
+      if (name && name !== "") {
+        updateFields.name = name; // Update name only if it's provided
+      }
+
+      if (phoneNumber && phoneNumber !== "" && prephoneNumber !== phoneNumber) {
+        // Update phoneNumber only if it's provided and different from prephoneNumber
+        updateFields.phoneNumber = prephoneNumber + "-" + phoneNumber;
+      }
+
+      if (Object.keys(updateFields).length === 0) {
+        // If no fields to update, redirect back without DB interaction
+        return res.redirect("/");
+      }
+
       const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
-        { 
-          $set: { 
-            name: name,
-            phoneNumber: prephoneNumber + "-" + phoneNumber
-          }
-        },
+        { $set: updateFields },
         { new: true } // To return the updated document
       );
 
       if (!updatedUser) {
-        // Handle the case where the user is not found
-        console.log("not found");
-        return res.redirect("/story"); // Redirect or handle the error appropriately
-    }
+        console.log("User not found");
+        return res.redirect("/"); // Redirect or handle the error appropriately
+      }
 
-      // Successfully updated user
       // console.log("Updated User:", updatedUser);
-      res.redirect("/story");
+      res.redirect("/"); // Successfully updated user
     } catch (err) {
       console.log(err);
-      res.redirect("/story"); // Redirect or handle the error appropriately
-      }
+      res.redirect("/"); // Redirect or handle the error appropriately
     }
-    else{
-      console.log("User cannot be authenticated");
-      res.redirect("/story");
-    }
-};
-
-
-export function renderScenario(req,res){
-  if(req.isAuthenticated()){
-    if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("scenario");
-     }
-     else{
-      res.redirect("/subscribe");
-     }
-  }
-  else{
+  } else {
+    console.log("User cannot be authenticated");
     res.redirect("/authenticate2");
   }
 };
@@ -420,7 +545,6 @@ export function renderValues(req,res){
 };
 
 export function getStoryOutput(req,res){
- 
   if(req.user.gems>=1 && req.user.parrots>=1){
     res.render("storyoutput");
    }
