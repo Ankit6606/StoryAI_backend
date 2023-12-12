@@ -270,7 +270,6 @@ export function rootRender(req,res){
 export function storyPage(req, res) {
     // console.log("Authentication status:", req.isAuthenticated());
     if (req.isAuthenticated()) {
-      if(req.user.phoneNumber){    
      if(req.user.gems>=1 && req.user.parrots>=1){
       res.render("story");
      }
@@ -515,6 +514,43 @@ export async function editProfile(req, res) {
   }
 };
 
+export function renderEmotions(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("emotions");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+  
+};
 
+export function renderValues(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("values");
+     }
+     else{
+      res.redirect("/subscribe");
+     }
+  }
+  else{
+    res.redirect("/authenticate2");
+  }
+
+};
+
+export function getStoryOutput(req,res){
+  if(req.user.gems>=1 && req.user.parrots>=1){
+    res.render("storyoutput");
+   }
+   else{
+    res.redirect("/subscribe");
+   }
+}
 
 

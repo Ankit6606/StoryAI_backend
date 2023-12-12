@@ -7,10 +7,15 @@
     <title>Story Output</title>
     <link rel="stylesheet" href="css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/meta/vertical-navbar.css">
+    
 
 
 </head>
 <style>
+    
     body {
         margin: 0;
         padding: 0;
@@ -40,16 +45,137 @@
 
     .flex-container {
         position: relative;
-        top: -7%;
+        top: -13%;
         margin-left: 3.3%;
         display: flex;
-       
+       max-width: 100vw;
         /* To create a 40px margin between the boxes */
     }
 
-    .box {
-        width: 900px;
-        height: 900px;
+
+
+    @media (max-width: 768px) {
+        .navbar{
+        visibility: hidden;
+    }
+   
+    .navTrigger{
+        opacity: 1 !important;
+    }
+        .ellipse {
+        width: 692px;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+display: none;
+visibility:hidden;
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+        .flex-container {
+        position: relative;
+        top: 8%;
+        margin-left: 0 !important;
+        display: flex;
+        flex-direction: column-reverse !important;
+       max-width: 100vw;
+        /* To create a 40px margin between the boxes */
+    }
+   
+    .audio-player{width: 90%;
+        margin-bottom: 3.5%;
+height: 143.232px;
+flex-shrink: 0;
+border-radius: 30px;
+border: 5px solid #A288CB;
+align-self: center;
+
+background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));}
+    
+body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
+            url('css/assets/story-page-bg.png') center/cover no-repeat;
+        height: 100vh !important;
+        width: 100vw !important;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+
+    }
+
+.box {width: 90vw !important;
+    opacity: 1;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: #FDF0F2;
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.0) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .ellipse {
+        max-width: 100vw;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 0%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+    .box-audio {
+        width: 90vw !important;
+        max-width: 900px;
+        max-height: 900px;
+        height: 15vh !important;
+
+        flex-shrink: 0;
+        border-radius: 30px;
+        
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.0) inset !important;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-end;
+    }
+    .box-imgx{
+    width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+
+                flex-shrink: 0;
+                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;
+}
+}
+    .box {width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
         flex-shrink: 0;
         border-radius: 30px;
         background: #FDF0F2;
@@ -62,8 +188,13 @@
         justify-content: center;
     }
     .box-audio {
-        width: 900px;
-        height: 900px;
+      
+        
+        width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+
         flex-shrink: 0;
         border-radius: 30px;
         
@@ -75,6 +206,17 @@
         
         justify-content: flex-end;
     }
+    .box-imgx{
+        visibility: hidden !important;
+        display: none;
+    width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+
+                flex-shrink: 0;
+                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;
+}
     .audio-player{width: 90%;
         margin-bottom: 3.5%;
 height: 143.232px;
@@ -91,6 +233,8 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     }
 
     .box-heading {
+        opacity: 1 !important;
+        color: #ff0000;
         font-family: Arial, sans-serif;
         font-size: 36px;
         font-weight: bold;
@@ -280,10 +424,37 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     height: 95px;
     cursor: pointer;
 }
+
 </style>
 
 <body>
     <body>
+        <button class="navTrigger" id="navTrigger">
+            <svg viewBox="0 0 64 48">
+              <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+              <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+              <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+            </svg>
+          </button>
+          <nav class="navMenu" id="navMenu">
+            <ul>
+              <li>
+                <a href="/home">Home</a>
+              </li>
+              <li>
+                <a href="/story">Create Story</a>
+              </li>
+              <li>
+                <a href="#">Story History</a>
+              </li>
+              <li>
+                <a href="/profile">Profile</a>
+              </li>
+              <li>
+                <a href="/subscribe">Subscription</a>
+              </li>
+            </ul>
+          </nav>
         <div class="navbar">
             <a href="#" class="nav-button">Subscription</a>
             <a href="/profile" class="nav-button">Profile</a>
@@ -295,10 +466,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         <div class="flex-container">
             <!-- Image Box -->
             <div class="box-audio" id="audio-box">
-                <img src="<%= storyImage %>" alt="Background Image" style="width: 900px;
-                height: 900px;
-                flex-shrink: 0;
-                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;">
+                <img class="box-imgx" src="css/assets/story-page-bg.png" alt="Background Image">
                 <!-- ... (your existing audio player code) ... -->
                 <div class="audio-player">
                     <audio id="audio" style="width: 70%;">
@@ -333,6 +501,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
             </div>
         </div>
         <script src="js/storyoutput.js"></script>
+        <script src="js/vnav.js"></script>
         <script>
     //         function setAudioBoxBackground(imageUrl) {
     //     var audioBox = document.getElementById('audio-box');

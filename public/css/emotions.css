@@ -257,7 +257,7 @@ max-height: 32%;}
 }
 
 .flex-box {
-    width: 96%;
+    width: 96vw;
     max-width: 1805px;
     height: 190px;
     flex-shrink: 0;
@@ -299,10 +299,8 @@ max-height: 32%;}
     margin-bottom: 8px;
 }
 .card-container {
-    
-    /* Make it full-width */
-    width: 1830px;
-    /* Maximum width for the card container */
+    width: 99vw;
+    max-width: 1830px;
     flex-shrink: 0;
     border-radius: 25px;
     background: #FDF0F2;
@@ -310,43 +308,48 @@ max-height: 32%;}
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
     margin-top: 24px;
     z-index: 99;
-    overflow-x: hidden;
-    
-    /* Add scrollbar if needed */
+    overflow: visible; /* Allow cards to overflow the container */
     animation: containerSlideOut 2s ease-out forwards;
 }
 
 .card-box {
+    overflow-x: scroll;
     display: flex;
     flex-direction: row;
     height: auto;
-    width: 100%;
+    width: 99%;
     max-width: 1803px;
     animation: cardsSlideIn 3s ease-in forwards;
 }
 
 .card {
-
+    margin-top: 10px;
     width: 202px;
     height: 279px;
     flex-shrink: 0;
     border-radius: 25px;
     background: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
-
-    /* Add margin for spacing */
-
-    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%), url("/Client/assets/card.png");
+    box-shadow: 6px 6px 15px 0px rgba(0, 0, 0, 0.9);
+    background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
     background-size: cover;
     margin-bottom: 30px;
     margin-left: 30px;
-
-
+    transition: box-shadow 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smoother transitions */
+    position: relative;
+    z-index: 1; /* Make sure the card stays above other elements */
 }
+
+.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.2); /* Enhance raise effect */
+    transform: translateY(-10px); /* Lift the card slightly on hover */
+    width: 220px; /* Increase width on hover */
+    height: 299px; /* Increase height on hover */
+    z-index: 2; /* Make the hovered card appear above other cards */
+}
+
+
 
 .card-text-1 {
     color: #FFF;
