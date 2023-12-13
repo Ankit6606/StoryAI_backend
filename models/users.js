@@ -39,13 +39,7 @@ const User = new mongoose.model("User",userSchema);
 //     gems : 100,
 //     parrots: 100
 // });
-
-adminUser.save();
-
-
-
-
-
+// adminUser.save();
 
 export default User;
 // export {Payment};
