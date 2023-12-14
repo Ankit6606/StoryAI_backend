@@ -4,8 +4,10 @@ body {
     background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.68) 100%),
         url('assets/homepic.png') center/cover no-repeat;
     height: 100vh;
+    width: 100vw;
     font-family: Arial, sans-serif;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .image-box {
@@ -83,9 +85,8 @@ body {
     }
     
     .flex-box {
-        width: 96%;
-        max-width: 1805px;
-        max-height: 150px;
+        width: 96vw !important;
+       
         flex-shrink: 0;
         border-radius: 25px;
         border: 3px solid #A288CB;
@@ -98,7 +99,7 @@ body {
     }
     
     .text-box {
-        width: 96%;
+        width: 96vw;
         max-width: 1736px;
         height: 94px;
         flex-shrink: 0;
@@ -157,7 +158,8 @@ body {
     .ellipse {
         height: 0;
         width: 0;
-        visibility: hidden;
+        display: none !important;
+        visibility: hidden !important;
         max-width: 292px !important;
         max-height: 199.844px !important;
         flex-shrink: 0;
@@ -177,7 +179,7 @@ body {
     }
     .card-container {
         
-       max-width: 98VW;
+       max-width: 98VW !important ;
 height: 260px;
 flex-shrink: 0;
 margin-bottom: 0px !important;
@@ -190,7 +192,7 @@ margin-bottom: 0px !important;
         margin-top: 10px !important;
     }
     .card-box{
-        overflow-x: scroll;
+        overflow-x: scroll !important;
         overflow-y: hidden;
     }
     .card{
@@ -200,7 +202,7 @@ margin-bottom: 0px !important;
     }
     
    
-.image-box{ max-width: 100%;
+.image-box{width: 100vw !important;
 max-height: 32%;}
 .next-button{
     max-width: 300px;
@@ -320,6 +322,7 @@ max-height: 32%;}
     width: 99%;
     max-width: 1803px;
     animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 25px;
 }
 
 .card {

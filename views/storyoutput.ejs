@@ -55,6 +55,7 @@
 
 
     @media (max-width: 768px) {
+       
         .navbar{
         visibility: hidden;
     }
@@ -103,8 +104,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
 body {
         margin: 0;
         padding: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
-            url('css/assets/story-page-bg.png') center/cover no-repeat;
+        background: none;
         height: 100vh !important;
         width: 100vw !important;
         font-family: Arial, sans-serif;
@@ -207,8 +207,8 @@ body {
         justify-content: flex-end;
     }
     .box-imgx{
-        visibility: hidden !important;
-        display: none;
+       
+       
     width: 45vw;
         max-width: 900px;
         max-height: 900px;
@@ -234,7 +234,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
 
     .box-heading {
         opacity: 1 !important;
-        color: #ff0000;
+        color: #000000;
         font-family: Arial, sans-serif;
         font-size: 36px;
         font-weight: bold;
@@ -466,7 +466,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         <div class="flex-container">
             <!-- Image Box -->
             <div class="box-audio" id="audio-box">
-                <img class="box-imgx" src="css/assets/story-page-bg.png" alt="Background Image">
+                <img class="box-imgx" src="<%= storyImage %>" alt="Background Image">
                 <!-- ... (your existing audio player code) ... -->
                 <div class="audio-player">
                     <audio id="audio" style="width: 70%;">
@@ -510,7 +510,13 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     //         audioBox.style.backgroundSize = 'cover'; 
     //     }
     // }
-
+    const storyImage = '<%= storyImage %>';
+        
+       
+        if (window.innerWidth <= 768) {
+        
+            document.body.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%), url('${storyImage}') center/cover no-repeat`;
+        }
     
     // var backgroundImageUrl = '"css/assets/story-pic-dynamic.png"';
     // setAudioBoxBackground(backgroundImageUrl);
