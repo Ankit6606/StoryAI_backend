@@ -112,12 +112,54 @@ margin-top: 28px;
 .navbar {
     position: fixed;
     top: 0;
-    right: 15px;
+    left: 0;
     display: flex;
-    justify-content: flex-end;
-    margin: 15px;
-    z-index: 1000; /* Ensure the navbar is above other elements */
-    margin-top: 50px; margin-left: 40px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    z-index: 1000;
+    background-color: transparent; /* adjust as needed */
+}
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    margin-left: 15px; /* Adjust as needed */
+}
+
+.icon-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.icon-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 6px;
+}
+
+.icon-number {
+    font-size: 29px;
+   
+    margin-right: 15px;
+    color: #FFF;
+
+text-align: justify;
+font-family: Noto Sans;
+
+font-style: normal;
+font-weight: 800;
+line-height: 133%; /* 23.94px */
+}
+
+
+
+.nav-button-container {
+    gap: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-button {
@@ -127,7 +169,6 @@ margin-top: 28px;
     border-radius: 12px;
     background: #FDF0F2;
     box-shadow: 0px 2px 15px 0px rgba(21, 14, 57, 0.60) inset;
-    margin-right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,10 +181,12 @@ margin-top: 28px;
     line-height: 150%;
     transition: box-shadow 0.3s ease; 
 }
+
 .nav-button:hover {
     box-shadow: 0px 30px 20px 0px rgba(192, 169, 255, 0.9) inset;
-
 }
+
+
 
 .special-button {
     width: 150.751px;

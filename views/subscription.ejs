@@ -113,7 +113,16 @@
             flex-shrink: 0;
             border-radius: 20px;
             z-index: 100;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease, margin 0.3s ease ; /* Smoother transitions */
         }
+        .box:hover {
+            border: 3px solid #F669B3;;
+            margin-top: 10px;
+            margin-bottom:10px ;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518); /* Enhance raise effect */
+    /* Lift the card slightly on hover */
+    z-index: 999; /* Make the hovered card appear above other cards */
+}
 
         .box-1 {
             height: 99px;
@@ -189,11 +198,24 @@
         </ul>
     </nav>
     <div class="navbar">
-        <a href="/subscribe" class="special-button">Subscription</a>
-        <a href="/profile" class="nav-button">Profile</a>
-        <a href="#" class="nav-button">Story History</a>
-        <a href="/story" class="nav-button" onclick="showModal()">Create Story</a>
-    </div>
+        <div class="icons-container">
+          <div class="icon-item">
+            <img src="css/assets/gem.png" alt="Icon 1">
+            <span class="icon-number">1</span>
+          </div>
+          <div class="icon-item">
+            <img src="css/assets/parrot.png" alt="Icon 2">
+            <span class="icon-number">2</span>
+          </div>
+        </div>
+        <div class="nav-button-container">
+          <a href="/subscribe" class="nav-button">Subscription</a>
+          <a href="/profile" class="nav-button">Profile</a>
+          <a href="#" class="nav-button">Story History</a>
+          <a href="/story" class="special-button">Create Story</a>
+        </div>
+      </div>
+    
 
     <div class="ellipse"></div>
     <form action="/subscribe" method="post">
