@@ -4,6 +4,8 @@ body {
     background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.68) 100%),
         url('assets/homepic.png') center/cover no-repeat;
     height: 100vh;
+    width: 100%;
+   
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
@@ -67,8 +69,9 @@ body {
 
 }
 @media (max-width: 768px) {
+  
     .card-container {
-        width: 98%;
+        width: 98vw;
        max-width: 559px;
 height: 331px;
 flex-shrink: 0;

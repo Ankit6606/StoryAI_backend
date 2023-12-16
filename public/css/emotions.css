@@ -160,7 +160,8 @@ body {
     .ellipse {
         height: 0;
         width: 0;
-        visibility: hidden;
+        display: none !important;
+        visibility: hidden !important;
         max-width: 292px !important;
         max-height: 199.844px !important;
         flex-shrink: 0;
@@ -194,6 +195,8 @@ margin-bottom: 0px !important;
     }
     .card-box{
         overflow-x: scroll;
+        overflow-y: hidden !important;
+        border-radius: 25px;
     }
     .card{
         max-height: 90%;

@@ -43,20 +43,47 @@
           </li>
         </ul>
       </nav>
-    <div class="navbar">
-        <a href="/subscribe" class="nav-button">Subscription</a>
-        <a href="/profile" class="nav-button">Profile</a>
-        <a href="#" class="nav-button">Story History</a>
-        <a href="/story" class="special-button">Create Story</a>
-    </div>
+      <div class="navbar">
+        <div class="icons-container">
+          <div class="icon-item">
+            <img src="css/assets/gem.png" alt="Icon 1">
+            <span class="icon-number">1</span>
+          </div>
+          <div class="icon-item">
+            <img src="css/assets/parrot.png" alt="Icon 2">
+            <span class="icon-number">2</span>
+          </div>
+        </div>
+        <div class="navbar">
+          <div class="icons-container">
+            <div class="icon-item">
+              <img src="css/assets/gem.png" alt="Icon 1">
+              <span class="icon-number">1</span>
+            </div>
+            <div class="icon-item">
+              <img src="css/assets/parrot.png" alt="Icon 2">
+              <span class="icon-number">2</span>
+            </div>
+          </div>
+          <div class="nav-button-container">
+            <a href="/subscribe" class="nav-button">Subscription</a>
+            <a href="/profile" class="nav-button">Profile</a>
+            <a href="#" class="nav-button">Story History</a>
+            <a href="/story" class="special-button">Create Story</a>
+          </div>
+        </div>
+      
+      </div>
+    
     <div class="image-box"></div>
     <div class="ellipse"></div>
+    
     <form method="POST" action="/scenario">
     <div class="content-box" id="content-box-1">
         <div class="header-text">Step 2 : Scenario</div>
         <div class="sub-text">Select a preferred scenario for<br>your story</div>
 
-        <!-- Flexbox and Textbox -->
+
        
         <div class="flex-box">
             <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Scenerio</div>
@@ -85,7 +112,6 @@
                     <div class="card" style="background-image:url('css/assets/scenario/ce-79.png');"></div>
                 </div>
 
-            <!-- Add more cards as needed -->
         </div>
         <button type="submit" class="next-button" style="height: 55px;" >Next Emotions</button>
        
@@ -97,7 +123,7 @@
         font-weight: 700;
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
     </div> 
-</form>
+</form> 
 <script src="js/scenario.js"></script>
 <script src="js/vnav.js"></script>
 </body>

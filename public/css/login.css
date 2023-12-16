@@ -1,7 +1,7 @@
 .background {
     background-image: url('assets/signin-bg.png');
     background-repeat: no-repeat;
-    background-position: top -285px;
+    
     background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png');
     overflow: hidden;
 }
@@ -30,10 +30,19 @@
     height: auto;
 }
 @media (max-width: 768px) {
+    .background {
+      
+        background-repeat: no-repeat;
+    
+        background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png');
+        overflow: hidden;
+        background-size: 100% 100% !important;
+    }
+    
     .background-svg,
     .foreground-svg {
         width: 750px;
-        height: 90vh;
+        height: 70vh;
         position: absolute;
         bottom: 0 !important;
         left: -250px;
@@ -65,7 +74,7 @@
     font-size: 26px !important;
     font-weight: 700;
     line-height: 48px;
-    margin-top: 70px;
+    margin-top: 23vh;
     }
     .subtitle {
         color: #FFF;
