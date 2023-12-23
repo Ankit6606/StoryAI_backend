@@ -20,7 +20,9 @@ const stripeClient = stripeModule(STRIPE_SECRET_KEY);
 
 export function selectSubscription(req,res){
   if(req.isAuthenticated()){
-    res.render("subscription");
+    res.render("subscription",{
+      
+    });
   }
   else{
     res.redirect("/authenticate2");

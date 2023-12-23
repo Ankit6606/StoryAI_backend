@@ -254,7 +254,10 @@ res.redirect("/register");
 export function rootRender(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
-      res.render("home");
+      res.render("home",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
     }else{
       res.redirect("/phonenumber");
     }
@@ -272,7 +275,10 @@ export function storyPage(req, res) {
   if (req.isAuthenticated()) {
     if(req.user.phoneNumber){    
    if(req.user.gems>=1 && req.user.parrots>=1){
-    res.render("story");
+    res.render("story",{
+      gems : req.user.gems,
+      parrots : req.user.parrots,
+    });
    }
    else{
     res.redirect("/subscribe");
@@ -301,7 +307,10 @@ export function storyPost(req,res){
 export function renderScenario(req,res){
   if(req.isAuthenticated()){
     if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("scenario");
+      res.render("scenario",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
      }
      else{
       res.redirect("/subscribe");
@@ -324,7 +333,10 @@ export function postScenario(req,res){
 export function renderEmotions(req,res){
   if(req.isAuthenticated()){
     if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("emotions");
+      res.render("emotions",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
      }
      else{
       res.redirect("/subscribe");
@@ -348,7 +360,10 @@ export function postEmotions(req,res){
 export function renderValues(req,res){
   if(req.isAuthenticated()){
     if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("values");
+      res.render("values",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
      }
      else{
       res.redirect("/subscribe");
@@ -440,7 +455,7 @@ export async function postValues(req,res){
 
     //After storing the story in database, it is displayed in frontend
     
-    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path});
+    res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path, gems : req.user.gems, parrots : req.user.parrots});
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -462,7 +477,10 @@ export async function postValues(req,res){
 //--Profile management--// 
 export function profileManage(req,res){
   if(req.isAuthenticated()){
-    res.render("profile");
+    res.render("profile",{
+      gems : req.user.gems,
+      parrots : req.user.parrots,
+    });
   }else{
     res.redirect("/authenticate2");
   }
@@ -519,7 +537,10 @@ export async function editProfile(req, res) {
 
 export function getStoryOutput(req,res){
   if(req.user.gems>=1 && req.user.parrots>=1){
-    res.render("storyoutput");
+    res.render("storyoutput",{
+      gems : req.user.gems,
+      parrots : req.user.parrots,
+    });
    }
    else{
     res.redirect("/subscribe");

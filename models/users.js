@@ -31,15 +31,8 @@ userSchema.plugin(findOrCreate);
 const User = new mongoose.model("User",userSchema);
 
 
-// const adminUser = new User({
-//     username: "admin@gmail.com",
-//     password: "12345678",
-//     phoneNumber : "91-9876543210",
-//     authType : "email",
-//     gems : 100,
-//     parrots: 100
-// });
-// adminUser.save();
+
+
 
 export default User;
 // export {Payment};
