@@ -69,11 +69,14 @@ body {
 
 }
 @media (max-width: 768px) {
+    .text-style-head-xx{
+        font-size: 27px !important;
+    }
   
     .card-container {
-        width: 98vw;
+        width: 96vw;
        max-width: 559px;
-height: 331px;
+height: 280px !important;
 flex-shrink: 0;
 margin-bottom: 50px !important;
 
@@ -87,14 +90,15 @@ margin-bottom: 50px !important;
         font-size: 16px;
     }
     .card-box{
+        overflow-y: hidden;
         overflow-x: scroll;
     }
     
     .card {
 
-        width: 163px;
-height: 226px;
-flex-shrink: 0;
+        max-height: 90%;
+        max-width: 35%;
+        margin-left: 10px !important;
         flex-shrink: 0;
         border-radius: 25px;
         background: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
@@ -121,7 +125,7 @@ flex-shrink: 0;
     color: #FFF;
     text-align: center;
     font-family: Volkhov;
-    font-size: 22px;
+    font-size: 18.5px !important;
     font-style: normal;
     font-weight: 700;
     line-height: 150%;
@@ -133,7 +137,7 @@ flex-shrink: 0;
     color: #FFA8CF;
     text-align: center;
     font-family: Noto Sans;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 150%;

@@ -36,7 +36,7 @@
 
             .box {
 
-                max-width: 95.5vw;
+               
                 flex-shrink: 0;
                 border-radius: 20px;
                 
@@ -44,50 +44,67 @@
             }
 
             .box-1 {
-                max-height: 75px;
-                border: 2px solid #FFF;
-                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%)), url("/Client/assets/temp1.png");
-                background-size: cover, cover;
-                /* Set background-size for both layers */
-                background-repeat: no-repeat;
-                background-image: url("css/assets/temp1.png")
-            }
-
-            .box-2 {
-                max-height: 100px;
-                /* New height for box-4 */
+                max-width: 85.5vw;
+                max-height: 120px;
                 border: 2px solid #FFF;
                 background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
                 background-size: cover, cover;
                 /* Set background-size for both layers */
                 background-repeat: no-repeat;
-                background-image: url("css/assets/temp2.png")
+                background-image: url("css/assets/sub1.png")
             }
+            .box-d { max-width: 85.5vw;
+                max-height: 120px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            border: 2px solid #FFF;
+            
+            background: #FDF0F2;
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx2a.png");
 
-            .box-4 {
+        }
+            .box-2 {
+                max-width: 85.5vw;
                 max-height: 120px;
                 /* New height for box-4 */
                 border: 2px solid #FFF;
-                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+               
                 background-size: cover, cover;
                 /* Set background-size for both layers */
                 background-repeat: no-repeat;
-                background-image: url("css/assets/temp4.png");
+                background-image: url("css/assets/sub2.png")
+            }
+
+            .box-4 {
+                max-width: 85.5vw;
+                max-height: 120px;
+                /* New height for box-4 */
+                border: 2px solid #FFF;
+         
+                background-size: cover, cover;
+                /* Set background-size for both layers */
+                background-repeat: no-repeat;
+                background-image: url("css/assets/sub4.png");
             }
 
             .box-3 {
-                max-height: 160px;
-                background: #FDF0F2;
+                max-width: 90.5vw !important;
+                max-height: 120px;
+               
                 background-size: cover, cover;
                 /* Set background-size for both layers */
                 background-repeat: no-repeat;
-                background-image: url("css/assets/temp3.png");
+                background-image: url("css/assets/sub3.png");
 
             }
 
             .next-button {
                 max-height: 50px;
-                max-width: 95.5vw;
+                max-width: 80.5vw;
                 margin-left: 3px !important;
             }
 
@@ -98,7 +115,8 @@
             gap: 5PX;
             display: flex;
             flex-direction: column;
-
+ justify-content: center;
+ align-items: center;
             z-index: 1;
             position: absolute;
             top: 50%;
@@ -109,7 +127,8 @@
 
 
         .box {
-            width: 513px;
+            width: 640px;
+            height: 180px;
             flex-shrink: 0;
             border-radius: 20px;
             z-index: 100;
@@ -125,47 +144,128 @@
 }
 
         .box-1 {
-            height: 99px;
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+           
             border: 2px solid #FFF;
-            background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%)), url("/Client/assets/temp1.png");
+            
             background-size: cover, cover;
             /* Set background-size for both layers */
             background-repeat: no-repeat;
-            background-image: url("css/assets/temp1.png")
+            background-image: url("css/assets/subx1a.png")
         }
 
         .box-2 {
-            height: 137px;
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
             /* New height for box-4 */
             border: 2px solid #FFF;
             background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
             background-size: cover, cover;
             /* Set background-size for both layers */
             background-repeat: no-repeat;
-            background-image: url("css/assets/temp2.png")
+            background-image: url("css/assets/subx3a.png")
         }
 
         .box-4 {
-            height: 177px;
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
             /* New height for box-4 */
             border: 2px solid #FFF;
             background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
             background-size: cover, cover;
             /* Set background-size for both layers */
             background-repeat: no-repeat;
-            background-image: url("css/assets/temp4.png");
+            background-image: url("css/assets/subx5a.png");
         }
 
-        .box-3 {
+        .box-3 { width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
             border: 2px solid #FFF;
-            height: 213px;
+            
             background: #FDF0F2;
             background-size: cover, cover;
             /* Set background-size for both layers */
             background-repeat: no-repeat;
-            background-image: url("css/assets/temp3.png");
+            background-image: url("css/assets/subx4a.png");
 
         }
+        .box-d { width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            border: 2px solid #FFF;
+            
+            background: #FDF0F2;
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx2a.png");
+
+        }
+        /*Hover Animations */
+
+
+        .box-1:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx1b.png"); /* Add the path to your new image */
+    }
+
+        .box-2:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx3b.png"); /* Add the path to your new image */
+    }
+
+        .box-4:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx5b.png"); /* Add the path to your new image */
+    }
+
+        .box-3:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx4b.png"); /* Add the path to your new image */
+    }
+        .box-d:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx2b.png"); /* Add the path to your new image */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 
 </head>
@@ -223,6 +323,7 @@
 
 
             <div class="box box-1" id="basic"></div>
+            <div class="box box-d" id="discover"></div>
 
 
             <div class="box box-2" id="starter"></div>

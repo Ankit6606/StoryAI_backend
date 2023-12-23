@@ -84,7 +84,7 @@ body {
     }
     
     .flex-box {
-        width: 96%;
+        width: 90vw !important;
         max-width: 1805px;
         max-height: 150px;
         flex-shrink: 0;

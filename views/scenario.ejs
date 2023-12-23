@@ -2,130 +2,131 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Story Generation Page 2</title>
-    <link rel="stylesheet" href="css/meta/global.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
-    <link rel="stylesheet" href="css/scenario.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/meta/vertical-navbar.css">
-    
+  <title>Story Generation Page 2</title>
+  <link rel="stylesheet" href="css/meta/global.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+  <link rel="stylesheet" href="css/scenario.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/meta/vertical-navbar.css">
+
 
 </head>
 
 <body>
-    <button class="navTrigger" id="navTrigger">
-        <svg viewBox="0 0 64 48">
-          <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
-          <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
-          <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
-        </svg>
-      </button>
-      <nav class="navMenu" id="navMenu">
-        <ul>
-          <li>
-            <a href="/home">Home</a>
-          </li>
-          <li>
-            <a href="/story">Create Story</a>
-          </li>
-          <li>
-            <a href="#">Story History</a>
-          </li>
-          <li>
-            <a href="/profile">Profile</a>
-          </li>
-          <li>
-            <a href="/subscribe">Subscription</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="navbar">
-        <div class="icons-container">
-          <div class="icon-item">
-            <img src="css/assets/gem.png" alt="Icon 1">
-            <span class="icon-number">1</span>
-          </div>
-          <div class="icon-item">
-            <img src="css/assets/parrot.png" alt="Icon 2">
-            <span class="icon-number">2</span>
-          </div>
-        </div>
-        <div class="navbar">
-          <div class="icons-container">
-            <div class="icon-item">
-              <img src="css/assets/gem.png" alt="Icon 1">
-              <span class="icon-number">1</span>
-            </div>
-            <div class="icon-item">
-              <img src="css/assets/parrot.png" alt="Icon 2">
-              <span class="icon-number">2</span>
-            </div>
-          </div>
-          <div class="nav-button-container">
-            <a href="/subscribe" class="nav-button">Subscription</a>
-            <a href="/profile" class="nav-button">Profile</a>
-            <a href="#" class="nav-button">Story History</a>
-            <a href="/story" class="special-button">Create Story</a>
-          </div>
-        </div>
-      
+  <button class="navTrigger" id="navTrigger">
+    <svg viewBox="0 0 64 48">
+      <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+      <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+      <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+    </svg>
+  </button>
+  <nav class="navMenu" id="navMenu">
+    <ul>
+      <li>
+        <a href="/home">Home</a>
+      </li>
+      <li>
+        <a href="/story">Create Story</a>
+      </li>
+      <li>
+        <a href="#">Story History</a>
+      </li>
+      <li>
+        <a href="/profile">Profile</a>
+      </li>
+      <li>
+        <a href="/subscribe">Subscription</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="navbar">
+    <div class="icons-container">
+      <div class="icon-item">
+        <img src="css/assets/gem.png" alt="Icon 1">
+        <span class="icon-number">1</span>
       </div>
-    
-    <div class="image-box"></div>
-    <div class="ellipse"></div>
-    
-    <form method="POST" action="/scenario">
+      <div class="icon-item">
+        <img src="css/assets/parrot.png" alt="Icon 2">
+        <span class="icon-number">2</span>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="icons-container">
+        <div class="icon-item">
+          <img src="css/assets/gem.png" alt="Icon 1">
+          <span class="icon-number">1</span>
+        </div>
+        <div class="icon-item">
+          <img src="css/assets/parrot.png" alt="Icon 2">
+          <span class="icon-number">2</span>
+        </div>
+      </div>
+      <div class="nav-button-container">
+        <a href="/subscribe" class="nav-button">Subscription</a>
+        <a href="/profile" class="nav-button">Profile</a>
+        <a href="#" class="nav-button">Story History</a>
+        <a href="/story" class="special-button">Create Story</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="image-box"></div>
+  <div class="ellipse"></div>
+
+  <form method="POST" action="/scenario">
     <div class="content-box" id="content-box-1">
-        <div class="header-text">Step 2 : Scenario</div>
-        <div class="sub-text">Select a preferred scenario for<br>your story</div>
+      <div class="header-text">Step 2 : Scenario</div>
+      <div class="sub-text">Select a preferred scenario for<br>your story</div>
 
 
-       
-        <div class="flex-box">
-            <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Scenerio</div>
-            <input type="text" class="text-box" placeholder="Start typing here" name="scenario">
-            
+
+      <div class="flex-box">
+        <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Scenerio</div>
+        <input type="text" class="text-box" placeholder="Start typing here" name="scenario">
+
+      </div>
+      <div class="card-container">
+        <div class="text-style-head"
+          style="color: #000; font-size: 30px; align-self: baseline; margin-top: 20px; margin-left:30px;margin-bottom: 16px;">
+          Select From 10 Scenarios</div>
+        <div class="card-box">
+
+          <div class="card" style="background-image:url('css/assets/scenario/ce-8.png') ;">
+
+
+
+          </div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-7.png') ;"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-9.png') ;"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-18.png') ;"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-19.png');"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-20.png');"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-21.png');"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-22.png');"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-80.png');"></div>
+          <div class="card" style="background-image:url('css/assets/scenario/ce-79.png');"></div>
         </div>
-        <div class="card-container">
-            <div class="text-style-head"
-            style="color: #000; font-size: 30px; align-self: baseline; margin-top: 20px; margin-left:30px;margin-bottom: 16px;">
-                Select From 10 Scenarios</div>
-                <div class="card-box">
-    
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-8.png') ;">
-                        
-    
-    
-                    </div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-7.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-9.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-18.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-19.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-20.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-21.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-22.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-80.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-79.png');"></div>
-                </div>
 
-        </div>
-        <button type="submit" class="next-button" style="height: 55px;" >Next Emotions</button>
-       
-        <a href="/story" style="color: #FFF;
+      </div>
+      <button type="submit" class="next-button" style="height: 55px;">Next Emotions</button>
+
+      <a href="/story" style="color: #FFF;
 
         font-family: Volkhov;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
-    </div> 
-</form> 
-<script src="js/scenario.js"></script>
-<script src="js/vnav.js"></script>
+    </div>
+  </form>
+  <script src="js/scenario.js"></script>
+  <script src="js/vnav.js"></script>
 </body>
 
 </html>

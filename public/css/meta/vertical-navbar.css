@@ -116,8 +116,8 @@ html {
   .navMenu::before {
  
     /* filter: blur(5px); */
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
    box-shadow: 20px 0 20px 0 rgba(0, 0, 0, 0.3);
    border: 2px solid ;
    border-image: linear-gradient(to right, rgba(150, 101, 211, 0.62), rgba(150, 101, 211, 0.541));
@@ -127,7 +127,7 @@ html {
     bottom: 0;
     left: 0;
     right: 15vw;
-    background: linear-gradient(-45deg, rgba(255,255,255,0.2), rgba(57, 28, 92, 0.3), rgba(150, 101, 211, 0.6));
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 0.18), rgba(57, 28, 92, 0.571), rgb(150, 101, 211));
 
     transform-origin: 0 0;
     transform: skew(-14deg) translateX(-120%);
@@ -156,10 +156,10 @@ html {
   .navMenu ul li a {
     position: relative;
     display: inline-block;
-    padding: 12px 20px;
+    padding: 2px 6px;
     color: var(--white);
     font-family: Volkhov;
-    font-size: 1.9em;
+    font-size: 1.8em;
     text-decoration: none;
     transform: skew(16deg);
     z-index: 1; /* Ensure the text appears above the ::before pseudo-element */
