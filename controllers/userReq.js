@@ -33,6 +33,9 @@ let justNumber= "";
 export function renderlandingPage(req,res){
   res.render("landing-page");
 };
+export function rendershp(req,res){
+  res.render("story_history");
+};
 
 //--Authentication pages--//
 
