@@ -30,8 +30,8 @@ import {rootRender,
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
-import pkg from 'express/lib/response.js';
-const { render } = pkg;
+// import pkg from 'express/lib/response.js';
+// const { render } = pkg;
 
 const router = express.Router();
 
@@ -54,7 +54,7 @@ router.get("/story",storyPage);
 router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
-router.get("/story_history", rendershp);
+router.get("/storyhistory", rendershp);
 
 // router.get("/storyoutput",getStoryOutput);
 router.get("/success",success);
