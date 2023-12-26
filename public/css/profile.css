@@ -8,11 +8,12 @@
 }
 .button-box{
     margin-top: 20px;
-    margin-left: 47.5px;
+    gap: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    align-self: center;
+    
 }
 
 
@@ -74,7 +75,7 @@ padding: 0;}
     }
     .button-box{
         margin-top: 20px;
-        margin-left: 8px !important;
+       gap: 0px !important;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -185,6 +186,7 @@ padding: 0;}
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
     opacity: 1;
     transition: opacity 0.5s ease;
     /* Add a transition for smoother and slower opacity change */
@@ -227,6 +229,8 @@ padding: 0;}
     display: flex;
     flex-direction: column;
     z-index: 100;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-field {
