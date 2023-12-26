@@ -23,8 +23,6 @@ import {rootRender,
         postValues,
         // getStoryOutput,
         getphoneNumber,
-        getr, 
-        getotp,
         postPhonenumber,
         otpVerification
         } from '../controllers/userReq.js';
@@ -36,9 +34,6 @@ import {success,failure, selectSubscription, makepayment} from '../controllers/p
 const router = express.Router();
 
 
-
-router.get("/r",getr);
-router.post("/r",getotp);
 //Get requests
 
 router.get("/",rootRender);

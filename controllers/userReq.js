@@ -27,16 +27,13 @@ let emotions = "";
 let values = "";
 let globalNumber = "";
 let justNumber= "";
+let story = [];
 
 
 
 
 export function renderlandingPage(req,res){
   res.render("landing-page");
-};
-
-export function rendershp(req,res){
-  res.render("story_history");
 };
 
 //--Authentication pages--//
@@ -235,30 +232,7 @@ export async function otpVerification(req,res){
 
 };
 
-export function getr(req,res){
-  res.render("random");
-  client.verify.v2
-  .services(verifySid)
-  .verifications.create({ to: justNumber, channel: "sms" })
-  .then((verification) => console.log(verification.status))
-  .then(() => {
-    const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-rl.question("Please enter the OTP:", (otpCode) => {
-  client.verify.v2
-    services(verifySid)
-    .verificationChecks.create({ to: justNumber, code: otpCode })
-    .then((verification_check) => console.log(verification_check.status))
-    .then(() => rl.close());
-  });
-});
-};
 
-export function getotp(req,res){
-res.redirect("/register");
-}
 
 //-- Home page --//
 
@@ -317,15 +291,21 @@ export function storyPost(req,res){
 
 export function renderScenario(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("scenario",{
-        gems : req.user.gems,
-        parrots : req.user.parrots,
-      });
-     }
-     else{
-      res.redirect("/subscribe");
-     }
+    if(req.user.phoneNumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        res.render("scenario",{
+          gems : req.user.gems,
+          parrots : req.user.parrots,
+        });
+       }
+       else{
+        res.redirect("/subscribe");
+       }
+    }
+    else{
+      res.redirect("/phonenumber");
+    }
+    
   }
   else{
     res.redirect("/authenticate2");
@@ -345,15 +325,21 @@ export function postScenario(req,res){
 
 export function renderEmotions(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("emotions",{
-        gems : req.user.gems,
-        parrots : req.user.parrots,
-      });
-     }
-     else{
-      res.redirect("/subscribe");
-     }
+    if(req.user.phonenumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        res.render("emotions",{
+          gems : req.user.gems,
+          parrots : req.user.parrots,
+        });
+       }
+       else{
+        res.redirect("/subscribe");
+       }
+    }
+    else{
+      res.redirect("/phonenumber");
+    }
+   
   }
   else{
     res.redirect("/authenticate2");
@@ -372,15 +358,20 @@ export function postEmotions(req,res){
 
 export function renderValues(req,res){
   if(req.isAuthenticated()){
-    if(req.user.gems>=1 && req.user.parrots>=1){
-      res.render("values",{
-        gems : req.user.gems,
-        parrots : req.user.parrots,
-      });
-     }
-     else{
-      res.redirect("/subscribe");
-     }
+    if(req.user.phonenumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        res.render("values",{
+          gems : req.user.gems,
+          parrots : req.user.parrots,
+        });
+       }
+       else{
+        res.redirect("/subscribe");
+       }
+    }
+    else{
+      res.redirect("/phonenumber");
+    }
   }
   else{
     res.redirect("/authenticate2");
@@ -431,6 +422,7 @@ export async function postValues(req,res){
       story: responseData.story,
       thumb_img_path : responseData.thumb_img_path,
       audiopath : responseData.audio_path,
+      audioduration : (responseData.audio_duration/60).toFixed(2)
     }); 
 
     const gemstodeduct = 1;
@@ -477,24 +469,53 @@ export async function postValues(req,res){
   
 };
 
-//Storyoutput
-// export function getStoryOutput(req,res){
-//   if(req.user.gems>=1 && req.user.parrots>=1){
-//     res.render("storyoutput");
-//    }
-//    else{
-//     res.redirect("/subscribe");
-//    }
-// }
+
+
+export const rendershp = async (req, res) => {
+  try {
+    if (req.isAuthenticated()) {
+      if(req.user.phoneNumber){
+        // Fetch the user's details along with populated stories
+      const user = await User.findById(req.user._id).populate('stories').exec();
+      
+      if (!user) {
+        throw new Error('User not found');
+      }
+
+      // User found, render the story history page
+      res.render("story_history", {
+        userStories: user.stories,
+        gems : req.user.gems,
+        parrots : req.user.parrots
+      });
+      }
+      else{
+        res.redirect("/phonenumber");
+      }
+      
+    } else {
+      res.redirect("/authenticate2");
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching user details');
+  }
+};
+
 
 
 //--Profile management--// 
 export function profileManage(req,res){
   if(req.isAuthenticated()){
-    res.render("profile",{
-      gems : req.user.gems,
-      parrots : req.user.parrots,
-    });
+    if(req.user.phoneNumber){
+      res.render("profile",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
+    }else{
+      res.redirect("/phonenumber");
+    }
+    
   }else{
     res.redirect("/authenticate2");
   }
@@ -546,18 +567,4 @@ export async function editProfile(req, res) {
     res.redirect("/authenticate2");
   }
 };
-
-
-
-export function getStoryOutput(req,res){
-  if(req.user.gems>=1 && req.user.parrots>=1){
-    res.render("storyoutput",{
-      gems : req.user.gems,
-      parrots : req.user.parrots,
-    });
-   }
-   else{
-    res.redirect("/subscribe");
-   }
-}
 

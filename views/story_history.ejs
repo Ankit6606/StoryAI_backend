@@ -472,7 +472,7 @@ max-height: 32%;}
             <a href="/story">Create Story</a>
           </li>
           <li>
-            <a href="/story_history">Story History</a>
+            <a href="/storyhistory">Story History</a>
           </li>
           <li>
             <a href="/profile">Profile</a>
@@ -486,28 +486,28 @@ max-height: 32%;}
         <div class="icons-container">
           <div class="icon-item">
             <img src="css/assets/gem.png" alt="Icon 1">
-            <span class="icon-number">1</span>
+            <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
             <img src="css/assets/parrot.png" alt="Icon 2">
-            <span class="icon-number">2</span>
+            <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
         <div class="navbar">
           <div class="icons-container">
             <div class="icon-item">
               <img src="css/assets/gem.png" alt="Icon 1">
-              <span class="icon-number">1</span>
+              <span class="icon-number"><%= gems %></span>
             </div>
             <div class="icon-item">
               <img src="css/assets/parrot.png" alt="Icon 2">
-              <span class="icon-number">2</span>
+              <span class="icon-number"><%= parrots %></span>
             </div>
           </div>
           <div class="nav-button-container">
             <a href="/subscribe" class="nav-button">Subscription</a>
             <a href="/profile" class="nav-button">Profile</a>
-            <a href="#" class="nav-button">Story History</a>
+            <a href="/storyhistory" class="nav-button">Story History</a>
             <a href="/story" class="special-button">Create Story</a>
           </div>
         </div>
@@ -517,245 +517,35 @@ max-height: 32%;}
     
  
     
-    <form method="POST" action="/scenario">
+    <form method="POST" action="/storyhistory">
     <div class="content-box" id="content-box-1">
       <div class="header-text">
         Story History</div>
-      <div class="sub-text">Here you can see the your past<br>stories generated</div>
+      <div class="sub-text">Here you can see your past<br>stories generated</div>
 
 
        
         
-        <div class="card-container">
-            \
-                <div class="card-box">
-    
-                    <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                    <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card" style="background-image: none;">
-                        
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
+      <div class="card-container">
+        <% for (let i = 0; i < userStories.length; i += 9) { %>
+          <div class="card-box">
+            <% for (let j = i; j < i + 9 && j < userStories.length; j++) { %>
+              <% if (!userStories[j].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
+                <div class="card">
+                  <div class="card-text-1">
+                    <p><%= userStories[j].title %></p>
+                    <div class="card-text-2">
+                      <p><%= userStories[j].audioduration %></p>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-box">
-    
-                    
-                    <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                    <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                      <div class="card">
-                        <div class="card-text-1">
-                          <p>My First Story</p>
-                          <div class="card-text-2">
-                            <p>3:48 Sec</p>
-              
-                          </div>
-                        </div>
-              
-              
-                      </div>
-                </div>
+              <% } %>
+            <% } %>
+          </div>
+        <% } %>
+        
+      </div>
+      
 
 
       </div>
