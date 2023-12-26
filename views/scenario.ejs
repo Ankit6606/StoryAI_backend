@@ -48,22 +48,22 @@
         <div class="icons-container">
           <div class="icon-item">
             <img src="css/assets/gem.png" alt="Icon 1">
-            <span class="icon-number">1</span>
+            <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
             <img src="css/assets/parrot.png" alt="Icon 2">
-            <span class="icon-number">2</span>
+            <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
         <div class="navbar">
           <div class="icons-container">
             <div class="icon-item">
               <img src="css/assets/gem.png" alt="Icon 1">
-              <span class="icon-number">1</span>
+              <span class="icon-number"><%= gems %></span>
             </div>
             <div class="icon-item">
               <img src="css/assets/parrot.png" alt="Icon 2">
-              <span class="icon-number">2</span>
+              <span class="icon-number"><%= parrots %></span>
             </div>
           </div>
           <div class="nav-button-container">
@@ -97,20 +97,16 @@
                 Select From 10 Scenarios</div>
                 <div class="card-box">
     
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-8.png') ;">
-                        
-    
-    
-                    </div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-7.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-9.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-18.png') ;"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-19.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-20.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-21.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-22.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-80.png');"></div>
-                    <div class="card" style="background-image:url('css/assets/scenario/ce-79.png');"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-8.png') ;" data-value="sadness"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-7.png') ;" data-value="joy"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-9.png') ;" data-value="fear"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-18.png') ;" data-value="alien encounter"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-19.png');" data-value="dragon kingdom"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-20.png');" data-value="ghost ship"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-21.png');" data-value="jungle expedition"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-22.png');" data-value="mermaid lagoon"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-80.png');" data-value="robot friendship"></div>
+                    <div class="card" style="background-image:url('css/assets/scenario/ce-79.png');" data-value="pirate island"></div>
                 </div>
 
       </div>
@@ -127,6 +123,7 @@
   </form>
   <script src="js/scenario.js"></script>
   <script src="js/vnav.js"></script>
+
 </body>
 
 </html>

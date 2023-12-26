@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import User from '../models/users.js';
 import passport  from 'passport';
 import Story from '../models/stories.js';
@@ -33,6 +34,7 @@ let justNumber= "";
 export function renderlandingPage(req,res){
   res.render("landing-page");
 };
+
 export function rendershp(req,res){
   res.render("story_history");
 };
@@ -155,29 +157,35 @@ export function getphoneNumber(req,res){
 
 export async function postPhonenumber(req, res) {
   try {
-    const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
-    globalNumber = mobileNumber;
-    justNumber = req.body.prephoneNumber + req.body.phoneNumber;
-    // console.log(mobileNumber);
-    const foundUser = await User.findOne({ phoneNumber: mobileNumber });
-
-    if (foundUser) {
-      // If a user with the same phone number exists
-      const errorMessage = "Duplicate contact number found. Please use a different contact number.";
-      const script = `<script>alert("${errorMessage}"); window.location.href="/phonenumber";</script>`;
-      return res.send(script);
-    } else {
-      // No user found with the provided phone number
-      console.log("No duplicate contact number found. Proceeding...");
-       // Trigger Twilio verification process
-       const verification = await client.verify.v2.services(verifySid)
-       .verifications.create({ to: justNumber, channel: "sms" });
-     
-     console.log(verification.status); // Log the verification status
-
-     // Render the OTP verification page
-     res.render("otp2");
+    if(req.isAuthenticated()){
+      const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
+      globalNumber = mobileNumber;
+      justNumber = req.body.prephoneNumber + req.body.phoneNumber;
+      // console.log(mobileNumber);
+      const foundUser = await User.findOne({ phoneNumber: mobileNumber });
+  
+      if (foundUser) {
+        // If a user with the same phone number exists
+        const errorMessage = "Duplicate contact number found. Please use a different contact number.";
+        const script = `<script>alert("${errorMessage}"); window.location.href="/phonenumber";</script>`;
+        return res.send(script);
+      } else {
+        // No user found with the provided phone number
+        console.log("No duplicate contact number found. Proceeding...");
+         // Trigger Twilio verification process
+         const verification = await client.verify.v2.services(verifySid)
+         .verifications.create({ to: justNumber, channel: "sms" });
+       
+       console.log(verification.status); // Log the verification status
+  
+       // Render the OTP verification page
+       res.render("otp2");
+      }
     }
+    else{
+      res.redirect("/authenticate2");
+    }
+
   } catch (err) {
     console.log(err);
     return res.redirect("/error");
@@ -300,7 +308,7 @@ export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
   // console.log(age);
-  // console.log(character);
+  console.log(character);
   res.redirect("/scenario");
 };
 
@@ -326,6 +334,8 @@ export function renderScenario(req,res){
 
 export function postScenario(req,res){
   scenario = req.body.scenario;
+  console.log(scenario);
+
   // console.log(scenario);
   res.redirect("/emotions");
 };
@@ -353,7 +363,7 @@ export function renderEmotions(req,res){
 
 export function postEmotions(req,res){
   emotions = req.body.emotions;
-  // console.log(emotions);
+  console.log(emotions);
   res.redirect("/values");
 };
 
@@ -381,7 +391,8 @@ export function renderValues(req,res){
 //Main story creation with api call and updation in database//
 export async function postValues(req,res){
   values = req.body.values;
-  // console.log(values);
+  // console.log(JSON.stringify(character))
+  console.log(values);
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
   // Define multiple parameters
@@ -393,7 +404,7 @@ export async function postValues(req,res){
     values: JSON.stringify(values),
     userId: "test"
   });
-  // console.log(`${endpoint}?${params.toString()}`);
+  console.log(`${endpoint}?${params.toString()}`);
 
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {

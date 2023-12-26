@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import 'dotenv/config';
 import session from 'express-session';
 import passportLocalMongoose from 'passport-local-mongoose';
@@ -14,6 +15,8 @@ const app = express();//For the main web application
 
 
 app.use(express.static("public"));
+app.use(express.json()); 
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
