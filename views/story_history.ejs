@@ -127,27 +127,68 @@
     
     }
     .card-container {
-        
-       max-width: 98VW !important ;
-height: auto;
-flex-shrink: 0;
-margin-bottom: 0px !important;
+    max-height: 800px;
+    overflow-y: auto;
+    width: 99vw;
+    max-width: 1830px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: 3px solid #A288CB;
+    background: linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%);
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 23px;
+    z-index: 99;
+    overflow: hidden;
+    padding: 15px;
+    box-sizing: border-box; /* Ensure padding and borders are included in the height calculation */
+}
 
+.card-row {
+    margin-top: 10px;
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   margin: 0 -10px !important;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
 
-    }
+.card {
+    width: calc(33.3333% - 20px) !important; 
+    margin-left: 10px !important; 
+    margin-right: 10px !important; 
+    height: 170px !important;
+  }
+
+.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(250, 250, 250, 0.2);
+    transform: translateY(-10px);
+  
+    z-index: 2;
+}
+.card-box {
+    overflow-x:hidden;
+    overflow-y: visible;
+    display: flex;
+    flex-direction:initial;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
+
     .text-style-head{
         font-size: 20px !important;
         margin-bottom: 5px !important;
         margin-top: 10px !important;
-    }
-    .card-box{
-        overflow-x: scroll !important;
-        overflow-y: hidden;
-    }
-    .card{
-        max-height: 70%;
-        max-width: 40%;
-        margin-left: 10px !important;
     }
     
    
@@ -248,6 +289,8 @@ max-height: 32%;}
     margin-bottom: 8px;
 }
 .card-container {
+    max-height: 800px;
+    overflow-y: auto;
     width: 99vw;
     max-width: 1830px;
     flex-shrink: 0;
@@ -260,14 +303,18 @@ max-height: 32%;}
     align-items: center;
     margin-top: 23px;
     z-index: 99;
-    overflow: visible; /* Allow cards to overflow the container */
-    animation: containerSlideOut 2s ease-out forwards;
+    overflow: hidden;
+    padding: 15px;
+    box-sizing: border-box; 
 }
 
-.card-box {
-    overflow-x:hidden;
+.card-row {
+    margin-top: 10px;
+    overflow-y: scroll;
     display: flex;
-    flex-direction:initial;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
     height: auto;
     width: 99%;
     max-width: 1803px;
@@ -277,7 +324,7 @@ max-height: 32%;}
 
 .card {
     margin-top: 10px;
-    width: 202px;
+    width: calc(12.5% - 30px);
     height: 279px;
     flex-shrink: 0;
     border: 3px solid #A288CB;
@@ -287,19 +334,31 @@ max-height: 32%;}
     background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
     background-size: cover;
     margin-bottom: 23px;
-    margin-left: 21px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smoother transitions */
+    margin-left: 15px;
+    margin-right: 15px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
     position: relative;
-    z-index: 1; /* Make sure the card stays above other elements */
+    z-index: 1;
+    box-sizing: border-box; }
+.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(250, 250, 250, 0.2);
+    transform: translateY(-10px);
+  
+    z-index: 2;
+}
+.card-box {
+    overflow-x:hidden;
+    overflow-y: visible;
+    display: flex;
+    flex-direction:initial;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
 }
 
-.card:hover {
-    box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.2); /* Enhance raise effect */
-    transform: translateY(-10px); /* Lift the card slightly on hover */
-    width: 220px; /* Increase width on hover */
-    height: 299px; /* Increase height on hover */
-    z-index: 2; /* Make the hovered card appear above other cards */
-}
+
 
 .card-text-1 {
     color: #FFF;
@@ -526,24 +585,26 @@ max-height: 32%;}
        
         
       <div class="card-container">
-        <% for (let i = 0; i < userStories.length; i += 9) { %>
-          <div class="card-box">
-            <% for (let j = i; j < i + 9 && j < userStories.length; j++) { %>
-              <% if (!userStories[j].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
-                <div class="card">
-                  <div class="card-text-1">
-                    <p><%= userStories[j].title %></p>
-                    <div class="card-text-2">
-                      <p><%= userStories[j].audioduration %></p>
+        <div class="card-row">
+            <% for (let i = 0; i < userStories.length; i++) { %>
+                <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
+                    <div class="card">
+                        <div class="card-text-1">
+                            <p><%= userStories[i].title %></p>
+                            <div class="card-text-2">
+                                <p><%= userStories[i].audioduration %></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              <% } %>
+                <% } %>
             <% } %>
-          </div>
-        <% } %>
+        </div>
+    </div>
+    
         
-      </div>
+    
+    
+    
       
 
 
