@@ -6,6 +6,7 @@ const storySchema = new mongoose.Schema({
     story: String,
     thumb_img_path : String,
     audiopath : String,
+    audioduration : Number
 });
 
 const Story = new mongoose.model('Story',storySchema);

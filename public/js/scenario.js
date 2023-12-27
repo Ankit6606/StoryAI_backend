@@ -21,21 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function sendDataToBackend(value) {
-        // You can use fetch or XMLHttpRequest to send the data to the backend
-        // Example using fetch:
-        fetch('/your-backend-endpoint', {
+        fetch('/scenario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ value: value })
+            body: JSON.stringify({ scenario: value }) // Sending data to the '/scenario' endpoint
         })
         .then(response => {
-            // Handle the response from the backend if needed
-            console.log('Data sent to backend:', value);
+            if (response.ok) {
+                console.log('Data sent to backend:', value);
+                // Optionally, perform actions after successful data transmission
+                // For example, redirect to another page
+                window.location.href = '/emotions'; // Replace '/next-page' with your desired redirection URL
+            } else {
+                console.error('Failed to send data to backend');
+            }
         })
         .catch(error => {
-            // Handle errors
             console.error('Error sending data to backend:', error);
         });
     }
