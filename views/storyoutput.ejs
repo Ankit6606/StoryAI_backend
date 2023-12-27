@@ -128,7 +128,7 @@ body {
         height: 100vh !important;
         width: 100vw !important;
         font-family: Arial, sans-serif;
-        overflow: hidden;
+        overflow-y:scroll;
 
     }
 
@@ -432,16 +432,40 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         position: absolute;
         top: -4.5px; /* Adjust position as needed */
     }
+    .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 240px; /* Adjust as needed based on your button size */
+    margin: 0 auto;
+    position: relative;
+    top: -45px; /* Adjust as needed to control the vertical position */
+}
 
-    .play-pause-container {
+.button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.left-button, .right-button {
+    /* Add your button styling here */
+}
+
+.left-button img, .right-button img {
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+}
+
+.play-pause-container {
     height: 95px;
     width: 95px;
-    margin-left: 50%;
-    margin-top: -47.5px; /* Half of the button's height */
-     /* Center horizontally */
-    transform: translateX(-50%);
+    margin-left: auto;
+    margin-right: auto;
     z-index: 2; /* Ensure it's above other elements */
-    margin-bottom: 3%;
+    position: relative;
+    top: -10px; /* Adjust as needed to control the vertical position */
 }
 
 /* Add this style to center the button inside the container */
@@ -450,6 +474,16 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     height: 95px;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+/* Add any additional styling as needed */
+
 
 </style>
 
@@ -513,10 +547,18 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
                         <source src="<%= storyAudio %>" type="audio/mp3">
                         Your browser does not support the audio tag.
                     </audio>
-                    <div class="play-pause-container" onclick="togglePlayPause()">
-                        <div class="play-pause-button">
-                            <img id="play-pause-icon" src="css/assets/pause.png" style="object-fit: cover; height: 95px ; width:95px ;" alt="">
-                            <img id="play-pause-image" src="css/assets/play.png" style="object-fit: cover; height: 95px ; width:95px ; display: none;" alt="">
+                    <div class="button-container">
+                        <div class="button left-button" onclick="handleLeftButtonClick()">
+                            <img src="css/assets/rewind.png" alt="Left Button">
+                        </div>
+                        <div class="play-pause-container" onclick="togglePlayPause()">
+                            <div class="play-pause-button">
+                                <img id="play-pause-icon" src="css/assets/pause.png" style="object-fit: cover; height: 95px; width:95px;" alt="">
+                                <img id="play-pause-image" src="css/assets/play.png" style="object-fit: cover; height: 95px; width:95px; display: none;" alt="">
+                            </div>
+                        </div>
+                        <div class="button right-button" onclick="handleRightButtonClick()">
+                            <img src="css/assets/forward.png" alt="Right Button">
                         </div>
                     </div>
                     <!-- Progress Bar -->
@@ -527,16 +569,14 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
                         </svg>
                     </div>
                     <div id="timer" style="color: white; margin-top: 10px; text-align: center;"></div>
-                    <!-- Play/Pause Button -->
-                    
-
                 </div>
             </div>
+            
     
             <!-- Text Box -->
             <div class="box text-box">
-                <div class="box-heading"><%= storyTitle %></div>
-                <div class="box-subtext"><%= story %></div>
+                <div class="box-heading" ><%= storyTitle %></div>
+                <div class="box-subtext" ><%= story %></div>
             </div>
         </div>
         <script src="js/storyoutput.js"></script>

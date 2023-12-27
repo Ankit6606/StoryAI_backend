@@ -64,12 +64,14 @@
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
+    <form id="scenarioForm" method="POST" action="/story">
     <div class="content-box">
         <div class="header-text">Step 1: Characters</div>
         <div class="sub-text">Fill the fields to create your<br>amazing story.</div>
+        
         <div class="fields-box" id="fields-box">
         <!-- Age Group Dropdown -->
-        <form id="scenarioForm" method="POST" action="/story">
+        
             <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Age
                 Group</div>
                 <select class="text-field-1" placeholder="Age Group" name="age"
@@ -89,7 +91,7 @@
 
             </div>
             <button type="submit" class="next-button" >Next Scenario</button>
-        </form>
+        
         <a href="/" style="color: #FFF;
 
         font-family: Volkhov;
@@ -98,6 +100,8 @@
         font-weight: 700;
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
     </div>
+  </form>
+
     <script src="js/storypage.js"></script>
     <script src="js/vnav.js"></script>
 </body>
