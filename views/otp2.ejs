@@ -53,9 +53,26 @@
 
 
     @media (max-width: 768px) {
+        .otp-input {
+      width: 35px !important;
+      height: 35px !important;
+      font-size: 18px;
+      text-align: center;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: rgb(0, 0, 0);
+      background-color: #ffffff;
+      outline: none;
+    }
+    .otp-container {
+        margin-top: 30px ;
+       margin-left: 0px !important;
+      display: flex;
+    }
 
         .flexbox,
-        .flexbox-2 {
+        .flexbox-2 { 
             top: 10%;
         }
 
@@ -482,7 +499,7 @@
     }
     .otp-container {
         margin-top: 30px ;
-        margin-left: -20px;
+   
       display: flex;
     }
 
@@ -543,23 +560,8 @@
                         <!-- Sign-up fields and button -->
 
                         <div class="boxz">
-                            <!-- <div class="header-text">Phone Number</div> -->
-                            <!-- Country code and phone input fields
-                            <div style="display: flex; align-items: center;"> -->
-                                <!-- <select id="signUpCountryCode" class="country-code" name="prephoneNumber">
-                                    <option value="+1">+1</option>
-                                    <option value="+44">+44</option>
-                                    <option value="+49">+49</option> -->
-                                    <!-- Add more options as needed -->
-                               <!-- </select>
-                                <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone"
-                                    name="phoneNumber"
-                                     style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
-                            </div>
-                        </div> -->
-                        <div class="text" id="toggle-sign-in" onclick="showNextPage()">Didnt Recieve OTP?
-                            <a href="/verifyotp"><span class="sign-in-text" id="toggle-text">Send Again</span></a>
-                        </div>
+                         
+                        
                         <div class="otp-container">
                             <input type="text" class="otp-input" maxlength="1" id="digit1" oninput="moveToNext(this)" name="digit1" required>
                             <input type="text" class="otp-input" maxlength="1" id="digit2" oninput="moveToNext(this)" name="digit2" required>
@@ -567,6 +569,9 @@
                             <input type="text" class="otp-input" maxlength="1" id="digit4" oninput="moveToNext(this)" name="digit4" required>
                             <input type="text" class="otp-input" maxlength="1" id="digit5" oninput="moveToNext(this)" name="digit5" required>
                             <input type="text" class="otp-input" maxlength="1" id="digit6" oninput="moveToNext(this)" name="digit6" required>
+                        </div>
+                        <div class="text" id="toggle-sign-in" onclick="showNextPage()">Didnt Recieve OTP?
+                            <a href="/verifyotp"><span class="sign-in-text" id="toggle-text">Send Again</span></a>
                         </div>
 
 

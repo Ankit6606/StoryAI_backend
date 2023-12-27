@@ -300,7 +300,7 @@ export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
   // console.log(age);
-  // console.log(character);
+  console.log(character);
   res.redirect("/scenario");
 };
 
