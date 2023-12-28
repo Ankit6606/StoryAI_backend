@@ -592,12 +592,13 @@ max-height: 32%;}
         <div class="card-row">
             <% for (let i = 0; i < userStories.length; i++) { %>
                 <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
-                    <div class="card" onclick="navigateToDifferentPage('<%= userStories[i].link %>')">
+                    <div class="card" data-value="<%= userStories[i]._id %>" style="background-image: url('<%= userStories[i].thumb_img_path %>')">
                         <div class="card-text-1">
                             <p><%= userStories[i].title %></p>
                             <div class="card-text-2">
                                 <p><%= userStories[i].audioduration %></p>
                             </div>
+                            
                         </div>
                     </div>
                 <% } %>
@@ -616,28 +617,43 @@ max-height: 32%;}
       
     </div>
   </form>
-  <script src="js/scenario.js"></script>
+  <!-- <script src="js/scenario.js"></script> -->
   <script src="js/vnav.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
 
-    
-var cardBackgroundImage = 'your_image_url.jpg';
-
-function navigateToDifferentPage(link) {
-    
-    window.location.href = link;
-}
-
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    var cards = document.querySelectorAll('.card');
-
-  
-    cards.forEach(function (card) {
-        card.style.backgroundImage = 'url(' + cardBackgroundImage + ')';
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
+            sendDataToBackend(cardValue); // Function to send data to the backend
+        });
     });
+
+    function sendDataToBackend(value) {
+        fetch('/storyhistory', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ storyId: value }) // Sending data to the '/scenario' endpoint
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Data sent to backend:', value);
+                // Optionally, perform actions after successful data transmission
+                // For example, redirect to another page
+                window.location.href = '/storyoutput';
+            } else {
+                console.error('Failed to send data to backend');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending data to backend:', error);
+        });
+    }
 });
+    
 </script>
 </body>
 
