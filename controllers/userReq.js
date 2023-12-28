@@ -282,7 +282,7 @@ export function storyPost(req,res){
   character = req.body.character;
   age = req.body.age;
   // console.log(age);
-  console.log(character);
+  // console.log(character);
   res.redirect("/scenario");
 };
 
@@ -314,7 +314,7 @@ export function renderScenario(req,res){
 
 export function postScenario(req,res){
   scenario = req.body.scenario;
-  console.log(scenario);
+  // console.log(scenario);
 
   res.redirect("/emotions");
 };
@@ -349,7 +349,7 @@ export function renderEmotions(req,res){
 
 export function postEmotions(req,res){
   emotions = req.body.emotions;
-  console.log(emotions);
+  // console.log(emotions);
   res.redirect("/values");
 };
 
@@ -382,8 +382,7 @@ export function renderValues(req,res){
 //Main story creation with api call and updation in database//
 export async function postValues(req,res){
   values = req.body.values;
-  // console.log(JSON.stringify(character))
-  console.log(values);
+
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
   // Define multiple parameters
@@ -395,7 +394,7 @@ export async function postValues(req,res){
     values: JSON.stringify(values),
     userId: "test"
   });
-  console.log(`${endpoint}?${params.toString()}`);
+  // console.log(`${endpoint}?${params.toString()}`);
 
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {
@@ -504,7 +503,31 @@ export const rendershp = async (req, res) => {
   }
 };
 
+export function clickStories(req,res){
+  try {
+    if(req.isAuthenticated()){
+      if(req.user.phoneNumber){
+        const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
+    // Store the selected storyId in the session
+        req.session.selectedStoryId = storyId;
+
+    // Send a success response back to the front end
+        res.redirect("/storyoutput");
+      }
+      else{
+        res.redirect("/phonenumber");
+      }
+    }
+    else{
+      res.redirect("/authenticate2");
+    }
+    
+} catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+}
+};
 
 
 //--Profile management--// 
@@ -573,3 +596,41 @@ export async function editProfile(req, res) {
   }
 };
 
+
+//--Story output page--//
+
+export async function showStories(req,res){
+  try {
+    if(req.isAuthenticated()){
+      if(req.user.phoneNumber){
+        const { selectedStoryId } = req.session;
+
+    // Check if a storyId is stored in the session
+    if (!selectedStoryId) {
+        // If no storyId is found in the session, redirect to an error page or handle it as needed
+        return res.status(404).json({ error: 'Story ID not found in session' });
+    }
+
+    // Fetch story details using the stored storyId from the database or data source
+    const storyDetails = await Story.findById(selectedStoryId); // Example using a hypothetical StoryModel
+
+    if (!storyDetails) {
+        // If story with stored ID is not found, return an error message
+        return res.status(404).json({ error: 'Story not found' });
+    }
+
+    // If the story is found, render the storyoutput page with the story details
+    res.render('storyoutput', { story: storyDetails.story , storyImage : storyDetails.thumb_img_path , storyAudio : storyDetails.audiopath, storyTitle: storyDetails.title,
+                                gems :req.user.gems, parrots: req.user.parrots});
+      }else{
+        res.redirect("/phonenumber");
+      }
+    }else{
+      res.redirect("/authenticate2");
+    } 
+} catch (err) {
+    // Handle any errors that might occur during the process
+    console.error(err);
+    return res.status(500).json({ error: 'Internal Server Error' });
+}
+};

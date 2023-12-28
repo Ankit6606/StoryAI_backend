@@ -21,10 +21,11 @@ import {rootRender,
         postScenario,
         postEmotions,
         postValues,
-        // getStoryOutput,
+        showStories,
         getphoneNumber,
         postPhonenumber,
-        otpVerification
+        otpVerification,
+        clickStories
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
@@ -51,6 +52,7 @@ router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
 router.get("/storyhistory", rendershp);
+router.get("/storyoutput",showStories);
 
 // router.get("/storyoutput",getStoryOutput);
 router.get("/success",success);
@@ -70,5 +72,6 @@ router.post("/emotions",postEmotions);
 router.post("/values",postValues);
 router.post("/profile",editProfile);
 router.post("/subscribe",makepayment);
+router.post("/storyhistory",clickStories);
 
 export { router as userApp };
