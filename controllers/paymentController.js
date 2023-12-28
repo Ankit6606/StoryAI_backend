@@ -21,6 +21,7 @@ const stripeClient = stripeModule(STRIPE_SECRET_KEY);
 export function selectSubscription(req,res){
   if(req.isAuthenticated()){
     res.render("subscription",{
+      gems:req.user.gems, parrots:req.user.parrots
       
     });
   }

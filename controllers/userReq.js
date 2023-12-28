@@ -236,10 +236,16 @@ export async function otpVerification(req,res){
 
 //-- Home page --//
 
-export function rootRender(req,res){
+export async function rootRender(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      const user = await User.findById(req.user._id).populate('stories').exec();
+      
+      if (!user) {
+        throw new Error('User not found');
+      }
       res.render("home",{
+        userStories: user.stories,
         gems : req.user.gems,
         parrots : req.user.parrots,
       });

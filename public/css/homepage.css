@@ -8,6 +8,11 @@ body {
    
     font-family: Arial, sans-serif;
     overflow: hidden;
+}.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.694); /* Enhance raise effect */
+    transform: translateY(-10px); /* Lift the card slightly on hover */
+    /* Increase height on hover */
+    z-index: 2; /* Make the hovered card appear above other cards */
 }
 
 .flex-box {
@@ -51,7 +56,8 @@ body {
 }
 
 .card {
-
+    margin-top: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smoother transitions */
     width: 202px;
     height: 279px;
     flex-shrink: 0;
