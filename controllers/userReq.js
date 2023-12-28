@@ -259,13 +259,13 @@ export function storyPage(req, res) {
   // console.log("Authentication status:", req.isAuthenticated());
   if (req.isAuthenticated()) {
     if(req.user.phoneNumber){    
-   if(req.user.gems>=1 && req.user.parrots>=1){
-    res.render("story",{
+    if(req.user.gems>=1 && req.user.parrots>=1){
+      res.render("story",{
       gems : req.user.gems,
       parrots : req.user.parrots,
     });
    }
-   else{
+   else{  
     res.redirect("/subscribe");
    }
     
@@ -316,7 +316,6 @@ export function postScenario(req,res){
   scenario = req.body.scenario;
   console.log(scenario);
 
-  // console.log(scenario);
   res.redirect("/emotions");
 };
 
@@ -325,7 +324,7 @@ export function postScenario(req,res){
 
 export function renderEmotions(req,res){
   if(req.isAuthenticated()){
-    if(req.user.phonenumber){
+    if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         res.render("emotions",{
           gems : req.user.gems,
@@ -358,7 +357,7 @@ export function postEmotions(req,res){
 
 export function renderValues(req,res){
   if(req.isAuthenticated()){
-    if(req.user.phonenumber){
+    if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         res.render("values",{
           gems : req.user.gems,
@@ -389,7 +388,7 @@ export async function postValues(req,res){
   // Define multiple parameters
   const params = new URLSearchParams({
     age: "10",
-    character: JSON.stringify(character),
+    characters: JSON.stringify(character),
     scenario: scenario,
     emotions: JSON.stringify(emotions),
     values: JSON.stringify(values),
@@ -471,6 +470,9 @@ export async function postValues(req,res){
 
 
 
+//---Story History---//
+
+//Story history - GET
 export const rendershp = async (req, res) => {
   try {
     if (req.isAuthenticated()) {
@@ -481,7 +483,6 @@ export const rendershp = async (req, res) => {
       if (!user) {
         throw new Error('User not found');
       }
-
       // User found, render the story history page
       res.render("story_history", {
         userStories: user.stories,
@@ -504,7 +505,10 @@ export const rendershp = async (req, res) => {
 
 
 
+
 //--Profile management--// 
+
+//Profile - GET
 export function profileManage(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
