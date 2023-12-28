@@ -579,7 +579,6 @@ max-height: 32%;}
     
  
     
-    <form method="POST" action="/storyhistory">
     <div class="content-box" id="content-box-1">
       <div class="header-text">
         Story History</div>
@@ -591,20 +590,21 @@ max-height: 32%;}
       <div class="card-container">
         <div class="card-row">
             <% for (let i = 0; i < userStories.length; i++) { %>
-                <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
-                    <div class="card" onclick="navigateToDifferentPage('<%= userStories[i].link %>')">
-                        <div class="card-text-1">
-                            <p><%= userStories[i].title %></p>
-                            <div class="card-text-2">
-                                <p><%= userStories[i].audioduration %></p>
-                            </div>
+                <div class="card" onclick="viewStory('<%= userStories[i]._id %>')">
+                    <div class="card-text-1">
+                        <p><%= userStories[i].title %></p>
+                        <div class="card-text-2">
+                            <p><%= userStories[i].audioduration %></p>
+                            <!-- Remove the href attribute -->
+                            <!-- <a href="/storyoutput/<%= userStories[i]._id %>">View Story</a> -->
                         </div>
                     </div>
-                <% } %>
+                </div>
             <% } %>
         </div>
     </div>
     
+    <!-- story id variable - userStories[i]._id  -->
         
     
     
@@ -615,7 +615,7 @@ max-height: 32%;}
       </div>
       
     </div>
-  </form>
+
   <script src="js/scenario.js"></script>
   <script src="js/vnav.js"></script>
   <script>
@@ -627,6 +627,7 @@ function navigateToDifferentPage(link) {
     
     window.location.href = link;
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {

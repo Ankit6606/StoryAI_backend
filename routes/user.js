@@ -28,6 +28,7 @@ import {rootRender,
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
+
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
 
@@ -35,7 +36,7 @@ const router = express.Router();
 
 
 //Get requests
-
+app.use('/', userApp);
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
 router.get("/authenticate",authenticateRender);
