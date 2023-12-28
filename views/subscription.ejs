@@ -252,20 +252,7 @@
       opacity: 0.8;
       background-image: url("css/assets/subx2b.png"); /* Add the path to your new image */
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
     </style>
 
 </head>
@@ -334,13 +321,13 @@
 
             <div class="box box-4" id="premium"></div>
 
-            <button class="next-button" type="submit" style="width: 513px;
+            <!-- <button class="next-button" type="submit" style="width: 513px;
         height: 63px;
         flex-shrink: 0;
         border-radius: 15px;
         background: #FFF;
         
-        box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button>
+        box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button> -->
         </div>
     </form>
 
@@ -351,6 +338,36 @@
     <script src="js/vnav.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.box');
+
+    boxes.forEach(box => {
+        box.addEventListener('click', function() {
+            const boxId = this.id; // Get the ID of the clicked box
+            sendDataToBackend(boxId); // Function to send data to the backend
+        });
+    });
+
+    function sendDataToBackend(value) {
+        fetch('/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ boxId: value }) // Sending data to the '/subscribe' endpoint
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Data sent to backend:', value);
+            } else {
+                console.error('Failed to send data to backend');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending data to backend:', error);
+        });
+    }
+});
 
     </script>
 </body>

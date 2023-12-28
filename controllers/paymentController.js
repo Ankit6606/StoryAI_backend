@@ -20,14 +20,21 @@ const stripeClient = stripeModule(STRIPE_SECRET_KEY);
 
 export function selectSubscription(req,res){
   if(req.isAuthenticated()){
-    res.render("subscription",{
-      
-    });
+    if(req.user.phoneNumber){
+      res.render("subscription",{
+        gems : req.user.gems,
+        parrots: req.user.parrots
+      });
+    }
+    else{
+      res.redirect("/phonenumber");
+    }
   }
   else{
     res.redirect("/authenticate2");
   }
 };
+
 
 export function makepayment(req,res){
   // plan = req.body;
