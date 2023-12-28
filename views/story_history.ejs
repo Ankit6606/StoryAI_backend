@@ -592,7 +592,7 @@ max-height: 32%;}
         <div class="card-row">
             <% for (let i = userStories.length-1; i >= 0; i--) { %>
                 <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
-                    <div class="card" data-value="<%= userStories[i]._id %>" style="background-image: url('<%= userStories[i].thumb_img_path %>')">
+                    <div class="card" data-value="<%= userStories[i]._id %>" style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('<%= userStories[i].thumb_img_path %>'); background-size: cover;">
                         <div class="card-text-1">
                             <p><%= userStories[i].title %></p>
                             <div class="card-text-2">
@@ -659,4 +659,3 @@ max-height: 32%;}
 </body>
 
 </html>
-

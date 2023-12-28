@@ -81,33 +81,68 @@
         Story</div>
     </a>
     <!-- Card Container -->
-    <div class="card-container">
+    <div class="card-container" >
       <div class="text-style-head-xx"
         style="color: #000; font-size: 30px; align-self: baseline; margin-top: 20px; margin-left:30px;margin-bottom: 16px;">
         Your Stories</div>
-      <div class="card-box">
+      <div class="card-box" style="overflow-x: scroll;">
 
-        <div class="card">
-          <div class="card-text-1">
-            <p>My First Story</p>
-            <div class="card-text-2">
-              <p>3:48 Sec</p>
-
-            </div>
-          </div>
-
-
-        </div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <% for (let i = 0; i < userStories.length; i++) { %>
+          <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
+            <div class="card" data-value="<%= userStories[i]._id %>" style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('<%= userStories[i].thumb_img_path %>'); background-size: cover;">
+                  <div class="card-text-1">
+                      <p><%= userStories[i].title %></p>
+                      <div class="card-text-2">
+                          <p><%= userStories[i].audioduration %></p>
+                      </div>
+                      
+                  </div>
+              </div>
+          <% } %>
+      <% } %>
       </div>
 
       <!-- Add more cards as needed -->
     </div>
   </div>
   <script src="js/homepage.js"></script>
+  <script src="js/vnav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
+            sendDataToBackend(cardValue); // Function to send data to the backend
+        });
+    });
+
+    function sendDataToBackend(value) {
+        fetch('/storyhistory', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ storyId: value }) // Sending data to the '/scenario' endpoint
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Data sent to backend:', value);
+                // Optionally, perform actions after successful data transmission
+                // For example, redirect to another page
+                window.location.href = '/storyoutput';
+            } else {
+                console.error('Failed to send data to backend');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending data to backend:', error);
+        });
+    }
+});
+    
+</script>
 </body>
 
 </html>
