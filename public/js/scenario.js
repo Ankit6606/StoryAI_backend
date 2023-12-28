@@ -33,13 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Data sent to backend:', value);
                 // Optionally, perform actions after successful data transmission
                 // For example, redirect to another page
-                window.location.href = '/emotions'; // Replace '/next-page' with your desired redirection URL
+                window.location.href = '/emotions';
+                alert('hekko1'); // Replace '/next-page' with your desired redirection URL
             } else {
                 console.error('Failed to send data to backend');
+                alert('hekko2');
             }
         })
         .catch(error => {
             console.error('Error sending data to backend:', error);
+            alert('hekko3');
         });
     }
 });
