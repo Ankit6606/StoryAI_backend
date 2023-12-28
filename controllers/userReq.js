@@ -23,7 +23,7 @@ const route = express.Router();
 let age = "";
 let character = "";
 let scenario = "";
-let emotions = ""; 
+let emotions = "";
 let values = "";
 let globalNumber = "";
 let justNumber= "";
@@ -318,7 +318,6 @@ export function postScenario(req,res){
 
   res.redirect("/emotions");
 };
-
 
 
 //Emotions - GET,POST

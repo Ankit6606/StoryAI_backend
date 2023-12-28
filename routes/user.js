@@ -37,7 +37,7 @@ const router = express.Router();
 
 
 //Get requests
-app.use('/', userApp);
+
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
 router.get("/authenticate",authenticateRender);
