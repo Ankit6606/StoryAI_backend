@@ -454,7 +454,7 @@ export async function postValues(req,res){
         values = req.body.values;
         console.log (values);
 
-  const endpoint = 'http://20.84.90.82:8080/generate_story';
+  const endpoint = 'https://storyia.app/api/generate_story';
 
   // Define multiple parameters
   const params = new URLSearchParams({
