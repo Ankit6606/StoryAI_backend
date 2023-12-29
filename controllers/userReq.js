@@ -452,6 +452,7 @@ export async function postValues(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
+        console.log (values);
 
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
@@ -471,7 +472,7 @@ export async function postValues(req,res){
       method: 'POST',
       // Add headers if required
     });
-
+    res.redirect("/subscribe");
     if (!response.ok) {
       console.error('HTTP status code:', response.status);
       const errorText = await response.text();
