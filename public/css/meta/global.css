@@ -127,7 +127,23 @@ margin-top: 28px;
     align-items: center;
     margin-left: 15px; /* Adjust as needed */
 }
-
+.icons-container-2 {
+    position: fixed;
+    z-index: 90909090909090;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    margin-left: 15px; /* Adjust as needed */
+}
+@media (max-width: 768px) {
+    .icons-container-2 {
+        z-index: 90909090909090;
+        visibility: visible !important;
+        display: flex;
+        align-items: center;
+        margin-left: 15px; /* Adjust as needed */
+    }
+}
 .icon-item {
     display: flex;
     align-items: center;

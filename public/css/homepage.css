@@ -78,7 +78,9 @@ body {
     .text-style-head-xx{
         font-size: 27px !important;
     }
-  
+    body{
+        overflow-y: scroll !important;
+    }
     .card-container {
         width: 96vw;
        max-width: 559px;
