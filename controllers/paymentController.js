@@ -42,7 +42,7 @@ export function makepayment(req,res){
   let redirectUrl;
 
   if (boxId === "discover") {
-      redirectUrl = "https://buy.stripe.com/test_4gw9AI4Du2TxbPGeUU"; // Set the redirect URL for "discover"
+      redirectUrl = "https://buy.stripe.com/test_cN20084DugKnaLC7st"; // Set the redirect URL for "discover"
       flag=1; 
   } else if (boxId === "starter") {
       redirectUrl = "https://buy.stripe.com/4gw2aG1lO5txaA0dQQ"; // Set the redirect URL for "starter"
