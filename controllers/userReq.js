@@ -484,7 +484,7 @@ export async function postValues(req,res){
 
   // Define multiple parameters
   const params = new URLSearchParams({
-    age: "10",
+    age: JSON.stringify(age),
     characters: JSON.stringify(character),
     scenario: scenario,
     emotions: JSON.stringify(emotions),
@@ -507,6 +507,14 @@ export async function postValues(req,res){
     }
 
     const responseData = await response.json();
+    const storygenerationError = "Story Generation Error - Please re-check your Parameters";
+    if(responseData.title===storygenerationError){
+      res.render("storyoutput",{
+        gems : req.user.gems,
+        parrots: req.user.parrots,
+        storyTitle : responseData
+      })
+    }
 
     //Storing the story in database after it is generated
 
