@@ -6,6 +6,7 @@ import Story from '../models/stories.js';
 import mongoose from 'mongoose';
 import fs from 'fs';
 import fetch from 'node-fetch';
+import https from 'https';
 import { createInterface } from 'readline';
 import initializeTwilioClient from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
@@ -452,7 +453,7 @@ export async function postValues(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
-        console.log (values);
+        
 
   const endpoint = 'https://storyia.app/api/generate_story';
 
@@ -471,6 +472,7 @@ export async function postValues(req,res){
     const response = await fetch(`${endpoint}?${params.toString()}`, {
       method: 'POST',
       // Add headers if required
+      agent: new https.Agent({ rejectUnauthorized: false }) // Import 'https' module if not already imported
     });
     if (!response.ok) {
       console.error('HTTP status code:', response.status);
