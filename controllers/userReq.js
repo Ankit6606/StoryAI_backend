@@ -315,7 +315,7 @@ export function storyPost(req,res){
       if(req.user.gems>=1 && req.user.parrots>=1){
         character = req.body.character;
         age = req.body.age;
-        // console.log(age);
+        console.log(age);
         // console.log(character);
         res.redirect("/scenario");
       }else{
