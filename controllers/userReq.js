@@ -472,7 +472,6 @@ export async function postValues(req,res){
       method: 'POST',
       // Add headers if required
     });
-    res.redirect("/subscribe");
     if (!response.ok) {
       console.error('HTTP status code:', response.status);
       const errorText = await response.text();
