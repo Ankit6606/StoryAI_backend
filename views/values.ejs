@@ -11,10 +11,80 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/meta/vertical-navbar.css">
-   
+   <style>  
+   .percentage-tracker {
+    color: #FFF;
+
+font-family: Volkhov;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 48px */
+}
+
+.loading-text {
+  color: #FFF;
+
+font-family: Volkhov;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 48px */
+}
+    .modal {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 70vh;
+    max-width: 1905px;
+    max-height: 896px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    border: 2px solid #A288CB;
+    background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
+    z-index: 999; /* Adjust z-index as needed */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    display: none;
+}
+
+
+.modal.visible {
+    display: flex; /* or block, or whatever is appropriate for your design */
+    opacity: 1;
+}
+/* Add this style to close the modal */
+.loading-bar {
+  width: 90%; /* Set the width as a percentage of the parent container */
+    max-width: 1568px; 
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.30);
+    margin-top: 20px;
+    position: relative;
+}
+
+.filling-progress {
+    border-radius: 20px;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(270deg, #BB80FF 0%, #FFA8CF 0%);
+    width: 0;
+    animation: fillProgressBar 30s ease-in-out forwards;
+}
+</style>
 </head>
 
 <body>
+ 
   <div class="icons-container-2">
     <div class="icon-item">
       <img src="css/assets/gem.png" alt="Icon 1">
@@ -105,7 +175,7 @@
         
                 <!-- Add more cards as needed -->
             </div>
-            <button type="submit" class="next-button" style="height: 55px;" >Create My Story</button>
+            <button type="submit" class="next-button" style="height: 55px;" onclick="showModal()">Create My Story</button>
         
         <a href="/emotions" style="color: #FFF;
 
@@ -115,9 +185,104 @@
         font-weight: 700;
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
     </div>
+   
 </form>
+<div class="modal" id="myModal">
+  <p style="color: #FFF;
+
+  font-family: Volkhov;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 48px */">Loading...<p>
+  
+  <div class="loading-bar">
+      <div class="filling-progress"></div>
+  </div>
+
+  <div class="percentage-tracker">0.00%</div>
+
+  <div class="loading-text">
+      <p id="loadingText">Generating Story</p>
+  </div>
+</div>
     <script src="js/values.js"></script>
     <script src="js/vnav.js"></script>
+    <script>
+      function showModal() {
+    fillProgressBar();
+    document.getElementById('myModal').classList.add('visible');
+}
+  
+  
+function fillProgressBar() {
+    const fillingProgress = document.querySelector('.filling-progress');
+    const percentageTracker = document.querySelector('.percentage-tracker');
+    const loadingText = document.getElementById('loadingText');
+
+    let percentage = 0;
+
+    const fill = setInterval(() => {
+        if (percentage < 33) {
+            fillingProgress.style.width = `${percentage}%`;
+            percentageTracker.textContent = `${percentage.toFixed(2)}%`;
+            loadingText.textContent = 'Generating Story';
+            percentage += 0.1;
+        } else if (percentage < 66) {
+            clearInterval(fill);
+            setTimeout(() => {
+                fillProgressBarStageTwo();
+            }, 1000);
+        }
+    }, 50);
+}
+
+function fillProgressBarStageTwo() {
+    const fillingProgress = document.querySelector('.filling-progress');
+    const percentageTracker = document.querySelector('.percentage-tracker');
+    const loadingText = document.getElementById('loadingText');
+
+    let percentage = 33;
+
+    const fill = setInterval(() => {
+        if (percentage < 66) {
+            fillingProgress.style.width = `${percentage}%`;
+            percentageTracker.textContent = `${percentage.toFixed(2)}%`;
+            loadingText.textContent = 'Generating Image';
+            percentage += 0.1;
+        } else if (percentage < 99) {
+            clearInterval(fill);
+            setTimeout(() => {
+                fillProgressBarStageThree();
+            }, 1000);
+        }
+    }, 50);
+}
+
+function fillProgressBarStageThree() {
+    const fillingProgress = document.querySelector('.filling-progress');
+    const percentageTracker = document.querySelector('.percentage-tracker');
+    const loadingText = document.getElementById('loadingText');
+
+    let percentage = 66;
+
+    const fill = setInterval(() => {
+        if (percentage < 99) {
+            fillingProgress.style.width = `${percentage}%`;
+            percentageTracker.textContent = `${percentage.toFixed(2)}%`;
+            loadingText.textContent = 'Generating Audio';
+            percentage += 0.1;
+        } else {
+            clearInterval(fill);
+            setTimeout(() => {
+                fillingProgress.style.width = '100%';
+                percentageTracker.textContent = '100.00%';
+            }, 500);
+        }
+    }, 50);
+}
+
+  </script>
 </body>
 
 </html>
