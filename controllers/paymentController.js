@@ -37,20 +37,28 @@ export function selectSubscription(req,res){
 
 
 export function makepayment(req,res){
-  // plan = req.body;
-  plan = "starter";
-  // console.log(plan);
-  if(plan==="starter"){
-    flag = 1;
-    res.redirect("https://buy.stripe.com/4gw2aG1lO5txaA0dQQ");
+  const { boxId } = req.body;
+
+  let redirectUrl;
+
+  if (boxId === "discover") {
+      redirectUrl = ""; // Set the redirect URL for "discover"
+  } else if (boxId === "starter") {
+      redirectUrl = "https://buy.stripe.com/4gw2aG1lO5txaA0dQQ"; // Set the redirect URL for "starter"
+  } else if (boxId === "value") {
+      redirectUrl = "https://buy.stripe.com/7sIg1w6G87BFdMc5kl"; // Set the redirect URL for "value"
+  } else if (boxId === "premium") {
+      redirectUrl = "https://buy.stripe.com/4gw9D89Sk2hleQgdQS"; // Set the redirect URL for "premium"
+  } else {
+      // Handle unknown or invalid boxId
+      res.status(400).json({ error: 'Invalid boxId' });
+      return;
   }
-  else if(plan==="value"){
-    flag = 1;
-    res.redirect("https://buy.stripe.com/7sIg1w6G87BFdMc5kl");
-  }
-  else if(plan==="premium"){
-    flag = 1;
-    res.redirect("https://buy.stripe.com/4gw9D89Sk2hleQgdQS");
+
+  if (redirectUrl) {
+      res.json({ redirectUrl }); // Send the redirect URL as a response
+  } else {
+      res.status(400).json({ error: 'Invalid boxId' });
   }
 };
 
@@ -62,8 +70,45 @@ const success = async (req, res) => {
     if(req.isAuthenticated()){
       const uname = req.user.username;
       const uid = req.user.id;
+      //For "discover" package
+      if(flag===1 && plan==="discover"){
+        const payUser = await Payment.create({
+        userId : uid,
+        paymentAmount:9.97,
+        paymentDate: new Date(),
+        }); 
+      // console.log(payUser.id);
+        let objId = new mongoose.Types.ObjectId(payUser.id);
+        await User.updateOne({
+          username:uname
+        },
+        {
+          $push:{
+            paymentdetails : objId,
+          },
+        },
+        {upsert : false, new : true},
+        );
+
+        const gemstoadd = 5;
+        const parrotstoadd = 5;
+        const user = await User.findOne({ username: uname });
+        if (user) {
+      
+          user.gems += gemstoadd;
+          user.parrots += parrotstoadd;
+          await user.save(); // Save the updated user
+      
+        } else {
+          console.log("User not found");
+      // Handle the case where the user is not found
+          return res.status(404).send("User not found");
+        }
+        res.redirect("/story");
+        flag = 0;
+      }
       //For "starter" package
-      if(flag===1 && plan==="starter"){
+      else if(flag===1 && plan==="starter"){
         const payUser = await Payment.create({
         userId : uid,
         paymentAmount:16.97,
@@ -156,8 +201,8 @@ const success = async (req, res) => {
           {upsert : false, new : true},
           );
   
-          const gemstoadd = 30;
-          const parrotstoadd = 30;
+          const gemstoadd = 40;
+          const parrotstoadd = 40;
           const user = await User.findOne({ username: uname });
           if (user) {
         
