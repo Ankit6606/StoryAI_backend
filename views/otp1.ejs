@@ -514,9 +514,12 @@ padding: 0;}
               <!-- Country code and phone input fields -->
               <div style="display: flex; align-items: center;">
                 <select id="signUpCountryCode" class="country-code" name="prephoneNumber" required>
-                  <option value="+91">+91</option>
-                  <option value="+33">+33</option>
-                  <option value="+49">+49</option>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+49">+49 (Germany)</option>
+                    <option value="+86">+86 (China)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+61">+61 (Australia)</option>
                   <!-- Add more options as needed -->
                 </select>
                 <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Phone" name="phoneNumber" required
@@ -533,7 +536,7 @@ padding: 0;}
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="showNextPage()">Already have an Account? 
-            <a href="/login"><span
+            <a href="/authenticate2"><span
               class="sign-in-text" id="toggle-text">Sign In</span></a></div>
         </div>
       </form>
