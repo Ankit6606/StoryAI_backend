@@ -38,20 +38,24 @@ export function selectSubscription(req,res){
 
 export function makepayment(req,res){
   const { boxId } = req.body;
-
+  // console.log(boxId);
   let redirectUrl;
 
   if (boxId === "discover") {
     flag=1; 
+    plan = boxId;
     redirectUrl = "https://buy.stripe.com/test_cN20084DugKnaLC7st"; // Set the redirect URL for "discover"
   } else if (boxId === "starter") {
     flag=1;
+    plan = boxId;
     redirectUrl = "https://buy.stripe.com/4gw2aG1lO5txaA0dQQ"; // Set the redirect URL for "starter"      
   } else if (boxId === "value") {
     flag=1;
+    plan = boxId;
     redirectUrl = "https://buy.stripe.com/7sIg1w6G87BFdMc5kl"; // Set the redirect URL for "value" 
   } else if (boxId === "premium") {
     flag=1; 
+    plan = boxId;
     redirectUrl = "https://buy.stripe.com/4gw9D89Sk2hleQgdQS"; // Set the redirect URL for "premium"
   } else {
       // Handle unknown or invalid boxId
@@ -70,7 +74,7 @@ export function makepayment(req,res){
 const success = async (req, res) => {
   try {
     // console.log(flag);
-    // console.log(plan);
+    console.log(plan);
     if(req.isAuthenticated()){
       const uname = req.user.username;
       const uid = req.user.id;
