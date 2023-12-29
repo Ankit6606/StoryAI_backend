@@ -257,7 +257,31 @@ export async function rootRender(req,res){
   }
 };
 
+export async function rootPost(req,res){
+  try {
+    if(req.isAuthenticated()){
+      if(req.user.phoneNumber){
+        const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
+    // Store the selected storyId in the session
+        req.session.selectedStoryId = storyId;
+
+    // Send a success response back to the front end
+        res.redirect("/storyoutput");
+      }
+      else{
+        res.redirect("/phonenumber");
+      }
+    }
+    else{
+      res.redirect("/authenticate2");
+    }
+    
+} catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+}
+}
 //--Story Generation Pages--//
 
 //Story - GET,POST
@@ -285,11 +309,25 @@ export function storyPage(req, res) {
 };
   
 export function storyPost(req,res){
-  character = req.body.character;
-  age = req.body.age;
-  // console.log(age);
-  // console.log(character);
-  res.redirect("/scenario");
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        character = req.body.character;
+        age = req.body.age;
+        // console.log(age);
+        // console.log(character);
+        res.redirect("/scenario");
+      }else{
+        res.redirect("/subscribe");
+      }
+      
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+ 
 };
 
 
@@ -319,10 +357,22 @@ export function renderScenario(req,res){
 };
 
 export function postScenario(req,res){
-  scenario = req.body.scenario;
-  // console.log(scenario);
-
-  res.redirect("/emotions");
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        scenario = req.body.scenario;
+      // console.log(scenario);
+      res.redirect("/emotions");
+      }else{
+        res.redirect("/subscribe");
+      }
+      
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
 };
 
 
@@ -353,9 +403,21 @@ export function renderEmotions(req,res){
 };
 
 export function postEmotions(req,res){
-  emotions = req.body.emotions;
-  // console.log(emotions);
-  res.redirect("/values");
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        emotions = req.body.emotions;
+        // console.log(emotions);
+        res.redirect("/values");
+      }else{
+        res.redirect("/subscribe");
+      }
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
 };
 
 
@@ -386,7 +448,10 @@ export function renderValues(req,res){
 
 //Main story creation with api call and updation in database//
 export async function postValues(req,res){
-  values = req.body.values;
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      if(req.user.gems>=1 && req.user.parrots>=1){
+        values = req.body.values;
 
   const endpoint = 'http://20.84.90.82:8080/generate_story';
 
@@ -420,13 +485,15 @@ export async function postValues(req,res){
 
     const uname = req.user.username;
     const uid = req.user.id;
+    const audioDuration = responseData.audio_duration;
+    const audiodurationInMinutes = isNaN(audioDuration) ? 0 : (audioDuration / 60).toFixed(2);
     const createstory = await Story.create({
       userId : uid,
       title: responseData.title,
       story: responseData.story,
       thumb_img_path : responseData.thumb_img_path,
       audiopath : responseData.audio_path,
-      audioduration : (responseData.audio_duration/60).toFixed(2)
+      audioduration : audiodurationInMinutes
     }); 
 
     const gemstodeduct = 1;
@@ -470,7 +537,15 @@ export async function postValues(req,res){
     console.error('There was a problem with the fetch operation:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-  
+      }else{
+        res.redirect("/subscribe");
+      }
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
 };
 
 
@@ -508,6 +583,8 @@ export const rendershp = async (req, res) => {
   }
 };
 
+
+//Story History - POST
 export function clickStories(req,res){
   try {
     if(req.isAuthenticated()){
@@ -532,73 +609,6 @@ export function clickStories(req,res){
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
 }
-};
-
-
-//--Profile management--// 
-
-//Profile - GET
-export function profileManage(req,res){
-  if(req.isAuthenticated()){
-    if(req.user.phoneNumber){
-      res.render("profile",{
-        gems : req.user.gems,
-        parrots : req.user.parrots,
-      });
-    }else{
-      res.redirect("/phonenumber");
-    }
-    
-  }else{
-    res.redirect("/authenticate2");
-  }
-};
-
-//Profile - POST
-export async function editProfile(req, res) {
-  const name = req.body.name;
-  const prephoneNumber = req.body.prephoneNumber;
-  const phoneNumber = req.body.phoneNumber;
-  
-  if (req.isAuthenticated()) {
-    try {
-      let updateFields = {}; // Object to store fields to update
-
-      if (name && name !== "") {
-        updateFields.name = name; // Update name only if it's provided
-      }
-
-      if (phoneNumber && phoneNumber !== "" && prephoneNumber !== phoneNumber) {
-        // Update phoneNumber only if it's provided and different from prephoneNumber
-        updateFields.phoneNumber = prephoneNumber + "-" + phoneNumber;
-      }
-
-      if (Object.keys(updateFields).length === 0) {
-        // If no fields to update, redirect back without DB interaction
-        return res.redirect("/");
-      }
-
-      const updatedUser = await User.findByIdAndUpdate(
-        req.user.id,
-        { $set: updateFields },
-        { new: true } // To return the updated document
-      );
-
-      if (!updatedUser) {
-        console.log("User not found");
-        return res.redirect("/"); // Redirect or handle the error appropriately
-      }
-
-      // console.log("Updated User:", updatedUser);
-      res.redirect("/"); // Successfully updated user
-    } catch (err) {
-      console.log(err);
-      res.redirect("/"); // Redirect or handle the error appropriately
-    }
-  } else {
-    console.log("User cannot be authenticated");
-    res.redirect("/authenticate2");
-  }
 };
 
 
@@ -639,3 +649,78 @@ export async function showStories(req,res){
     return res.status(500).json({ error: 'Internal Server Error' });
 }
 };
+
+
+//--Profile management--// 
+
+//Profile - GET
+export function profileManage(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      res.render("profile",{
+        gems : req.user.gems,
+        parrots : req.user.parrots,
+      });
+    }else{
+      res.redirect("/phonenumber");
+    }
+    
+  }else{
+    res.redirect("/authenticate2");
+  }
+};
+
+//Profile - POST
+export async function editProfile(req, res) {
+  const name = req.body.name;
+  const prephoneNumber = req.body.prephoneNumber;
+  const phoneNumber = req.body.phoneNumber;
+  
+  if (req.isAuthenticated()) {
+    if(req.user.phoneNumber){
+      try {
+        let updateFields = {}; // Object to store fields to update
+  
+        if (name && name !== "") {
+          updateFields.name = name; // Update name only if it's provided
+        }
+  
+        if (phoneNumber && phoneNumber !== "" && prephoneNumber !== phoneNumber) {
+          // Update phoneNumber only if it's provided and different from prephoneNumber
+          updateFields.phoneNumber = prephoneNumber + "-" + phoneNumber;
+        }
+  
+        if (Object.keys(updateFields).length === 0) {
+          // If no fields to update, redirect back without DB interaction
+          return res.redirect("/");
+        }
+  
+        const updatedUser = await User.findByIdAndUpdate(
+          req.user.id,
+          { $set: updateFields },
+          { new: true } // To return the updated document
+        );
+  
+        if (!updatedUser) {
+          console.log("User not found");
+          return res.redirect("/"); // Redirect or handle the error appropriately
+        }
+  
+        // console.log("Updated User:", updatedUser);
+        res.redirect("/"); // Successfully updated user
+      } catch (err) {
+        console.log(err);
+        res.redirect("/"); // Redirect or handle the error appropriately
+      }
+    }
+    else{
+      res.redirect("/phonenumber");
+    }
+    
+  } else {
+    console.log("User cannot be authenticated");
+    res.redirect("/authenticate2");
+  }
+};
+
+

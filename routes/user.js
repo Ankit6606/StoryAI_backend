@@ -1,6 +1,7 @@
 import express from 'express';
 // import passport from 'passport';
 import {rootRender,
+        rootPost,
         authenticateRender,
         authenticateRender2,
         loginRender, 
@@ -62,6 +63,7 @@ router.get("/subscribe",selectSubscription);
 
 //Post requests
 
+router.post("/",rootPost);
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/phonenumber",postPhonenumber);
