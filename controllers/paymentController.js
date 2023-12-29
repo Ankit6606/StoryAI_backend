@@ -42,13 +42,17 @@ export function makepayment(req,res){
   let redirectUrl;
 
   if (boxId === "discover") {
-      redirectUrl = ""; // Set the redirect URL for "discover"
+      redirectUrl = "https://buy.stripe.com/test_4gw9AI4Du2TxbPGeUU"; // Set the redirect URL for "discover"
+      flag=1; 
   } else if (boxId === "starter") {
       redirectUrl = "https://buy.stripe.com/4gw2aG1lO5txaA0dQQ"; // Set the redirect URL for "starter"
+      flag=1; 
   } else if (boxId === "value") {
       redirectUrl = "https://buy.stripe.com/7sIg1w6G87BFdMc5kl"; // Set the redirect URL for "value"
+      flag=1; 
   } else if (boxId === "premium") {
       redirectUrl = "https://buy.stripe.com/4gw9D89Sk2hleQgdQS"; // Set the redirect URL for "premium"
+      flag=1; 
   } else {
       // Handle unknown or invalid boxId
       res.status(400).json({ error: 'Invalid boxId' });
@@ -104,7 +108,7 @@ const success = async (req, res) => {
       // Handle the case where the user is not found
           return res.status(404).send("User not found");
         }
-        res.redirect("/story");
+        res.redirect("/");
         flag = 0;
       }
       //For "starter" package
@@ -141,7 +145,7 @@ const success = async (req, res) => {
       // Handle the case where the user is not found
           return res.status(404).send("User not found");
         }
-        res.redirect("/story");
+        res.redirect("/");
         flag = 0;
       }
       //For "value" package
@@ -178,7 +182,7 @@ const success = async (req, res) => {
         // Handle the case where the user is not found
             return res.status(404).send("User not found");
           }
-          res.redirect("/story");
+          res.redirect("/");
           flag = 0;
       }
       //For "premium" package
@@ -215,11 +219,24 @@ const success = async (req, res) => {
         // Handle the case where the user is not found
             return res.status(404).send("User not found");
           }
-          res.redirect("/story");
+          res.redirect("/");
           flag = 0;
       }
       else{
-        res.send("pay first");
+        const message = `<h1>Pay First !!!<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+✨ Congratulations... You have unlocked an Easter Egg ✨</h1>`;
+
+res.send(message);
+
       }
 
     }else{
