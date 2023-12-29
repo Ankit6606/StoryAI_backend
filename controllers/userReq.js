@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import User from '../models/users.js';
+import session from 'express-session';
+import flash from 'connect-flash';
 import passport  from 'passport';
 import Story from '../models/stories.js';
 import mongoose from 'mongoose';
@@ -126,9 +128,32 @@ export function loginUser(req,res){
       if(err){
           console.log(err);
       }else{
-          passport.authenticate("local")(req,res,()=>{
-              res.redirect("/");
+        passport.authenticate('local', (err, user, info) => {
+          if (err) {
+              // Handle error if something goes wrong during authentication
+              return res.status(500).send(err.message); // You can handle the error as per your application's logic
+          }
+      
+          if (!user) {
+              // If authentication fails, provide a flash message indicating the issue
+              // req.flash('error', 'Please check your email and password.');
+              const message = "Either email or password is wrong";
+              const script = `<script>alert("${message}"); window.location.href="/login";</script>`;
+              return res.send(script); // Redirect to the login page or any appropriate route
+          }
+      
+          // If authentication succeeds, log in the user and redirect
+          req.logIn(user, (loginErr) => {
+              if (loginErr) {
+                  // Handle login error if occurred
+                  return res.status(500).send(loginErr.message); // You can handle the error as per your application's logic
+              }
+      
+              // If login is successful, redirect the user to the desired page
+              return res.redirect('/');
           });
+      })(req, res);
+      
       }
      });
 };

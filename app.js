@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import 'dotenv/config';
 import session from 'express-session';
+import flash from 'connect-flash';
 import passportLocalMongoose from 'passport-local-mongoose';
 import passport  from 'passport';
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
@@ -27,6 +28,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
 
 
 connectDatabase("mongodb://127.0.0.1:27017/story-app",{useNewUrlParser:true,useUnifiedTopology: true})
