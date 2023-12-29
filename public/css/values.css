@@ -82,7 +82,9 @@ body {
         line-height: 150%;
         margin-bottom: 0px !important;
     }
-    
+    body{
+        overflow-y: scroll !important;
+    }
     .flex-box {
         width: 90vw !important;
         max-width: 1805px;

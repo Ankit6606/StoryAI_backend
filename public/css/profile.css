@@ -64,6 +64,9 @@ padding: 0;}
 
 
 @media (max-width: 768px) {
+    body{
+        overflow-y: scroll !important;
+    }
     .navbar{
         visibility: hidden;
     }

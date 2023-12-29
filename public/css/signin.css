@@ -83,7 +83,9 @@
         
     /* Additional styling for smaller screens if needed */
 }
-
+body{
+    overflow-y: scroll !important;
+}
 }
 
 
