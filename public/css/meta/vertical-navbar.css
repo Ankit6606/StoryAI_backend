@@ -133,6 +133,7 @@ html {
     transform: skew(-14deg) translateX(-120%);
     transition: all 0.275s 0.1s;
   }
+
   .navMenu ul {
     list-style: none;
     padding-RIGHT: 8vw;
@@ -170,7 +171,7 @@ html {
 .navMenu ul li a::before {
     content: "";
     position: absolute;
-    width: calc(100% + 370px);
+    width: calc(100% + 390px);
     height: 110%;
     background-color: rgba(0, 0, 0, 0); /* Adjust color and transparency as needed */
     z-index: -1;
