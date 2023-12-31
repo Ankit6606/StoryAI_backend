@@ -54,7 +54,9 @@ body {
     .navbar{
         visibility: hidden;
     }
-   
+    .content-box{
+        margin-top: 5vh !important;
+    }
     .navTrigger{
         opacity: 1 !important;
     }
