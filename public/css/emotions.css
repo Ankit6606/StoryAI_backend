@@ -213,6 +213,9 @@ max-height: 32%;}
     max-width: 300px;
     width: 90%;
 }
+.content-box{
+    margin-top: 5vh !important;
+}
 
 
 }

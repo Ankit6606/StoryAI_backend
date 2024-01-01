@@ -59,10 +59,10 @@
         opacity: 1 !important;
         color: #000000;
         font-family: Arial, sans-serif;
-        font-size: 36px;
+        font-size: 25px !important;
         font-weight: bold;
-        margin-bottom: 20px;
-        max-height: 5vh!important;
+        margin-bottom: 5px;
+       
         
     }
 
@@ -256,9 +256,11 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
 
     .text-box {
         text-align: center;
+        display: flex;
     }
 
     .box-heading {
+        height: auto;
         opacity: 1 !important;
         color: #000000;
         font-family: Arial, sans-serif;
@@ -268,6 +270,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     }
 
     .box-subtext {
+        height: auto;
         font-family: Arial, sans-serif;
         font-size: 18px;
         color: #555;
@@ -279,7 +282,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         0% {
             opacity: 0;
 
-            
+
         }
 
 
@@ -491,7 +494,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
 
 <body>
     <body>
-        <div class="icons-container-2">
+        <div class="icons-container-2" style="scale: 0.65;">
             <div class="icon-item">
               <img src="css/assets/gem.png" alt="Icon 1">
               <span class="icon-number"><%= gems %></span>

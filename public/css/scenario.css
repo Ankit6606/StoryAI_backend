@@ -41,6 +41,7 @@ body {
 
 
 .content-box {
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,6 +189,9 @@ flex-shrink: 0;
 margin-bottom: 0px !important;
 
 
+    }
+    .content-box{
+        margin-top: 5vh !important;
     }
     .text-style-head{
         font-size: 20px !important;
