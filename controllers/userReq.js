@@ -387,7 +387,7 @@ export function postScenario(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         scenario = req.body.scenario;
-      // console.log(scenario);
+      console.log(scenario);
       res.redirect("/emotions");
       }else{
         res.redirect("/subscribe");
@@ -433,7 +433,7 @@ export function postEmotions(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         emotions = req.body.emotions;
-        // console.log(emotions);
+        console.log(emotions);
         res.redirect("/values");
       }else{
         res.redirect("/subscribe");
@@ -478,7 +478,7 @@ export async function postValues(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
-        
+        console.log(values);
 
   const endpoint = 'https://storyia.app/api/generate_story';
 
@@ -491,7 +491,7 @@ export async function postValues(req,res){
     values: JSON.stringify(values),
     userId: "test"
   });
-  // console.log(`${endpoint}?${params.toString()}`);
+  console.log(`${endpoint}?${params.toString()}`);
 
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {
@@ -507,14 +507,14 @@ export async function postValues(req,res){
     }
 
     const responseData = await response.json();
-    const storygenerationError = "Story Generation Error - Please re-check your Parameters";
-    if(responseData.title===storygenerationError){
-      res.render("storyoutput",{
-        gems : req.user.gems,
-        parrots: req.user.parrots,
-        storyTitle : responseData
-      })
-    }
+    // const storygenerationError = "Story Generation Error - Please re-check your Parameters";
+    // if(responseData.title===storygenerationError){
+    //   res.render("storyoutput",{
+    //     gems : req.user.gems,
+    //     parrots: req.user.parrots,
+    //     storyTitle : responseData.title
+    //   })
+    // }
 
     //Storing the story in database after it is generated
 

@@ -10,36 +10,15 @@ function showNextPage() {
     }, 1000); // Adjust the timeout based on your fadeOut animation duration
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
+    const scenarioInput = document.getElementById('scenarioInput');
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
-            sendDataToBackend(cardValue); // Function to send data to the backend
+            scenarioInput.value = cardValue; // Set the input field value to the card's data-value
         });
     });
-
-    function sendDataToBackend(value) {
-        fetch('/scenario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ scenario: value }) // Sending data to the '/scenario' endpoint
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Data sent to backend:', value);
-                // Optionally, perform actions after successful data transmission
-                // For example, redirect to another page
-                window.location.href = '/emotions';
-            } else {
-                console.error('Failed to send data to backend');
-            }
-        })
-        .catch(error => {
-            console.error('Error sending data to backend:', error);
-        });
-    }
 });
