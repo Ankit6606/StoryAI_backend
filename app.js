@@ -92,8 +92,9 @@ passport.serializeUser(function(user, done) {
 
 app.use("/",userApp);
 
-//Setting up the server.
-const port =  3000;
-app.listen(port, ()=>{
-    console.log(`Server is running at port ${port}`);
+
+// Setting up the server.
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running at port ${port}`);
 });
