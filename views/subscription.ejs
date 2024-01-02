@@ -315,31 +315,27 @@
     
 
     <div class="ellipse"></div>
-    <form action="/subscribe" method="post">
+    <form action="/subscribe" method="post" id="subscriptionForm" onsubmit="return validateForm()">
         <div class="box-m">
-
-
-            <div class="box box-1" id="basic"></div>
-            <div class="box box-d" id="discover"></div>
-
-
-            <div class="box box-2" id="starter"></div>
-
-
-            <div class="box box-3" id="value"></div>
-
-
-            <div class="box box-4" id="premium"></div>
-
-            <!-- <button class="next-button" type="submit" style="width: 513px;
-        height: 63px;
-        flex-shrink: 0;
-        border-radius: 15px;
-        background: #FFF;
-        
-        box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button> -->
+            <div class="box box-1" id="basic" onclick="updateButtonValue('basic')"></div>
+            <div class="box box-d" id="discover" onclick="updateButtonValue('discover')"></div>
+            <div class="box box-2" id="starter" onclick="updateButtonValue('starter')"></div>
+            <div class="box box-3" id="value" onclick="updateButtonValue('value')"></div>
+            <div class="box box-4" id="premium" onclick="updateButtonValue('premium')"></div>
+    
+            <!-- Hidden input field to store the selected box ID -->
+            <input type="hidden" id="selectedBoxId" name="selectedBoxId" value="">
+    
+            <button class="next-button" type="submit" id="nextPaymentButton" style="width: 513px;
+                height: 63px;
+                flex-shrink: 0;
+                border-radius: 15px;
+                background: #FFF;
+                box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button>
         </div>
     </form>
+    
+    
 
 
     <!-- Modal -->

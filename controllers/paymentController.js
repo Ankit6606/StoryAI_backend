@@ -37,37 +37,36 @@ export function selectSubscription(req,res){
 
 
 export function makepayment(req,res){
-  const { boxId } = req.body;
+  const  boxId  = req.body.selectedBoxId;
   // console.log(boxId);
-  let redirectUrl;
+  // let redirectUrl;
 
   if (boxId === "discover") {
     flag=1; 
     plan = boxId;
-    redirectUrl = "https://buy.stripe.com/5kAbLg9Sk7BF8rS5kn"; // Set the redirect URL for "discover"
+    res.redirect("https://buy.stripe.com/5kAbLg9Sk7BF8rS5kn"); // Set the redirect URL for "discover"
   } else if (boxId === "starter") {
     flag=1;
     plan = boxId;
-    redirectUrl = "https://buy.stripe.com/5kAeXs5C4e030ZqcMQ"; // Set the redirect URL for "starter"      
+    res.redirect("https://buy.stripe.com/5kAeXs5C4e030ZqcMQ"); // Set the redirect URL for "starter"      
   } else if (boxId === "value") {
     flag=1;
     plan = boxId;
-    redirectUrl = "https://buy.stripe.com/5kA5mS2pSf47fUkdQV"; // Set the redirect URL for "value" 
+    res.redirect("https://buy.stripe.com/5kA5mS2pSf47fUkdQV"); // Set the redirect URL for "value" 
   } else if (boxId === "premium") {
     flag=1; 
     plan = boxId;
-    redirectUrl = "https://buy.stripe.com/aEUaHc1lO09d5fG6ou"; // Set the redirect URL for "premium"
+    res.redirect("https://buy.stripe.com/aEUaHc1lO09d5fG6ou"); // Set the redirect URL for "premium"
   } else {
       // Handle unknown or invalid boxId
-      res.status(400).json({ error: 'Invalid boxId' });
-      return;
+      res.redirect("/");
   }
 
-  if (redirectUrl) {
-      res.json({ redirectUrl }); // Send the redirect URL as a response
-  } else {
-      res.status(400).json({ error: 'Invalid boxId' });
-  }
+  // if (redirectUrl) {
+  //     res.json({ redirectUrl }); // Send the redirect URL as a response
+  // } else {
+  //     res.status(400).json({ error: 'Invalid boxId' });
+  // }
 };
 
 
