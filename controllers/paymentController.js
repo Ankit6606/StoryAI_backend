@@ -41,7 +41,10 @@ export function makepayment(req,res){
   // console.log(boxId);
   // let redirectUrl;
 
-  if (boxId === "discover") {
+  if (boxId === "basic"){
+    res.redirect("/");
+  }
+  else if (boxId === "discover") {
     flag=1; 
     plan = boxId;
     res.redirect("https://buy.stripe.com/5kAbLg9Sk7BF8rS5kn"); // Set the redirect URL for "discover"
@@ -87,7 +90,7 @@ const success = async (req, res) => {
       // console.log(payUser.id);
         let objId = new mongoose.Types.ObjectId(payUser.id);
         await User.updateOne({
-          username:uname
+          _id:uid
         },
         {
           $push:{
@@ -101,11 +104,9 @@ const success = async (req, res) => {
         const parrotstoadd = 5;
         const user = await User.findOne({ username: uname });
         if (user) {
-      
           user.gems += gemstoadd;
           user.parrots += parrotstoadd;
           await user.save(); // Save the updated user
-      
         } else {
           console.log("User not found");
       // Handle the case where the user is not found
@@ -124,7 +125,7 @@ const success = async (req, res) => {
       // console.log(payUser.id);
         let objId = new mongoose.Types.ObjectId(payUser.id);
         await User.updateOne({
-          username:uname
+          _id:uid
         },
         {
           $push:{
@@ -198,7 +199,7 @@ const success = async (req, res) => {
         // console.log(payUser.id);
           let objId = new mongoose.Types.ObjectId(payUser.id);
           await User.updateOne({
-            username:uname
+            _id:uid
           },
           {
             $push:{
