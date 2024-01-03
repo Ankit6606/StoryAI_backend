@@ -536,7 +536,7 @@ export async function postValues(req,res){
     );
     if(responseData.title !== "Story Generation Error - Please re-check your Parameters"){
       const gemstodeduct = 1;
-    const parrotstodeduct = 1;
+      const parrotstodeduct = 1;
 
     const user = await User.findOne({ username: uname });
     if (user) {
