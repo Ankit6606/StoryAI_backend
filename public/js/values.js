@@ -1,4 +1,4 @@
-import { postValues } from "../../controllers/userReq.js";
+
 
 function showNextPage() {
     var contentBox1 = document.getElementById("content-box-1");
@@ -14,34 +14,12 @@ function showNextPage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
+    const valueInput = document.getElementById('valueInput');
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
-            sendDataToBackend(cardValue); // Function to send data to the backend
+            valueInput.value = cardValue; // Set the input field value to the card's data-value
         });
     });
-
-    function sendDataToBackend(value) {
-        fetch('/values', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ values: value }) // Sending data to the '/values' endpoint
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Data sent to backend:', value);
-                // No redirection here
-                // Optionally, perform other frontend actions if needed
-                // postValues();
-            } else {
-                console.error('Failed to send data to backend');
-            }
-        })
-        .catch(error => {
-            console.error('Error sending data to backend:', error);
-        });
-    }
 });

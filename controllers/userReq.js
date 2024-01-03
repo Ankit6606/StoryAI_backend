@@ -387,7 +387,7 @@ export function postScenario(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         scenario = req.body.scenario;
-      // console.log(scenario);
+      console.log(scenario);
       res.redirect("/emotions");
       }else{
         res.redirect("/subscribe");
@@ -433,7 +433,7 @@ export function postEmotions(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         emotions = req.body.emotions;
-        // console.log(emotions);
+        console.log(emotions);
         res.redirect("/values");
       }else{
         res.redirect("/subscribe");
@@ -478,7 +478,7 @@ export async function postValues(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
-        
+        console.log(values);
 
   const endpoint = 'https://storyia.app/api/generate_story';
 
@@ -491,7 +491,7 @@ export async function postValues(req,res){
     values: JSON.stringify(values),
     userId: "test"
   });
-  // console.log(`${endpoint}?${params.toString()}`);
+  console.log(`${endpoint}?${params.toString()}`);
 
   try {
     const response = await fetch(`${endpoint}?${params.toString()}`, {
@@ -507,14 +507,6 @@ export async function postValues(req,res){
     }
 
     const responseData = await response.json();
-    const storygenerationError = "Story Generation Error - Please re-check your Parameters";
-    if(responseData.title===storygenerationError){
-      res.render("storyoutput",{
-        gems : req.user.gems,
-        parrots: req.user.parrots,
-        storyTitle : responseData
-      })
-    }
 
     //Storing the story in database after it is generated
 
@@ -530,8 +522,20 @@ export async function postValues(req,res){
       audiopath : responseData.audio_path,
       audioduration : audiodurationInMinutes
     }); 
-
-    const gemstodeduct = 1;
+   
+    let objId = new mongoose.Types.ObjectId(createstory.id);
+    await User.updateOne({
+      username:uname
+    },
+    {
+      $push:{
+        stories : objId,
+      },
+    },
+    {upsert : false, new : true},
+    );
+    if(responseData.title !== "Story Generation Error - Please re-check your Parameters"){
+      const gemstodeduct = 1;
     const parrotstodeduct = 1;
 
     const user = await User.findOne({ username: uname });
@@ -552,19 +556,8 @@ export async function postValues(req,res){
       // Handle the case where the user is not found
       return res.status(404).send("User not found");
     }
-   
-    let objId = new mongoose.Types.ObjectId(createstory.id);
-    await User.updateOne({
-      username:uname
-    },
-    {
-      $push:{
-        stories : objId,
-      },
-    },
-    {upsert : false, new : true},
-    );
-
+    }
+    
     //After storing the story in database, it is displayed in frontend
     
     res.render("storyoutput",{storyAudio:responseData.audio_path, storyTitle:responseData.title, story:responseData.story, storyImage : responseData.thumb_img_path, gems : req.user.gems, parrots : req.user.parrots});
