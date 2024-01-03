@@ -7,6 +7,15 @@
     line-height: 150%;
     /* 48px */
 }
+.card.selected-card {
+    border: 3px solid #F669B3;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+    z-index: 999;
+}
+
 .text-style-head-xx {
     color: #FFF;
     font-family: Volkhov;

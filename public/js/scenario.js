@@ -22,3 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+function selectCard(card) {
+    // Remove the selected class from all cards
+    var allCards = document.querySelectorAll('.card');
+    allCards.forEach(function (c) {
+        c.classList.remove('selected-card');
+    });
+
+    // Add the selected class to the clicked card
+    card.classList.add('selected-card');
+}
