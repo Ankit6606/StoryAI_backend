@@ -14,6 +14,279 @@ html {
     scroll-behavior: smooth;
 }
 @media (max-width: 768px) {
+
+
+
+  .box {
+
+     
+      flex-shrink: 0;
+      border-radius: 20px;
+      
+
+  }
+
+  .box-1 {
+      max-width: 85.5vw;
+     height: 60px !important;
+      border: 2px solid #FFF;
+      background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+      background-size: cover, cover;
+      /* Set background-size for both layers */
+      background-repeat: no-repeat;
+      background-image: url("assets/sub1.png")
+  }
+  .box-d { max-width: 85.5vw;
+      height: 60px !important;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  border: 2px solid #FFF;
+  
+  background: #FDF0F2;
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx2a.png");
+
+}
+  .box-2 {
+      max-width: 85.5vw;
+      height: 60px !important;
+      /* New height for box-4 */
+      border: 2px solid #FFF;
+     
+      background-size: cover, cover;
+      /* Set background-size for both layers */
+      background-repeat: no-repeat;
+      background-image: url("assets/sub2.png")
+  }
+
+  .box-4 {
+      max-width: 85.5vw;
+      height: 60px !important;
+      /* New height for box-4 */
+      border: 2px solid #FFF;
+
+      background-size: cover, cover;
+      /* Set background-size for both layers */
+      background-repeat: no-repeat;
+      background-image: url("assets/sub4.png");
+  }
+
+  .box-3 {
+      max-width: 90.5vw !important;
+      height: 60px !important;
+     
+      background-size: cover, cover;
+      /* Set background-size for both layers */
+      background-repeat: no-repeat;
+      background-image: url("assets/sub3.png");
+
+  }
+
+  .next-button {
+      max-height: 50px;
+      max-width: 80.5vw;
+      margin-left: 3px !important;
+  }
+  .box-1:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("assets/subx1b.png"); /* Add the path to your new image */
+}
+
+.box-2:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("assets/subx3b.png"); /* Add the path to your new image */
+}
+
+.box-4:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("assets/subx5b.png"); /* Add the path to your new image */
+}
+
+.box-3:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("assets/subx4b.png"); /* Add the path to your new image */
+}
+.box-d:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("assets/subx2b.png"); /* Add the path to your new image */
+}
+
+
+
+}
+
+.box-m {
+  gap: 5PX;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+align-items: center;
+  z-index: 1;
+
+
+}
+
+
+.box {
+  width: 640px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  z-index: 100;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease, margin 0.3s ease ; /* Smoother transitions */
+}
+.box:hover {
+  border: 3px solid #F669B3;;
+  margin-top: 10px;
+  margin-bottom:10px ;
+box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518); /* Enhance raise effect */
+/* Lift the card slightly on hover */
+z-index: 999; /* Make the hovered card appear above other cards */
+}
+
+.box-1 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+ 
+  border: 2px solid #FFF;
+  
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx1a.png")
+}
+
+.box-2 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  /* New height for box-4 */
+  border: 2px solid #FFF;
+  background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx3a.png")
+}
+
+.box-4 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  /* New height for box-4 */
+  border: 2px solid #FFF;
+  background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx5a.png");
+}
+
+.box-3 { width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  border: 2px solid #FFF;
+  
+  background: #FDF0F2;
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx4a.png");
+
+}
+.selected-box {
+border: 3px solid #F669B3;
+margin-top: 10px;
+margin-bottom: 10px;
+box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+z-index: 999;
+}
+.box-d.selected-box {
+border: 3px solid #F669B3;
+margin-top: 10px;
+margin-bottom: 10px;
+box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+z-index: 999;
+}
+
+.box-d { width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  border: 2px solid #FFF;
+  
+  background: #FDF0F2;
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("assets/subx2a.png");
+
+}
+/*Hover Animations */
+
+
+.box-1:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("assets/subx1b.png"); /* Add the path to your new image */
+}
+
+.box-2:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("assets/subx3b.png"); /* Add the path to your new image */
+}
+
+.box-4:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("assets/subx5b.png"); /* Add the path to your new image */
+}
+
+.box-3:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("assets/subx4b.png"); /* Add the path to your new image */
+}
+.box-d:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("assets/subx2b.png"); /* Add the path to your new image */
+}
+
+/*Hover Animations */
+
+
+
+@media (max-width: 768px) {
     body {
         margin: 0;
         padding: 0;
@@ -780,48 +1053,7 @@ line-height: 148.5%; /* 53.46px */
  
   }
   
-  .box {
-    width: 513px;
-    flex-shrink: 0;
-    border-radius: 20px;
-z-index: 100;
-  }
-  
-  .box-1 {
-    height: 99px;
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%)), url("assets/temp1.png");
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp1.png")
-  }
-  
-  .box-2 {
-    height: 137px; /* New height for box-4 */
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp2.png")
-  }
-  
-  .box-4 {
-    height: 177px; /* New height for box-4 */
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp4.png");
-  }
-  
-  .box-3 {
-    height: 213px;
-    background: #FDF0F2;
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp3.png");
-    
-  }
+
   
   .button-box-x {
     height: 65px;
@@ -832,7 +1064,7 @@ z-index: 100;
   
   
   .text-box-xx {
-    width: 513px;
+
     height: auto; /* To allow the text box to expand to fit the content */
     text-align: center;
   }

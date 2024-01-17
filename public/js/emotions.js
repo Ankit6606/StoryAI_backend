@@ -31,4 +31,14 @@ function selectCard(card) {
     // Add the selected class to the clicked card
     card.classList.add('selected-card');
 }
+document.getElementById("emotionsForm").addEventListener("submit", function(event) {
+    var enteredScenario = document.getElementById("valueInput").value;
 
+    if (enteredScenario === "") {
+        alert("Please enter an Emotion or select one from the cards.");
+        event.preventDefault(); // Prevent form submission
+    } else {
+        // Add any additional logic or action here when the scenario is valid
+        // For example, you may want to submit a form or navigate to the next page
+    }
+});

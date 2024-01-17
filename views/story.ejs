@@ -65,7 +65,7 @@
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
-    <form id="scenarioForm" method="POST" action="/story">
+    <form id="scenarioForm" method="POST" action="/story" onsubmit="return validateFields();">
     <div class="content-box">
         <div class="header-text">Step 1: Characters</div>
         <div class="sub-text">Fill the fields to create your<br>amazing story.</div>
@@ -91,7 +91,7 @@
                 <!-- <div class="add-character-btn" onclick="addCharacter()">+ Add Character</div> -->
 
             </div>
-            <button type="submit" class="next-button" >Next Scenario</button>
+            <button type="submit" class="next-button" onclick="validateFields()" >Next Scenario</button>
         
         <a href="/" style="color: #FFF;
 
@@ -105,6 +105,28 @@
 
     <script src="js/storypage.js"></script>
     <script src="js/vnav.js"></script>
+    <script>
+       function validateFields() {
+            var age = document.getElementsByName("age")[0].value;
+            var character = document.getElementsByName("character")[0].value;
+
+            if (age === "option" || character === "") {
+                alert("Please fill in all the fields before proceeding to the next scenario.");
+                return false; // Prevent form submission
+            } else {
+                // Add any additional logic or action here when the fields are valid
+                // For example, you may want to submit a form or navigate to the next page
+                return true; // Allow form submission
+            }
+        }
+  </script>
+  <script>
+    const images = ['assets/homepic.png', 'assets/Ellipse17.png'];
+    images.forEach(imageSrc => {
+        const img = new Image();
+        img.src = imageSrc;
+    });
+</script>
 </body>
 
 </html>
