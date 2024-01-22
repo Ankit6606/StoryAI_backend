@@ -29,7 +29,7 @@ import {rootRender,
         clickStories
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment, manageInvoice} from '../controllers/paymentController.js';
 
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
@@ -75,5 +75,6 @@ router.post("/values",postValues);
 router.post("/profile",editProfile);
 router.post("/subscribe",makepayment);
 router.post("/storyhistory",clickStories);
+router.post("/webhook",manageInvoice);
 
 export { router as userApp };

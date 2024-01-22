@@ -13,12 +13,19 @@ function showNextPage() {
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
     const emotionInput = document.getElementById('emotionInput');
+    let selectedValues = []; // Array to store selected values
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
-            const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
-            emotionInput.value = cardValue; // Set the input field value to the card's data-value
+            const cardValue = this.getAttribute('data-value');
+
+            // Remove the erased part from the selectedValues array
+            selectedValues = selectedValues.filter(value => emotionInput.value.includes(value));
+
+            if (!selectedValues.includes(cardValue)) {
+                selectedValues.push(cardValue); // Add value to the array if not already present
+            }
+            emotionInput.value = selectedValues.join(', '); // Update the input field with comma-separated values
         });
     });
 });
-

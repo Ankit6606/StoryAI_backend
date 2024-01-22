@@ -308,6 +308,8 @@ export async function rootPost(req,res){
     res.status(500).json({ error: 'Internal Server Error' });
 }
 }
+
+
 //--Story Generation Pages--//
 
 //Story - GET,POST
@@ -447,7 +449,9 @@ export function postEmotions(req,res){
 };
 
 
+
 //Values- GET,POST
+
 
 export function renderValues(req,res){
   if(req.isAuthenticated()){
