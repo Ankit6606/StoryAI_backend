@@ -72,6 +72,7 @@
       </div>
     </div>
     <div class="nav-button-container">
+      <a href="/" class="nav-button">Home</a>
       <a href="/subscribe" class="nav-button">Subscription</a>
       <a href="/profile" class="nav-button">Profile</a>
       <a href="/storyhistory" class="nav-button">Story History</a>
@@ -94,21 +95,26 @@
       <div class="text-style-head-xx"
         style="color: #000; font-size: 30px; align-self: baseline; margin-top: 20px; margin-left:30px;margin-bottom: 16px;">
         Your Stories</div>
-      <div class="card-box" style="overflow-x: scroll;">
-
-        <% for (let i = userStories.length-1; i >= 0; i--) { %>
-          <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
-            <div class="card" data-value="<%= userStories[i]._id %>" style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('<%= userStories[i].thumb_img_path %>'); background-size: cover;">
-                  <div class="card-text-1">
-                      <p><%= userStories[i].title %></p>
-                      <div class="card-text-2">
-                          <p><%= userStories[i].audioduration %></p>
+        <div class="card-box" style="overflow-x: scroll;">
+          <% for (let i = userStories.length - 1; i >= 0; i--) { %>
+              <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
+                  <div class="card" data-value="<%= userStories[i]._id %>" style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); background-size: cover;">
+                      <div class="card-text-1">
+                          <p><%= userStories[i].title %></p>
+                          <div class="card-text-2">
+                              <p><%= userStories[i].audioduration %></p>
+                          </div>
                       </div>
-                      
+                      <script>
+                          // Use JavaScript to set the background image with lazy loading
+                          var card = document.querySelector('[data-value="<%= userStories[i]._id %>"]');
+                          card.style.backgroundImage = 'url("<%= userStories[i].thumb_img_path %>")';
+                          card.style.backgroundImage = 'url("<%= userStories[i].thumb_img_path %>")';
+                          card.style.loading = 'lazy';
+                      </script>
                   </div>
-              </div>
+              <% } %>
           <% } %>
-      <% } %>
       </div>
 
       <!-- Add more cards as needed -->

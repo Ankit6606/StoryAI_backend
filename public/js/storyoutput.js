@@ -19,15 +19,14 @@ function togglePlayPause() {
 
     if (audio.paused) {
         audio.play();
-        icon.style.animationName = "none";  // Fix here: changed playPauseIcon to icon
+        icon.style.animationName = "none";
         animateProgressBar();
         updateTimer();
     } else {
         audio.pause();
-        icon.style.animationName = "rotate";  // Fix here: changed playPauseIcon to icon
+        icon.style.animationName = "rotate";
     }
 }
-
 
 function animateProgressBar() {
     var duration = audio.duration;
@@ -37,10 +36,7 @@ function animateProgressBar() {
         var progress = (currentTime / duration) * 100;
         slider.style.left = progress + "%";
 
-        // Calculate the color stop percentage based on progress
         var colorStop = 100 - progress;
-
-        // Update the background gradient of the progress bar
         progressBar.style.background = `linear-gradient(270deg, #BB80FF 0%, #BB80FF ${colorStop}%, #FFA8CF ${colorStop}%, #FFA8CF 100%)`;
 
         requestAnimationFrame(updateProgress);
@@ -48,7 +44,6 @@ function animateProgressBar() {
 
     updateProgress();
 }
-
 
 function updateTimer() {
     var duration = audio.duration;
@@ -83,6 +78,28 @@ audio.addEventListener("play", function () {
 audio.addEventListener("pause", function () {
     playPauseIcon.style.animationName = "rotate";
 });
+
+// Forward and Rewind Buttons
+function handleRightButtonClick() {
+    audio.currentTime += 10; // Forward 10 seconds
+    updateProgressBar();
+}
+
+function handleLeftButtonClick() {
+    audio.currentTime -= 10; // Rewind 10 seconds
+    updateProgressBar();
+}
+
+// Update progress bar and slider position
+function updateProgressBar() {
+    var currentTime = audio.currentTime;
+    var duration = audio.duration;
+    var progress = (currentTime / duration) * 100;
+    slider.style.left = progress + "%";
+
+    var colorStop = 100 - progress;
+    progressBar.style.background = `linear-gradient(270deg, #BB80FF 0%, #BB80FF ${colorStop}%, #FFA8CF ${colorStop}%, #FFA8CF 100%)`;
+}
 
 // Add event listeners for slider drag functionality
 var isDragging = false;

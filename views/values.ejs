@@ -38,7 +38,7 @@ line-height: 150%; /* 48px */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90vw;
-    height: 70vh;
+    height: 100vh;
     max-width: 1905px;
     max-height: 896px;
     flex-shrink: 0;
@@ -134,7 +134,7 @@ line-height: 150%; /* 48px */
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
-    <form action="/values" method="POST">
+    <form action="/values" method="POST" id="valuesForm">
     <div class="content-box" id="content-box-1">
         <div class="header-text">Step 4 : Values</div>
         <div class="sub-text">Select a preferred values for<br>your story</div>
@@ -152,16 +152,16 @@ line-height: 150%; /* 48px */
                     Select From 10 Values</div>
                     <div class="card-box">
     
-                        <div class="card" style="background-image:url('css/assets/values/ce-18.png') ;" data-value="sharing"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-13.png') ;" data-value="kindness"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-9.png') ;" data-value="responsibility"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-14.png') ;" data-value="honesty"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-19.png');" data-value="friendship"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-20.png');" data-value="courage"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-21.png');" data-value="patience"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-22.png');" data-value="curiosity"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-80.png');" data-value="respect"></div>
-                        <div class="card" style="background-image:url('css/assets/values/ce-79.png');" data-value="perseverance"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-18.png') ;" data-value="sharing"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-13.png') ;" data-value="kindness"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-9.png') ;" data-value="responsibility"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-14.png') ;" data-value="honesty"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-19.png');" data-value="friendship"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-20.png');" data-value="courage"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-21.png');" data-value="patience"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-22.png');" data-value="curiosity"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-80.png');" data-value="respect"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-79.png');" data-value="perseverance"></div>
                     </div>
         
                 <!-- Add more cards as needed -->

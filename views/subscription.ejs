@@ -236,6 +236,21 @@
             background-image: url("css/assets/subx4a.png");
 
         }
+        .selected-box {
+    border: 3px solid #F669B3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+    z-index: 999;
+}
+.box-d.selected-box {
+    border: 3px solid #F669B3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+    z-index: 999;
+}
+
         .box-d { width: 600px;
       height: 100px;
       flex-shrink: 0;
@@ -340,6 +355,7 @@
           </div>
         </div>
         <div class="nav-button-container">
+            <a href="/" class="nav-button">Home</a>
           <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a>
           <a href="/storyhistory" class="nav-button">Story History</a>
@@ -359,7 +375,7 @@
     
             <!-- Hidden input field to store the selected box ID -->
             <input type="hidden" id="selectedBoxId" name="selectedBoxId" value="">
-    
+        
             <button class="next-button" type="submit" id="nextPaymentButton" style="width: 513px;
                 height: 63px;
                 flex-shrink: 0;
@@ -367,6 +383,7 @@
                 background: #FFF;
                 box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button>
         </div>
+        
     </form>
     
     

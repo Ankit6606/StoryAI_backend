@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/meta/vertical-navbar.css">
     
 
-
+~
 </head>
 <style>
     
@@ -56,7 +56,9 @@
 
     @media (max-width: 768px) {
         .box-heading {
+            height: fit-content !important;
         opacity: 1 !important;
+    
         color: #000000;
         font-family: Arial, sans-serif;
         font-size: 25px !important;
@@ -257,16 +259,20 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
     .text-box {
         text-align: center;
         display: flex;
+        height: 70vh;
     }
 
     .box-heading {
+padding-top: 20px;
+        padding-bottom: 10px;
         height: auto;
         opacity: 1 !important;
         color: #000000;
         font-family: Arial, sans-serif;
         font-size: 36px;
         font-weight: bold;
-        margin-bottom: 20px;
+        
+        height: fit-content;
     }
 
     .box-subtext {
@@ -275,6 +281,8 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
         font-size: 18px;
         color: #555;
         padding: 15px;
+        overflow-y: scroll;
+        height: 65vh;
     }
 
 
@@ -542,6 +550,7 @@ background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0
               </div>
             </div>
             <div class="nav-button-container">
+                <a href="/" class="nav-button">Home</a>
               <a href="/subscribe" class="nav-button">Subscription</a>
               <a href="/profile" class="nav-button">Profile</a>
               <a href="/storyhistory" class="nav-button">Story History</a>
