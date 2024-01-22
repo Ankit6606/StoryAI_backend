@@ -642,41 +642,54 @@ max-height: 32%;}
   <script src="js/vnav.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.card');
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.card');
 
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
-            sendDataToBackend(cardValue); // Function to send data to the backend
+      cards.forEach(card => {
+        card.addEventListener('click', function () {
+          const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
+          sendDataToBackend(cardValue); // Function to send data to the backend
         });
-    });
+      });
 
-    function sendDataToBackend(value) {
+      function formatAudioDuration(duration) {
+        const minutes = Math.floor(duration);
+        const seconds = Math.round((duration - minutes) * 60);
+        return `${minutes} min ${seconds} sec`;
+      }
+
+      function sendDataToBackend(value) {
         fetch('/storyhistory', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ storyId: value }) // Sending data to the '/scenario' endpoint
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ storyId: value }) // Sending data to the '/scenario' endpoint
         })
-        .then(response => {
+          .then(response => {
             if (response.ok) {
-                console.log('Data sent to backend:', value);
-                // Optionally, perform actions after successful data transmission
-                // For example, redirect to another page
-                window.location.href = '/storyoutput';
+              console.log('Data sent to backend:', value);
+              // Optionally, perform actions after successful data transmission
+              // For example, redirect to another page
+              window.location.href = '/storyoutput';
             } else {
-                console.error('Failed to send data to backend');
+              console.error('Failed to send data to backend');
             }
-        })
-        .catch(error => {
+          })
+          .catch(error => {
             console.error('Error sending data to backend:', error);
-        });
-    }
-});
-    
-</script>
+          });
+      }
+
+      // Format audio duration for each card
+      const audioDurations = document.querySelectorAll('.card-text-2 p');
+      audioDurations.forEach(durationElement => {
+        const originalDuration = parseFloat(durationElement.textContent);
+        const formattedDuration = formatAudioDuration(originalDuration);
+        durationElement.textContent = formattedDuration;
+      });
+    });
+  </script>
 </body>
 
 </html>

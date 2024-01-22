@@ -11,9 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/meta/vertical-navbar.css">
-    
-  
-</head>
+    </head>
 
 <body>
  
@@ -121,11 +119,10 @@
         }
   </script>
   <script>
-    const images = ['assets/homepic.png', 'assets/Ellipse17.png'];
-    images.forEach(imageSrc => {
-        const img = new Image();
-        img.src = imageSrc;
-    });
+   const element = document.querySelector('.image-box');
+element.style.display = 'none';
+element.offsetHeight; // Trigger reflow
+element.style.display = 'block';
 </script>
 </body>
 
