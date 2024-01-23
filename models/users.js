@@ -16,10 +16,11 @@ const userSchema = new mongoose.Schema({
     name: String,
     phoneNumber: String,
     authType : String,
+    subscriptionPlan : {type: String, default: "basic"},
     paymentdetails: [{type:Schema.Types.ObjectId, ref : 'Payment'}],
     stories : [{type:Schema.Types.ObjectId, ref : 'Story'}],
-    gems: { type: Number, default: 1 }, // Default value for gems is set to 0
-    parrots: { type: Number, default: 1 }, // Default value for parrots is set to 0
+    gems: { type: Number, default: 1 }, // Default value for gems is set to 1
+    parrots: { type: Number, default: 1 }, // Default value for parrots is set to 1
 });
 
 
