@@ -65,7 +65,7 @@
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
-    <form method="POST" action="/emotions" id="emotionsForm">
+    <form method="POST" action="/emotions" onsubmit="return validateScenarioForm();">
     <div class="content-box" id="content-box-1">
         <div class="header-text">Step 3 : Emotions</div>
         <div class="sub-text">Select a preferred emotion for<br>your story</div>
@@ -110,7 +110,20 @@
 </form>
   <script src="js/emotions.js"></script>
   <script src="js/vnav.js"></script>
-
+  <script>
+    function validateScenarioForm() {
+           var enteredScenario = document.getElementById("emotionInput").value;
+   
+           if (enteredScenario === "") {
+               alert("Please enter a scenario or select one from the cards.");
+               return false; // Prevent form submission
+           } else {
+               // Add any additional logic or action here when the scenario is valid
+               // For example, you may want to submit a form or navigate to the next page
+               return true; // Allow form submission
+           }
+       }
+   </script>
 </body>
 
 </html>
