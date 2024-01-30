@@ -134,7 +134,7 @@ line-height: 150%; /* 48px */
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
-    <form action="/values" method="POST" id="valuesForm">
+    <form action="/values" method="POST"  onsubmit="return validateScenarioForm();">
     <div class="content-box" id="content-box-1">
         <div class="header-text">Step 4 : Values</div>
         <div class="sub-text">Select a preferred values for<br>your story</div>
@@ -200,6 +200,21 @@ line-height: 150%; /* 48px */
     <script src="js/values.js"></script>
     <script src="js/vnav.js"></script>
     <script>
+        
+    </script>
+    <script>
+       function validateScenarioForm() {
+           var enteredScenario = document.getElementById("valueInput").value;
+   
+           if (enteredScenario === "") {
+               alert("Please enter a scenario or select one from the cards.");
+               return false; // Prevent form submission
+           } else {
+               // Add any additional logic or action here when the scenario is valid
+               // For example, you may want to submit a form or navigate to the next page
+               return true; // Allow form submission
+           }
+       }
       function showModal() {
     fillProgressBar();
     document.getElementById('myModal').classList.add('visible');
