@@ -20,13 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value');
 
-            // Remove the erased part from the selectedValues array
-            selectedValues = selectedValues.filter(value => scenarioInput.value.includes(value));
+            
+            const isSelected = selectedValues.includes(cardValue);
 
-            if (!selectedValues.includes(cardValue)) {
-                selectedValues.push(cardValue); // Add value to the array if not already present
+             
+            if (isSelected) {
+                
+                selectedValues = selectedValues.filter(value => value !== cardValue);
+            } else {
+ 
+                selectedValues.push(cardValue);
             }
-            scenarioInput.value = selectedValues.join(', '); // Update the input field with comma-separated values
+
+      
+            scenarioInput.value = selectedValues.join(', ');
+
+        
+            this.classList.toggle('raised', !isSelected);
         });
     });
 });

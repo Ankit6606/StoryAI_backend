@@ -19,13 +19,23 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value');
 
-            // Remove the erased part from the selectedValues array
+             
             selectedValues = selectedValues.filter(value => emotionInput.value.includes(value));
 
+         
             if (!selectedValues.includes(cardValue)) {
-                selectedValues.push(cardValue); // Add value to the array if not already present
+                
+                selectedValues.push(cardValue);
+            } else {
+              
+                selectedValues = selectedValues.filter(value => value !== cardValue);
             }
-            emotionInput.value = selectedValues.join(', '); // Update the input field with comma-separated values
+
+            
+            emotionInput.value = selectedValues.join(', ');
+
+             
+            this.classList.toggle('raised', selectedValues.includes(cardValue));
         });
     });
 });
