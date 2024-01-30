@@ -16,19 +16,26 @@ function showNextPage() {
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
     const valueInput = document.getElementById('valueInput');
-    let selectedValues = []; // Array to store selected values
+   
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value');
 
-            // Remove the erased part from the selectedValues array
-            selectedValues = selectedValues.filter(value => valueInput.value.includes(value));
-
-            if (!selectedValues.includes(cardValue)) {
-                selectedValues.push(cardValue); // Add value to the array if not already present
+            if (valueInput.value.includes(cardValue)) {
+                // Remove the card value from the input field
+                valueInput.value = valueInput.value
+                    .split(', ')
+                    .filter(value => value !== cardValue)
+                    .join(', ');
+            } else {
+                // Add the card value to the input field
+                valueInput.value += (valueInput.value === '' ? '' : ', ') + cardValue;
             }
-            valueInput.value = selectedValues.join(', '); // Update the input field with comma-separated values
+
+            // Toggle the 'raised' class on the selected card
+            this.classList.toggle('raised');
         });
     });
 });
+

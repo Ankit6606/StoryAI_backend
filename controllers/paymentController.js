@@ -12,6 +12,7 @@ const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
 // const client = require("twilio")(accountSid, authToken);
 let flag = 0;
 let plan = " ";
+let uid = " ";
 
  
 
@@ -20,6 +21,7 @@ let plan = " ";
 export function selectSubscription(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      uid = req.user.id;
       res.render("subscription",{
         gems : req.user.gems,
         parrots: req.user.parrots
@@ -90,8 +92,21 @@ const success = async (req, res) => {
 };
 
 export const manageInvoice = async (req, res) => {
-  const payload = req.body;
+  const payload = req.rawbody;
+  // console.log('Webhook Payload:', payload);
   const sig = req.headers['stripe-signature'];
+
+  // Check if the Stripe-Signature header is present
+  if (!sig) {
+    console.error('Webhook Error: Missing Stripe-Signature header');
+    return res.status(400).send('Webhook Error: Missing Stripe-Signature header');
+  }
+
+  // Extract timestamp and signatures
+  // const [timestamp, ...signatures] = sig.split(',');
+
+  // console.log('Timestamp:', timestamp);
+  // console.log('Signatures:', signatures);
 
   let event;
 
@@ -102,44 +117,77 @@ export const manageInvoice = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // Log the event type
-  console.log('Webhook Event Type:', event.type);
+  
+  // console.log('Webhook Event Type:', event.type);
 
   // Handle the event
   switch (event.type) {
     case 'invoice.payment_succeeded':
       // Log relevant data for debugging
+      console.log(uid);
       console.log('Payment Succeeded Event Received:', {
         customerId: event.data.object.customer,
         subscriptionId: event.data.object.subscription,
       });
-
+  
       // Retrieve user by Stripe customer ID
-      const user = await User.findOne({ 'paymentdetails.customerId': event.data.object.customer });
-
-      if (user) {
-        // Increment gems and parrots based on the subscription plan
-        // Log the user's current gems and parrots
-        console.log('User Before Update:', {
-          gems: user.gems,
-          parrots: user.parrots,
-        });
-
-        // Update user document accordingly
-        user.gems += 10;
-        user.parrots += 10;
-
-        // Save the user document
-        await user.save();
-
+      
+      const customerId = event.data.object.customer;
+      // const user = await User.findOne({ 'paymentdetails.customerId': customerId });
+  
+      // if (user) {
+      //   // Increment gems and parrots based on the subscription plan
+      //   // Log the user's current gems and parrots
+      //   console.log('User Before Update:', {
+      //     gems: user.gems,
+      //     parrots: user.parrots,
+      //   });
+  
+      //   // Update user document accordingly
+      //   user.gems += 10;
+      //   user.parrots += 10;
+  
+      //   // Save the user document
+      //   await user.save();
+  
+      //   // Log the user's updated gems and parrots
+      //   console.log('User After Update:', {
+      //     gems: user.gems,
+      //     parrots: user.parrots,
+      //   });
+      // } else {
+      //   // User not found, create a new paymentdetails entity
+      //   const newPaymentDetail = {
+      //     customerId: customerId,
+      //     // Add other relevant fields as needed
+      //   };
+  
+      //   // Push the new paymentdetails entity to the paymentdetails array
+      //   user.paymentdetails.push(newPaymentDetail)
+      //     .then(()=>{
+      //       console.log("SUBSCRIPTION ADDED");
+      //     }).catch((err)=>{
+      //       console.log(err);
+      //     })
+  
+      //   // Increment gems and parrots based on the subscription plan
+      //   user.gems += 10;
+      //   user.parrots += 10;
+  
+      //   // Save the user document
+      //   await user.save();
+  
         // Log the user's updated gems and parrots
-        console.log('User After Update:', {
-          gems: user.gems,
-          parrots: user.parrots,
-        });
-      }
-
+      //   console.log('New User Created and Updated:', {
+      //     gems: user.gems,
+      //     parrots: user.parrots,
+      //   });
+      // }
+  
       break;
+    // Handle other event types as needed
+  
+  
     
     case "invoice.payment_failed":
       console.log("Invoice generation is not successful");
