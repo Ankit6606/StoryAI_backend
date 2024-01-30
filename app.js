@@ -14,12 +14,19 @@ import Payment from './models/users.js';
 
 const app = express();//For the main web application
 
-
-app.use(express.static("public"));
-app.use(express.json()); 
-app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(express.json(
+  {
+    verify: (req, res, buf) => {
+      req.rawbody = buf;
+    }
+  })
+); 
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.json());
+
 app.use(session({
   secret: 'my secret',
   resave: false,
