@@ -16,7 +16,7 @@ function showNextPage() {
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
     const valueInput = document.getElementById('valueInput');
-   
+    let selectedValues = []; // Array to store selected values
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
@@ -41,4 +41,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
