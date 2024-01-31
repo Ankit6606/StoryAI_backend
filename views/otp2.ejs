@@ -54,11 +54,11 @@
 
     @media (max-width: 768px) {
         .otp-input {
-      width: 10vw !important;
+      width: 35px !important;
       height: 35px !important;
       font-size: 18px;
       text-align: center;
-      margin: 0 5px;
+      margin: 0% !important;
       border: 1px solid #ccc;
       border-radius: 5px;
       color: rgb(0, 0, 0);
@@ -66,8 +66,9 @@
       outline: none;
     }
     .otp-container {
+        gap: 5px !important;
         margin-top: 30px ;
-       margin: 0px !important;
+        margin-left: -10% !important;
       display: flex;
       align-self: center !important;
     
@@ -565,12 +566,12 @@
                          
                         
                         <div class="otp-container">
-                            <input type="text" class="otp-input" maxlength="1" id="digit1" oninput="moveToNext(this)" name="digit1" required>
-                            <input type="text" class="otp-input" maxlength="1" id="digit2" oninput="moveToNext(this)" name="digit2" required>
-                            <input type="text" class="otp-input" maxlength="1" id="digit3" oninput="moveToNext(this)" name="digit3" required>
-                            <input type="text" class="otp-input" maxlength="1" id="digit4" oninput="moveToNext(this)" name="digit4" required>
-                            <input type="text" class="otp-input" maxlength="1" id="digit5" oninput="moveToNext(this)" name="digit5" required>
-                            <input type="text" class="otp-input" maxlength="1" id="digit6" oninput="moveToNext(this)" name="digit6" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit1" oninput="moveToNext(this)" name="digit1" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit2" oninput="moveToNext(this)" name="digit2" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit3" oninput="moveToNext(this)" name="digit3" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit4" oninput="moveToNext(this)" name="digit4" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit5" oninput="moveToNext(this)" name="digit5" required>
+                            <input type="number" class="otp-input" maxlength="1" id="digit6" oninput="moveToNext(this)" name="digit6" required>
                         </div>
                         <div class="text" id="toggle-sign-in" onclick="showNextPage()">Didnt Recieve OTP?
                             <a href="/verifyotp"><span class="sign-in-text" id="toggle-text">Send Again</span></a>
