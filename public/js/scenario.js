@@ -20,22 +20,28 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', function() {
             const cardValue = this.getAttribute('data-value');
 
-            
+            // Check if the card is already selected
             const isSelected = selectedValues.includes(cardValue);
 
-             
+            // Check if more than one card is selected
+            if (!isSelected && selectedValues.length > 0) {
+                alert("Only one scenario can be chosen. Deselect the current scenario before choosing another.");
+                return;
+            }
+
+            // Toggle the selection status
             if (isSelected) {
-                
+                // If already selected, remove from the selectedValues array
                 selectedValues = selectedValues.filter(value => value !== cardValue);
             } else {
- 
+                // If not already selected, add to the selectedValues array
                 selectedValues.push(cardValue);
             }
 
-      
+            // Update the input field with the selected value
             scenarioInput.value = selectedValues.join(', ');
 
-        
+            // Toggle a CSS class for the raised effect
             this.classList.toggle('raised', !isSelected);
         });
     });
