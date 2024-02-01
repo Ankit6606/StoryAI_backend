@@ -13,6 +13,8 @@ const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
 let flag = 0;
 let plan = " ";
 let uid = " ";
+let gemsToAdd = 0;
+let parrotsToAdd = 0;
 
  
 
@@ -37,7 +39,9 @@ export function selectSubscription(req,res){
 };
 
 export const makepayment = async (req, res) => {
-  const  selectedBoxId  = req.body.selectedBoxId;
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      const  selectedBoxId  = req.body.selectedBoxId;
   // console.log('Received planId:', selectedBoxId);
   try {
 
@@ -48,15 +52,27 @@ export const makepayment = async (req, res) => {
         return;
       case 'discover':
         selectedpriceId = process.env.DISCOVER_PLAN_ID;
+        plan = 'discover';
+        gemsToAdd = 5;
+        parrotsToAdd = 5;
         break;
       case 'starter':
         selectedpriceId = process.env.STARTER_PLAN_ID;
+        plan = 'starter';
+        gemsToAdd = 10;
+        parrotsToAdd = 10;
         break;
       case 'value':
         selectedpriceId = process.env.VALUE_PLAN_ID;
+        plan = 'value';
+        gemsToAdd = 20;
+        parrotsToAdd = 20;
         break;
       case 'premium':
         selectedpriceId = process.env.PREMIUM_PLAN_ID;
+        plan = 'premium';
+        gemsToAdd = 40;
+        parrotsToAdd = 40;
         break;
       default:
         console.log('Invalid planId:', selectedBoxId);
@@ -80,6 +96,13 @@ export const makepayment = async (req, res) => {
     console.error('Error:', error);
     res.status(500).json({ error: 'Failed to create subscription' });
   }
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+  
 };
 
 
@@ -91,6 +114,7 @@ const success = async (req, res) => {
   }
 };
 
+
 export const manageInvoice = async (req, res) => {
   const payload = req.rawbody;
   // console.log('Webhook Payload:', payload);
@@ -101,12 +125,6 @@ export const manageInvoice = async (req, res) => {
     console.error('Webhook Error: Missing Stripe-Signature header');
     return res.status(400).send('Webhook Error: Missing Stripe-Signature header');
   }
-
-  // Extract timestamp and signatures
-  // const [timestamp, ...signatures] = sig.split(',');
-
-  // console.log('Timestamp:', timestamp);
-  // console.log('Signatures:', signatures);
 
   let event;
 
@@ -123,8 +141,7 @@ export const manageInvoice = async (req, res) => {
   // Handle the event
   switch (event.type) {
     case 'invoice.payment_succeeded':
-      // Log relevant data for debugging
-      console.log(uid);
+      // console.log(uid);
       console.log('Payment Succeeded Event Received:', {
         customerId: event.data.object.customer,
         subscriptionId: event.data.object.subscription,
@@ -133,56 +150,41 @@ export const manageInvoice = async (req, res) => {
       // Retrieve user by Stripe customer ID
       
       const customerId = event.data.object.customer;
-      // const user = await User.findOne({ 'paymentdetails.customerId': customerId });
+      const amountPaid = event.data.object.amount_paid;
+      const payUser = await Payment.create({
+          userId : uid,
+          customerId : customerId,
+          paymentAmount:amountPaid/100,
+          paymentDate: new Date(),
+      }); 
+      // console.log(payUser.id);
+      let objId = new mongoose.Types.ObjectId(payUser.id);
+
+      await User.updateOne(
+        { _id: uid },
+        {
+          $push: {
+            paymentdetails: objId,
+          },
+          $set: {
+            subscriptionPlan: plan,
+          },
+        },
+        { upsert: false, new: true }
+      );
+      
+
   
-      // if (user) {
-      //   // Increment gems and parrots based on the subscription plan
-      //   // Log the user's current gems and parrots
-      //   console.log('User Before Update:', {
-      //     gems: user.gems,
-      //     parrots: user.parrots,
-      //   });
-  
-      //   // Update user document accordingly
-      //   user.gems += 10;
-      //   user.parrots += 10;
-  
-      //   // Save the user document
-      //   await user.save();
-  
-      //   // Log the user's updated gems and parrots
-      //   console.log('User After Update:', {
-      //     gems: user.gems,
-      //     parrots: user.parrots,
-      //   });
-      // } else {
-      //   // User not found, create a new paymentdetails entity
-      //   const newPaymentDetail = {
-      //     customerId: customerId,
-      //     // Add other relevant fields as needed
-      //   };
-  
-      //   // Push the new paymentdetails entity to the paymentdetails array
-      //   user.paymentdetails.push(newPaymentDetail)
-      //     .then(()=>{
-      //       console.log("SUBSCRIPTION ADDED");
-      //     }).catch((err)=>{
-      //       console.log(err);
-      //     })
-  
-      //   // Increment gems and parrots based on the subscription plan
-      //   user.gems += 10;
-      //   user.parrots += 10;
-  
-      //   // Save the user document
-      //   await user.save();
-  
-        // Log the user's updated gems and parrots
-      //   console.log('New User Created and Updated:', {
-      //     gems: user.gems,
-      //     parrots: user.parrots,
-      //   });
-      // }
+      const user = await User.findOne({ _id: uid });
+      if (user) {
+        user.gems += gemsToAdd;
+        user.parrots += parrotsToAdd;
+        await user.save(); // Save the updated user
+      } else {
+        console.log("User not found");
+    // Handle the case where the user is not found
+        return res.status(404).send("User not found");
+      }
   
       break;
     // Handle other event types as needed
