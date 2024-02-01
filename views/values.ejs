@@ -221,10 +221,36 @@ line-height: 150%; /* 48px */
        function showModal(event) {
     event.preventDefault();
     setTimeout(() => {
-        fillProgressBar();
-        document.getElementById('myModal').classList.add('visible');
-    }, 500); // Use a longer delay (e.g., 500 milliseconds)
-}
+      fillProgressBar();
+      document.getElementById('myModal').classList.add('visible');
+      executePostRequest(); // Call the function to make a POST request
+    }, 500);
+  }
+
+  async function executePostRequest() {
+    try {
+      const response = await fetch('/values', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Add your request body here if needed
+        // body: JSON.stringify({ key: 'value' }),
+      });
+
+      if (!response.ok) {
+        console.error('HTTP status code:', response.status);
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error('Network response was not ok.');
+      }
+
+      const responseData = await response.json();
+      // Handle the response data as needed
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
 
   
 function fillProgressBar() {
