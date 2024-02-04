@@ -34,7 +34,6 @@ let story = [];
 
 
 
-
 export function renderlandingPage(req,res){
   res.render("landing-page");
 };

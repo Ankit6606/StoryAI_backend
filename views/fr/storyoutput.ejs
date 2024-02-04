@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Output</title>
+    <link rel="stylesheet" href="../css/meta/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/meta/vertical-navbar.css">
+    
+
+~
+</head>
+<style>
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
+            url('../css/assets/story-page-bg.png') center/cover no-repeat;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+
+    }
+
+    .image-box {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        max-width: 100%;
+        width: 100%;
+        height: 44%;
+        max-height: 500px;
+        background: url('css/assets/Ellipse17.png') center/cover no-repeat;
+        box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+
+    }
+
+
+
+
+    .flex-container {
+        position: relative;
+        top: -13%;
+        margin-left: 3.3%;
+        display: flex;
+       max-width: 100vw;
+        /* To create a 40px margin between the boxes */
+    }
+
+
+
+    @media (max-width: 768px) {
+        .box-heading {
+            height: fit-content !important;
+        opacity: 1 !important;
+    
+        color: #000000;
+        font-family: Arial, sans-serif;
+        font-size: 25px !important;
+        font-weight: bold;
+        margin-bottom: 5px;
+       
+        
+    }
+    
+
+    .box-subtext {
+        height: 20vh !important;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #555;
+        scroll-behavior: smooth;
+      overflow-y: scroll;      
+        padding: 10px !important;
+    }
+       
+        .navbar{
+        visibility: hidden;
+    }
+   
+    .navTrigger{
+        opacity: 1 !important;
+    }
+        .ellipse {
+        width: 692px;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+display: none;
+visibility:hidden;
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+        .flex-container {
+        position: relative;
+        top: 50%;
+        margin-left: 0 !important;
+        display: flex;
+       flex-direction: column !important;
+       max-width: 100vw;
+        /* To create a 40px margin between the boxes */
+    }
+    
+    .progress-bar {
+        width: 90%;
+        height: 6.428px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: linear-gradient(270deg, #BB80FF 0%, #FFA8CF 0%);
+        position: relative;
+        margin-left: 5%;
+        margin-top: -10% !important;
+        margin-bottom:10% !important ;
+
+    }
+
+    .audio-player{width: 90%;
+        margin-bottom: 3.5%;
+height: auto !important;
+flex-shrink: 0;
+border-radius: 30px;
+border: 5px solid #A288CB;
+align-self: center;
+opacity: 0.7 !important;
+background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.31) 100%));}
+    
+body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        height: 100vh !important;
+        width: 100vw !important;
+        font-family: Arial, sans-serif;
+        overflow-y:scroll;
+
+    }
+
+.box {width: 90vw !important;
+    opacity: 1 !important;
+        max-width: 900px;
+        max-height: 900px;
+        height: 30vh;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: #FDF0F2;
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.0) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .ellipse {
+        max-width: 100vw;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 0%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+    .box-audio {
+        width: 90vw !important;
+        max-width: 900px;
+        max-height: 900px;
+        height: 15vh !important;
+
+        flex-shrink: 0;
+        border-radius: 30px;
+        
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.0) inset !important;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-end;
+    }
+    .text-box {
+        opacity: 1 !important;
+        text-align: center;
+        height: 30vh !important;
+    }
+    .box-imgx{
+    width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+visibility: hidden !important;
+display: none !important;
+opacity: 0 !important;
+                flex-shrink: 0;
+                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;
+}
+}
+    .box {width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: #FDF0F2;
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .box-audio {
+      
+        
+        width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+
+        flex-shrink: 0;
+        border-radius: 30px;
+        
+        box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+        margin: 0 20px;
+        /* Adjust as needed */
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-end;
+    }
+    .box-imgx{
+       opacity: 1;
+    width: 45vw;
+        max-width: 900px;
+        max-height: 900px;
+        height: 70vh;
+
+                flex-shrink: 0;
+                border-radius: 30px; margin-left: 20px; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;
+}
+    .audio-player{width: 90%;
+        margin-bottom: 3.5%;
+height: 143.232px;
+flex-shrink: 0;
+border-radius: 30px;
+border: 5px solid #A288CB;
+align-self: center;
+opacity: 0.8;
+background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));}
+    
+
+    .text-box {
+        text-align: center;
+        display: flex;
+        height: 70vh;
+    }
+
+    .box-heading {
+padding-top: 20px;
+        padding-bottom: 10px;
+        height: auto;
+        opacity: 1 !important;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        
+        height: fit-content;
+    }
+
+    .box-subtext {
+        height: auto;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #555;
+        padding: 15px;
+        overflow-y: scroll;
+        height: 65vh;
+    }
+
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+
+
+        }
+
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+ 
+
+
+
+    
+
+
+    @keyframes containerSlideOut {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes cardsSlideIn {
+        0% {
+
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .ellipse {
+        width: 692px;
+        height: 299.844px;
+        flex-shrink: 0;
+        background-image: url("css/assets/stars.png");
+
+
+        background-size: contain;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+
+    }
+
+    @keyframes ellipseMoveUp {
+        0% {
+            transform: translateY(-500px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(-10px);
+            /* Move the ellipse up */
+            opacity: 1;
+            /* Make it visible */
+        }
+
+
+    }
+
+    @keyframes ellipseGlitter {
+        0% {
+            opacity: 1;
+        }
+
+        10% {
+            opacity: 0.9;
+        }
+
+        20% {
+            opacity: 0.8;
+        }
+
+        30% {
+            opacity: 0.7;
+        }
+
+        40% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 0.35;
+        }
+
+        60% {
+            opacity: 0.5;
+        }
+
+        70% {
+            opacity: 0.7;
+        }
+
+        80% {
+            opacity: 0.8;
+        }
+
+        90% {
+            opacity: 0.9;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    
+    .progress-bar {
+        width: 90%;
+        height: 6.428px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: linear-gradient(270deg, #BB80FF 0%, #FFA8CF 0%);
+        position: relative;
+        margin-left: 5%;
+    }
+
+    .slider {
+        width: 9.165px;
+        height: 14.61px;
+        flex-shrink: 0;
+        fill: #FFF;
+        cursor: pointer;
+        position: absolute;
+        top: -4.5px; /* Adjust position as needed */
+    }
+    .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 240px; /* Adjust as needed based on your button size */
+    margin: 0 auto;
+    position: relative;
+    top: -45px; /* Adjust as needed to control the vertical position */
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.left-button, .right-button {
+    /* Add your button styling here */
+}
+
+.left-button img, .right-button img {
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+}
+
+.play-pause-container {
+    height: 95px;
+    width: 95px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2; /* Ensure it's above other elements */
+    position: relative;
+    top: -10px; /* Adjust as needed to control the vertical position */
+}
+
+/* Add this style to center the button inside the container */
+.play-pause-button {
+    width: 95px;
+    height: 95px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* Add any additional styling as needed */
+
+
+</style>
+
+<body>
+    <body>
+        <div class="icons-container-2" style="scale: 0.65;">
+            <div class="icon-item">
+              <img src="css/assets/gem.png" alt="Icon 1">
+              <span class="icon-number"><%= gems %></span>
+            </div>
+            <div class="icon-item">
+              <img src="css/assets/parrot.png" alt="Icon 2">
+              <span class="icon-number"><%= parrots %></span>
+            </div>
+          </div>
+        <button class="navTrigger" id="navTrigger">
+            <svg viewBox="0 0 64 48">
+              <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+              <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+              <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+            </svg>
+          </button>
+          <nav class="navMenu" id="navMenu">
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/story">Create Story</a>
+              </li>
+              <li>
+                <a href="/storyhistory">Story History</a>
+              </li>
+              <li>
+                <a href="/profile">Profile</a>
+              </li>
+              <li>
+                <a href="/subscribe">Subscription</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="navbar">
+            <div class="icons-container">
+              <div class="icon-item">
+                <img src="css/assets/gem.png" alt="Icon 1">
+                <span class="icon-number"><%= gems %></span>
+              </div>
+              <div class="icon-item">
+                <img src="css/assets/parrot.png" alt="Icon 2">
+                <span class="icon-number"><%= parrots %></span>
+              </div>
+            </div>
+            <div class="nav-button-container">
+                <a href="/" class="nav-button">Home</a>
+              <a href="/subscribe" class="nav-button">Subscription</a>
+              <a href="/profile" class="nav-button">Profile</a>
+              <a href="/storyhistory" class="nav-button">Story History</a>
+              <a href="/story" class="special-button">Create Story</a>
+            </div>
+          </div>
+        
+    
+        <div class="ellipse"></div>
+        <div class="flex-container">
+            <!-- Image Box -->
+            <div class="box-audio" id="audio-box">
+                <img class="box-imgx" src="<%= storyImage %>" alt="Background Image">
+                <!-- ... (your existing audio player code) ... -->
+                <div class="audio-player">
+                    <audio id="audio" style="width: 70%;">
+                        <!-- Replace 'your-audio-file.mp3' with the actual URL of your audio file -->
+                        <source src="<%= storyAudio %>" type="audio/mp3">
+                        Your browser does not support the audio tag.
+                    </audio>
+                    <div class="button-container">
+                        <div class="button left-button" onclick="handleLeftButtonClick()">
+                            <img src="css/assets/rewind.png" alt="Left Button">
+                        </div>
+                        <div class="play-pause-container" onclick="togglePlayPause()">
+                            <div class="play-pause-button">
+                                <img id="play-pause-icon" src="css/assets/pause.png" style="object-fit: cover; height: 95px; width:95px;" alt="">
+                                <img id="play-pause-image" src="css/assets/play.png" style="object-fit: cover; height: 95px; width:95px; display: none;" alt="">
+                            </div>
+                        </div>
+                        <div class="button right-button" onclick="handleRightButtonClick()">
+                            <img src="css/assets/forward.png" alt="Right Button">
+                        </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="progress-bar" id="progress-bar">
+                        <!-- Slider -->
+                        <svg class="slider" id="slider" draggable="true" xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none">
+                            <ellipse cx="4.91647" cy="7.35289" rx="4.58248" ry="7.30504" fill="white" />
+                        </svg>
+                    </div>
+                    <div id="timer" style="color: white; margin-top: 10px; text-align: center;"></div>
+                </div>
+            </div>
+            
+    
+            <!-- Text Box -->
+            <div class="box text-box">
+                <div class="box-heading" ><%= storyTitle %></div>
+                <div class="box-subtext" ><%= story %></div>
+            </div>
+        </div>
+        <script src="js/storyoutput.js"></script>
+        <script src="js/vnav.js"></script>
+        <script>
+    //         function setAudioBoxBackground(imageUrl) {
+    //     var audioBox = document.getElementById('audio-box');
+    //     if (audioBox) {
+    //         audioBox.style.backgroundImage = 'url(' + imageUrl + ')';
+    //         audioBox.style.backgroundSize = 'cover'; 
+    //     }
+    // }
+    const storyImage = '<%= storyImage %>';
+    console.log('Story Image URL:', storyImage);
+       
+        if (window.innerWidth <= 768) {
+        
+            document.body.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.5) 20.09%, rgba(0, 0, 0, 0.15) 48.97%, rgba(0, 0, 0, 0.1) 100%), url('${storyImage}') center/cover no-repeat`;
+        }
+    
+    // var backgroundImageUrl = '"css/assets/story-pic-dynamic.png"';
+    // setAudioBoxBackground(backgroundImageUrl);
+        </script>
+    </body>
+
+</html>
