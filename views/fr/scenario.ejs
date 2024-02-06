@@ -29,19 +29,19 @@
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/">Accueil</a><!--Home-->
           </li>
           <li>
-            <a href="/story">Create Story</a>
+            <a href="/story">Créer Histoire</a><!--Create Story-->
           </li>
           <li>
-            <a href="/storyhistory">Story History</a>
+            <a href="/storyhistory">Mes Histoires</a><!--Story history-->
           </li>
           <li>
-            <a href="/profile">Profile</a>
+            <a href="/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Subscription</a>
+            <a href="/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
@@ -74,21 +74,21 @@
     <form method="POST" action="/scenario" onsubmit="return validateScenarioForm();">
 
     <div class="content-box" id="content-box-1">
-      <div class="header-text">Step 2 : Scenario</div>
-      <div class="sub-text">Select a preferred scenario for<br>your story</div>
+      <div class="header-text">Étape 2 : Scénario</div>
+      <div class="sub-text">Sélectionnez un scénario préféré pour votre histoire ou<br>créez le vôtre</div>
 
 
        
         <div class="flex-box">
-            <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Scenerio</div>
-            <input type="text" class="text-box" id="scenarioInput" placeholder="Start typing here" name="scenario" required>
+            <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Saisissez votre propre scénario</div>
+            <input type="text" class="text-box" id="scenarioInput" placeholder="Commencez à taper votre scénario ici..." name="scenario" required>
 
             
         </div>
         <div class="card-container">
             <div class="text-style-head"
             style="color: #000; font-size: 30px; align-self: baseline; margin-top: 20px; margin-left:30px;margin-bottom: 16px;">
-                Select From 10 Scenarios</div>
+            Sélectionnez parmi 10 scénarios</div>
                 <div class="card-box">
     
                     <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/D1.PNG') ;" data-value="magic forest"></div>
@@ -104,7 +104,7 @@
                 </div>
 
       </div>
-      <button type="submit" class="next-button" style="height: 55px;">Next Emotions</button>
+      <button type="submit" class="next-button" style="height: 55px;">Suivant : Émotions</button>
 
       <a href="/story" style="color: #FFF;
 
@@ -112,7 +112,7 @@
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
-        line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
+        line-height: 150%;margin-top: 11px; text-decoration: none;">Retour</a>
     </div>
   </form>
   <script src="js/scenario.js"></script>

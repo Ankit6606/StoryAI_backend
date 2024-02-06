@@ -25,19 +25,19 @@
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/">Accueil</a><!--Home-->
           </li>
           <li>
-            <a href="/story">Create Story</a>
+            <a href="/story">Créer Histoire</a><!--Create Story-->
           </li>
           <li>
-            <a href="/story_history">Story History</a>
+            <a href="/story_history">Mes Histoires</a><!--Story history-->
           </li>
           <li>
-            <a href="/profile">Profile</a>
+            <a href="/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Subscription</a>
+            <a href="/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
@@ -65,14 +65,13 @@
     <div class="ellipse"></div>
     <form id="scenarioForm" method="POST" action="/story" onsubmit="return validateFields();">
     <div class="content-box">
-        <div class="header-text">Step 1: Characters</div>
-        <div class="sub-text">Fill the fields to create your<br>amazing story.</div>
+        <div class="header-text">Étape 1 : Personnages</div>
+        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms<br>des personnages, ajoutez les noms de vos différents<br>personnages, un ou plusieurs, et précisez qui ils sont.</div>
         
         <div class="fields-box" id="fields-box">
         <!-- Age Group Dropdown -->
         
-            <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Age
-                Group</div>
+            <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Groupe d'âge</div>
                 <select class="text-field-1" placeholder="Age Group" name="age"
                     style="width: 411px; height: 44.724px; margin-left: 6px; margin-bottom: 25px;">
                     <option value="option" disabled selected >Select Age Group</option>
@@ -82,14 +81,14 @@
                 </select>
 
                 <!-- Character Name Input Field -->
-                <div class="text-head" style="margin-bottom: 7px; text-align: left; margin-left: 7px;">Character Name</div>
-                <input type="text" class="text-field-1" placeholder="Name 1 (gender) , Name 2 (gender)..." style="margin-left: 5px;" name="character">
+                <div class="text-head" style="margin-bottom: 7px; text-align: left; margin-left: 7px;">Nom(s) du(des) personnage(s)</div>
+                <input type="text" class="text-field-1" placeholder="Nom1 (genre et/ou rôles), Nom2…" style="margin-left: 5px;" name="character">
 
                 <!-- Add Character Button -->
                 <!-- <div class="add-character-btn" onclick="addCharacter()">+ Add Character</div> -->
 
             </div>
-            <button type="submit" class="next-button" onclick="validateFields()" >Next Scenario</button>
+            <button type="submit" class="next-button" onclick="validateFields()" >Scénario suivant</button>
         
         <a href="/" style="color: #FFF;
 
@@ -97,7 +96,7 @@
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
-        line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
+        line-height: 150%;margin-top: 11px; text-decoration: none;">Retour</a>
     </div>
   </form>
 

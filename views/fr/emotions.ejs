@@ -28,30 +28,30 @@
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/">Accueil</a> <!--home-->
           </li>
           <li>
-            <a href="/story">Create Story</a>
+            <a href="/story">Créer Histoire</a><!--Create Story-->
           </li>
           <li>
-            <a href="/storyhistory">Story History</a>
+            <a href="/storyhistory">Mes Histoires</a><!--Story History-->
           </li>
           <li>
-            <a href="/profile">Profile</a>
+            <a href="/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Subscription</a>
+            <a href="/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
       <div class="navbar">
         <div class="icons-container">
           <div class="icon-item">
-            <img src="css/assets/gem.png" alt="Icon 1">
+            <img src="../css/assets/gem.png" alt="Icon 1">
             <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
-            <img src="css/assets/parrot.png" alt="Icon 2">
+            <img src="../css/assets/parrot.png" alt="Icon 2">
             <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
@@ -67,49 +67,49 @@
     <div class="ellipse"></div>
     <form method="POST" action="/emotions" onsubmit="return validateScenarioForm();">
     <div class="content-box" id="content-box-1">
-        <div class="header-text">Step 3 : Emotions</div>
-        <div class="sub-text">Select a preferred emotion for<br>your story</div>
+        <div class="header-text">Étape 3 : Émotions</div><!--Step 3 : Emotions-->
+        <div class="sub-text">SSélectionnez une émotion préférée pour votre histoire.<br>Vous pouvez en sélectionner plusieurs.</div><!--class="sub-text">Select a preferred emotion for<br>your story. You can select several</div>-->
 
         <!-- Flexbox and Textbox -->
        
             <div class="flex-box">
-                <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Emotions</div>
-                <input type="text" class="text-box" id="emotionInput" placeholder="Start typing here" name="emotions">
+                <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Saisissez vos propres émotions</div><!--Enter Own Emotions-->
+                <input type="text" class="text-box" id="emotionInput" placeholder="Commencez à taper ici..." name="emotions"><!--Start typing here-->
                 
             </div>
             <div class="card-container">
                 <div class="text-style-head"
                     style="color: #000; font-size: 30px; align-self: baseline; margin-top: 38px; margin-left:30px;margin-bottom: 22px;">
-                    Select From 10 Emotions</div>
+                    Sélectionnez parmi 10 émotions</div><!--Select From 10 Emotions-->
                 <div class="card-box">
     
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-8.png') ;" data-value="sadness"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-1.png') ;" data-value="joy"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-9.png') ;" data-value="fear"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-18.png') ;" data-value="surprise"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-19.png');" data-value="frustration"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-20.png');" data-value="love"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-21.png');" data-value="jealousy"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-22.png');" data-value="hope"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-80.png');" data-value="excitement"></div>
-                    <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/emotions/ce-81.png');" data-value="bravery"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo8.png') ;" data-value="sadness"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo7.png') ;" data-value="joy"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo9.png') ;" data-value="fear"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo18.png') ;" data-value="surprise"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo19.png');" data-value="frustration"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo20.png');" data-value="love"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo21.png');" data-value="jealousy"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo22.png');" data-value="hope"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo80.png');" data-value="excitement"></div>
+                    <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/emo/emo81.png');" data-value="bravery"></div>
                 </div>
     
                 <!-- Add more cards as needed -->
             </div>
-            <button type="submit" class="next-button" style="height: 55px;">Next Values</button>
+            <button type="submit" class="next-button" style="height: 55px;">Suivant : Valeurs</button><!--Next Values-->
        
-        <a href="/scenario" style="color: #FFF;
+        <a href="/fr/scenario" style="color: #FFF;
 
         font-family: Volkhov;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
-        line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
+        line-height: 150%;margin-top: 11px; text-decoration: none;">Retour</a><!--Back-->
     </div>
 </form>
-  <script src="js/emotions.js"></script>
-  <script src="js/vnav.js"></script>
+  <script src="../js/emotions.js"></script>
+  <script src="../js/vnav.js"></script>
   <script>
     function validateScenarioForm() {
            var enteredScenario = document.getElementById("emotionInput").value;

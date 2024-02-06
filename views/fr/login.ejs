@@ -47,19 +47,19 @@
       <!-- Button Container -->
       <form action="/login" method="post">
         <div class="flexbox" id="flexbox-2" style="display: block;">
-          <div class="title">Email Sign In</div>
-          <div class="subtitle">Login to Your Account using email and <br> password method</div>
+          <div class="title">Connexion par e-mail</div><!--email signin-->
+          <div class="subtitle">Connectez-vous à votre compte avec votre adresse<br>e-mail et votre mot de passe</div>
           <div class="signup-box">
             <!-- Sign-in fields and button -->
 
             <div class="boxz">
               <div class="header-text">Email</div>
-              <input id="signInEmail" class="input-field" type="email" placeholder="Email" name="username" required>
+              <input id="signInEmail" class="input-field" type="email" placeholder="Adresse e-mail" name="username" required>
             </div>
             <div class="boxz">
-              <div class="header-text">Password</div>
+              <div class="header-text">Mot de passe</div>
               <div class="password-container">
-                <input id="signInPasswordInput" class="input-field" type="password" placeholder="Password" name="password" required>
+                <input id="signInPasswordInput" class="input-field" type="password" placeholder="Mot de passe" name="password" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
@@ -69,12 +69,12 @@
             border: 2px solid #A288CB;
             
             background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%)); color: white;
-            ">Continue Sign In</button>
+            ">Connectez-vous!</button>
           </div>
           
-          <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Dont Have an Account? 
+          <div class="text" id="toggle-sign-in" onclick="toggleFlexbox()">Vous n’avez pas de compte ? 
             <a href="/authenticate"><span
-            class="sign-in-text" id="toggle-text">Sign Up</span> </a></div>
+            class="sign-in-text" id="toggle-text">Inscrivez-vous</span> </a></div>
         </div>
       </form>
 

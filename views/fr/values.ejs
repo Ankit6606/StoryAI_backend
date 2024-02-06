@@ -118,11 +118,11 @@ line-height: 150%; /* 48px */
       <div class="navbar">
         <div class="icons-container">
           <div class="icon-item">
-            <img src="css/assets/gem.png" alt="Icon 1">
+            <img src="../css/assets/gem.png" alt="Icon 1">
             <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
-            <img src="css/assets/parrot.png" alt="Icon 2">
+            <img src="../css/assets/parrot.png" alt="Icon 2">
             <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
@@ -139,37 +139,37 @@ line-height: 150%; /* 48px */
     <form action="/values" method="POST" onsubmit="return validateScenarioForm();">
 
     <div class="content-box" id="content-box-1">
-        <div class="header-text">Step 4 : Values</div>
-        <div class="sub-text">Select a preferred values for<br>your story</div>
+        <div class="header-text">Étape 4 : Valeurs</div>
+        <div class="sub-text">Sélectionnez les valeurs<br>préférées pour votre histoire</div>
 
         <!-- Flexbox and Textbox -->
        
             <div class="flex-box">
-                <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Enter Own Values</div>
-                <input type="text" class="text-box" id="valueInput" placeholder="Start typing here" name="values">
+                <div class="text-head" style="margin-left: 35px;margin-top: 15px;">Saisissez vos propres valeurs</div>
+                <input type="text" class="text-box" id="valueInput" placeholder="Commencez à taper ici ..." name="values">
                 
             </div>
             <div class="card-container">
                 <div class="text-style-head"
                     style="color: #000; font-size: 30px; align-self: baseline; margin-top: 38px; margin-left:30px;margin-bottom: 22px;">
-                    Select From 10 Values</div>
+                    Sélectionnez parmi 10 valeurs</div>
                     <div class="card-box">
     
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-18.png') ;" data-value="sharing"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-13.png') ;" data-value="kindness"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-9.png') ;" data-value="responsibility"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-14.png') ;" data-value="honesty"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-19.png');" data-value="friendship"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-20.png');" data-value="courage"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-21.png');" data-value="patience"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-22.png');" data-value="curiosity"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-80.png');" data-value="respect"></div>
-                        <div class="card" onclick="selectCard(this)" style="background-image:url('css/assets/values/ce-79.png');" data-value="perseverance"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val13.png') ;" data-value="sharing"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val14.png') ;" data-value="kindness"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val9.png') ;" data-value="responsibility"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val79.png') ;" data-value="honesty"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val80.png');" data-value="friendship"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val18.png');" data-value="courage"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val19.png');" data-value="patience"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val21.png');" data-value="curiosity"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val20.png');" data-value="respect"></div>
+                        <div class="card" onclick="selectCard(this)" style="background-image:url('../css/assets/fr/val/val22.png');" data-value="perseverance"></div>
                     </div>
         
                 <!-- Add more cards as needed -->
             </div>
-            <button type="submit" class="next-button" style="height: 55px;" onclick="showModal()">Create My Story</button>
+            <button type="submit" class="next-button" style="height: 55px;" onclick="showModal()">Créer mon histoire</button>
         
         <a href="/emotions" style="color: #FFF;
 
@@ -177,7 +177,7 @@ line-height: 150%; /* 48px */
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
-        line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
+        line-height: 150%;margin-top: 11px; text-decoration: none;">Retour</a>
     </div>
    
 </form>
@@ -200,8 +200,8 @@ line-height: 150%; /* 48px */
       <p id="loadingText">Generating Story</p>
   </div>
 </div>
-    <script src="js/values.js"></script>
-    <script src="js/vnav.js"></script>
+    <script src="../js/values.js"></script>
+    <script src="../js/vnav.js"></script>
     <script>
         
     </script>
