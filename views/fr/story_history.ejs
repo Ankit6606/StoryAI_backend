@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Story Generation Page 2</title>
+  <link rel="stylesheet" href="../css/meta/global.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/meta/vertical-navbar.css">
+
+
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.68) 100%),
+        url('../css/assets/subs.png') center/cover no-repeat;
+    height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.image-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44vh; /* Adjust as needed */
+    max-height: 500px;
+    background: url('assets/Ellipse17.png') center/cover no-repeat;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+
+
+/* Rest of your CSS remains unchanged */
+
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    animation: fadeIn 2s ease-out;
+}
+@media (max-width: 768px) {
+    .navbar{
+        visibility: hidden;
+    }
+    .card-text-1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 33px */
+}
+
+.card-text-2 {
+    margin-top: -20px;
+    color: #FFA8CF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 27px */
+}
+   
+    .navTrigger{
+        opacity: 1 !important;
+    }
+    .card-text-1 {
+        color: #FFF;
+        text-align: center;
+        font-family: Volkhov;
+        font-size: 15.5px !important;
+        font-style: normal;
+        font-weight: 700;
+        
+        line-height: 100% !important;
+        /* 33px */
+    }
+    .header-text {
+        margin-top: 40px;
+        color: #FFF;
+        font-family: Volkhov;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    
+    .sub-text {
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 0px !important;
+    }
+    
+    .navbar{
+        visibility: hidden;
+    }
+    .ellipse {
+        height: 0;
+        width: 0;
+        display: none !important;
+        visibility: hidden !important;
+        max-width: 292px !important;
+        max-height: 199.844px !important;
+        flex-shrink: 0;
+        background-image: url("assets/stars.png");
+    
+    
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 4%;
+        left: 33%;
+        opacity: 0;
+        /* Start with 0 opacity to make it invisible */
+        animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+        z-index: 10;
+    
+    }
+    .card-container {
+    max-height: 80vw !important;
+    overflow-y: auto;
+    width: 99vw;
+    max-width: 1830px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: 3px solid #A288CB;
+    background: linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%);
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 23px;
+    z-index: 99;
+    overflow: hidden;
+    padding: 15px;
+    box-sizing: border-box; /* Ensure padding and borders are included in the height calculation */
+}
+
+.card-row {
+    margin-top: 10px;
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   margin: 0 -10px !important;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
+
+.card {
+    width: calc(33.3333% - 20px) !important; 
+    margin-left: 10px !important; 
+    margin-right: 10px !important; 
+    height: 170px !important;
+  }
+
+.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(250, 250, 250, 0.2);
+    transform: translateY(-10px);
+  
+    z-index: 2;
+}
+.card-box {
+    overflow-x:hidden;
+    overflow-y: visible;
+    display: flex;
+    flex-direction:initial;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
+
+    .text-style-head{
+        font-size: 20px !important;
+        margin-bottom: 5px !important;
+        margin-top: 10px !important;
+    }
+    
+   
+.image-box{width: 100vw !important;
+max-height: 32%;}
+.next-button{
+    max-width: 300px;
+    width: 90%;
+}
+
+
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+
+    }
+    50%{opacity: 0;}
+
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.header-text {
+    color: #FFF;
+    font-family: Volkhov;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.sub-text {
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin-bottom: 32px;
+}
+
+.flex-box {
+    width: 96vw;
+    max-width: 1805px;
+    height: 190px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    border: 3px solid #A288CB;
+    background: linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%);
+    margin-top: 20px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-box {
+    width: 96%;
+    max-width: 1736px;
+    height: 94px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    color: #767676;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    padding: 16px; /* Adjust as needed */
+    box-sizing: border-box;
+}
+.text-head {
+    color: #FFF;
+    text-align: left;
+    align-self: self-start;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 150%;
+    margin-bottom: 8px;
+}
+.card-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    width: 92vw;
+    max-width: 1830px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: 3px solid #A288CB;
+    background: linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%);
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 23px;
+    z-index: 99;
+    overflow: hidden;
+    padding: 15px;
+    box-sizing: border-box; 
+}
+
+.card-row {
+    margin-top: 10px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 -15px;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
+
+.card {
+    margin-top: 10px;
+    width: calc(12.5% - 30px);
+    height: 279px;
+    flex-shrink: 0;
+    border: 3px solid #A288CB;
+    border-radius: 25px;
+    background: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
+    box-shadow: 6px 6px 15px 0px rgba(0, 0, 0, 0.9);
+    background-image: linear-gradient(180deg, #000 4.63%, rgba(0, 0, 0, 0.00) 71.87%);
+    background-size: cover;
+    margin-bottom: 23px;
+    margin-left: 15px;
+    margin-right: 15px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box; }
+    .card:last-child {
+    margin-right: 0; /* Remove the right margin for the last card in each row */
+  }
+.card:hover {
+    box-shadow: 0px 20px 40px 0px rgba(250, 250, 250, 0.2);
+    transform: translateY(-10px);
+  
+    z-index: 2;
+}
+.card-box {
+    overflow-x:hidden;
+    overflow-y: visible;
+    display: flex;
+    flex-direction:initial;
+    height: auto;
+    width: 99%;
+    max-width: 1803px;
+    animation: cardsSlideIn 3s ease-in forwards;
+    border-radius: 50px;
+}
+
+
+
+
+.ellipse {
+    width: 692px;
+    height: 299.844px;
+    flex-shrink: 0;
+    background-image: url("assets/stars.png");
+
+
+    background-size: contain;
+    position: relative;
+    top: 4%;
+    left: 33%;
+    opacity: 0;
+    /* Start with 0 opacity to make it invisible */
+    animation: ellipseMoveUp 1s ease-in forwards, ellipseGlitter 2s infinite;
+    z-index: 10;
+
+}
+
+@keyframes ellipseMoveUp {
+    0% {
+        transform: translateY(-500px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(-10px);
+        /* Move the ellipse up */
+        opacity: 1;
+        /* Make it visible */
+    }
+
+
+}
+
+@keyframes ellipseGlitter {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    30% {
+        opacity: 0.7;
+    }
+
+    40% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+
+    60% {
+        opacity: 0.5;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes containerSlideOut {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cardsSlideIn {
+    0% {
+        
+        opacity: 0;
+    }
+    50%{transform: translateX(100%);
+    opacity: 0;}
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.card-text-1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 18.5px ;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 33px */
+}
+
+.card-text-2 {
+    margin-top: -20px;
+    color: #FFA8CF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    /* 27px */
+}
+  </style>
+</head>
+
+
+<body>
+    <div class="icons-container-2" style="scale: 0.65;">
+        <div class="icon-item">
+          <img src="css/assets/gem.png" alt="Icon 1">
+          <span class="icon-number"><%= gems %></span>
+        </div>
+        <div class="icon-item">
+          <img src="css/assets/parrot.png" alt="Icon 2">
+          <span class="icon-number"><%= parrots %></span>
+        </div>
+      </div>
+    <button class="navTrigger" id="navTrigger">
+        <svg viewBox="0 0 64 48">
+          <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+          <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+          <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+        </svg>
+      </button>
+      <nav class="navMenu" id="navMenu">
+        <ul>
+          <li>
+            <a href="/">Accueil</a><!--Home-->
+          </li>
+          <li>
+            <a href="/story">Créer Histoire</a><!--Create Story-->
+          </li>
+          <li>
+            <a href="/storyhistory">Mes Histoires</a><!--Story history-->
+          </li>
+          <li>
+            <a href="/profile">Profil</a><!--Profile-->
+          </li>
+          <li>
+            <a href="/subscribe">Abonnement</a><!--Subscription-->
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar">
+        <div class="icons-container">
+          <div class="icon-item">
+            <img src="css/assets/gem.png" alt="Icon 1">
+            <span class="icon-number"><%= gems %></span>
+          </div>
+          <div class="icon-item">
+            <img src="css/assets/parrot.png" alt="Icon 2">
+            <span class="icon-number"><%= parrots %></span>
+          </div>
+        </div>
+        <div class="navbar">
+          <div class="icons-container">
+            <div class="icon-item">
+              <img src="css/assets/gem.png" alt="Icon 1">
+              <span class="icon-number"><%= gems %></span>
+            </div>
+            <div class="icon-item">
+              <img src="css/assets/parrot.png" alt="Icon 2">
+              <span class="icon-number"><%= parrots %></span>
+            </div>
+          </div>
+          <div class="nav-button-container">
+            <a href="/" class="nav-button">Accueil</a><!--Home-->
+            <a href="/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
+            <a href="/profile" class="nav-button">Profil</a><!--Profile-->
+            <a href="/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
+            <a href="/story" class="special-button">Créer Histoire</a><!--Create Story-->
+          </div>
+        </div>
+      
+      </div>
+    
+    
+ 
+    
+    <form method="POST" action="/storyhistory">
+    <div class="content-box" id="content-box-1">
+      <div class="header-text">
+        Mes Histoires</div>
+      <div class="sub-text">Here you can see the your past<br>stories generated</div>
+
+
+       
+        
+      <div class="card-container">
+        <div class="card-row">
+            <% for (let i = userStories.length-1; i >= 0; i--) { %>
+                <% if (!userStories[i].title.includes("Story Generation Error - Please re-check your Parameters")) { %>
+                    <div class="card" data-value="<%= userStories[i]._id %>" style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('<%= userStories[i].thumb_img_path %>'); background-size: cover;">
+                        <div class="card-text-1">
+                            <p><%= userStories[i].title %></p>
+                            <div class="card-text-2">
+                                <p><%= userStories[i].audioduration %></p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    
+        
+    
+    
+    
+      
+
+
+      </div>
+      
+    </div>
+  </form>
+  <!-- <script src="js/scenario.js"></script> -->
+  <script src="js/vnav.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        card.addEventListener('click', function () {
+          const cardValue = this.getAttribute('data-value'); // Get the value from data attribute
+          sendDataToBackend(cardValue); // Function to send data to the backend
+        });
+      });
+
+      function formatAudioDuration(duration) {
+        const minutes = Math.floor(duration);
+        const seconds = Math.round((duration - minutes) * 60);
+        return `${minutes} min ${seconds} sec`;
+      }
+
+      function sendDataToBackend(value) {
+        fetch('/storyhistory', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ storyId: value }) // Sending data to the '/scenario' endpoint
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log('Data sent to backend:', value);
+              // Optionally, perform actions after successful data transmission
+              // For example, redirect to another page
+              window.location.href = '/storyoutput';
+            } else {
+              console.error('Failed to send data to backend');
+            }
+          })
+          .catch(error => {
+            console.error('Error sending data to backend:', error);
+          });
+      }
+
+      // Format audio duration for each card
+      const audioDurations = document.querySelectorAll('.card-text-2 p');
+      audioDurations.forEach(durationElement => {
+        const originalDuration = parseFloat(durationElement.textContent);
+        const formattedDuration = formatAudioDuration(originalDuration);
+        durationElement.textContent = formattedDuration;
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Generation Page</title>
+    <link rel="stylesheet" href="../css/meta/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
+    <link rel="stylesheet" href="../css/storypage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/meta/vertical-navbar.css">
+    </head>
+
+<body>
+ 
+    <button class="navTrigger" id="navTrigger">
+        <svg viewBox="0 0 64 48">
+          <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+          <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+          <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+        </svg>
+      </button>
+      <nav class="navMenu" id="navMenu">
+        <ul>
+          <li>
+            <a href="/">Accueil</a><!--Home-->
+          </li>
+          <li>
+            <a href="/story">Créer Histoire</a><!--Create Story-->
+          </li>
+          <li>
+            <a href="/story_history">Mes Histoires</a><!--Story history-->
+          </li>
+          <li>
+            <a href="/profile">Profil</a><!--Profile-->
+          </li>
+          <li>
+            <a href="/subscribe">Abonnement</a><!--Subscription-->
+          </li>
+        </ul>
+      </nav>
+
+      <div class="navbar">
+        <div class="icons-container">
+          <div class="icon-item">
+            <img src="css/assets/gem.png" alt="Icon 1">
+            <span class="icon-number"><%= gems %></span>
+          </div>
+          <div class="icon-item">
+            <img src="css/assets/parrot.png" alt="Icon 2">
+            <span class="icon-number"><%= parrots %></span>
+          </div>
+        </div>
+        <div class="nav-button-container">
+          <!-- <a href="/subscribe" class="nav-button">Subscription</a>
+          <a href="/profile" class="nav-button">Profile</a>
+          <a href="/story_history" class="nav-button">Story History</a>
+          <a href="/story" class="special-button">Create Story</a> -->
+        </div>
+      </div>
+    
+    <div class="image-box"></div>
+    <div class="ellipse"></div>
+    <form id="scenarioForm" method="POST" action="/story" onsubmit="return validateFields();">
+    <div class="content-box">
+        <div class="header-text">Étape 1 : Personnages</div>
+        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms<br>des personnages, ajoutez les noms de vos différents<br>personnages, un ou plusieurs, et précisez qui ils sont.</div>
+        
+        <div class="fields-box" id="fields-box">
+        <!-- Age Group Dropdown -->
+        
+            <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Groupe d'âge</div>
+                <select class="text-field-1" placeholder="Age Group" name="age"
+                    style="width: 411px; height: 44.724px; margin-left: 6px; margin-bottom: 25px;">
+                    <option value="option" disabled selected >Select Age Group</option>
+                    <option value="5">3 - 5</option>
+                    <option value="8">6 - 8</option>
+                    <option value="10">9 - 11</option>
+                </select>
+
+                <!-- Character Name Input Field -->
+                <div class="text-head" style="margin-bottom: 7px; text-align: left; margin-left: 7px;">Nom(s) du(des) personnage(s)</div>
+                <input type="text" class="text-field-1" placeholder="Nom1 (genre et/ou rôles), Nom2…" style="margin-left: 5px;" name="character">
+
+                <!-- Add Character Button -->
+                <!-- <div class="add-character-btn" onclick="addCharacter()">+ Add Character</div> -->
+
+            </div>
+            <button type="submit" class="next-button" onclick="validateFields()" >Scénario suivant</button>
+        
+        <a href="/" style="color: #FFF;
+
+        font-family: Volkhov;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;margin-top: 11px; text-decoration: none;">Retour</a>
+    </div>
+  </form>
+
+    <script src="js/storypage.js"></script>
+    <script src="js/vnav.js"></script>
+    <script>
+       function validateFields() {
+            var age = document.getElementsByName("age")[0].value;
+            var character = document.getElementsByName("character")[0].value;
+
+            if (age === "option" || character === "") {
+                alert("Please fill in all the fields before proceeding to the next scenario.");
+                return false; // Prevent form submission
+            } else {
+                // Add any additional logic or action here when the fields are valid
+                // For example, you may want to submit a form or navigate to the next page
+                return true; // Allow form submission
+            }
+        }
+  </script>
+  <script>
+   const element = document.querySelector('.image-box');
+element.style.display = 'none';
+element.offsetHeight; // Trigger reflow
+element.style.display = 'block';
+</script>
+</body>
+
+</html>

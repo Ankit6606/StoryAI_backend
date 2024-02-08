@@ -1,5 +1,34 @@
 import express from 'express';
 // import passport from 'passport';
+import {rootRenderFr,
+        rootPostFr,
+        authenticateRenderFr,
+        authenticateRender2Fr,
+        loginRenderFr, 
+        registerRenderFr, 
+        oauthPageFr, 
+        oauthVerificationFr,
+        registerUserFr,
+        storyPageFr,
+        loginUserFr,
+        storyPostFr,
+        profileManageFr,
+        editProfileFr,
+        renderEmotionsFr,
+        renderScenarioFr,
+        renderValuesFr,
+        rendershpFr,
+        renderlandingPageFr,
+        postScenarioFr,
+        postEmotionsFr,
+        postValuesFr,
+        showStoriesFr,
+        getphoneNumberFr,
+        postPhonenumberFr,
+        otpVerificationFr,
+        clickStoriesFr,
+        
+        } from '../controllers/userReqFr.js';
 import {rootRender,
         rootPost,
         authenticateRender,
@@ -26,7 +55,8 @@ import {rootRender,
         getphoneNumber,
         postPhonenumber,
         otpVerification,
-        clickStories
+        clickStories,
+        
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice} from '../controllers/paymentController.js';
@@ -36,8 +66,47 @@ import {success,failure, selectSubscription, makepayment, manageInvoice} from '.
 
 const router = express.Router();
 
-
 //Get requests
+//French
+router.get("/fr/",rootRenderFr);
+router.get("/fr/landingpage",renderlandingPageFr);
+router.get("/fr/authenticate",authenticateRenderFr);
+router.get("/fr/authenticate2",authenticateRender2Fr);
+router.get("/fr/register",registerRenderFr);
+router.get("/fr/login",loginRenderFr);
+router.get("/fr/auth/google",oauthPageFr);
+router.get("/fr/auth/google/story",oauthVerificationFr);
+router.get("/fr/phonenumber",getphoneNumberFr);
+router.get("/fr/story",storyPageFr);
+router.get("/fr/scenario",renderScenarioFr);
+router.get("/fr/emotions",renderEmotionsFr);
+router.get("/fr/values",renderValuesFr);
+router.get("/fr/storyhistory", rendershpFr);
+router.get("/fr/storyoutput",showStoriesFr);
+
+// router.get("/storyoutput",getStoryOutput);
+router.get("/fr/success",success);
+router.get("/fr/failure",failure);
+router.get("/fr/profile",profileManage);
+router.get("/fr/subscribe",selectSubscription);
+
+//Post requests
+
+router.post("/fr/",rootPostFr);
+router.post("/fr/register",registerUserFr);
+router.post("/fr/login",loginUserFr);
+router.post("/fr/phonenumber",postPhonenumberFr);
+router.post("/fr/verifyotp",otpVerificationFr);
+router.post("/fr/story",storyPostFr);
+router.post("/fr/scenario",postScenarioFr);
+router.post("/fr/emotions",postEmotionsFr);
+router.post("/fr/values",postValuesFr);
+router.post("/fr/profile",editProfileFr);
+router.post("/fr/subscribe",makepayment);
+router.post("/fr/storyhistory",clickStoriesFr);
+router.post("/fr/webhook",manageInvoice);
+
+//English
 
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
@@ -78,3 +147,8 @@ router.post("/storyhistory",clickStories);
 router.post("/webhook",manageInvoice);
 
 export { router as userApp };
+
+
+// MY TRY       __________________________-----------------------_______________________________------------------------------
+
+
