@@ -369,7 +369,9 @@
 
 <form action="/subscribe" method="post" id="subscriptionForm" onsubmit="updateHiddenInput()">
     <div class="box-m">
-        <h1 style="color: #FDF0F2;">You are currently subscribed to "<%= subscriptionPlan %>".</h1>
+        <% if(userSubscriptionPlan !== "basic"){ %>
+            <h1 style="color: #FDF0F2;">You are currently subscribed to "<%= userSubscriptionPlan %>".</h1>
+            <% } %>
         <% boxIds.forEach((boxId, index) => { %>
             <% index += 1 %>
             <% if (userSubscriptionPlan !== boxId || boxId === "basic") { %>
@@ -380,12 +382,13 @@
         <!-- Hidden input field to store the selected box ID -->
         <input type="hidden" id="selectedBoxId" name="selectedBoxId" value="<%= userSubscriptionPlan %>">
 
-        <button class="next-button" type="submit" id="nextPaymentButton" style="width: 513px;
+        <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
             height: 63px;
             flex-shrink: 0;
             border-radius: 15px;
             background: #FFF;
-            box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Next Payment</button>
+            box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Upgrade plan</button>
+            <button type = "submit" class="nav-button">Cancel Plan</button>
     </div>
 </form>
 
