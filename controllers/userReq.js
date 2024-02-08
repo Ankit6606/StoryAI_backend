@@ -167,7 +167,7 @@ export function userLogout(req,res){
     else{
         res.redirect("/");
     }
-})
+  })
 }
 
 
