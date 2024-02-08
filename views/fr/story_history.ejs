@@ -530,11 +530,11 @@ max-height: 32%;}
 <body>
     <div class="icons-container-2" style="scale: 0.65;">
         <div class="icon-item">
-          <img src="css/assets/gem.png" alt="Icon 1">
+          <img src="../css/assets/gem.png" alt="Icon 1">
           <span class="icon-number"><%= gems %></span>
         </div>
         <div class="icon-item">
-          <img src="css/assets/parrot.png" alt="Icon 2">
+          <img src="../css/assets/parrot.png" alt="Icon 2">
           <span class="icon-number"><%= parrots %></span>
         </div>
       </div>
@@ -548,50 +548,50 @@ max-height: 32%;}
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Accueil</a><!--Home-->
+            <a href="/fr/">Accueil</a><!--Home-->
           </li>
           <li>
-            <a href="/story">Créer Histoire</a><!--Create Story-->
+            <a href="/fr/story">Créer Histoire</a><!--Create Story-->
           </li>
           <li>
-            <a href="/storyhistory">Mes Histoires</a><!--Story history-->
+            <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
           </li>
           <li>
-            <a href="/profile">Profil</a><!--Profile-->
+            <a href="/fr/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Abonnement</a><!--Subscription-->
+            <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
       <div class="navbar">
         <div class="icons-container">
           <div class="icon-item">
-            <img src="css/assets/gem.png" alt="Icon 1">
+            <img src="../css/assets/gem.png" alt="Icon 1">
             <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
-            <img src="css/assets/parrot.png" alt="Icon 2">
+            <img src="../css/assets/parrot.png" alt="Icon 2">
             <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
         <div class="navbar">
           <div class="icons-container">
             <div class="icon-item">
-              <img src="css/assets/gem.png" alt="Icon 1">
+              <img src="../css/assets/gem.png" alt="Icon 1">
               <span class="icon-number"><%= gems %></span>
             </div>
             <div class="icon-item">
-              <img src="css/assets/parrot.png" alt="Icon 2">
+              <img src="../css/assets/parrot.png" alt="Icon 2">
               <span class="icon-number"><%= parrots %></span>
             </div>
           </div>
           <div class="nav-button-container">
-            <a href="/" class="nav-button">Accueil</a><!--Home-->
-            <a href="/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
-            <a href="/profile" class="nav-button">Profil</a><!--Profile-->
-            <a href="/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
-            <a href="/story" class="special-button">Créer Histoire</a><!--Create Story-->
+            <a href="/fr/" class="nav-button">Accueil</a><!--Home-->
+            <a href="/fr/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
+            <a href="/fr/profile" class="nav-button">Profil</a><!--Profile-->
+            <a href="/fr/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
+            <a href="/fr/story" class="special-button">Créer Histoire</a><!--Create Story-->
           </div>
         </div>
       
@@ -600,7 +600,7 @@ max-height: 32%;}
     
  
     
-    <form method="POST" action="/storyhistory">
+    <form method="POST" action="/fr/storyhistory">
     <div class="content-box" id="content-box-1">
       <div class="header-text">
         Mes Histoires</div>
@@ -639,7 +639,7 @@ max-height: 32%;}
     </div>
   </form>
   <!-- <script src="js/scenario.js"></script> -->
-  <script src="js/vnav.js"></script>
+  <script src="../js/vnav.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -659,7 +659,7 @@ max-height: 32%;}
       }
 
       function sendDataToBackend(value) {
-        fetch('/storyhistory', {
+        fetch('/fr/storyhistory', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -671,7 +671,7 @@ max-height: 32%;}
               console.log('Data sent to backend:', value);
               // Optionally, perform actions after successful data transmission
               // For example, redirect to another page
-              window.location.href = '/storyoutput';
+              window.location.href = '/fr/storyoutput';
             } else {
               console.error('Failed to send data to backend');
             }

@@ -25,19 +25,19 @@
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Accueil</a><!--Home-->
+            <a href="/fr/">Accueil</a><!--Home-->
           </li>
           <li>
-            <a href="/story">Créer Histoire</a><!--Create Story-->
+            <a href="/fr/story">Créer Histoire</a><!--Create Story-->
           </li>
           <li>
-            <a href="/story_history">Mes Histoires</a><!--Story history-->
+            <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
           </li>
           <li>
-            <a href="/profile">Profil</a><!--Profile-->
+            <a href="/fr/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Abonnement</a><!--Subscription-->
+            <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
@@ -45,11 +45,11 @@
       <div class="navbar">
         <div class="icons-container">
           <div class="icon-item">
-            <img src="css/assets/gem.png" alt="Icon 1">
+            <img src="../css/assets/gem.png" alt="Icon 1">
             <span class="icon-number"><%= gems %></span>
           </div>
           <div class="icon-item">
-            <img src="css/assets/parrot.png" alt="Icon 2">
+            <img src="../css/assets/parrot.png" alt="Icon 2">
             <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
@@ -63,7 +63,7 @@
     
     <div class="image-box"></div>
     <div class="ellipse"></div>
-    <form id="scenarioForm" method="POST" action="/story" onsubmit="return validateFields();">
+    <form id="scenarioForm" method="POST" action="/fr/story" onsubmit="return validateFields();">
     <div class="content-box">
         <div class="header-text">Étape 1 : Personnages</div>
         <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms<br>des personnages, ajoutez les noms de vos différents<br>personnages, un ou plusieurs, et précisez qui ils sont.</div>
@@ -90,7 +90,7 @@
             </div>
             <button type="submit" class="next-button" onclick="validateFields()" >Scénario suivant</button>
         
-        <a href="/" style="color: #FFF;
+        <a href="/fr/" style="color: #FFF;
 
         font-family: Volkhov;
         font-size: 20px;
@@ -100,8 +100,8 @@
     </div>
   </form>
 
-    <script src="js/storypage.js"></script>
-    <script src="js/vnav.js"></script>
+    <script src="../js/storypage.js"></script>
+    <script src="../js/vnav.js"></script>
     <script>
        function validateFields() {
             var age = document.getElementsByName("age")[0].value;

@@ -60,7 +60,7 @@ import {rootRender,
         
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment, manageInvoice} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr} from '../controllers/paymentController.js';
 
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
@@ -88,8 +88,8 @@ router.get("/fr/storyoutput",showStoriesFr);
 // router.get("/storyoutput",getStoryOutput);
 router.get("/fr/success",success);
 router.get("/fr/failure",failure);
-router.get("/fr/profile",profileManage);
-router.get("/fr/subscribe",selectSubscription);
+router.get("/fr/profile",profileManageFr);
+router.get("/fr/subscribe",selectSubscriptionFr);
 
 //Post requests
 
@@ -105,7 +105,7 @@ router.post("/fr/values",postValuesFr);
 router.post("/fr/profile",editProfileFr);
 router.post("/fr/subscribe",makepayment);
 router.post("/fr/storyhistory",clickStoriesFr);
-router.post("/fr/webhook",manageInvoice);
+router.post("/fr/webhook",manageInvoiceFr);
 
 //English
 

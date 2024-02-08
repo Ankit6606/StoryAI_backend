@@ -30,6 +30,7 @@ let emotions = "";
 let values = "";
 let globalNumber = "";
 let justNumber= "";
+let lang="";
 let story = [];
 
 
@@ -434,7 +435,8 @@ export function postEmotionsFr(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         emotions = req.body.emotions;
-        console.log(emotions);
+        console.log("hello");
+        
         res.redirect("/fr/values");
       }else{
         res.redirect("/fr/subscribe");
@@ -492,7 +494,8 @@ export async function postValuesFr(req,res){
     scenario: scenario,
     emotions: JSON.stringify(emotions),
     values: JSON.stringify(values),
-    userId: "test"
+    userId: "test",
+    lang: "French"
   });
   console.log(`${endpoint}?${params.toString()}`);
 
