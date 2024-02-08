@@ -482,7 +482,9 @@ export async function postValues(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
-        console.log(values);
+        console.log('Request Body:', req.body);
+        console.log('Values:', values);
+
 
   const endpoint = 'https://storyia.app/api/generate_story';
 
@@ -705,6 +707,7 @@ export function profileManage(req,res){
       res.render("profile",{
         gems : req.user.gems,
         parrots : req.user.parrots,
+        Name : req.user.name
       });
     }else{
       res.redirect("/phonenumber");

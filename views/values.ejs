@@ -203,9 +203,6 @@ line-height: 150%; /* 48px */
     <script src="js/values.js"></script>
     <script src="js/vnav.js"></script>
     <script>
-        
-    </script>
-    <script>
        function validateScenarioForm() {
            var enteredScenario = document.getElementById("valueInput").value;
    
@@ -219,13 +216,13 @@ line-height: 150%; /* 48px */
            }
        }
        function showModal(event) {
-    event.preventDefault();
-    setTimeout(() => {
-      fillProgressBar();
-      document.getElementById('myModal').classList.add('visible');
-      executePostRequest(); // Call the function to make a POST request
-    }, 500);
-  }
+        event.preventDefault();
+        setTimeout(() => {
+          fillProgressBar();
+          document.getElementById('myModal').classList.add('visible');
+          executePostRequest(); // Call the function to make a POST request
+        }, 500);
+      }
 
   async function executePostRequest() {
     try {

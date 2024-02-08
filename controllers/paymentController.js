@@ -24,9 +24,13 @@ export function selectSubscription(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       uid = req.user.id;
+      const userSubscriptionPlan = req.user.subscriptionPlan; // Replace this with actual value from the database
+
+      const boxIds = ["basic", "discover", "starter", "value", "premium"];
       res.render("subscription",{
         gems : req.user.gems,
-        parrots: req.user.parrots
+        parrots: req.user.parrots,
+        boxIds,userSubscriptionPlan
       });
     }
     else{
