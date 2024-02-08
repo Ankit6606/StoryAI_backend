@@ -209,9 +209,6 @@ margin-top: -20%;
     <script src="js/values.js"></script>
     <script src="js/vnav.js"></script>
     <script>
-        
-    </script>
-    <script>
        function validateScenarioForm() {
            var enteredScenario = document.getElementById("valueInput").value;
    
@@ -224,30 +221,40 @@ margin-top: -20%;
                return true; // Allow form submission
            }
        }
-       document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function (event) {
-        showModal(event);  // Call your showModal function
-    });
-});
-
-function showModal(event) {
+       function showModal(event) {
     event.preventDefault();
-
-    // Show the modal
-    document.getElementById('myModal').classList.add('visible');
-
-    // Start filling the progress bar
-    fillProgressBar();
-
-    // Use a delay before submitting the form
     setTimeout(() => {
-        // Allow form submission after the modal is shown and progress bar has started
-        event.target.submit();
-        document.body.offsetHeight;
-    }, 500); // Adjust the delay based on your requirements
-}
- 
+      fillProgressBar();
+      document.getElementById('myModal').classList.add('visible');
+      executePostRequest(); // Call the function to make a POST request
+    }, 500);
+  }
+
+  async function executePostRequest() {
+    try {
+      const response = await fetch('/values', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Add your request body here if needed
+        // body: JSON.stringify({ key: 'value' }),
+      });
+
+      if (!response.ok) {
+        console.error('HTTP status code:', response.status);
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error('Network response was not ok.');
+      }
+
+      const responseData = await response.json();
+      // Handle the response data as needed
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
+
   
 function fillProgressBar() {
     const fillingProgress = document.querySelector('.filling-progress');
