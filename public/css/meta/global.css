@@ -243,11 +243,13 @@ line-height: 150%; /* 27px */
     position: relative;
     display: inline-block;
     margin: 0 5px;
+    border: 1.5px solid #FFF;
+    border-radius: 20px;
   }
   
   .switch > span {
     position: absolute;
-    top: 14px;
+    top: 10px;
     pointer-events: none;
     font-family: 'Helvetica', Arial, sans-serif;
     font-weight: bold;
@@ -256,10 +258,11 @@ line-height: 150%; /* 27px */
     text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
     width: 50%;
     text-align: center;
+    
   }
   
   input.check-toggle-round-flat:checked ~ .off {
-    color: #F36F25;
+    color: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
   }
   
   input.check-toggle-round-flat:checked ~ .on {
@@ -269,7 +272,7 @@ line-height: 150%; /* 27px */
   .switch > span.on {
     left: 0;
     padding-left: 2px;
-    color: #F36F25;
+    color: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
   }
   
   .switch > span.off {
@@ -298,7 +301,8 @@ line-height: 150%; /* 27px */
     padding: 2px;
     width: 97px;
     height: 35px;
-    background-color: #F36F25;
+    
+    background: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
     -webkit-border-radius: 60px;
     -moz-border-radius: 60px;
     -ms-border-radius: 60px;
@@ -316,7 +320,8 @@ line-height: 150%; /* 27px */
     left: 2px;
     bottom: 2px;
     right: 2px;
-    background-color: #F36F25;
+    
+    background: linear-gradient(180deg, #9665D3 -70.62%, #223276 157.08%);
    -webkit-border-radius:52px;
     
     -moz-border-radius: 60px;
