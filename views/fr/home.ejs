@@ -25,13 +25,13 @@
 <body>
   <div class="icons-container-2" style="scale: 0.65;">
     <div class="icon-item">
-      <img src="css/assets/gem.png" alt="Icon 1">
+      <img src="../css/assets/gem.png" alt="Icon 1">
       <span class="icon-number">
         <%= gems %>
       </span>
     </div>
     <div class="icon-item">
-      <img src="css/assets/parrot.png" alt="Icon 2">
+      <img src="../css/assets/parrot.png" alt="Icon 2">
       <span class="icon-number">
         <%= parrots %>
       </span>
@@ -47,19 +47,28 @@
   <nav class="navMenu" id="navMenu">
     <ul>
       <li>
-        <a href="/">Accueil</a><!--Home-->
+        <div class="switch">
+          <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+          <label for="language-toggle"></label>
+          <span class="on">FR</span>
+          <span class="off">EN</span>
+      </div>
+     
       </li>
       <li>
-        <a href="/story">Créer Histoire</a><!--Create Story-->
+        <a href="/fr/">Accueil</a><!--Home-->
       </li>
       <li>
-        <a href="/storyhistory">Mes Histoires</a><!--Story history-->
+        <a href="/fr/story">Créer Histoire</a><!--Create Story-->
       </li>
       <li>
-        <a href="/profile">Profil</a><!--Profile-->
+        <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
       </li>
       <li>
-        <a href="/subscribe">Abonnement</a><!--Subscription-->
+        <a href="/fr/profile">Profil</a><!--Profile-->
+      </li>
+      <li>
+        <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
       </li>
     </ul>
   </nav>
@@ -67,31 +76,54 @@
   <div class="navbar">
     <div class="icons-container">
       <div class="icon-item">
-        <img src="css/assets/gem.png" alt="Icon 1">
+        <img src="../css/assets/gem.png" alt="Icon 1">
         <span class="icon-number">
           <%= gems %>
         </span>
       </div>
       <div class="icon-item">
-        <img src="css/assets/parrot.png" alt="Icon 2">
+        <img src="../css/assets/parrot.png" alt="Icon 2">
         <span class="icon-number">
           <%= parrots %>
         </span>
       </div>
     </div>
     <div class="nav-button-container">
-      <a href="/" class="nav-button">Accueil</a><!--Home-->
-      <a href="/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
-      <a href="/profile" class="nav-button">Profil</a><!--Profile-->
-      <a href="/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
-      <a href="/story" class="special-button">Créer Histoire</a><!--Create Story-->
+      <div class="switch">
+        <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+        <label for="language-toggle"></label>
+        <span class="on">FR</span>
+        <span class="off">EN</span>
+    </div>
+    <script>
+        function toggleLanguage() {
+var toggleSwitch = document.getElementById('language-toggle');
+var redirectUrl;
+
+if (toggleSwitch.checked) {
+    // Redirect to URL for BN (Bangla)
+    redirectUrl = '../';
+} else {
+    // Redirect to URL for EN (English)
+    redirectUrl = '../';
+}
+
+// Redirect to the specified URL
+window.location.href = redirectUrl;
+}
+    </script>
+      <a href="/fr/" class="nav-button">Accueil</a><!--Home-->
+      <a href="/fr/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
+      <a href="/fr/profile" class="nav-button">Profil</a><!--Profile-->
+      <a href="/fr/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
+      <a href="/fr/story" class="special-button">Créer Histoire</a><!--Create Story-->
     </div>
   </div>
 
   <div class="flex-box">
     <div class="text-style-head" style="margin-top: 8%;">Créer de nouvelle histoire</div><!--Create A New Story-->
     <div class="text-style-sub" style="margin-top: 11px;">Appuyez sur le bouton “Créer” pour commencer<br>la création de votre histoire. Profitez-en.</div>
-    <a href="/story" style="text-decoration: none;">
+    <a href="/fr/story" style="text-decoration: none;">
       <div class="next-button"
         style="color: black; background: white; text-align: center;width: 223px; height: 48px;color: #3A3A3A; font-family: Volkhov; font-size: 24px; font-style: normal; font-weight: 700; margin-bottom: 30px ;line-height: 150%; padding-top: 07px; margin-top: 38px;">
         Créer une histoire</div>
@@ -130,7 +162,7 @@
 
   </div>
 
-  <script src="js/homepage.js"></script>
+  <script src="../js/homepage.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -162,7 +194,7 @@
               console.log('Data sent to backend:', value);
               // Optionally, perform actions after successful data transmission
               // For example, redirect to another page
-              window.location.href = '/storyoutput';
+              window.location.href = '/fr/storyoutput';
             } else {
               console.error('Failed to send data to backend');
             }

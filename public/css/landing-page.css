@@ -523,49 +523,7 @@ background-image: url("assets/subx2b.png"); /* Add the path to your new image */
  
   }
   
-  .box {
-    max-width: 90vw !important;
-    width: 513px;
-    flex-shrink: 0;
-    border-radius: 20px;
-
-  }
   
-  .box-1 {
-    height: 10vh !important;
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%)), url("assets/temp1.png");
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp1.png")
-  }
-  
-  .box-2 {
-    height: 14vh !important; /* New height for box-4 */
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
-    background-size: cover, cover; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp2.png")
-  }
-  
-  .box-4 {
-    height: 19vh !important; /* New height for box-4 */
-    border: 2px solid #FFF;
-    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
-    background-size:100% 100% !important; /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp4.png");
-  }
-  
-  .box-3 {
-    height: 22vh !important;
-    background: #FDF0F2;
-    background-size:100% 100% !important;  /* Set background-size for both layers */
-    background-repeat: no-repeat;
-    background-image:  url("assets/temp3.png");
-    
-  }
   
   .button-box-x {
     height: 65px;
@@ -1028,6 +986,7 @@ line-height: 148.5%; /* 53.46px */
     flex-shrink: 0;
     border-radius: 30px;
     border: 0px solid #FFF;
+    background-size: cover;
     background: linear-gradient(180deg, #22185B 0%, #4D2F7B 100%);
     box-shadow: 0px 14px 0px 0px rgba(255, 255, 255, 0.836) inset; /* Box shadow on the top */
     margin: 0;

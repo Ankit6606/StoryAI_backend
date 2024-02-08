@@ -474,10 +474,10 @@ padding-top: 20px;
     height: 50px;
     cursor: pointer;
 }
-
+/* 
 .left-button, .right-button {
-    /* Add your button styling here */
-}
+    /* Add your button styling here
+} */ 
 
 .left-button img, .right-button img {
     object-fit: cover;
@@ -518,11 +518,11 @@ padding-top: 20px;
     <body>
         <div class="icons-container-2" style="scale: 0.65;">
             <div class="icon-item">
-              <img src="css/assets/gem.png" alt="Icon 1">
+              <img src="../css/assets/gem.png" alt="Icon 1">
               <span class="icon-number"><%= gems %></span>
             </div>
             <div class="icon-item">
-              <img src="css/assets/parrot.png" alt="Icon 2">
+              <img src="../css/assets/parrot.png" alt="Icon 2">
               <span class="icon-number"><%= parrots %></span>
             </div>
           </div>
@@ -536,39 +536,39 @@ padding-top: 20px;
           <nav class="navMenu" id="navMenu">
             <ul>
               <li>
-                <a href="/">Accueil</a><!--Home-->
+                <a href="/fr/">Accueil</a><!--Home-->
               </li>
               <li>
-                <a href="/story">Créer Histoire</a><!--Create Story-->
+                <a href="/fr/story">Créer Histoire</a><!--Create Story-->
               </li>
               <li>
-                <a href="/storyhistory">Mes Histoires</a><!--Story history-->
+                <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
               </li>
               <li>
-                <a href="/profile">Profil</a><!--Profile-->
+                <a href="/fr/profile">Profil</a><!--Profile-->
               </li>
               <li>
-                <a href="/subscribe">Abonnement</a><!--Subscription-->
+                <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
               </li>
             </ul>
           </nav>
           <div class="navbar">
             <div class="icons-container">
               <div class="icon-item">
-                <img src="css/assets/gem.png" alt="Icon 1">
+                <img src="../css/assets/gem.png" alt="Icon 1">
                 <span class="icon-number"><%= gems %></span>
               </div>
               <div class="icon-item">
-                <img src="css/assets/parrot.png" alt="Icon 2">
+                <img src="../css/assets/parrot.png" alt="Icon 2">
                 <span class="icon-number"><%= parrots %></span>
               </div>
             </div>
             <div class="nav-button-container">
-                <a href="/" class="nav-button">Accueil</a><!--Home-->
-              <a href="/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
-              <a href="/profile" class="nav-button">Profil</a><!--Profile-->
-              <a href="/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
-              <a href="/story" class="special-button">Créer Histoire</a><!--Create Story-->
+                <a href="/fr/" class="nav-button">Accueil</a><!--Home-->
+              <a href="/fr/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
+              <a href="/fr/profile" class="nav-button">Profil</a><!--Profile-->
+              <a href="/fr/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
+              <a href="/fr/story" class="special-button">Créer Histoire</a><!--Create Story-->
             </div>
           </div>
         
@@ -587,16 +587,16 @@ padding-top: 20px;
                     </audio>
                     <div class="button-container">
                         <div class="button left-button" onclick="handleLeftButtonClick()">
-                            <img src="css/assets/rewind.png" alt="Left Button">
+                            <img src="../css/assets/rewind.png" alt="Left Button">
                         </div>
                         <div class="play-pause-container" onclick="togglePlayPause()">
                             <div class="play-pause-button">
-                                <img id="play-pause-icon" src="css/assets/pause.png" style="object-fit: cover; height: 95px; width:95px;" alt="">
-                                <img id="play-pause-image" src="css/assets/play.png" style="object-fit: cover; height: 95px; width:95px; display: none;" alt="">
+                                <img id="play-pause-icon" src="../css/assets/pause.png" style="object-fit: cover; height: 95px; width:95px;" alt="">
+                                <img id="play-pause-image" src="../css/assets/play.png" style="object-fit: cover; height: 95px; width:95px; display: none;" alt="">
                             </div>
                         </div>
                         <div class="button right-button" onclick="handleRightButtonClick()">
-                            <img src="css/assets/forward.png" alt="Right Button">
+                            <img src="../css/assets/forward.png" alt="Right Button">
                         </div>
                     </div>
                     <!-- Progress Bar -->
@@ -617,8 +617,8 @@ padding-top: 20px;
                 <div class="box-subtext" ><%= story %></div>
             </div>
         </div>
-        <script src="js/storyoutput.js"></script>
-        <script src="js/vnav.js"></script>
+        <script src="../js/storyoutput.js"></script>
+        <script src="../js/vnav.js"></script>
         <script>
     //         function setAudioBoxBackground(imageUrl) {
     //     var audioBox = document.getElementById('audio-box');

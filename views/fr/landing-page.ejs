@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../css/landing-page.css">
+   
     <link rel="stylesheet" href="../css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,1165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-image: url(../css/assets/bgmain.png);
+    background-size:100% 8000px; /* Cover the entire viewport */
+    background-repeat: no-repeat;
+     /* Fixed background */
+    
+}
+html {
+    scroll-behavior: smooth;
+}
+@media (max-width: 768px) {
+
+
+
+  .box {
+
+     
+      flex-shrink: 0;
+      border-radius: 20px;
+      
+
+  }
+
+  .box-1 {
+    max-width: 85.5vw;
+   height: 60px !important;
+    border: 2px solid #FFF;
+    background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+    background-size: cover, cover;
+    /* Set background-size for both layers */
+    background-repeat: no-repeat;
+    background-image: url("../css/assets/fr/sub/SMALL/sub131.png")
+}
+.box-d { max-width: 85.5vw;
+    height: 60px !important;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+border: 2px solid #FFF;
+
+background: #FDF0F2;
+background-size: cover, cover;
+/* Set background-size for both layers */
+background-repeat: no-repeat;
+background-image: url("../css/assets/fr/sub/SMALL/sub129.png");
+
+}
+.box-2 {
+    max-width: 85.5vw;
+    height: 60px !important;
+    /* New height for box-4 */
+    border: 2px solid #FFF;
+   
+    background-size: cover, cover;
+    /* Set background-size for both layers */
+    background-repeat: no-repeat;
+    background-image: url("../css/assets/fr/sub/SMALL/sub130.png")
+}
+
+.box-4 {
+    max-width: 85.5vw;
+    height: 60px !important;
+    /* New height for box-4 */
+    border: 2px solid #FFF;
+
+    background-size: cover, cover;
+    /* Set background-size for both layers */
+    background-repeat: no-repeat;
+    background-image: url("../css/assets/fr/sub/SMALL/sub132.png");
+}
+
+.box-3 {
+    max-width: 90.5vw !important;
+    height: 8vh !important;
+   
+    background-size: cover, cover;
+    /* Set background-size for both layers */
+    background-repeat: no-repeat;
+    background-image: url("../css/assets/fr/sub/SMALL/sub177.png");
+
+}
+
+.next-button {
+    max-height: 50px;
+    max-width: 80.5vw;
+    margin-left: 3px !important;
+}
+.box-1:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub131.png"); /* Add the path to your new image */
+}
+
+.box-2:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub130.png"); /* Add the path to your new image */
+}
+
+.box-4:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub132.png"); /* Add the path to your new image */
+}
+
+.box-3:hover {
+width: 640px;
+height: 115px !important;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub177.png"); /* Add the path to your new image */
+}
+.box-d:hover {
+width: 640px;
+height: 100px !important;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub129.png"); /* Add the path to your new image */
+}
+
+
+
+}
+
+.box-m {
+  gap: 5PX;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+align-items: center;
+  z-index: 1;
+
+
+}
+
+
+.box {
+  width: 640px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  z-index: 100;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease, margin 0.3s ease ; /* Smoother transitions */
+}
+.box:hover {
+  border: 3px solid #F669B3;;
+  margin-top: 10px;
+  margin-bottom:10px ;
+box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518); /* Enhance raise effect */
+/* Lift the card slightly on hover */
+z-index: 999; /* Make the hovered card appear above other cards */
+}
+
+.box-1 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+ 
+  border: 2px solid #FFF;
+  
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("../css/assets/fr/sub/SMALL/sub131.png")
+}
+
+.box-2 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  /* New height for box-4 */
+  border: 2px solid #FFF;
+  background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("../css/assets/fr/sub/SMALL/sub130.png")
+}
+
+.box-4 {
+  width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  /* New height for box-4 */
+  border: 2px solid #FFF;
+  background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("../css/assets/fr/sub/SMALL/sub132.png");
+}
+
+.box-3 { width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  border: 2px solid #FFF;
+  
+  background: #FDF0F2;
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("../css/assets/fr/sub/SMALL/sub177.png");
+
+}
+
+
+.box-d { width: 600px;
+height: 100px;
+flex-shrink: 0;
+background-color: #e0e0e0; /* Adding a background color for visualization */
+transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+  border: 2px solid #FFF;
+  
+  background: #FDF0F2;
+  background-size: cover, cover;
+  /* Set background-size for both layers */
+  background-repeat: no-repeat;
+  background-image: url("../css/assets/fr/sub/SMALL/sub129.png");
+
+}
+/*Hover Animations */
+
+
+.box-1:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub131.png"); /* Add the path to your new image */
+}
+
+.box-2:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub130.png"); /* Add the path to your new image */
+}
+
+.box-4:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub132.png"); /* Add the path to your new image */
+}
+
+.box-3:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub177.png"); /* Add the path to your new image */
+}
+.box-d:hover {
+width: 640px;
+height: 180px;
+opacity: 0.8;
+background-image: url("../css/assets/fr/sub/EXPANDED/sub129.png"); /* Add the path to your new image */
+}
+/*Hover Animations */
+
+
+
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        background-image: url(../css/assets/bgmobile.png) !important;
+        background-size:104% 6500px; /* Cover the entire viewport */
+        background-repeat: no-repeat;
+         /* Fixed background */
+        
+    }
+    .text-overlay {
+        margin-top: 10vh !important;
+        font-size: 30px !important;
+        
+       
+    }
+    .sub-text {
+        margin-top: 1vh;
+     
+         font-size: 16px !important;
+        
+     
+     }
+     .image{
+        margin-top: 30vh !important;
+     }
+     .navbar{
+        visibility: hidden !important;
+     }
+     .storyia-text {
+       
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 17px !important;
+        font-style: normal;
+        font-weight: 500 !important; 
+        line-height: 150%; /* 22.5px */
+        background: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      
+    }
+    .text-row {
+        background-image: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+        background-size: 30% 30% !important;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .text-class-2 {
+        color: #FFF;
+        margin-bottom: 0vh !important;
+    
+        text-align: center;
+        font-family: Volkhov;
+        font-size: 24px !important;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 148.5%;
+        /* 53.46px */
+    
+    }
+    .image-slider {
+        margin-top: 1.5vh;
+        margin-bottom: 3vh;
+        width: 90vw !important;
+        height: 60vw !important;
+        
+        flex-shrink: 0;
+        border-radius: 29px;
+        border: 3px solid #A288CB;
+        overflow: hidden;
+      
+       
+    }
+    
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    
+    .slide {
+        width: 90vw !important;
+        height: 60vw !important;
+    }
+    img {
+        background-size:100% 100% !important;
+    }
+    
+    .text-class-3 {
+        margin-top: 2vh !important;
+        margin-bottom: 1vh;
+        color: #FFF;
+        text-align: center;
+        font-family: Volkhov;
+        font-size: 22px !important;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 148.5%;
+        /* 41.58px */
+        /* 53.46px */
+     
+    }
+    
+    .sub-text-2 {
+        
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 16px !important;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 148.5%;
+        /* 29.7px */
+    
+    }
+    
+    .sub-text-3 {
+    
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 16px !important;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 148.5%;
+        /* 29.7px */
+    
+    }
+    
+    
+    
+    .image-box {
+        margin-top: 06vh !important;
+        margin-bottom: 5vh !important;
+        
+        
+       
+        width: 90vw !important;
+        height: 1022px !important;
+        flex-shrink: 0;
+        border-radius: 20px !important;
+        border: 2px solid #C0A9FF !important;
+        
+        background: linear-gradient(180deg, #3A3A3A 0%, #24195A 0.01%, #462B74 101.52%) !important;
+        background-image: url('../css/assets/fr/com/frm110.png') !important;
+        
+        background-size: 90vw 1022px !important;
+        background-repeat: no-repeat;
+    }
+    .text-class-4{
+        margin-bottom: 1vh;
+     
+        color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 28px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 148.5%; /* 53.46px */
+    }
+    .sub-text-4{
+        
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 17px !important;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 153.2%; /* 30.64px */}
+    .sub-text-5{
+        margin-bottom: 5vh;
+        color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 17px !important;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 153.2%; /* 30.64px */}
+
+        .image-box-container-x {
+    
+            z-index: 199;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 31px 61px; /* Row-wise and column-wise gap */
+            justify-content: center;
+          }
+          
+          /* Add a class to hide all boxes initially */
+/* Add a class to hide all boxes initially */
+.image-box-x {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    
+}
+
+/* Add a class to show the current active box */
+.image-box-x.active-box {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  
+}
+
+
+        /* Your existing styles for .image-box-x */
+        .image-box-x {
+            z-index: 199;
+            max-height: 30vh !important;
+            max-width: 90vw !important;
+            width: 537px;
+            height: 286px;
+            flex-shrink: 0;
+            background-size: 100% 100% !important;
+            border-radius: 30px;
+            border: 1px solid #FFF !important;
+            background: linear-gradient(180deg, #22185B 0%, #4D2F7B 100%);
+            box-shadow: 0px 14px 0px 0px rgba(255, 255, 255, 0.836) inset; /* Box shadow on the top */
+            margin: 0;
+        }
+.flex-container {
+  
+    display: flex;
+    
+   
+    flex-direction: column;
+    gap: 18px;
+   
+ 
+  }
+  
+
+  .button-box-x {
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .text-box-xx {
+    width: 90vw !important;
+    height: auto; /* To allow the text box to expand to fit the content */
+    text-align: center;
+  }
+  
+  .pricing-text {
+    margin-top: 25vh !important;
+    color: #FFF;
+    font-family: Volkhov;
+    font-size: 28px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 148.5%; /* 47.52px */
+  }
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 320%;
+    z-index: 150;
+    
+    align-items: center;
+  }
+  
+  .faq-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0vh !important;
+  }
+  
+  .question-box {
+width: 95vw !important;
+    max-width: 925.119px;
+    height: 62.334px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 2px solid #FFF;
+    background: linear-gradient(180deg, #634FAA 0%, #464293 100%);
+    box-shadow: 9px 12px 13px 0px rgba(255, 255, 255, 0.25) inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    cursor: pointer;
+    margin-top: 1vh !important;
+    transition: background 0.3s;
+    
+  }
+  .question-text {
+    width: 90vw !important;
+    max-width: 912.873px;
+    height: 60.776px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Noto Sans;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+  }
+  .question-box:hover {
+    background: linear-gradient(180deg, #464293 0%, #634FAA 100%);
+  }
+  
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    margin-right: 10px;
+  }
+  
+  .answer {
+    margin-top: 12px;
+width: 95vw !important;
+    max-width: 925px;
+    height: fit-content !important;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FDF0F2;
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: none;
+    padding: 10px 15px;
+    
+    
+  }
+  .answer-text {
+    width: 90vw !important;
+    max-width: 867.944px;
+    height: 65.451px;
+    flex-shrink: 0;
+    color: var(--black, #3A3A3A);
+    font-family: Noto Sans;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%; /* 29.7px */
+    
+  }
+  
+  .navTrigger{
+    opacity: 1 !important;
+}
+
+  .faq-item.open .answer {
+    display: block;
+  }
+  .faq-adventure {
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 20px !important;
+   margin-top: 10vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120% !important; /* 45px */
+    background: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8vh;
+  }
+  
+  .answer-width2{
+    margin-top: 12px;
+    max-width:925px ;
+    width: 95vw !important;
+    height: fit-content !important;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FDF0F2;
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: none;
+    padding: 10px 15px;
+  }
+  .faq-header {
+    margin-top: 25vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 53.46px;
+    margin-bottom: 0px; /* Gap between the text and the first question box */
+  }
+  .faq-description {
+    width: 80vw !important;
+    max-width: 768px;
+    height: 51px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%; /* 20.79px */
+    margin-top: 30px;
+  }
+  
+  .faq-adventure {
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 30px;
+   margin-top: 10vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 45px */
+    background: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8vh;
+  }
+  .arrow-down {
+    visibility: hidden !important;
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    margin-right: 10px;
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+}
+.section {
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.text-overlay {
+    margin-top: 17vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 123.5%;
+   
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #FFA8CF 4.6%, #C0A9FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.white-text {
+    color: #FFF;
+}
+
+.sub-text {
+   margin-top: 1vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%;
+
+}
+
+
+
+.image {
+    margin-top: 30vh;
+    width: 115px;
+    height: 42px;
+    flex-shrink: 0;
+    
+   
+    background-image: url('assets/brandmark.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.storyia-text {
+    margin-bottom: 3vh;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 45px */
+    background: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+  
+}
+
+
+
+
+
+.text-class-2 {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 148.5%;
+    /* 53.46px */
+
+}
+
+.image-slider {
+    margin-top: 1.5vh;
+    margin-bottom: 3vh;
+    width: 990px;
+    height: 619px;
+    flex-shrink: 0;
+    border-radius: 29px;
+    border: 3px solid #A288CB;
+    overflow: hidden;
+  
+   
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    width: 990px;
+    height: 619px;
+    flex-shrink: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Add styles for the slider-dots */
+.slider-dots {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+
+
+
+.text-class-3 {
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 148.5%;
+    /* 41.58px */
+    /* 53.46px */
+ 
+}
+
+.sub-text-2 {
+    
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%;
+    /* 29.7px */
+
+}
+
+.sub-text-3 {
+
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%;
+    /* 29.7px */
+
+}
+
+
+
+.image-box {
+    margin-top: 12vh;
+    margin-bottom: 10vh;
+    
+    width: 1433px;
+    height: 737px;
+    flex-shrink: 0;
+    border-radius: 53px;
+    border: 2px solid #C0A9FF;
+    background: linear-gradient(180deg, #3A3A3A 0%, #24195A 0.01%, #462B74 101.52%);
+    background-image: url('../css/assets/fr/com/fr110.png');
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.vec-1-box {
+   margin-bottom: 1vh;
+    width: 74px;
+    height: 69.711px;
+    flex-shrink: 0;
+    background-image: url('assets/vec-1.png'); /* Replace 'your-image-url.jpg' with the actual image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.text-class-4{
+    margin-bottom: 1vh;
+ 
+    color: #FFF;
+text-align: center;
+font-family: Volkhov;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: 148.5%; /* 53.46px */
+}
+.sub-text-4{
+    
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 153.2%; /* 30.64px */}
+.sub-text-5{
+    margin-bottom: 5vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 153.2%; /* 30.64px */}
+
+
+
+
+
+.image-box-container-x {
+    
+    z-index: 199;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 31px 61px; /* Row-wise and column-wise gap */
+    justify-content: center;
+  }
+  
+  .image-box-x {
+    z-index: 199;
+    width: 537px;
+    height: 286px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 0px solid #FFF;
+    background-size: cover;
+    background: linear-gradient(180deg, #22185B 0%, #4D2F7B 100%);
+    box-shadow: 0px 14px 0px 0px rgba(255, 255, 255, 0.836) inset; /* Box shadow on the top */
+    margin: 0;
+}
+
+.image-box-large {
+   
+    height: 1877px;
+    flex-shrink: 0;
+    background: radial-gradient(32.59% 32.59% at 50% 72.34%, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.68) 100%), url('assets/image-large.png');
+    background-size: cover, cover; /* Set background-size for both layers */
+    background-repeat: no-repeat;
+   
+    /* Add any additional styling or content you want here */
+}
+.flex-container {
+    display: flex;
+    
+   
+    flex-direction: column;
+    gap: 18px;
+    z-index:101 ;
+ 
+  }
+  
+
+  
+  .button-box-x {
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .text-box-xx {
+
+    height: auto; /* To allow the text box to expand to fit the content */
+    text-align: center;
+  }
+  
+  .pricing-text {
+    margin-top: 25vh;
+    color: #FFF;
+    font-family: Volkhov;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 148.5%; /* 47.52px */
+  }
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 320%;
+    z-index: 150;
+    
+    align-items: center;
+  }
+  
+  .faq-item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  .question-box {
+    width: 925.119px;
+    height: 62.334px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 2px solid #FFF;
+    background: linear-gradient(180deg, #634FAA 0%, #464293 100%);
+    box-shadow: 9px 12px 13px 0px rgba(255, 255, 255, 0.25) inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    cursor: pointer;
+    margin-top: 21px;
+    transition: background 0.3s;
+    
+  }
+  .question-text {
+    width: 912.873px;
+    height: 60.776px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+  }
+  .question-box:hover {
+    background: linear-gradient(180deg, #464293 0%, #634FAA 100%);
+  }
+  
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    margin-right: 10px;
+  }
+  
+  .answer {
+    margin-top: 12px;
+    width: 925px;
+    height: 99px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FDF0F2;
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: none;
+    padding: 10px 15px;
+  }
+  .answer-text {
+    width: 867.944px;
+    height: 65.451px;
+    flex-shrink: 0;
+    color: var(--black, #3A3A3A);
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%; /* 29.7px */
+  }
+  .faq-item.open .answer {
+    display: block;
+  }
+  .answer-width2{
+    margin-top: 12px;
+    width: 925px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FDF0F2;
+    box-shadow: 0px 4px 55px 0px rgba(21, 14, 57, 0.60) inset;
+    display: none;
+    padding: 10px 15px;
+  }
+  .faq-header {
+    margin-top: 25vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Volkhov;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 53.46px;
+    margin-bottom: 0px; /* Gap between the text and the first question box */
+  }
+  .faq-description {
+    width: 768px;
+    height: 51px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.5%; /* 20.79px */
+    margin-top: 30px;
+  }
+  
+  .faq-adventure {
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 30px;
+   margin-top: 10vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 45px */
+    background: linear-gradient(180deg, #D0BFFF 0%, #FFC6DF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8vh;
+  }
+  
+    </style>
 </head>
 
 <body>
@@ -25,11 +1184,19 @@
       </button>
       <nav class="navMenu" id="navMenu" style="font-size: 14px;">
         <ul>
+            <li>
+                <div class="switch">
+                    <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+                    <label for="language-toggle"></label>
+                    <span class="on">FR</span>
+                    <span class="off">EN</span>
+                </div>
+            </li>
           <li>
-            <a href="/">Home</a>
+            <a href="/fr/">Home</a>
           </li>
           <li>
-            <a href="/story">Create Story</a>
+            <a href="/fr/story">Create Story</a>
           </li>
           <li>
             <a href="#Testimonials">Testimonials</a>
@@ -60,8 +1227,31 @@
             <!-- <a href="/profile" class="nav-button">Home</a>
           <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a> -->
-          <a href="/authenticate2" class="nav-button">Login</a>
-          <a href="/authenticate" class="special-button">Create Account</a>
+          <div class="switch">
+            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+            <label for="language-toggle"></label>
+            <span class="on">FR</span>
+            <span class="off">EN</span>
+        </div>
+        <script>
+            function toggleLanguage() {
+    var toggleSwitch = document.getElementById('language-toggle');
+    var redirectUrl;
+
+    if (toggleSwitch.checked) {
+        // Redirect to URL for BN (Bangla)
+        redirectUrl = '../landingpage';
+    } else {
+        // Redirect to URL for EN (English)
+        redirectUrl = '../landingpage';
+    }
+
+    // Redirect to the specified URL
+    window.location.href = redirectUrl;
+}
+        </script>
+          <a href="/fr/authenticate2" class="nav-button">Login</a>
+          <a href="/fr/authenticate" class="special-button">Create Account</a>
         </div>
       </div>
     <div class="section">
@@ -136,12 +1326,12 @@
 
 
         <div class="image-box-container-x">
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/ahmed.png');"></div>
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/aicha.png');"></div>
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/jean.png');"></div>
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/marie.png');"></div>
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/sarah.png');"></div>
-            <div class="image-box-x target-box" style="background-image: url('../css/assets/aicha2.png');"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev139.png'); background-size:cover;"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev140.png');background-size:cover;"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev141.png');background-size:cover;"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev142.png');background-size:cover;"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev143.png');background-size:cover;"></div>
+            <div class="image-box-x target-box" style="background-image: url('../css/assets/fr/com/rev144.png');background-size:cover;"></div>
         </div>
 
 
@@ -156,21 +1346,21 @@
                 <p class="pricing-text">Plans de Souscription</p>
             </div>
             <div class="box-m">
-                <div class="box box-1" id="basic" onclick="updateButtonValue('basic')"></div>
-                <div class="box box-d" id="discover" onclick="updateButtonValue('discover')"></div>
-                <div class="box box-2" id="starter" onclick="updateButtonValue('starter')"></div>
-                <div class="box box-3" id="value" onclick="updateButtonValue('value')"></div>
-                <div class="box box-4" id="premium" onclick="updateButtonValue('premium')"></div>
+                <div class="box box-1"></div>
+                <div class="box box-d" ></div>
+                <div class="box box-2"></div>
+                <div class="box box-3" ></div>
+                <div class="box box-4"></div>
             
                
             
             
                 
             </div>
-            <div class="box button-box-x">
+            <!-- <div class="box button-box-x">
                 <a href="/">
                 <button class="next-button" style="width: 320px;
-                height: 65px;" href="/story">Créez mon histoire maintenant</button>
+                height: 65px;" href="/story">Créez mon histoire maintenant</button> -->
                 </a>
             </div>
         </div>
@@ -305,7 +1495,7 @@
                 Avec Storyia, vous disposez de tous les outils pour enrichir l'imagination de votre enfant dans le format qui vous convient le mieux. Ne manquez pas l'opportunité de créer des moments inoubliables en famille. Cliquez ci-dessous pour commencer votre aventure de narration dès aujourd'hui.
             </p>
             <!-- Add more FAQ items as needed -->
-            <a href="/">
+            <a href="/fr/">
             <div class="box button-box-x">
                 <button class="next-button" style="width: 320px;
                 height: 65px; margin-bottom: 10vh;" >Créez maintenant !</button>

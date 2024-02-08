@@ -47,6 +47,14 @@
   <nav class="navMenu" id="navMenu">
     <ul>
       <li>
+        <div class="switch">
+          <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+          <label for="language-toggle"></label>
+          <span class="on">EN</span>
+          <span class="off">FR</span>
+      </div>
+      </li>
+      <li>
         <a href="/">Home</a>
       </li>
       <li>
@@ -80,6 +88,27 @@
       </div>
     </div>
     <div class="nav-button-container">
+      <div class="switch">
+        <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+        <label for="language-toggle"></label>
+        <span class="on">EN</span>
+        <span class="off">FR</span>
+    </div>
+    <script>function toggleLanguage() {
+        var toggleSwitch = document.getElementById('language-toggle');
+        var redirectUrl;
+    
+        if (toggleSwitch.checked) {
+            // Redirect to URL for BN (Bangla)
+            redirectUrl = '/fr/';
+        } else {
+            // Redirect to URL for EN (English)
+            redirectUrl = '/fr/';
+        }
+    
+        // Redirect to the specified URL
+        window.location.href = redirectUrl;
+    }</script>
       <a href="/" class="nav-button">Home</a>
       <a href="/subscribe" class="nav-button">Subscription</a>
       <a href="/profile" class="nav-button">Profile</a>

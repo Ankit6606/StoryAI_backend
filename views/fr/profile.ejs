@@ -18,11 +18,11 @@
 <body>
   <div class="icons-container-2" style="scale: 0.65;">
     <div class="icon-item">
-      <img src="css/assets/gem.png" alt="Icon 1">
+      <img src="../css/assets/gem.png" alt="Icon 1">
       <span class="icon-number"><%= gems %></span>
     </div>
     <div class="icon-item">
-      <img src="css/assets/parrot.png" alt="Icon 2">
+      <img src="../css/assets/parrot.png" alt="Icon 2">
       <span class="icon-number"><%= parrots %></span>
     </div>
   </div>
@@ -36,40 +36,40 @@
       <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/">Accueil</a><!--Home-->
+            <a href="/fr/">Accueil</a><!--Home-->
           </li>
           <li>
-            <a href="/story">Créer Histoire</a><!--Create Story-->
+            <a href="/fr/story">Créer Histoire</a><!--Create Story-->
           </li>
           </li>
           <li>
-            <a href="/storyhistory">Mes Histoires</a><!--Story history-->
+            <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
           </li>
           <li>
-            <a href="/profile">Profil</a><!--Profile-->
+            <a href="/fr/profile">Profil</a><!--Profile-->
           </li>
           <li>
-            <a href="/subscribe">Abonnement</a><!--Subscription-->
+            <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
           </li>
         </ul>
       </nav>
         <div class="navbar">
             <div class="icons-container">
               <div class="icon-item">
-                <img src="css/assets/gem.png" alt="Icon 1">
+                <img src="../css/assets/gem.png" alt="Icon 1">
                 <span class="icon-number"><%= gems %></span>
               </div>
               <div class="icon-item">
-                <img src="css/assets/parrot.png" alt="Icon 2">
+                <img src="../css/assets/parrot.png" alt="Icon 2">
                 <span class="icon-number"><%= parrots %></span>
               </div>
             </div>
             <div class="nav-button-container">
-              <a href="/" class="nav-button">Accueil</a><!--Home-->
-              <a href="/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
-              <a href="/profile" class="nav-button">Profil</a><!--Profile-->
-              <a href="/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
-              <a href="/story" class="special-button">Créer Histoire</a><!--Create Story-->
+              <a href="/fr/" class="nav-button">Accueil</a><!--Home-->
+              <a href="/fr/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
+              <a href="/fr/profile" class="nav-button">Profil</a><!--Profile-->
+              <a href="/fr/storyhistory" class="nav-button">Mes Histoires</a><!--Story history-->
+              <a href="/fr/story" class="special-button">Créer Histoire</a><!--Create Story-->
             </div>
           </div>
         
@@ -107,7 +107,7 @@
                 </defs>
             </svg>
             <div class="ellipse"></div>
-<form action="/profile" method="post">
+<form action="/fr/profile" method="post">
             <!-- Button Container -->
             <div class="flexbox" id="flexbox" >
                 <div class="title">Profile Settings</div>
@@ -127,8 +127,8 @@
                     </div>
                 </form>
                 <button onclick="logout()" class="nav-button" style="color: red; margin-top: 20px;">Log Out</button>
-                <script src="js/signup.js"></script>
-                <script src="js/vnav.js"></script>
+                <script src="../js/signup.js"></script>
+                <script src="../js/vnav.js"></script>
             </div>
         </div>
         <script>
@@ -141,7 +141,7 @@
       });
       localStorage.clear();
       sessionStorage.clear();
-      window.location.href = '/authenticate'; 
+      window.location.href = '/fr/authenticate'; 
     }
         </script>
     </body>
