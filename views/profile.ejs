@@ -125,23 +125,23 @@
                         <button type="submit" class="nav-button">Upgrade</button>
                     </div>
                 </form>
-                <button onclick="logout()" class="nav-button" style="color: red; margin-top: 20px;">Log Out</button>
+                <a href="/logout" class="nav-button" style="color: red; margin-top: 20px;">Log Out</a>
                 <script src="js/signup.js"></script>
                 <script src="js/vnav.js"></script>
             </div>
         </div>
         <script>
-           function logout() {
-      // Clear cookies
-      document.cookie.split(";").forEach(function(c) {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      });
-      localStorage.clear();
-      sessionStorage.clear();
-      window.location.href = '/authenticate'; 
-    }
+    //        function logout() {
+    //   // Clear cookies
+    //   document.cookie.split(";").forEach(function(c) {
+    //     document.cookie = c
+    //       .replace(/^ +/, "")
+    //       .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    //   });
+    //   localStorage.clear();
+    //   sessionStorage.clear();
+    //   window.location.href = '/authenticate'; 
+    // }
         </script>
     </body>
 
