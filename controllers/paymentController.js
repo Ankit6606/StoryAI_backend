@@ -30,6 +30,7 @@ export function selectSubscription(req,res){
       res.render("subscription",{
         gems : req.user.gems,
         parrots: req.user.parrots,
+        subscriptionPlan: req.user.subscriptionPlan,
         boxIds,userSubscriptionPlan
       });
     }

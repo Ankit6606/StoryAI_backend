@@ -40,6 +40,7 @@ import {rootRender,
         registerUser,
         storyPage,
         loginUser,
+        userLogout,
         storyPost,
         profileManage,
         editProfile,
@@ -114,6 +115,7 @@ router.get("/authenticate",authenticateRender);
 router.get("/authenticate2",authenticateRender2);
 router.get("/register",registerRender);
 router.get("/login",loginRender);
+router.get("/logout",userLogout);
 router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
 router.get("/phonenumber",getphoneNumber);

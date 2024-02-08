@@ -157,6 +157,19 @@ export function loginUser(req,res){
      });
 };
 
+//Logout
+
+export function userLogout(req,res){
+  req.logout(function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        res.redirect("/");
+    }
+})
+}
+
 
 //--OTP Verification pages and functions for new users--//
 
