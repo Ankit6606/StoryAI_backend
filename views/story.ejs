@@ -12,7 +12,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/meta/vertical-navbar.css">
     </head>
-
+    <style>
+      body::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        transition: transform 0.1s;
+    }
+    
+    body.loaded::after {
+        transform: translateY(0);
+    }
+    </style>
 <body>
  
     <button class="navTrigger" id="navTrigger">
@@ -100,6 +113,11 @@
         line-height: 150%;margin-top: 11px; text-decoration: none;">Back</a>
     </div>
   </form>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('loaded');
+    });
+</script>
 
     <script src="js/storypage.js"></script>
     <script src="js/vnav.js"></script>
