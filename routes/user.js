@@ -27,6 +27,7 @@ import {rootRenderFr,
         postPhonenumberFr,
         otpVerificationFr,
         clickStoriesFr,
+        userLogoutFr,
         
         } from '../controllers/userReqFr.js';
 import {rootRender,
@@ -84,6 +85,7 @@ router.get("/fr/emotions",renderEmotionsFr);
 router.get("/fr/values",renderValuesFr);
 router.get("/fr/storyhistory", rendershpFr);
 router.get("/fr/storyoutput",showStoriesFr);
+router.get("/logout",userLogoutFr);
 
 // router.get("/storyoutput",getStoryOutput);
 router.get("/fr/success",success);

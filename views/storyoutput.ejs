@@ -10,12 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/meta/vertical-navbar.css">
-    
+    <link rel="preload" as="image" href="../css/assets/story-page-bg.png">
+
 
 ~
 </head>
 <style>
-    
+   
     body {
         margin: 0;
         padding: 0;
@@ -617,6 +618,12 @@ padding-top: 20px;
                 <div class="box-subtext" ><%= story %></div>
             </div>
         </div>
+        <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('loaded');
+    });
+</script>
+
         <script src="js/storyoutput.js"></script>
         <script src="js/vnav.js"></script>
         <script>
@@ -628,13 +635,13 @@ padding-top: 20px;
     //     }
     // }
     const storyImage = '<%= storyImage %>';
-    console.log('Story Image URL:', storyImage);
-       
-        if (window.innerWidth <= 768) {
-        
-            document.body.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.5) 20.09%, rgba(0, 0, 0, 0.15) 48.97%, rgba(0, 0, 0, 0.1) 100%), url('${storyImage}') center/cover no-repeat`;
-        }
-    
+const preloadedImage = new Image();
+preloadedImage.src = storyImage;
+preloadedImage.onload = function() {
+    // Now set the background image
+    document.body.style.backgroundImage = `url('${storyImage}')`;
+};
+
     // var backgroundImageUrl = '"css/assets/story-pic-dynamic.png"';
     // setAudioBoxBackground(backgroundImageUrl);
         </script>

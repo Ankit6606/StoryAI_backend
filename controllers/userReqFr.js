@@ -449,7 +449,16 @@ export function postEmotionsFr(req,res){
   }
 };
 
-
+export function userLogoutFr(req,res){
+  req.logout(function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        res.redirect("/");
+    }
+  })
+}
 
 //Values- GET,POST
 
@@ -495,7 +504,7 @@ export async function postValuesFr(req,res){
     emotions: JSON.stringify(emotions),
     values: JSON.stringify(values),
     userId: "test",
-    lang: "French"
+    lang: "french"
   });
   console.log(`${endpoint}?${params.toString()}`);
 

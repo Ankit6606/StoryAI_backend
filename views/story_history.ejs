@@ -12,9 +12,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/meta/vertical-navbar.css">
+  <link rel="preload" as="image" href="../css/assets/subs.png">
 
 
   <style>
+    body::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    transition: transform 0.1s;
+}
+
+body.loaded::after {
+    transform: translateY(0);
+}
+
     body {
     margin: 0;
     padding: 0;
@@ -638,6 +652,11 @@ max-height: 32%;}
       
     </div>
   </form>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('loaded');
+    });
+</script>
   <!-- <script src="js/scenario.js"></script> -->
   <script src="js/vnav.js"></script>
 
