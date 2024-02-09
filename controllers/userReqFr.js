@@ -504,7 +504,7 @@ export async function postValuesFr(req,res){
     emotions: JSON.stringify(emotions),
     values: JSON.stringify(values),
     userId: "test",
-    lang: "French"
+    lang: "french"
   });
   console.log(`${endpoint}?${params.toString()}`);
 
