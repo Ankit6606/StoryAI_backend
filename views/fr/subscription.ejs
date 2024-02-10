@@ -339,6 +339,15 @@ body.loaded::after {
     <nav class="navMenu" id="navMenu">
         <ul>
             <li>
+                <div class="switch">
+                  <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+                  <label for="language-toggle"></label>
+                  <span class="on">FR</span>
+                  <span class="off">EN</span>
+              </div>
+             
+              </li>
+            <li>
                 <a href="/fr/">Accueil</a><!--Home-->
             </li>
             <li>
@@ -373,6 +382,23 @@ body.loaded::after {
                 <span class="on">FR</span>
                 <span class="off">EN</span>
             </div>
+            <script>
+                function toggleLanguage() {
+        var toggleSwitch = document.getElementById('language-toggle');
+        var redirectUrl;
+        
+        if (toggleSwitch.checked) {
+            // Redirect to URL for BN (Bangla)
+            redirectUrl = '../subscribe';
+        } else {
+            // Redirect to URL for EN (English)
+            redirectUrl = '../subscribe';
+        }
+        
+        // Redirect to the specified URL
+        window.location.href = redirectUrl;
+        }
+            </script>
             <a href="/fr/" class="nav-button">Accueil</a><!--Home-->
           <a href="/fr/subscribe" class="nav-button">Abonnement</a><!--Subscription-->
           <a href="/fr/profile" class="nav-button">Profil</a><!--Profile-->
@@ -396,11 +422,9 @@ body.loaded::after {
         
             <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
             height: 63px;
-            flex-shrink: 0;
-            border-radius: 15px;
-            background: #FFF;
-            box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Changer l'abonnement</button>
-            <button type = "submit" class="next-button" style="margin-top: 0px;">Annuler l'abonnement</button>
+         ">Changer l'abonnement</button>
+           <button type = "submit" class="next-button" style="margin-top: 0px;width: 413px;
+           height: 63px;">Annuler l'abonnement</button>
         </div>
         
     </form>
