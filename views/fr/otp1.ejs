@@ -504,8 +504,8 @@ padding: 0;}
       <!-- Button Container -->
       <form action="/fr/phonenumber" method="POST">
         <div class="flexbox" id="flexbox" style="display: block;">
-          <div class="title">Otp Verification</div>
-          <div class="subtitle">Verify Your account with Phone <br>number & Otp</div>
+          <div class="title">Vérification par code</div>
+          <div class="subtitle">Vérifiez votre compte avec un<br>numero de téléphone</div>
           <div class="signup-box">
             <!-- Sign-up fields and button -->
             
@@ -514,8 +514,9 @@ padding: 0;}
               <!-- Country code and phone input fields -->
               <div style="display: flex; align-items: center;">
                 <select id="signUpCountryCode" class="country-code" name="prephoneNumber" required>
-                    <option value="+1">+1 (USA)</option>
                     <option value="+33">+33 (France)</option>
+                    <option value="+1">+1 (USA)</option>
+                   
                     <option value="+44">+44 (UK)</option>
                     <option value="+49">+49 (Germany)</option>
                     <option value="+91">+91 (India)</option>
@@ -532,7 +533,7 @@ padding: 0;}
             border: 2px solid #A288CB; color: white;
             
             background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
-            ">Générer otp</button>
+            ">Générer votre code</button>
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="showNextPage()">Vous avez déjà un compte ? 
