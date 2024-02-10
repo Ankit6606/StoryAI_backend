@@ -331,6 +331,22 @@ body.loaded::after {
           <span class="icon-number"><%= parrots %></span>
         </div>
       </div>
+      
+      <script>function toggleLanguage() {
+          var toggleSwitch = document.getElementById('language-toggle');
+          var redirectUrl;
+      
+          if (toggleSwitch.checked) {
+              // Redirect to URL for BN (Bangla)
+              redirectUrl = '/fr/subscribe';
+          } else {
+              // Redirect to URL for EN (English)
+              redirectUrl = '/fr/subscribe';
+          }
+      
+          // Redirect to the specified URL
+          window.location.href = redirectUrl;
+      }</script>
     <button class="navTrigger" id="navTrigger">
         <svg viewBox="0 0 64 48">
             <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
@@ -340,6 +356,14 @@ body.loaded::after {
     </button>
     <nav class="navMenu" id="navMenu">
         <ul>
+            <li>
+                <div class="switch">
+                  <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+                  <label for="language-toggle"></label>
+                  <span class="on">EN</span>
+                  <span class="off">FR</span>
+              </div>
+              </li>
             <li>
                 <a href="/">Home</a>
             </li>
@@ -369,12 +393,19 @@ body.loaded::after {
           </div>
         </div>
         <div class="nav-button-container">
+                <div class="switch">
+                  <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+                  <label for="language-toggle"></label>
+                  <span class="on">EN</span>
+                  <span class="off">FR</span>
+              </div>
             <a href="/" class="nav-button">Home</a>
           <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a>
           <a href="/storyhistory" class="nav-button">Story History</a>
           <a href="/story" class="special-button">Create Story</a>
         </div>
+        
       </div>
     
 
@@ -398,11 +429,9 @@ body.loaded::after {
 
         <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
             height: 63px;
-            flex-shrink: 0;
-            border-radius: 15px;
-            background: #FFF;
-            box-shadow: 0px 3px 21px 0px rgba(43, 36, 82, 0.40);">Upgrade plan</button>
-            <button type = "submit" class="nav-button">Cancel Plan</button>
+         ">Upgrade plan</button>
+             <button type = "submit" class="next-button" style="margin-top: 0px;width: 413px;
+             height: 63px;">Annuler l'abonnement</button>
     </div>
 </form>
 
