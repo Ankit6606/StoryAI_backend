@@ -646,13 +646,12 @@ padding-top: 20px;
     //     }
     // }
     const storyImage = '<%= storyImage %>';
-    console.log('Story Image URL:', storyImage);
-       
-        if (window.innerWidth <= 768) {
-        
-            document.body.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.5) 20.09%, rgba(0, 0, 0, 0.15) 48.97%, rgba(0, 0, 0, 0.1) 100%), url('${storyImage}') center/cover no-repeat`;
-        }
-    
+const preloadedImage = new Image();
+preloadedImage.src = storyImage;
+preloadedImage.onload = function() {
+    // Now set the background image
+    document.body.style.backgroundImage = `url('${storyImage}')`;
+};
     // var backgroundImageUrl = '"css/assets/story-pic-dynamic.png"';
     // setAudioBoxBackground(backgroundImageUrl);
         </script>

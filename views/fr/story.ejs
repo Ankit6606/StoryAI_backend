@@ -25,6 +25,18 @@
 body.loaded::after {
     transform: translateY(0);
 }
+@media (max-width: 768px) {
+  .sub-text{
+    color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 14px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 0px !important;
+  }
+}
 </style>
 <body>
  
@@ -79,15 +91,15 @@ body.loaded::after {
     <form id="scenarioForm" method="POST" action="/fr/story" onsubmit="return validateFields();">
     <div class="content-box">
         <div class="header-text">Étape 1 : Personnages</div>
-        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms<br>des personnages, ajoutez les noms de vos différents<br>personnages, un ou plusieurs, et précisez qui ils sont.</div>
+        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms des personnages, ajoutez les noms de vos différents personnages, un ou plusieurs, et précisez qui ils sont.</div>
         
         <div class="fields-box" id="fields-box">
         <!-- Age Group Dropdown -->
         
             <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Groupe d'âge</div>
-                <select class="text-field-1" placeholder="Age Group" name="age"
+                <select class="text-field-1" placeholder="Groupe d'âge" name="age"
                     style="width: 411px; height: 44.724px; margin-left: 6px; margin-bottom: 25px;">
-                    <option value="option" disabled selected >Select Age Group</option>
+                    <option value="option" disabled selected >Selection du groupe d'âge</option>
                     <option value="5">3 - 5</option>
                     <option value="8">6 - 8</option>
                     <option value="10">9 - 11</option>
