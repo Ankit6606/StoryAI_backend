@@ -11,6 +11,7 @@ import {mongoose, Schema} from 'mongoose';
 const paymentSchema = new mongoose.Schema({
     userId : String,
     customerId : String,
+    subscriptionId : String,
     paymentAmount : Number,
     paymentDate : Date,
 });

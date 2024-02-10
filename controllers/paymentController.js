@@ -7,10 +7,9 @@ import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
 import mongoose from 'mongoose';
 
-const stripe = stripePackage('sk_test_51OBAcySAr1NU1neQ0gaIwVpXIt1mAP7rzIKPijaDdTMvonNXhvFf8CSRxhZdm1zT1DU0WsxmVHth1dKqXxZxdbCK00VacTfNJP');
+const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
 const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
 // const client = require("twilio")(accountSid, authToken);
-let flag = 0;
 let plan = " ";
 let uid = " ";
 let gemsToAdd = 0;
@@ -75,32 +74,56 @@ export const makepayment = async (req, res) => {
       case 'discover':
         selectedpriceId = process.env.DISCOVER_PLAN_ID;
         plan = 'discover';
-        gemsToAdd = 5;
-        parrotsToAdd = 5;
         break;
       case 'starter':
         selectedpriceId = process.env.STARTER_PLAN_ID;
         plan = 'starter';
-        gemsToAdd = 10;
-        parrotsToAdd = 10;
         break;
       case 'value':
         selectedpriceId = process.env.VALUE_PLAN_ID;
         plan = 'value';
-        gemsToAdd = 20;
-        parrotsToAdd = 20;
         break;
       case 'premium':
         selectedpriceId = process.env.PREMIUM_PLAN_ID;
         plan = 'premium';
-        gemsToAdd = 40;
-        parrotsToAdd = 40;
         break;
       default:
         console.log('Invalid planId:', selectedBoxId);
         res.status(400).json({ error: 'Invalid plan selection' });
         return;
     }
+
+    if (req.user.subscriptionPlan !== "basic") {
+      
+      try {
+        // Retrieve the user's current subscription details from Stripe
+        const subscription = await stripe.subscriptions.retrieve(req.user.paymentdetails.subscriptionId);
+        
+        // Cancel the current subscription
+        await stripe.subscriptions.update(req.user.paymentdetails.subscriptionId, {
+          cancel_at_period_end: true, // Cancel at the end of the current billing period
+        });
+        
+        // Create a new subscription for the upgraded plan
+        const session = await stripe.checkout.sessions.create({
+          mode: 'subscription',
+          payment_method_types: ['card'],
+          line_items: [{
+            price: selectedpriceId,
+            quantity: 1,
+          }],
+          success_url: 'http://localhost:3000/success',
+          cancel_url: 'http://localhost:3000/failure',
+        });
+    
+        // Redirect the user to the checkout session for the new plan
+        res.redirect(session.url);
+      } catch (error) {
+        console.error('Error upgrading subscription:', error);
+        res.status(500).json({ error: 'Failed to upgrade subscription' });
+      }
+    }
+    else{
     // console.log(selectedpriceId);
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -114,6 +137,7 @@ export const makepayment = async (req, res) => {
     });
 
     res.redirect( session.url ); // Send the Stripe Checkout URL to the frontend
+  }
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Failed to create subscription' });
@@ -142,7 +166,6 @@ export const manageInvoice = async (req, res) => {
   // console.log('Webhook Payload:', payload);
   const sig = req.headers['stripe-signature'];
 
-  // Check if the Stripe-Signature header is present
   if (!sig) {
     console.error('Webhook Error: Missing Stripe-Signature header');
     return res.status(400).send('Webhook Error: Missing Stripe-Signature header');
@@ -160,22 +183,22 @@ export const manageInvoice = async (req, res) => {
   
   // console.log('Webhook Event Type:', event.type);
 
-  // Handle the event
   switch (event.type) {
     case 'invoice.payment_succeeded':
       // console.log(uid);
-      console.log('Payment Succeeded Event Received:', {
-        customerId: event.data.object.customer,
-        subscriptionId: event.data.object.subscription,
-      });
+      // console.log('Payment Succeeded Event Received:', {
+      //   customerId: event.data.object.customer,
+      //   subscriptionId: event.data.object.subscription,
+      // });
   
       // Retrieve user by Stripe customer ID
-      
+      const subscriptionId = event.data.object.subscription;
       const customerId = event.data.object.customer;
       const amountPaid = event.data.object.amount_paid;
       const payUser = await Payment.create({
           userId : uid,
           customerId : customerId,
+          subscriptionId : subscriptionId,
           paymentAmount:amountPaid/100,
           paymentDate: new Date(),
       }); 
@@ -196,8 +219,22 @@ export const manageInvoice = async (req, res) => {
       );
       
 
+      if(amountPaid==997){
+        gemsToAdd = 5;
+        parrotsToAdd = 5;
+      }else if(amountPaid==1697){
+        gemsToAdd = 10;
+        parrotsToAdd = 10;
+      }else if(amountPaid==2497){
+        gemsToAdd = 20;
+        parrotsToAdd = 20;
+      }else{
+        gemsToAdd = 40;
+        parrotsToAdd = 40;
+      }
+
   
-      const user = await User.findOne({ _id: uid });
+      const user = await User.findOne({ 'paymentdetails.customerId': customerId });
       if (user) {
         user.gems += gemsToAdd;
         user.parrots += parrotsToAdd;
@@ -207,7 +244,6 @@ export const manageInvoice = async (req, res) => {
     // Handle the case where the user is not found
         return res.status(404).send("User not found");
       }
-  
       break;
     // Handle other event types as needed
   
@@ -222,6 +258,13 @@ export const manageInvoice = async (req, res) => {
   // Respond to the webhook
   res.json({ received: true });
 };
+
+
+
+
+
+//FRENCH
+
 export const manageInvoiceFr = async (req, res) => {
   const payload = req.rawbody;
   // console.log('Webhook Payload:', payload);
@@ -282,7 +325,8 @@ export const manageInvoiceFr = async (req, res) => {
       
 
   
-      const user = await User.findOne({ _id: uid });
+      const user = await User.findOne({ 'paymentdetails.customerId': customerId });
+
       if (user) {
         user.gems += gemsToAdd;
         user.parrots += parrotsToAdd;
