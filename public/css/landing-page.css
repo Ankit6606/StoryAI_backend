@@ -216,7 +216,7 @@ transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
   background-image: url("assets/subx4a.png");
 
 }
-.selected-box {
+/* .selected-box {
 border: 3px solid #F669B3;
 margin-top: 10px;
 margin-bottom: 10px;
@@ -229,7 +229,7 @@ margin-top: 10px;
 margin-bottom: 10px;
 box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
 z-index: 999;
-}
+} */
 
 .box-d { width: 600px;
 height: 100px;

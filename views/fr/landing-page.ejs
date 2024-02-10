@@ -247,6 +247,7 @@ margin-bottom: 10px;
 box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
 z-index: 999;
 }
+
 .box-d { width: 600px;
 height: 100px;
 flex-shrink: 0;
@@ -1086,6 +1087,7 @@ line-height: 148.5%; /* 53.46px */
     
   }
   .question-text {
+    height: fit-content !important; 
     width: 912.873px;
     height: 60.776px;
     flex-shrink: 0;
@@ -1360,27 +1362,22 @@ line-height: 148.5%; /* 53.46px */
                 <p class="pricing-text">Plans de Souscription</p>
             </div>
             <div class="box-m">
-                <div class="box box-1"></div>
-                <div class="box box-d" ></div>
-                <div class="box box-2"></div>
-                <div class="box box-3" ></div>
-                <div class="box box-4"></div>
-            
-               
-            
-            
-                
-            </div>
-            <!-- <div class="box button-box-x">
-                <a href="/">
-                <button class="next-button" style="width: 320px;
-                height: 65px;" href="/story">Créez mon histoire maintenant</button> -->
-                </a>
-            </div>
+              <div class="box box-1" id="basic" onclick="updateButtonValue('basic')"></div>
+              <div class="box box-d" id="discover" onclick="updateButtonValue('discover')"></div>
+              <div class="box box-2" id="starter" onclick="updateButtonValue('starter')"></div>
+              <div class="box box-3" id="value" onclick="updateButtonValue('value')"></div>
+              <div class="box box-4" id="premium" onclick="updateButtonValue('premium')"></div>
+          
+             
+          
+          
+              
+          </div>
+         
         </div>
         <div class="faq-container" id="FAQs">
             <div class="faq-header">
-                <p>FAQ - Your Questions, Our Answers</p>
+                <p>FAQ - Vos Questions, Nos Réponses</p>
             </div>
             <div class="faq-item">
                 <div class="question">
