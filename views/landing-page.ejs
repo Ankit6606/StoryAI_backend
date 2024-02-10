@@ -8,11 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/meta/vertical-navbar.css">
-    
+    <link rel="preload" as="image" href="css/assets/bgmain.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <style>
+          body::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    transition: transform 0.1s;
+}
+
+body.loaded::after {
+    transform: translateY(0);
+}
+    </style>
 </head>
 
 <body>
@@ -362,6 +376,11 @@
 
     </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
     <script src="js/landing-page.js"></script>
     <script > document.addEventListener('DOMContentLoaded', function () {
         let burger = document.getElementById('navTrigger'),
