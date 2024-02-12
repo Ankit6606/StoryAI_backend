@@ -1,7 +1,15 @@
 html {
     box-sizing: border-box;
   }
-  
+  .navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 100vh;
+    /* Adjust background color as needed */
+}
   *, *:after, *:before {
     box-sizing: border-box;
   }
@@ -17,30 +25,30 @@ html {
     display: none !important;
 }
   
-  .navTrigger {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 1000;
-    width: 36px;
-    height: 36px;
-    background: none;
-    border: 0;
-    outline: none;
-    opacity: 0;
-    border: none;
-    cursor: pointer;
-    -webkit-appearence: none;
-    -webkit-tap-highlight-color: transparent;
-  }
+.navTrigger {
+  position: sticky;
+  top: 1vh;
+  left: 83vw;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 0;
+  outline: none;
+  opacity: 0;
+  border: none;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
   .navTrigger:focus {
     outline: none;
   }
   .navTrigger svg {
     width: 64px;
     height: 48px;
-    top: -6px;
-    left: -14px;
+    
     stroke:#D1B5FE;
     
     stroke-width: 4px;
@@ -48,7 +56,7 @@ html {
     stroke-linejoin: round;
     fill: none;
     display: block;
-    position: absolute;
+    position: sticky;
   }
   .navTrigger svg path {
 
