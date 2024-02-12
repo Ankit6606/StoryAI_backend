@@ -7,8 +7,9 @@ html {
     left: 0;
     right: 0;
     z-index: 1000;
-    min-height: 100vh;
-    /* Adjust background color as needed */
+    pointer-events: none;
+    height: 100vh; /* Fixed height of 100vh */
+    /* Adjust background color and other styles as needed */
 }
   *, *:after, *:before {
     box-sizing: border-box;
@@ -26,6 +27,7 @@ html {
 }
   
 .navTrigger {
+  pointer-events: auto;
   position: sticky;
   top: 1vh;
   left: 83vw;
@@ -95,6 +97,7 @@ html {
   }
   
   .navMenu {
+    pointer-events: auto;
     z-index: 1001;
     
     position: absolute;
@@ -110,6 +113,7 @@ html {
     transition: all 0.375s;
   }
   .navMenu.active {
+    pointer-events: auto;
     opacity: 1;
     z-index: 100;
     visibility: visible;
@@ -118,10 +122,12 @@ html {
     transform: skew(-14deg) translateX(0);
   }
   .navMenu.active li {
+    pointer-events: auto;
     opacity: 1;
     transform: translateY(0);
   }
   .navMenu::before {
+    pointer-events: auto;
  
     /* filter: blur(5px); */
     -webkit-backdrop-filter: blur(6px);
@@ -143,6 +149,7 @@ html {
   }
 
   .navMenu ul {
+    pointer-events: auto;
     list-style: none;
     padding-RIGHT: 8vw;
 
@@ -155,6 +162,7 @@ html {
     transform: translateX(-18%) skew(-16deg);
   }
   .navMenu ul li {
+    pointer-events: auto;
     display: block;
     margin: 0.5rem 0;
     text-align: right;
@@ -163,6 +171,7 @@ html {
   }
 
   .navMenu ul li a {
+    pointer-events: auto;
     position: relative;
     display: inline-block;
     padding: 2px 6px;
@@ -177,6 +186,7 @@ html {
 
 
 .navMenu ul li a::before {
+  pointer-events: auto;
     content: "";
     position: absolute;
     width: calc(100% + 390px);
@@ -192,6 +202,7 @@ html {
 }
 
 .navMenu ul li a:hover::before {
+  pointer-events: auto;
     /* Scale on hover */
     border-radius: 10px;
     border: 1px solid rgba(224, 139, 255, 0.40);
