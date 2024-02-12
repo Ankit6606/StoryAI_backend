@@ -8,9 +8,31 @@
     <link rel="stylesheet" href="../css/meta/custom-button.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="../css/meta/global.css">
 </head>
 
 <body>
+    <div class="switch" style="position: absolute; top: 30px !important; right: 30px !important; z-index: 99999 !important;">
+        <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+        <label for="language-toggle"></label>
+        <span class="on">FR</span>
+        <span class="off">EN</span>
+    </div>
+    <script>function toggleLanguage() {
+        var toggleSwitch = document.getElementById('language-toggle');
+        var redirectUrl;
+    
+        if (toggleSwitch.checked) {
+            // Redirect to URL for BN (Bangla)
+            redirectUrl = '../authenticate2';
+        } else {
+            // Redirect to URL for EN (English)
+            redirectUrl = '../authenticate2';
+        }
+    
+        // Redirect to the specified URL
+        window.location.href = redirectUrl;
+    }</script>
     <div class="background">
         <div class="svg-container">
             <!-- Background SVG -->
