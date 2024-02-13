@@ -219,13 +219,13 @@ export const cancelSubscription = async (req, res) => {
       } else {
         // res.status(400).json({ error: 'Subscription is not active' });
         const errorMsg = "You don't have any current active subscription.";
-        const script  = `<script> alert("${errorMsg}"); windows.location.href = "/subscribe"; </script>`;
+        const script  = `<script> alert("${errorMsg}"); window.location.href = "/subscribe"; </script>`;
         return res.send(script);
       }
     } else {
       // res.status(400).json({ error: 'User does not have an active subscription' });
       const errorMsg = "First you need to subscribe to one of the plans.";
-      const script  = `<script> alert("${errorMsg}");windows.location.href = "/subscribe"; </script>`;
+      const script  = `<script> alert("${errorMsg}"); window.location.href = "/subscribe"; </script>`;
       return res.send(script);  
     }
       }else{
