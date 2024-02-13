@@ -8,14 +8,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/meta/vertical-navbar.css">
-    
+    <link rel="preload" as="image" href="css/assets/bgmain.png">
+    <link rel="preload" as="image" href="css/assets/bgmobile.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <style>
+          body::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    transition: transform 0.1s;
+}
+
+body.loaded::after {
+    transform: translateY(0);
+}
+    </style>
 </head>
 
 <body>
+    <div class="navbar-container">
     <button class="navTrigger" id="navTrigger" >
         <svg viewBox="0 0 64 48">
           <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
@@ -53,6 +69,7 @@
           </li>
         </ul>
       </nav>
+    </div>
 
       <div class="navbar">
         <div class="icons-container">
@@ -131,10 +148,10 @@
         <div class="text-class-2" id="Features"> <span>Discover Storyia Through Images</span></div>
         <div class="image-slider">
             <div class="slider">
-                <div class="slide"><img src="css/assets/pic1.png" alt="Image 1"></div>
-                <div class="slide"><img src="css/assets/pic2.png" alt="Image 2"></div>
-                <div class="slide"><img src="css/assets/pic3.png" alt="Image 3"></div>
-                <div class="slide"><img src="css/assets/pic4.png" alt="Image 4"></div>
+                <div class="slide"><img class="helloa" src="css/assets/pic1.png" alt="Image 1"></div>
+                <div class="slide"><img class="helloa"  src="css/assets/pic2.png" alt="Image 2"></div>
+                <div class="slide"><img class="helloa"  src="css/assets/pic3.png" alt="Image 3"></div>
+                <div class="slide"><img class="helloa"  src="css/assets/pic4.png" alt="Image 4"></div>
             </div>
         </div>
         <div class="slider-dots">
@@ -362,6 +379,11 @@
 
     </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
     <script src="js/landing-page.js"></script>
     <script > document.addEventListener('DOMContentLoaded', function () {
         let burger = document.getElementById('navTrigger'),

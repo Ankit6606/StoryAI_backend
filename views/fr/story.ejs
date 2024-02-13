@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="stylesheet" href="../css/storypage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" as="image" href="../css/assets/homepic.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/meta/vertical-navbar.css">
     </head>
 <style>
+  
   body::after {
     content: "";
     display: block;
@@ -25,35 +27,47 @@
 body.loaded::after {
     transform: translateY(0);
 }
+@media (max-width: 768px) {
+  .sub-text{
+    color: #FFF;
+        text-align: center;
+        font-family: Noto Sans;
+        font-size: 14px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 0px !important;
+  }
+}
 </style>
 <body>
  
-    <button class="navTrigger" id="navTrigger">
+    <!-- <button class="navTrigger" id="navTrigger">
         <svg viewBox="0 0 64 48">
           <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
           <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
           <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
         </svg>
-      </button>
-      <nav class="navMenu" id="navMenu">
+      </button> -->
+      <!-- <nav class="navMenu" id="navMenu">
         <ul>
           <li>
-            <a href="/fr/">Accueil</a><!--Home-->
+            <a href="/fr/">Accueil</a>
           </li>
           <li>
-            <a href="/fr/story">Créer Histoire</a><!--Create Story-->
+            <a href="/fr/story">Créer Histoire</a>
           </li>
           <li>
-            <a href="/fr/storyhistory">Mes Histoires</a><!--Story history-->
+            <a href="/fr/storyhistory">Mes Histoires</a>
           </li>
           <li>
-            <a href="/fr/profile">Profil</a><!--Profile-->
+            <a href="/fr/profile">Profil</a>
           </li>
           <li>
-            <a href="/fr/subscribe">Abonnement</a><!--Subscription-->
+            <a href="/fr/subscribe">Abonnement</a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
 
       <div class="navbar">
         <div class="icons-container">
@@ -66,12 +80,12 @@ body.loaded::after {
             <span class="icon-number"><%= parrots %></span>
           </div>
         </div>
-        <div class="nav-button-container">
-          <!-- <a href="/subscribe" class="nav-button">Subscription</a>
+        <!-- <div class="nav-button-container">
+          <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a>
           <a href="/story_history" class="nav-button">Story History</a>
-          <a href="/story" class="special-button">Create Story</a> -->
-        </div>
+          <a href="/story" class="special-button">Create Story</a>
+        </div> -->
       </div>
     
     <div class="image-box"></div>
@@ -79,15 +93,16 @@ body.loaded::after {
     <form id="scenarioForm" method="POST" action="/fr/story" onsubmit="return validateFields();">
     <div class="content-box">
         <div class="header-text">Étape 1 : Personnages</div>
-        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms<br>des personnages, ajoutez les noms de vos différents<br>personnages, un ou plusieurs, et précisez qui ils sont.</div>
+        <div class="sub-text">Choisissez un groupe d'âge et dans le champ des noms des personnages, ajoutez les noms de vos différents personnages, un ou plusieurs, et précisez qui ils sont.</div>
         
         <div class="fields-box" id="fields-box">
         <!-- Age Group Dropdown -->
         
             <div class="text-head" style="margin-top: 15px; margin-bottom: 7px; text-align: left; margin-left: 7px;">Groupe d'âge</div>
-                <select class="text-field-1" placeholder="Age Group" name="age"
+                <select class="text-field-1" placeholder="Groupe d'âge" name="age"
                     style="width: 411px; height: 44.724px; margin-left: 6px; margin-bottom: 25px;">
-                    <option value="option" disabled selected >Select Age Group</option>
+                    <option value="option" disabled selected >Selection du groupe d'âge</option>
+                    <option value="2">0 - 2</option>
                     <option value="5">3 - 5</option>
                     <option value="8">6 - 8</option>
                     <option value="10">9 - 11</option>

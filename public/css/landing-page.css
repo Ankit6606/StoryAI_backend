@@ -216,7 +216,7 @@ transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
   background-image: url("assets/subx4a.png");
 
 }
-.selected-box {
+/* .selected-box {
 border: 3px solid #F669B3;
 margin-top: 10px;
 margin-bottom: 10px;
@@ -229,7 +229,7 @@ margin-top: 10px;
 margin-bottom: 10px;
 box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
 z-index: 999;
-}
+} */
 
 .box-d { width: 600px;
 height: 100px;
@@ -355,11 +355,11 @@ background-image: url("assets/subx2b.png"); /* Add the path to your new image */
     .image-slider {
         margin-top: 1.5vh;
         margin-bottom: 3vh;
-        width: 90vw !important;
-        height: 60vw !important;
+        width: 91.5vw !important;
+        height: 54vw !important;
         
         flex-shrink: 0;
-        border-radius: 29px;
+        border-radius: 10px !important;
         border: 3px solid #A288CB;
         overflow: hidden;
       
@@ -373,7 +373,7 @@ background-image: url("assets/subx2b.png"); /* Add the path to your new image */
     
     .slide {
         width: 90vw !important;
-        height: 60vw !important;
+        height: 30vh !important;
     }
     img {
         background-size:100% 100% !important;
@@ -833,7 +833,7 @@ background-clip: text;
 .image-slider {
     margin-top: 1.5vh;
     margin-bottom: 3vh;
-    width: 990px;
+    width: 996px;
     height: 619px;
     flex-shrink: 0;
     border-radius: 29px;
@@ -852,12 +852,13 @@ background-clip: text;
     width: 990px;
     height: 619px;
     flex-shrink: 0;
+   
 }
 
-img {
+.helloa {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* Add styles for the slider-dots */
