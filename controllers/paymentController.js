@@ -94,16 +94,19 @@ export const makepayment = async (req, res) => {
     }
 
     if (req.user.subscriptionPlan !== "basic") {
-      
+      const paidUser = await Payment.findOne({userid : uid, active : "true"}); 
+      if(paidUser){
       try {
         // Retrieve the user's current subscription details from Stripe
-        const subscription = await stripe.subscriptions.retrieve(req.user.paymentdetails.subscriptionId);
+        const subscription = await stripe.subscriptions.retrieve(paidUser.subscriptionId);
         
         // Cancel the current subscription
-        await stripe.subscriptions.update(req.user.paymentdetails.subscriptionId, {
-          cancel_at_period_end: true, // Cancel at the end of the current billing period
+        await stripe.subscriptions.update(paidUser.subscriptionId, {
+          cancel_at_period_end: false, // Cancel instantly
         });
         
+        paidUser.active = "false";
+        await paidUser.save();
         // Create a new subscription for the upgraded plan
         const session = await stripe.checkout.sessions.create({
           mode: 'subscription',
@@ -115,16 +118,31 @@ export const makepayment = async (req, res) => {
           success_url: 'http://localhost:3000/success',
           cancel_url: 'http://localhost:3000/failure',
         });
-    
         // Redirect the user to the checkout session for the new plan
         res.redirect(session.url);
-      } catch (error) {
+      }
+       catch (error) {
         console.error('Error upgrading subscription:', error);
         res.status(500).json({ error: 'Failed to upgrade subscription' });
       }
     }
+  }
     else{
     // console.log(selectedpriceId);
+ 
+    // if (req.user.paymentdetails && req.user.paymentdetails.length > 0) {
+    //   // Get the last payment detail's customerId if it exists
+    //   const lastPaymentDetail = req.user.paymentdetails[0];
+    //   if (lastPaymentDetail && lastPaymentDetail.userId) {
+    //     const customerId = lastPaymentDetail.userId;
+    //     // Use the customerId in your logic as needed
+    //     console.log('Customer ID:', customerId);
+    //   } else {
+    //     console.error('Last payment detail does not have a customer ID');
+    //   }
+    // } else {
+      // console.error('User does not have payment details');
+
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
@@ -161,6 +179,73 @@ const success = async (req, res) => {
 };
 
 
+
+//----Subscription Cancel------//
+
+export const cancelSubscription = async (req, res) => {
+  try {
+    if(req.isAuthenticated()){
+      if(req.user.phoneNumber){
+        // Check if the user has an active subscription
+      const subscribedUser  = await Payment.findOne({userId : uid, active : "true"});
+      if(subscribedUser){
+      // Retrieve the subscription details from Stripe
+      const subscription = await stripe.subscriptions.retrieve(subscribedUser.subscriptionId);
+
+      // Check if the subscription is cancelable
+      if (subscription.status === 'active') {
+        // Cancel the subscription
+        await stripe.subscriptions.update(subscribedUser.subscriptionId, {
+          cancel_at_period_end: false, // Cancel instantly
+        });
+        const user = await User.findOne({_id : uid});
+        if(user){
+          if(user.stories){
+          user.gems = 0;
+          user.parrots = 0;
+          }else{
+            user.gems = 1;
+            user.parrots = 1;
+          }
+          user.subscriptionPlan = "basic";
+          await user.save();
+        }else{
+          console.log("User is not found.");
+          res.redirect("/subscribe");
+        }
+        subscribedUser.active = "false";
+        await subscribedUser.save();
+        res.redirect("/");
+      } else {
+        // res.status(400).json({ error: 'Subscription is not active' });
+        const errorMsg = "You don't have any current active subscription.";
+        const script  = `<script> alert("${errorMsg}"); window.location.href = "/subscribe"; </script>`;
+        return res.send(script);
+      }
+    } else {
+      // res.status(400).json({ error: 'User does not have an active subscription' });
+      const errorMsg = "First you need to subscribe to one of the plans.";
+      const script  = `<script> alert("${errorMsg}"); window.location.href = "/subscribe"; </script>`;
+      return res.send(script);  
+    }
+      }else{
+        res.redirect("/phonenumber");
+      }
+    }else{
+      res.redirect("/authenticate2");
+    }  
+  } catch (error) {
+    console.error('Error canceling subscription:', error);
+    res.status(500).json({ error: 'Failed to cancel subscription' });
+  }
+};
+
+
+
+
+//--------Webhook Stripe----------//
+
+
 export const manageInvoice = async (req, res) => {
   const payload = req.rawbody;
   // console.log('Webhook Payload:', payload);
@@ -185,19 +270,13 @@ export const manageInvoice = async (req, res) => {
 
   switch (event.type) {
     case 'invoice.payment_succeeded':
-      // console.log(uid);
-      // console.log('Payment Succeeded Event Received:', {
-      //   customerId: event.data.object.customer,
-      //   subscriptionId: event.data.object.subscription,
-      // });
-  
-      // Retrieve user by Stripe customer ID
       const subscriptionId = event.data.object.subscription;
       const customerId = event.data.object.customer;
       const amountPaid = event.data.object.amount_paid;
       const payUser = await Payment.create({
           userId : uid,
           customerId : customerId,
+          active : "true",
           subscriptionId : subscriptionId,
           paymentAmount:amountPaid/100,
           paymentDate: new Date(),
