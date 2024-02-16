@@ -34,6 +34,13 @@ let lang="";
 let story = [];
 
 
+export function renderppPageFr(req,res){
+  res.render("fr/pp");
+};
+
+export function rendertncPageFr(req,res){
+  res.render("fr/tnc");
+};
 
 export function renderlandingPageFr(req,res){
   res.render("fr/landing-page");

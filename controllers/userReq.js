@@ -32,7 +32,13 @@ let globalNumber = "";
 let justNumber= "";
 let story = [];
 
+export function renderppPage(req,res){
+  res.render("pp");
+};
 
+export function rendertncPage(req,res){
+  res.render("tnc");
+};
 
 export function renderlandingPage(req,res){
   res.render("landing-page");
