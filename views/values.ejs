@@ -249,12 +249,15 @@ margin-top: -20%;
 
         // Redirect the user to another page after 90 seconds
         setTimeout(function () {
-          window.location.href = '/your/redirect/path';
+          window.location.href = '/profile';
         }, 90000); // 90 seconds in milliseconds
       },
       error: function (error) {
         // Handle errors if the request fails
         console.error('Error:', error);
+        setTimeout(function () {
+          window.location.href = '/profile';
+        }, 90000);
       },
       complete: function () {
         // Stop the progress bar animation here if needed
