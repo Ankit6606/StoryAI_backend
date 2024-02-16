@@ -65,7 +65,7 @@ import {rootRender,
         
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
 
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
@@ -141,6 +141,7 @@ router.get("/success",success);
 router.get("/failure",failure);
 router.get("/profile",profileManage);
 router.get("/subscribe",selectSubscription);
+router.get("/cancelPlan",cancelSubscription);
 
 //Post requests
 

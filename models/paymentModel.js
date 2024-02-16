@@ -14,6 +14,7 @@ const paymentSchema = new mongoose.Schema({
     subscriptionId : String,
     paymentAmount : Number,
     paymentDate : Date,
+    active : String
 });
 
 const Payment = new mongoose.model('Payment',paymentSchema);
