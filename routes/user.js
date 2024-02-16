@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 // import passport from 'passport';
 import {rootRenderFr,
         rootPostFr,
@@ -74,10 +74,10 @@ import {success,failure, selectSubscription, makepayment, manageInvoice, selectS
 const router = express.Router();
 
 //CORS middleware for all routes
-router.use(cors({
-        origin : "*",
-        }
-))
+// router.use(cors({
+//         origin : "*",
+//         }
+// ))
 
 //Get requests
 //French
