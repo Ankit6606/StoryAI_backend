@@ -16,6 +16,7 @@ const app = express(); // For the main web application
 app.use(cors({
   origin : "*",
   method : ['GET' , 'POST'],
+  logLevel : 'dev'
 }));
 
 app.use(cookieParser()); // Place cookie-parser here
