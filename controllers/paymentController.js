@@ -40,6 +40,7 @@ export function selectSubscription(req,res){
     res.redirect("/authenticate2");
   }
 };
+
 export function selectSubscriptionFr(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){

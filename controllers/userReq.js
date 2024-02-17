@@ -721,7 +721,7 @@ export async function showStories(req,res){
             const storyLength = storyUser.stories.length;
             //Select the last story in the database , becz that is the story which is generated recently
             //Select its id
-            const storyOutputId = storyUser.stories[storyLength-1].id;
+            const storyOutputId = storyUser.stories[storyLength-1]._id;
             const lastStory = await Story.findById(storyOutputId);
             if(lastStory){
               res.render('storyoutput', { story: lastStory.story , storyImage : lastStory.thumb_img_path , storyAudio : lastStory.audiopath, storyTitle: lastStory.title,
