@@ -31,8 +31,9 @@ import {rootRenderFr,
         userLogoutFr,
         rendertncPageFr,
         renderppPageFr
-        
         } from '../controllers/userReqFr.js';
+
+
 import {rootRender,
         rootPost,
         authenticateRender,
@@ -63,7 +64,6 @@ import {rootRender,
         clickStories,
         rendertncPage,
         renderppPage
-        
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -73,11 +73,13 @@ import {success,failure, selectSubscription, makepayment, manageInvoice, selectS
 
 const router = express.Router();
 
+
 //CORS middleware for all routes
 // router.use(cors({
 //         origin : "*",
 //         }
 // ))
+
 
 //Get requests
 //French
@@ -167,8 +169,3 @@ router.post("/storyhistory",clickStories);
 router.post("/webhook",manageInvoice);
 
 export { router as userApp };
-
-
-// MY TRY       __________________________-----------------------_______________________________------------------------------
-
-
