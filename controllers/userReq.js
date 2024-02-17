@@ -584,7 +584,7 @@ export async function postValues(req,res){
     
     //After storing the story in database, it is displayed in frontend
     
-   await renderStoryOutput(req,res,responseData);
+  //  await renderStoryOutput(req,res,responseData);
     
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -602,21 +602,21 @@ export async function postValues(req,res){
 };
 
 
-async function renderStoryOutput(req,res,responseData){
-  try {
-    res.render("storyoutput", {
-      storyAudio: responseData.audio_path,
-      storyTitle: responseData.title,
-      story: responseData.story,
-      storyImage: responseData.thumb_img_path,
-      gems: req.user.gems,
-      parrots: req.user.parrots
-    });
-  } catch (renderError) {
-    console.error('Error rendering "storyoutput" template:', renderError);
-    res.status(500).json({ error: 'Internal Server Error during rendering' });
-  }
-}
+// async function renderStoryOutput(req,res,responseData){
+//   try {
+//     res.render("storyoutput", {
+//       storyAudio: responseData.audio_path,
+//       storyTitle: responseData.title,
+//       story: responseData.story,
+//       storyImage: responseData.thumb_img_path,
+//       gems: req.user.gems,
+//       parrots: req.user.parrots
+//     });
+//   } catch (renderError) {
+//     console.error('Error rendering "storyoutput" template:', renderError);
+//     res.status(500).json({ error: 'Internal Server Error during rendering' });
+//   }
+// }
 
 
 
