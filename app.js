@@ -11,7 +11,11 @@ import { connectDatabase } from './dbmongo.js';
 import User from './models/users.js';
 import cookieParser from 'cookie-parser'; // Import cookie-parser
 
+// Import cors module
+import cors from 'cors';
+
 const app = express(); // For the main web application
+
 
 app.use(cors({
   origin : "*",
