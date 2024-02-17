@@ -138,7 +138,6 @@ export function loginUser(req,res){
               // Handle error if something goes wrong during authentication
               return res.status(500).send(err.message); // You can handle the error as per your application's logic
           }
-      
           if (!user) {
               // If authentication fails, provide a flash message indicating the issue
               // req.flash('error', 'Please check your email and password.');
@@ -146,7 +145,6 @@ export function loginUser(req,res){
               const script = `<script>alert("${message}"); window.location.href="/login";</script>`;
               return res.send(script); // Redirect to the login page or any appropriate route
           }
-      
           // If authentication succeeds, log in the user and redirect
           req.logIn(user, (loginErr) => {
               if (loginErr) {
