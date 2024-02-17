@@ -32,7 +32,13 @@ let globalNumber = "";
 let justNumber= "";
 let story = [];
 
+export function renderppPage(req,res){
+  res.render("pp");
+};
 
+export function rendertncPage(req,res){
+  res.render("tnc");
+};
 
 export function renderlandingPage(req,res){
   res.render("landing-page");
@@ -132,7 +138,6 @@ export function loginUser(req,res){
               // Handle error if something goes wrong during authentication
               return res.status(500).send(err.message); // You can handle the error as per your application's logic
           }
-      
           if (!user) {
               // If authentication fails, provide a flash message indicating the issue
               // req.flash('error', 'Please check your email and password.');
@@ -140,7 +145,6 @@ export function loginUser(req,res){
               const script = `<script>alert("${message}"); window.location.href="/login";</script>`;
               return res.send(script); // Redirect to the login page or any appropriate route
           }
-      
           // If authentication succeeds, log in the user and redirect
           req.logIn(user, (loginErr) => {
               if (loginErr) {
@@ -578,19 +582,7 @@ export async function postValues(req,res){
     
     //After storing the story in database, it is displayed in frontend
     
-    try {
-      res.render("storyoutput", {
-        storyAudio: responseData.audio_path,
-        storyTitle: responseData.title,
-        story: responseData.story,
-        storyImage: responseData.thumb_img_path,
-        gems: req.user.gems,
-        parrots: req.user.parrots
-      });
-    } catch (renderError) {
-      console.error('Error rendering "storyoutput" template:', renderError);
-      res.status(500).json({ error: 'Internal Server Error during rendering' });
-    }
+   await renderStoryOutput(req,res,responseData);
     
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -606,6 +598,23 @@ export async function postValues(req,res){
     res.redirect("/authenticate2");
   }
 };
+
+
+async function renderStoryOutput(req,res,responseData){
+  try {
+    res.render("storyoutput", {
+      storyAudio: responseData.audio_path,
+      storyTitle: responseData.title,
+      story: responseData.story,
+      storyImage: responseData.thumb_img_path,
+      gems: req.user.gems,
+      parrots: req.user.parrots
+    });
+  } catch (renderError) {
+    console.error('Error rendering "storyoutput" template:', renderError);
+    res.status(500).json({ error: 'Internal Server Error during rendering' });
+  }
+}
 
 
 

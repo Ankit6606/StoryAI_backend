@@ -173,7 +173,7 @@ margin-top: -20%;
         
                 <!-- Add more cards as needed -->
             </div>
-            <button type="submit" class="next-button" style="height: 55px;" onclick="showModal(event)">Create My Story</button>
+            <button type="submit" class="next-button" style="height: 55px;" >Create My Story</button>
         
         <a href="/emotions" style="color: #FFF;
 
@@ -221,15 +221,50 @@ margin-top: -20%;
                return true; // Allow form submission
            }
        }
-       function showModal(event) {
-    // event.preventDefault();
-    setTimeout(() => {
-      fillProgressBar();
-      document.getElementById('myModal').classList.add('visible');
-       // Call the function to make a POST request
-    }, 500);
-  }
+       document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+      // Call your showModal function, passing the form and event
+      showModal(form, event);
+    });
+  });
 
+  function showModal(form, event) {
+    event.preventDefault();
+
+    // Show the modal
+    document.getElementById('myModal').classList.add('visible');
+
+    // Start filling the progress bar
+    fillProgressBar();
+
+    // Use jQuery to asynchronously submit the form
+    $.ajax({
+      url: form.action,
+      method: form.method,
+      data: $(form).serialize(),
+      success: function (response) {
+        // Handle the server response as needed
+        console.log('Server response:', response);
+
+        // Redirect the user to another page after 90 seconds
+        setTimeout(function () {
+          window.location.href = '/profile';
+        }, 90000); // 90 seconds in milliseconds
+      },
+      error: function (error) {
+        // Handle errors if the request fails
+        console.error('Error:', error);
+        setTimeout(function () {
+          window.location.href = '/profile';
+        }, 90000);
+      },
+      complete: function () {
+        // Stop the progress bar animation here if needed
+        console.log('Form submitted successfully');
+      }
+    });
+  }
  
 
   

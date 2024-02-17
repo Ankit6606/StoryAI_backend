@@ -1,4 +1,5 @@
 import express from 'express';
+// import cors from 'cors';
 // import passport from 'passport';
 import {rootRenderFr,
         rootPostFr,
@@ -28,6 +29,8 @@ import {rootRenderFr,
         otpVerificationFr,
         clickStoriesFr,
         userLogoutFr,
+        rendertncPageFr,
+        renderppPageFr
         
         } from '../controllers/userReqFr.js';
 import {rootRender,
@@ -58,6 +61,8 @@ import {rootRender,
         postPhonenumber,
         otpVerification,
         clickStories,
+        rendertncPage,
+        renderppPage
         
         } from '../controllers/userReq.js';
 
@@ -68,8 +73,17 @@ import {success,failure, selectSubscription, makepayment, manageInvoice, selectS
 
 const router = express.Router();
 
+//CORS middleware for all routes
+// router.use(cors({
+//         origin : "*",
+//         }
+// ))
+
 //Get requests
 //French
+router.get("/fr/T&C", rendertncPageFr);
+router.get("/fr/PrivacyPolicy", renderppPageFr);
+router.get("/fr/",rootRenderFr);
 router.get("/fr/",rootRenderFr);
 router.get("/fr/landingpage",renderlandingPageFr);
 router.get("/fr/authenticate",authenticateRenderFr);
@@ -110,7 +124,8 @@ router.post("/fr/storyhistory",clickStoriesFr);
 router.post("/fr/webhook",manageInvoiceFr);
 
 //English
-
+router.get("/T&C", rendertncPage);
+router.get("/PrivacyPolicy", renderppPage);
 router.get("/",rootRender);
 router.get("/landingpage",renderlandingPage);
 router.get("/authenticate",authenticateRender);

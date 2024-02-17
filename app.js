@@ -13,6 +13,12 @@ import cookieParser from 'cookie-parser'; // Import cookie-parser
 
 const app = express(); // For the main web application
 
+app.use(cors({
+  origin : "*",
+  method : ['GET' , 'POST'],
+  logLevel : 'dev'
+}));
+
 app.use(cookieParser()); // Place cookie-parser here
 
 app.use(express.urlencoded({ extended: true }));
