@@ -31,6 +31,7 @@ let values = "";
 let globalNumber = "";
 let justNumber= "";
 let story = [];
+let storyHistory = 0;
 
 export function renderppPage(req,res){
   res.render("pp");
@@ -281,6 +282,7 @@ export async function otpVerification(req,res){
 export async function rootRender(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      storyHistory = 0;
       const user = await User.findById(req.user._id).populate('stories').exec();
       
       if (!user) {
@@ -303,6 +305,7 @@ export async function rootPost(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
+        storyHistory = 1;
         const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
     // Store the selected storyId in the session
@@ -626,6 +629,8 @@ export const rendershp = async (req, res) => {
     if (req.isAuthenticated()) {
       if(req.user.phoneNumber){
         // Fetch the user's details along with populated stories
+        storyHistory = 0;
+        console.log("storyhistory:",storyHistory);
       const user = await User.findById(req.user._id).populate('stories').exec();
       
       if (!user) {
@@ -657,6 +662,8 @@ export function clickStories(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
+        storyHistory = 1;
+        console.log(storyHistory);
         const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
     // Store the selected storyId in the session
@@ -686,25 +693,47 @@ export async function showStories(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
-        const { selectedStoryId } = req.session;
+        if(storyHistory===1){
+          const { selectedStoryId } = req.session;
 
     // Check if a storyId is stored in the session
-    if (!selectedStoryId) {
+       if (!selectedStoryId) {
         // If no storyId is found in the session, redirect to an error page or handle it as needed
-        return res.status(404).json({ error: 'Story ID not found in session' });
-    }
+          return res.status(404).json({ error: 'Story ID not found in session' });
+      }
 
     // Fetch story details using the stored storyId from the database or data source
-    const storyDetails = await Story.findById(selectedStoryId); // Example using a hypothetical StoryModel
+      const storyDetails = await Story.findById(selectedStoryId); // Example using a hypothetical StoryModel
 
-    if (!storyDetails) {
+      if (!storyDetails) {
         // If story with stored ID is not found, return an error message
         return res.status(404).json({ error: 'Story not found' });
-    }
+      }
 
     // If the story is found, render the storyoutput page with the story details
-    res.render('storyoutput', { story: storyDetails.story , storyImage : storyDetails.thumb_img_path , storyAudio : storyDetails.audiopath, storyTitle: storyDetails.title,
+        res.render('storyoutput', { story: storyDetails.story , storyImage : storyDetails.thumb_img_path , storyAudio : storyDetails.audiopath, storyTitle: storyDetails.title,
                                 gems :req.user.gems, parrots: req.user.parrots});
+        // storyHistory = 0;
+        }
+        else{
+          const storyUser = await User.findOne({_id : req.user.id});
+          if(storyUser){
+            const storyLength = storyUser.stories.length;
+            //Select the last story in the database , becz that is the story which is generated recently
+            //Select its id
+            const storyOutputId = storyUser.stories[storyLength-1].id;
+            const lastStory = await Story.findById(storyOutputId);
+            if(lastStory){
+              res.render('storyoutput', { story: lastStory.story , storyImage : lastStory.thumb_img_path , storyAudio : lastStory.audiopath, storyTitle: lastStory.title,
+                gems :req.user.gems, parrots: req.user.parrots});
+            }else{
+              return res.status(404).json({ error: 'Story not found' });
+            }
+          }
+          else{
+            console.log("User not found");
+          }
+        }
       }else{
         res.redirect("/phonenumber");
       }
