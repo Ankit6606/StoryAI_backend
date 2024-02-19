@@ -32,6 +32,7 @@ let globalNumber = "";
 let justNumber= "";
 let lang="";
 let story = [];
+let storyHistoryFr = 0;
 
 
 export function renderppPageFr(req,res){
@@ -582,19 +583,19 @@ export async function postValuesFr(req,res){
     
     //After storing the story in database, it is displayed in frontend
     
-    try {
-      res.render("fr/storyoutput", {
-        storyAudio: responseData.audio_path,
-        storyTitle: responseData.title,
-        story: responseData.story,
-        storyImage: responseData.thumb_img_path,
-        gems: req.user.gems,
-        parrots: req.user.parrots
-      });
-    } catch (renderError) {
-      console.error('Error rendering "storyoutput" template:', renderError);
-      res.status(500).json({ error: 'Internal Server Error during rendering' });
-    }
+    // try {
+    //   res.render("fr/storyoutput", {
+    //     storyAudio: responseData.audio_path,
+    //     storyTitle: responseData.title,
+    //     story: responseData.story,
+    //     storyImage: responseData.thumb_img_path,
+    //     gems: req.user.gems,
+    //     parrots: req.user.parrots
+    //   });
+    // } catch (renderError) {
+    //   console.error('Error rendering "storyoutput" template:', renderError);
+    //   res.status(500).json({ error: 'Internal Server Error during rendering' });
+    // }
     
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
