@@ -663,7 +663,7 @@ export function clickStories(req,res){
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
         storyHistory = 1;
-        console.log(storyHistory);
+        // console.log(storyHistory);
         const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
     // Store the selected storyId in the session

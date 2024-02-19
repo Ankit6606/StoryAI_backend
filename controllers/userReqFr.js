@@ -273,6 +273,7 @@ export async function otpVerificationFr(req,res){
 export async function rootRenderFr(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      storyHistoryFr = 0;
       const user = await User.findById(req.user._id).populate('stories').exec();
       
       if (!user) {
@@ -295,6 +296,7 @@ export async function rootPostFr(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
+        storyHistoryFr = 1;
         const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
     // Store the selected storyId in the session
@@ -621,6 +623,7 @@ export const rendershpFr = async (req, res) => {
   try {
     if (req.isAuthenticated()) {
       if(req.user.phoneNumber){
+        storyHistoryFr = 0;
         // Fetch the user's details along with populated stories
       const user = await User.findById(req.user._id).populate('stories').exec();
       
@@ -653,6 +656,7 @@ export function clickStoriesFr(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
+        storyHistoryFr = 1;
         const  storyId  = req.body.storyId; // Assuming the storyId is sent in the request body
 
     // Store the selected storyId in the session
@@ -682,7 +686,8 @@ export async function showStoriesFr(req,res){
   try {
     if(req.isAuthenticated()){
       if(req.user.phoneNumber){
-        const { selectedStoryId } = req.session;
+        if(storyHistoryFr === 1){
+          const { selectedStoryId } = req.session;
 
     // Check if a storyId is stored in the session
     if (!selectedStoryId) {
@@ -701,6 +706,26 @@ export async function showStoriesFr(req,res){
     // If the story is found, render the storyoutput page with the story details
     res.render('fr/storyoutput', { story: storyDetails.story , storyImage : storyDetails.thumb_img_path , storyAudio : storyDetails.audiopath, storyTitle: storyDetails.title,
                                 gems :req.user.gems, parrots: req.user.parrots});
+        }
+        else{
+          const storyUser = await User.findOne({_id : req.user.id});
+          if(storyUser){
+            const storyLength = storyUser.stories.length;
+            //Select the last story in the database , becz that is the story which is generated recently
+            //Select its id
+            const storyOutputId = storyUser.stories[storyLength-1]._id;
+            const lastStoryFr = await Story.findById(storyOutputId);
+            if(lastStoryFr){
+              res.render('fr/storyoutput', { story: lastStoryFr.story , storyImage : lastStoryFr.thumb_img_path , storyAudio : lastStoryFr.audiopath, storyTitle: lastStoryFr.title,
+                gems :req.user.gems, parrots: req.user.parrots});
+            }else{
+              return res.status(404).json({ error: 'Story not found' });
+            }
+          }
+          else{
+            console.log("User not found");
+          }
+        }
       }else{
         res.redirect("/fr/phonenumber");
       }
