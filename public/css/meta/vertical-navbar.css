@@ -50,7 +50,7 @@ html {
   .navTrigger svg {
     width: 64px;
     height: 48px;
-    
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.99));
     stroke:#D1B5FE;
     
     stroke-width: 4px;

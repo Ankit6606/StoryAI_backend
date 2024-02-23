@@ -183,7 +183,7 @@ body {
     }
     .card-container {
         
-       max-width: 98VW;
+       max-width: 90VW;
 height: 260px;
 flex-shrink: 0;
 margin-bottom: 0px !important;
@@ -213,6 +213,8 @@ max-height: 32%;}
     max-width: 300px;
     width: 90%;
 }
+
+
 
 
 }
@@ -262,8 +264,8 @@ max-height: 32%;}
 }
 
 .flex-box {
-    width: 96vw;
-    max-width: 1805px;
+    width: 90vw;
+    max-width: 1729px;
     height: 190px;
     flex-shrink: 0;
     border-radius: 25px;
@@ -304,8 +306,8 @@ max-height: 32%;}
     margin-bottom: 8px;
 }
 .card-container {
-    width: 99vw;
-    max-width: 1830px;
+    width: 90vw;
+    max-width: 1728px;
     flex-shrink: 0;
     border-radius: 25px;
     background: #FDF0F2;

@@ -25,14 +25,16 @@
 
 
 .background {
-    background-image: url('assets/signin-bg.png');
-    background-repeat: no-repeat;
+    /* background-image: url('assets/signin-bg.png');
+    background-repeat: no-repeat; */
     background-position: top -285px;
-    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png');
+    /* background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png'); */
     overflow: hidden;
     height: 100vh;
 }
-.body{ height: 100vh;
+body{ background-size: cover;
+    background: linear-gradient(180deg, #000E2F 0%, rgba(224, 139, 255, 0.10) 151.26%), url('assets/signin-bg.png')center/cover no-repeat;
+    background-repeat: no-repeat;height: 100vh;
 margin: 0;
 padding: 0;}
 
