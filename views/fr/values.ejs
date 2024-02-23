@@ -39,8 +39,9 @@ line-height: 150%; /* 48px */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 95vh !important;
+    width: 90vw;
+    height: 65vh !important;
+    min-height: 780px;
     max-width: 1905px;
     max-height: 896px;
     flex-shrink: 0;
@@ -61,6 +62,7 @@ line-height: 150%; /* 48px */
 .modal.visible {
     display: flex; /* or block, or whatever is appropriate for your design */
     opacity: 1;
+    
 }
 /* Add this style to close the modal */
 .loading-bar {
@@ -81,6 +83,13 @@ line-height: 150%; /* 48px */
     background: linear-gradient(270deg, #BB80FF 0%, #FFA8CF 0%);
     width: 0;
     animation: fillProgressBar 30s ease-in-out forwards;
+}
+@media (max-width: 768px) {
+.modal{
+    height: 75vh !important;
+    max-height: 750px;
+    min-height: 0vh;
+}
 }
 </style>
 </head>
@@ -169,7 +178,7 @@ line-height: 150%; /* 48px */
         
                 <!-- Add more cards as needed -->
             </div>
-            <button type="submit" class="next-button" style="height: 55px;">Créer mon histoire</button>
+            <button id="disbutton" type="submit" class="next-button" style="height: 55px;" onclick="disableButton()">Créer mon histoire</button>
         
         <a href="/fr/emotions" style="color: #FFF;
 
@@ -331,6 +340,13 @@ function fillProgressBarStageThree() {
 }
 
   </script>
+
+<script>
+  function disableButton() {
+    var button = document.getElementById("disbutton");
+            button.style.display = "none";
+  }
+</script>
 </body>
 
 </html>

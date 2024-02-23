@@ -120,7 +120,7 @@ margin-top: 28px;
 }
 .navbar {
     position: fixed;
-    top: 0;
+     top: 0; 
     left: 0;
     display: flex;
     justify-content: space-between;
@@ -151,7 +151,9 @@ margin-top: 28px;
         display: flex;
         align-items: center;
         margin-left: -15px !important; /* Adjust as needed */
-        margin-top: -40px;
+        /* margin-top: 1.5vh; */
+        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.95);
+        
     }
 }
 .icon-item {
@@ -261,7 +263,7 @@ line-height: 150%; /* 27px */
     background-image: linear-gradient(180deg, #9665D3, #223276);
     background-size: 150%;
     background-repeat: repeat;
-   -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
