@@ -514,7 +514,8 @@ export async function postValues(req,res){
     scenario: scenario,
     emotions: JSON.stringify(emotions),
     values: JSON.stringify(values),
-    userId: "test"
+    userId: "test",
+    lang:"eng"
   });
   console.log(`${endpoint}?${params.toString()}`);
 

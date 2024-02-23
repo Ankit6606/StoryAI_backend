@@ -1,7 +1,6 @@
 // paymentModule.mjs
 
 import stripePackage from 'stripe';
-// import passport from 'passport';
 import 'dotenv/config';
 import User from '../models/users.js';
 import  Payment  from '../models/paymentModel.js';
@@ -9,7 +8,7 @@ import mongoose from 'mongoose';
 
 const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
 const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
-// const client = require("twilio")(accountSid, authToken);
+
 let plan = " ";
 let uid = " ";
 let gemsToAdd = 0;
