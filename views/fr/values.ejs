@@ -178,7 +178,7 @@ line-height: 150%; /* 48px */
         
                 <!-- Add more cards as needed -->
             </div>
-            <button id="disbutton" type="submit" class="next-button" style="height: 55px;" onclick="disableButton()">Créer mon histoire</button>
+            <button id="disbutton" type="submit" class="next-button" style="height: 55px;" >Créer mon histoire</button>
         
         <a href="/fr/emotions" style="color: #FFF;
 
@@ -215,61 +215,64 @@ line-height: 150%; /* 48px */
         
     </script>
     <script>
-       function validateScenarioForm() {
-           var enteredScenario = document.getElementById("valueInput").value;
-   
-           if (enteredScenario === "") {
-               alert("Please enter atleast one value or select from the cards.");
-               return false; // Prevent form submission
-           } else {
-               // Add any additional logic or action here when the scenario is valid
-               // For example, you may want to submit a form or navigate to the next page
-               return true; // Allow form submission
-           }
-       }
-       document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function (event) {
-      // Call your showModal function, passing the form and event
-      showModal(form, event);
+        function validateScenarioForm() {
+        var enteredScenario = document.getElementById("valueInput").value;
+
+        if (enteredScenario === "") {
+            alert("Please enter at least one value or select from the cards.");
+            return false; // Prevent form submission
+        } else {
+            disableButton(); 
+            showModal(document.querySelector('form'));
+  
+            return true; // Allow form submission
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+          
+            if (!validateScenarioForm()) {
+                event.preventDefault();
+            }
+        });
     });
-  });
 
-  function showModal(form, event) {
-    event.preventDefault();
+    function showModal(form) {
+        event.preventDefault();
 
-    // Show the modal
-    document.getElementById('myModal').classList.add('visible');
+        // Show the modal
+        document.getElementById('myModal').classList.add('visible');
 
-    // Start filling the progress bar
-    fillProgressBar();
-    setTimeout(function () {
-          window.location.href = '/fr/storyoutput';
+        // Start filling the progress bar
+        fillProgressBar();
+        setTimeout(function () {
+            window.location.href = '/fr/storyoutput';
         }, 90000); // 90 seconds is
-    // Use jQuery to asynchronously submit the form
-    $.ajax({
-      url: form.action,
-      method: form.method,
-      data: $(form).serialize(),
-      success: function (response) {
-        // Handle the server response as needed
-        console.log('Server response:', response);
 
-        // Redirect the user to another page after 90 seconds
+        // Use jQuery to asynchronously submit the form
+        $.ajax({
+            url: form.action,
+            method: form.method,
+            data: $(form).serialize(),
+            success: function (response) {
+                // Handle the server response as needed
+                console.log('Server response:', response);
 
-      },
-      error: function (error) {
-        // Handle errors if the request fails
-        console.error('Error:', error);
-    
-      },
-      complete: function () {
-        // Stop the progress bar animation here if needed
-        console.log('Form submitted successfully');
-      }
-    });
-  }
- 
+                // Redirect the user to another page after 90 seconds
+
+            },
+            error: function (error) {
+                // Handle errors if the request fails
+                console.error('Error:', error);
+            },
+            complete: function () {
+                // Stop the progress bar animation here if needed
+                console.log('Form submitted successfully');
+            }
+        });
+    }
 
   
 function fillProgressBar() {
@@ -338,15 +341,13 @@ function fillProgressBarStageThree() {
         }
     }, 87.5);
 }
-
-  </script>
-
-<script>
-  function disableButton() {
+function disableButton() {
     var button = document.getElementById("disbutton");
             button.style.display = "none";
   }
-</script>
+  </script>
+
+
 </body>
 
 </html>
