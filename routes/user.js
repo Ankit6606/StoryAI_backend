@@ -108,6 +108,7 @@ router.get("/fr/success",success);
 router.get("/fr/failure",failure);
 router.get("/fr/profile",profileManageFr);
 router.get("/fr/subscribe",selectSubscriptionFr);
+router.get("/fr/cancelPlan",cancelSubscription);
 
 //Post requests
 

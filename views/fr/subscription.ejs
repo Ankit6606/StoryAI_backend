@@ -412,20 +412,24 @@ body.loaded::after {
     <div class="ellipse"></div>
     <form action="/fr/subscribe" method="post" id="subscriptionForm" onsubmit="updateHiddenInput()">
         <div class="box-m">
-            <div class="box box-1" id="basic"></div>
-            <div class="box box-d" id="discover"></div>
-            <div class="box box-2" id="starter"></div>
-            <div class="box box-3" id="value"></div>
-            <div class="box box-4" id="premium"></div>
+            <% if(userSubscriptionPlanFr !== "basic"){ %>
+                <h1 style="color: #FDF0F2;">You are currently subscribed to "<%= userSubscriptionPlanFr %>".</h1>
+                <% } %>
+            <% boxIdsFr.forEach((boxId, index) => { %>
+                <% index += 1 %>
+                <% if (userSubscriptionPlanFr !== boxId || boxId === "basic") { %>
+                    <div class="box box-<%= index  %>" id="<%= boxId %>"></div>
+                <% } %>
+            <% }); %>
     
             <!-- Hidden input field to store the selected box ID -->
-            <input type="hidden" id="selectedBoxId" name="selectedBoxId" value="">
-        
+            <input type="hidden" id="selectedBoxId" name="selectedBoxId" value="<%= userSubscriptionPlanFr %>">
+    
             <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
-            height: 63px;
-         ">Changer l'abonnement</button>
+                height: 63px;
+             ">Changer l'abonnement</button>
            <button type = "submit" class="next-button" style="margin-top: 0px;width: 413px; color:red;
-           height: 63px;">Annuler l'abonnement</button>
+           height: 63px;" onclick="navigateToCancelPlan()">Annuler l'abonnement</button>
            <a href="/fr/" style="color: #FFF;
 
            font-family: Volkhov;
@@ -445,6 +449,9 @@ body.loaded::after {
         document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.add('loaded');
         });
+        function navigateToCancelPlan() {
+        window.location.href = "/fr/cancelPlan";
+    }
     </script>
     
 

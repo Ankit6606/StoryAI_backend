@@ -445,7 +445,7 @@ export function postEmotionsFr(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         emotions = req.body.emotions;
-        console.log("hello");
+        console.log(emotions);
         
         res.redirect("/fr/values");
       }else{
@@ -502,7 +502,7 @@ export async function postValuesFr(req,res){
     if(req.user.phoneNumber){
       if(req.user.gems>=1 && req.user.parrots>=1){
         values = req.body.values;
-        console.log(values);
+        console.log("values");
 
   const endpoint = 'https://storyia.app/api/generate_story';
 

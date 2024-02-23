@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 
 const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
 const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
+const STRIPE_ENDPOINT_SECRET1 = process.env.STRIPE_ENDPOINT_SECRET1;
 
 let plan = " ";
 let uid = " ";
@@ -44,9 +45,13 @@ export function selectSubscriptionFr(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       uid = req.user.id;
+      const userSubscriptionPlanFr = req.user.subscriptionPlan;
+
+      const boxIdsFr = ["basic", "discover", "starter", "value", "premium"];
       res.render("fr/subscription",{
         gems : req.user.gems,
-        parrots: req.user.parrots
+        parrots: req.user.parrots,
+        boxIdsFr,userSubscriptionPlanFr
       });
     }
     else{
@@ -129,19 +134,6 @@ export const makepayment = async (req, res) => {
   }
     else{
     // console.log(selectedpriceId);
- 
-    // if (req.user.paymentdetails && req.user.paymentdetails.length > 0) {
-    //   // Get the last payment detail's customerId if it exists
-    //   const lastPaymentDetail = req.user.paymentdetails[0];
-    //   if (lastPaymentDetail && lastPaymentDetail.userId) {
-    //     const customerId = lastPaymentDetail.userId;
-    //     // Use the customerId in your logic as needed
-    //     console.log('Customer ID:', customerId);
-    //   } else {
-    //     console.error('Last payment detail does not have a customer ID');
-    //   }
-    // } else {
-      // console.error('User does not have payment details');
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -170,17 +162,9 @@ export const makepayment = async (req, res) => {
 };
 
 
-const success = async (req, res) => {
-  try {
-      res.render('success');
-  } catch (error) {
-      console.log(error.message);
-  }
-};
 
 
-
-//----Subscription Cancel------//
+//----Subscription Cancel------Eng and French//
 
 export const cancelSubscription = async (req, res) => {
   try {
@@ -358,7 +342,7 @@ export const manageInvoiceFr = async (req, res) => {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(payload, sig, STRIPE_ENDPOINT_SECRET);
+    event = stripe.webhooks.constructEvent(payload, sig, STRIPE_ENDPOINT_SECRET1);
   } catch (err) {
     console.error('Webhook Error:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -432,223 +416,13 @@ export const manageInvoiceFr = async (req, res) => {
 };
 
 
-// export function makepayment(req,res){
-//   const  {planId}  = req.body;
-//   // console.log(planId);
-//   // let redirectUrl;
-
-//   if (planId === "basic"){
-//     res.redirect("/");
-//   }
-//   else if (planId === "discover") {
-//     flag=1; 
-//     plan = planId;
-//     res.redirect("https://buy.stripe.com/5kAbLg9Sk7BF8rS5kn"); // Set the redirect URL for "discover"
-//   } else if (planId === "starter") {
-//     flag=1;
-//     plan = planId;
-//     res.redirect("https://buy.stripe.com/5kAeXs5C4e030ZqcMQ"); // Set the redirect URL for "starter"      
-//   } else if (planId === "value") {
-//     flag=1;
-//     plan = planId;
-//     res.redirect("https://buy.stripe.com/5kA5mS2pSf47fUkdQV"); // Set the redirect URL for "value" 
-//   } else if (planId === "premium") {
-//     flag=1; 
-//     plan = planId;
-//     res.redirect("https://buy.stripe.com/aEUaHc1lO09d5fG6ou"); // Set the redirect URL for "premium"
-//   } else {
-//       // Handle unknown or invalid planId
-//       res.redirect("/");
-//   }
-
-//   // if (redirectUrl) {
-//   //     res.json({ redirectUrl }); // Send the redirect URL as a response
-//   // } else {
-//   //     res.status(400).json({ error: 'Invalid planId' });
-//   // }
-// };
-
-
-// const success = async (req, res) => {
-//   try {
-//     // console.log(flag);
-//     console.log(plan);
-//     if(req.isAuthenticated()){
-//       const uname = req.user.username;
-//       const uid = req.user.id;
-//       //For "discover" package
-//       if(flag===1 && plan==="discover"){
-//         const payUser = await Payment.create({
-//         userId : uid,
-//         paymentAmount:9.97,
-//         paymentDate: new Date(),
-//         }); 
-//       // console.log(payUser.id);
-//         let objId = new mongoose.Types.ObjectId(payUser.id);
-//         await User.updateOne({
-//           _id:uid
-//         },
-//         {
-//           $push:{
-//             paymentdetails : objId,
-//           },
-//         },
-//         {upsert : false, new : true},
-//         );
-
-//         const gemstoadd = 5;
-//         const parrotstoadd = 5;
-//         const user = await User.findOne({ username: uname });
-//         if (user) {
-//           user.gems += gemstoadd;
-//           user.parrots += parrotstoadd;
-//           await user.save(); // Save the updated user
-//         } else {
-//           console.log("User not found");
-//       // Handle the case where the user is not found
-//           return res.status(404).send("User not found");
-//         }
-//         res.redirect("/");
-//         flag = 0;
-//       }
-//       //For "starter" package
-//       else if(flag===1 && plan==="starter"){
-//         const payUser = await Payment.create({
-//         userId : uid,
-//         paymentAmount:16.97,
-//         paymentDate: new Date(),
-//         }); 
-//       // console.log(payUser.id);
-//         let objId = new mongoose.Types.ObjectId(payUser.id);
-//         await User.updateOne({
-//           _id:uid
-//         },
-//         {
-//           $push:{
-//             paymentdetails : objId,
-//           },
-//         },
-//         {upsert : false, new : true},
-//         );
-
-//         const gemstoadd = 10;
-//         const parrotstoadd = 10;
-//         const user = await User.findOne({ username: uname });
-//         if (user) {
-      
-//           user.gems += gemstoadd;
-//           user.parrots += parrotstoadd;
-//           await user.save(); // Save the updated user
-      
-//         } else {
-//           console.log("User not found");
-//       // Handle the case where the user is not found
-//           return res.status(404).send("User not found");
-//         }
-//         res.redirect("/");
-//         flag = 0;
-//       }
-//       //For "value" package
-//       else if(flag===1 && plan==="value"){
-//         const payUser = await Payment.create({
-//           userId : uid,
-//           paymentAmount:24.97,
-//           paymentDate: new Date(),
-//           }); 
-//         // console.log(payUser.id);
-//           let objId = new mongoose.Types.ObjectId(payUser.id);
-//           await User.updateOne({
-//             username:uname
-//           },
-//           {
-//             $push:{
-//               paymentdetails : objId,
-//             },
-//           },
-//           {upsert : false, new : true},
-//           );
-  
-//           const gemstoadd = 20;
-//           const parrotstoadd = 20;
-//           const user = await User.findOne({ username: uname });
-//           if (user) {
-        
-//             user.gems += gemstoadd;
-//             user.parrots += parrotstoadd;
-//             await user.save(); // Save the updated user
-        
-//           } else {
-//             console.log("User not found");
-//         // Handle the case where the user is not found
-//             return res.status(404).send("User not found");
-//           }
-//           res.redirect("/");
-//           flag = 0;
-//       }
-//       //For "premium" package
-//       else if(flag===1 && plan==="premium"){
-//         const payUser = await Payment.create({
-//           userId : uid,
-//           paymentAmount:44.97,
-//           paymentDate: new Date(),
-//           }); 
-//         // console.log(payUser.id);
-//           let objId = new mongoose.Types.ObjectId(payUser.id);
-//           await User.updateOne({
-//             _id:uid
-//           },
-//           {
-//             $push:{
-//               paymentdetails : objId,
-//             },
-//           },
-//           {upsert : false, new : true},
-//           );
-  
-//           const gemstoadd = 40;
-//           const parrotstoadd = 40;
-//           const user = await User.findOne({ username: uname });
-//           if (user) {
-        
-//             user.gems += gemstoadd;
-//             user.parrots += parrotstoadd;
-//             await user.save(); // Save the updated user
-        
-//           } else {
-//             console.log("User not found");
-//         // Handle the case where the user is not found
-//             return res.status(404).send("User not found");
-//           }
-//           res.redirect("/");
-//           flag = 0;
-//       }
-//       else{
-//         const message = `<h1>Pay First !!!<br><br>
-// <br>
-// <br>
-// <br>
-// <br>
-// <br>
-// <br>
-// <br>
-
-
-// ✨ Congratulations... You have unlocked an Easter Egg ✨</h1>`;
-
-// res.send(message);
-
-//       }
-
-//     }else{
-//       res.redirect("/authenticate2");
-//     }
-    
-//   } catch (error) {
-//       console.log(error.message);
-//       res.redirect("/error");
-//   }
-// };
-
+const success = async (req, res) => {
+  try {
+      res.render('success');
+  } catch (error) {
+      console.log(error.message);
+  }
+};
 
 
 const failure = async (req, res) => {
