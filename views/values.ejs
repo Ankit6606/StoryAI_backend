@@ -221,6 +221,7 @@ margin-top: -20%;
     <script src="js/vnav.js"></script>
     <script>
          function validateScenarioForm() {
+
         var enteredScenario = document.getElementById("valueInput").value;
 
         if (enteredScenario === "") {
@@ -238,8 +239,12 @@ margin-top: -20%;
         const form = document.querySelector('form');
         form.addEventListener('submit', function (event) {
             // Call validateScenarioForm and prevent form submission if it returns false
-            if (!validateScenarioForm()) {
+            if (validateScenarioForm()) {
                 event.preventDefault();
+            }
+
+            else  {
+              event.preventDefault();
             }
         });
     });
