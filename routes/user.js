@@ -86,7 +86,6 @@ const router = express.Router();
 router.get("/fr/T&C", rendertncPageFr);
 router.get("/fr/PrivacyPolicy", renderppPageFr);
 router.get("/fr/",rootRenderFr);
-router.get("/fr/",rootRenderFr);
 router.get("/fr/landingpage",renderlandingPageFr);
 router.get("/fr/authenticate",authenticateRenderFr);
 router.get("/fr/authenticate2",authenticateRender2Fr);
