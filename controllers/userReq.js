@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import crypto from 'crypto';
 import User from '../models/users.js';
 import session from 'express-session';
 import flash from 'connect-flash';
@@ -32,6 +33,7 @@ let globalNumber = "";
 let justNumber= "";
 let story = [];
 let storyHistory = 0;
+let initialLang = "french";
 
 export function renderppPage(req,res){
   res.render("pp");
@@ -48,10 +50,12 @@ export function renderlandingPage(req,res){
 //--Authentication pages--//
 
 export function authenticateRender(req,res){
+  initialLang = "eng";
   res.render("authenticate");
 };
 
 export function authenticateRender2(req,res){
+  initialLang = "eng";
   res.render("authenticate2");
 };
 
@@ -154,6 +158,7 @@ export function loginUser(req,res){
               }
       
               // If login is successful, redirect the user to the desired page
+              
               return res.redirect('/');
           });
       })(req, res);
@@ -183,7 +188,12 @@ export function getphoneNumber(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-      res.render("otp1");
+      if(initialLang==="eng"){
+        res.render("otp1");
+      }else{
+        res.redirect("/fr/phonenumber");
+      }
+      
     }
     else{
       res.redirect("/");
@@ -200,6 +210,8 @@ export async function postPhonenumber(req, res) {
     if(req.isAuthenticated()){
       const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
       globalNumber = mobileNumber;
+      initialLang = "";
+      
       justNumber = req.body.prephoneNumber + req.body.phoneNumber;
       // console.log(mobileNumber);
       const foundUser = await User.findOne({ phoneNumber: mobileNumber });
@@ -217,6 +229,7 @@ export async function postPhonenumber(req, res) {
          .verifications.create({ to: justNumber, channel: "sms" });
        
        console.log(verification.status); // Log the verification status
+       
   
        // Render the OTP verification page
        res.render("otp2");
@@ -283,11 +296,46 @@ export async function rootRender(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       storyHistory = 0;
-      const user = await User.findById(req.user._id).populate('stories').exec();
+      const user = await User.findById(req.user._id)
+      .select('+salt +hash')
+      .populate('stories')
+      .exec();
       
       if (!user) {
         throw new Error('User not found');
       }
+      // console.log(user.salt);
+      
+    //   console.log("Provided Password:", providedPassword);
+    //   console.log("User Salt:", user.salt);
+    //   console.log("User Hash:", user.hash);
+    //   crypto.pbkdf2(providedPassword, user.salt, 10000, 64, 'sha512', (err, derivedKey) => {
+    //     if (err) {
+    //       console.error(err);
+    //       // Handle error
+    //     }
+        
+    //       const hashedPassword = derivedKey.toString('hex');
+    //       console.log("Generated Hash:", hashedPassword);
+    //   if (hashedPassword === user.hash) {
+    //     console.log("Password is correct");
+    //   } else {
+    //     console.log("Password is incorrect");
+    //   }
+    // });
+      // const newPassword = "123456";
+      // const newSalt = crypto.randomBytes(64).toString('hex');
+      // const newDerivedKey = await new Promise((resolve, reject) => {
+      //   crypto.pbkdf2(newPassword, newSalt, 10000, 64, 'sha512', (err, derivedKey) => {
+      //     if (err) reject(err);
+      //     resolve(derivedKey.toString('hex'));
+      //   });
+      // });
+  
+      // // Update salt and hash in the database
+      // user.salt = newSalt;
+      // user.hash = newDerivedKey;
+      // await user.save();
       res.render("home",{
         userStories: user.stories,
         gems : req.user.gems,
@@ -549,7 +597,8 @@ export async function postValues(req,res){
       audioduration : audiodurationInMinutes
     }); 
    
-    let objId = new mongoose.Types.ObjectId(createstory.id);
+    await createstory.save();
+    let objId = createstory._id;
     await User.updateOne({
       username:uname
     },
@@ -637,6 +686,7 @@ export const rendershp = async (req, res) => {
       if (!user) {
         throw new Error('User not found');
       }
+      
       // User found, render the story history page
       res.render("story_history", {
         userStories: user.stories,
@@ -705,6 +755,7 @@ export async function showStories(req,res){
 
     // Fetch story details using the stored storyId from the database or data source
       const storyDetails = await Story.findById(selectedStoryId); // Example using a hypothetical StoryModel
+      // console.log(storyDetails.userId);
 
       if (!storyDetails) {
         // If story with stored ID is not found, return an error message
@@ -755,6 +806,16 @@ export async function showStories(req,res){
 export function profileManage(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+
+//----------For Password change----------------//
+
+      // user.changePassword(oldPassword,newPassword,function(err){
+      //   if(err){
+      //     res.send(err);
+      //   }else{
+      //     console.log("password changed");
+      //   }
+      // })
       res.render("profile",{
         gems : req.user.gems,
         parrots : req.user.parrots,
