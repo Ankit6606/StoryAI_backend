@@ -215,66 +215,64 @@ line-height: 150%; /* 48px */
         
     </script>
     <script>
-        function validateScenarioForm() {
-        var enteredScenario = document.getElementById("valueInput").value;
+   function validateScenarioForm() {
+    var enteredScenario = document.getElementById("valueInput").value;
 
-        if (enteredScenario === "") {
-            alert("Please enter at least one value or select from the cards.");
-            return false; // Prevent form submission
-        } else {
-            disableButton(); 
-            showModal(document.querySelector('form'));
-  
-            return true; // Allow form submission
-        }
+    if (enteredScenario === "") {
+        alert("Please enter at least one value or select from the cards.");
+        return false; // Prevent form submission
+    } else {
+        disableButton();
+        return true; // Allow form submission
     }
+}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function (event) {
-          
-            if (!validateScenarioForm()) {
-                event.preventDefault();
-            }
-        });
-    });
-
-    function showModal(form) {
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+        // Prevent default form submission
         event.preventDefault();
 
-        // Show the modal
-        document.getElementById('myModal').classList.add('visible');
+        // Validate the form and submit asynchronously if valid
+        if (validateScenarioForm()) {
+            showModal(form);
+        }
+    });
+});
 
-        // Start filling the progress bar
-        fillProgressBar();
-        setTimeout(function () {
-            window.location.href = '/fr/storyoutput';
-        }, 90000); // 90 seconds is
+function showModal(form) {
+    // Show the modal
+    document.getElementById('myModal').classList.add('visible');
 
-        // Use jQuery to asynchronously submit the form
-        $.ajax({
-            url: form.action,
-            method: form.method,
-            data: $(form).serialize(),
-            success: function (response) {
-                // Handle the server response as needed
-                console.log('Server response:', response);
+    // Start filling the progress bar
+    fillProgressBar();
 
-                // Redirect the user to another page after 90 seconds
+    // Use jQuery to asynchronously submit the form
+    $.ajax({
+        url: form.action,
+        method: form.method,
+        data: $(form).serialize(),
+        success: function (response) {
+            // Handle the server response as needed
+            console.log('Server response:', response);
 
-            },
-            error: function (error) {
-                // Handle errors if the request fails
-                console.error('Error:', error);
-            },
-            complete: function () {
-                // Stop the progress bar animation here if needed
-                console.log('Form submitted successfully');
-            }
-        });
-    }
+            // Redirect the user to another page after 90 seconds
+            setTimeout(function () {
+                window.location.href = '/fr/storyoutput';
+            }, 1800000); // 90 seconds is
+        },
+        error: function (error) {
+            // Handle errors if the request fails
+            console.error('Error:', error);
+        },
+        complete: function () {
+            // Stop the progress bar animation here if needed
+            console.log('Form submitted successfully');
+        }
+    });
+}
 
-  
+
 function fillProgressBar() {
     const fillingProgress = document.querySelector('.filling-progress');
     const percentageTracker = document.querySelector('.percentage-tracker');
@@ -294,7 +292,7 @@ function fillProgressBar() {
                 fillProgressBarStageTwo();
             }, 1000);
         }
-    }, 87.5);
+    }, 175);
 }
 
 function fillProgressBarStageTwo() {
@@ -316,7 +314,7 @@ function fillProgressBarStageTwo() {
                 fillProgressBarStageThree();
             }, 1000);
         }
-    }, 87.5);
+    }, 175);
 }
 
 function fillProgressBarStageThree() {
@@ -339,7 +337,7 @@ function fillProgressBarStageThree() {
                 percentageTracker.textContent = '100.00%';
             }, 500);
         }
-    }, 87.5);
+    }, 175);
 }
 function disableButton() {
     var button = document.getElementById("disbutton");

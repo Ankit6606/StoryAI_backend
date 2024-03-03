@@ -88,15 +88,6 @@ line-height: 150%; /* 48px */
   scale: 0.5;
 margin-top: -20%;
 }
-
-@media (max-width: 768px) {
-.modal{
-    height: 75vh !important;
-    max-height: 750px;
-    min-height: 0vh;
-}
-}
-
 </style>
 </head>
 
@@ -220,69 +211,66 @@ margin-top: -20%;
     <script src="js/values.js"></script>
     <script src="js/vnav.js"></script>
     <script>
-         function validateScenarioForm() {
+        function validateScenarioForm() {
+    var enteredScenario = document.getElementById("valueInput").value;
 
-        var enteredScenario = document.getElementById("valueInput").value;
-
-        if (enteredScenario === "") {
-            alert("Please enter at least one value or select from the cards.");
-            return false; // Prevent form submission
-        } else {
-            disableButton(); 
-            showModal(document.querySelector('form'));
-  
-            return true; // Allow form submission
-        }
+    if (enteredScenario === "") {
+        alert("Please enter at least one value or select from the cards.");
+        return false; // Prevent form submission
+    } else {
+        disableButton();
+        return true; // Allow form submission
     }
+}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function (event) {
-            // Call validateScenarioForm and prevent form submission if it returns false
-            if (validateScenarioForm()) {
-                event.preventDefault();
-            }
-
-            else  {
-              event.preventDefault();
-            }
-        });
-    });
-
-    function showModal(form) {
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+        // Prevent default form submission
         event.preventDefault();
 
-        // Show the modal
-        document.getElementById('myModal').classList.add('visible');
+        // Validate the form and submit asynchronously if valid
+        if (validateScenarioForm()) {
+            showModal(form);
+        }
+    });
+});
 
-        // Start filling the progress bar
-        fillProgressBar();
-        setTimeout(function () {
-            window.location.href = '/storyoutput';
-        }, 90000); // 90 seconds is
+  function showModal(form) {
+    // event.preventDefault();
 
-        // Use jQuery to asynchronously submit the form
-        $.ajax({
-            url: form.action,
-            method: form.method,
-            data: $(form).serialize(),
-            success: function (response) {
-                // Handle the server response as needed
-                console.log('Server response:', response);
+    // Show the modal
+    document.getElementById('myModal').classList.add('visible');
 
-                // Redirect the user to another page after 90 seconds
+    // Start filling the progress bar
+    fillProgressBar();
+    setTimeout(function () {
+          window.location.href = '/storyoutput';
+        }, 1800000); // 90 seconds is
+    // Use jQuery to asynchronously submit the form
+    $.ajax({
+      url: form.action,
+      method: form.method,
+      data: $(form).serialize(),
+      success: function (response) {
+        // Handle the server response as needed
+        console.log('Server response:', response);
 
-            },
-            error: function (error) {
-                // Handle errors if the request fails
-                console.error('Error:', error);
-            },
-            complete: function () {
-                // Stop the progress bar animation here if needed
-                console.log('Form submitted successfully');
-            }
-        });
-    }
+        // Redirect the user to another page after 90 seconds
+
+      },
+      error: function (error) {
+        // Handle errors if the request fails
+        console.error('Error:', error);
+    
+      },
+      complete: function () {
+        // Stop the progress bar animation here if needed
+        console.log('Form submitted successfully');
+      }
+    });
+  }
+ 
 
   
 function fillProgressBar() {
@@ -304,7 +292,7 @@ function fillProgressBar() {
                 fillProgressBarStageTwo();
             }, 1000);
         }
-    }, 87.5);
+    }, 175);
 }
 
 function fillProgressBarStageTwo() {
@@ -326,7 +314,7 @@ function fillProgressBarStageTwo() {
                 fillProgressBarStageThree();
             }, 1000);
         }
-    }, 87.5);
+    }, 175);
 }
 
 function fillProgressBarStageThree() {
@@ -349,15 +337,16 @@ function fillProgressBarStageThree() {
                 percentageTracker.textContent = '100.00%';
             }, 500);
         }
-    }, 87.5);
+    }, 175);
 }
-function disableButton() {
+
+  </script>
+  <script>
+    function disableButton() {
       var button = document.getElementById("disbutton");
               button.style.display = "none";
     }
-
   </script>
- 
 </body>
 
 </html>
