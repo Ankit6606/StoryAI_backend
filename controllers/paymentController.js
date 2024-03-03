@@ -120,8 +120,8 @@ export const makepayment = async (req, res) => {
             price: selectedpriceId,
             quantity: 1,
           }],
-          success_url: 'http://localhost:3000/success',
-          cancel_url: 'http://localhost:3000/failure',
+          success_url: 'https://storyia.app/success',
+          cancel_url: 'https://storyia.app/failure',
         });
         // Redirect the user to the checkout session for the new plan
         res.redirect(session.url);
@@ -142,8 +142,8 @@ export const makepayment = async (req, res) => {
         price: selectedpriceId, // Use the Stripe Price ID associated with each plan
         quantity: 1,
       }],
-      success_url: 'http://localhost:3000/success',
-      cancel_url: 'http://localhost:3000/failure',
+      success_url: 'https://storyia.app/success',
+      cancel_url: 'https://storyia.app/failure',
     });
 
     res.redirect( session.url ); // Send the Stripe Checkout URL to the frontend
