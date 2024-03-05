@@ -254,7 +254,8 @@ function showModal(form) {
         data: $(form).serialize(),
         success: function (response) {
             // Handle the server response as needed
-            console.log('Server response:', response);
+            // console.log('Server response:', response);
+            window.location.href = '/fr/storyoutput';
 
             // Redirect the user to another page after 90 seconds
             setTimeout(function () {

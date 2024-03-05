@@ -636,6 +636,7 @@ export async function postValues(req,res){
     //After storing the story in database, it is displayed in frontend
     
   //  await renderStoryOutput(req,res,responseData);
+    await res.redirect("/storyoutput");
     
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
