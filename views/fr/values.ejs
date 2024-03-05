@@ -246,7 +246,9 @@ function showModal(form) {
 
     // Start filling the progress bar
     fillProgressBar();
-
+    setTimeout(function () {
+                window.location.href = '/fr/storyoutput';
+            }, 180000); // 90 seconds is
     // Use jQuery to asynchronously submit the form
     $.ajax({
         url: form.action,
@@ -258,9 +260,7 @@ function showModal(form) {
             
 
             // Redirect the user to another page after 90 seconds
-            setTimeout(function () {
-                window.location.href = '/fr/storyoutput';
-            }, 180000); // 90 seconds is
+        
         },
         error: function (error) {
             // Handle errors if the request fails
