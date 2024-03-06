@@ -44,7 +44,12 @@ export function rendertncPageFr(req,res){
 };
 
 export function renderlandingPageFr(req,res){
-  res.render("fr/landing-page");
+  if(req.isAuthenticated()){
+    res.redirect("/fr/home");
+  }
+  else{
+    res.render("fr/landing-page");
+  }
 };
 
 //--Authentication pages--//
@@ -158,7 +163,7 @@ export function loginUserFr(req,res){
               }
       
               // If login is successful, redirect the user to the desired page
-              return res.redirect('/fr/');
+              return res.redirect('/fr/home');
           });
       })(req, res);
       
@@ -177,7 +182,7 @@ export function getphoneNumberFr(req,res){
       res.render("fr/otp1");
     }
     else{
-      res.redirect("/fr/");
+      res.redirect("/fr/home");
     }
   }else{
     res.redirect("/fr/authenticate2");
@@ -245,7 +250,7 @@ export async function otpVerificationFr(req,res){
       console.log('Verification successful!'); 
       await User.findOneAndUpdate({ _id: req.user.id }, { phoneNumber: globalNumber });
       const message = "Your phone number is verified";
-      const script = `<script>alert("${message}"); window.location.href="/";</script>`;
+      const script = `<script>alert("${message}"); window.location.href="/fr/home";</script>`;
       return res.send(script);
     } 
     else {
@@ -465,7 +470,7 @@ export function userLogoutFr(req,res){
         console.log(err);
     }
     else{
-        res.redirect("/");
+        res.redirect("/fr/home");
     }
   })
 }
@@ -734,6 +739,7 @@ export function profileManageFr(req,res){
       res.render("fr/profile",{
         gems : req.user.gems,
         parrots : req.user.parrots,
+        Name : req.user.name,
       });
     }else{
       res.redirect("/fr/phonenumber");
@@ -766,7 +772,7 @@ export async function editProfileFr(req, res) {
   
         if (Object.keys(updateFields).length === 0) {
           // If no fields to update, redirect back without DB interaction
-          return res.redirect("/fr/");
+          return res.redirect("/fr/profile");
         }
   
         const updatedUser = await User.findByIdAndUpdate(
@@ -777,14 +783,14 @@ export async function editProfileFr(req, res) {
   
         if (!updatedUser) {
           console.log("User not found");
-          return res.redirect("/fr/"); // Redirect or handle the error appropriately
+          return res.redirect("/fr/home"); // Redirect or handle the error appropriately
         }
   
         // console.log("Updated User:", updatedUser);
-        res.redirect("/fr/"); // Successfully updated user
+        res.redirect("/fr/profile"); // Successfully updated user
       } catch (err) {
         console.log(err);
-        res.redirect("/fr/"); // Redirect or handle the error appropriately
+        res.redirect("/fr/home"); // Redirect or handle the error appropriately
       }
     }
     else{

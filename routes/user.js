@@ -85,8 +85,8 @@ const router = express.Router();
 //French
 router.get("/fr/T&C", rendertncPageFr);
 router.get("/fr/PrivacyPolicy", renderppPageFr);
-router.get("/fr/",rootRenderFr);
-router.get("/fr/landingpage",renderlandingPageFr);
+router.get("/fr/home",rootRenderFr);
+router.get("/fr/",renderlandingPageFr);
 router.get("/fr/authenticate",authenticateRenderFr);
 router.get("/fr/authenticate2",authenticateRender2Fr);
 router.get("/fr/register",registerRenderFr);
@@ -111,7 +111,7 @@ router.get("/fr/cancelPlan",cancelSubscription);
 
 //Post requests
 
-router.post("/fr/",rootPostFr);
+router.post("/fr/home",rootPostFr);
 router.post("/fr/register",registerUserFr);
 router.post("/fr/login",loginUserFr);
 router.post("/fr/phonenumber",postPhonenumberFr);
@@ -128,8 +128,8 @@ router.post("/fr/webhook",manageInvoiceFr);
 //English
 router.get("/T&C", rendertncPage);
 router.get("/PrivacyPolicy", renderppPage);
-router.get("/",rootRender);
-router.get("/landingpage",renderlandingPage);
+router.get("/home",rootRender);
+router.get("/",renderlandingPage);
 router.get("/authenticate",authenticateRender);
 router.get("/authenticate2",authenticateRender2);
 router.get("/register",registerRender);
@@ -154,7 +154,7 @@ router.get("/cancelPlan",cancelSubscription);
 
 //Post requests
 
-router.post("/",rootPost);
+router.post("/home",rootPost);
 router.post("/register",registerUser);
 router.post("/login",loginUser);
 router.post("/phonenumber",postPhonenumber);

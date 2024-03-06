@@ -44,7 +44,12 @@ export function rendertncPage(req,res){
 };
 
 export function renderlandingPage(req,res){
-  res.render("landing-page");
+  if(req.isAuthenticated()){
+    res.redirect("/home");
+  }
+  else{
+    res.render("landing-page");
+  }
 };
 
 //--Authentication pages--//
@@ -159,7 +164,7 @@ export function loginUser(req,res){
       
               // If login is successful, redirect the user to the desired page
               
-              return res.redirect('/');
+              return res.redirect('/home');
           });
       })(req, res);
       
@@ -175,7 +180,7 @@ export function userLogout(req,res){
         console.log(err);
     }
     else{
-        res.redirect("/");
+        res.redirect("/home");
     }
   })
 }
@@ -196,7 +201,7 @@ export function getphoneNumber(req,res){
       
     }
     else{
-      res.redirect("/");
+      res.redirect("/home");
     }
   }else{
     res.redirect("/authenticate2");
@@ -267,7 +272,7 @@ export async function otpVerification(req,res){
       console.log('Verification successful!'); 
       await User.findOneAndUpdate({ _id: req.user.id }, { phoneNumber: globalNumber });
       const message = "Your phone number is verified";
-      const script = `<script>alert("${message}"); window.location.href="/";</script>`;
+      const script = `<script>alert("${message}"); window.location.href="/home";</script>`;
       return res.send(script);
     } 
     else {
@@ -864,14 +869,14 @@ export async function editProfile(req, res) {
   
         if (!updatedUser) {
           console.log("User not found");
-          return res.redirect("/"); // Redirect or handle the error appropriately
+          return res.redirect("/home"); // Redirect or handle the error appropriately
         }
   
         // console.log("Updated User:", updatedUser);
-        res.redirect("/"); // Successfully updated user
+        res.redirect("/profile"); // Successfully updated user
       } catch (err) {
         console.log(err);
-        res.redirect("/"); // Redirect or handle the error appropriately
+        res.redirect("/home"); // Redirect or handle the error appropriately
       }
     }
     else{

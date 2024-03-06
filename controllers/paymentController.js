@@ -74,7 +74,7 @@ export const makepayment = async (req, res) => {
     let selectedpriceId;
     switch(selectedBoxId){
       case 'basic':
-        res.redirect("/");
+        res.redirect("/home");
         return;
       case 'discover':
         selectedpriceId = process.env.DISCOVER_PLAN_ID;
@@ -199,7 +199,7 @@ export const cancelSubscription = async (req, res) => {
         }
         subscribedUser.active = "false";
         await subscribedUser.save();
-        res.redirect("/");
+        res.redirect("/subscribe");
       } else {
         // res.status(400).json({ error: 'Subscription is not active' });
         const errorMsg = "You don't have any current active subscription.";
