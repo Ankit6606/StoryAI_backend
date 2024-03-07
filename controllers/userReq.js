@@ -213,8 +213,10 @@ export function getphoneNumber(req,res){
 export async function postPhonenumber(req, res) {
   try {
     if(req.isAuthenticated()){
-      const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
-      globalNumber = mobileNumber;
+      const mobileNumber = req.body.prephoneNumber + "-" + req.body.phoneNumber;
+      const cleanedMobileNumber = mobileNumber.replace(/\s/g, ''); // Removes all spaces from mobileNumber
+      globalNumber = cleanedMobileNumber;
+
       initialLang = "";
       
       justNumber = req.body.prephoneNumber + req.body.phoneNumber;
@@ -309,38 +311,18 @@ export async function rootRender(req,res){
       if (!user) {
         throw new Error('User not found');
       }
-      // console.log(user.salt);
-      
-    //   console.log("Provided Password:", providedPassword);
-    //   console.log("User Salt:", user.salt);
-    //   console.log("User Hash:", user.hash);
-    //   crypto.pbkdf2(providedPassword, user.salt, 10000, 64, 'sha512', (err, derivedKey) => {
-    //     if (err) {
-    //       console.error(err);
-    //       // Handle error
-    //     }
+
+
+      //--------Password Recovery function---------//
+      // user.setPassword("1234567", async () => {
         
-    //       const hashedPassword = derivedKey.toString('hex');
-    //       console.log("Generated Hash:", hashedPassword);
-    //   if (hashedPassword === user.hash) {
-    //     console.log("Password is correct");
-    //   } else {
-    //     console.log("Password is incorrect");
-    //   }
-    // });
-      // const newPassword = "123456";
-      // const newSalt = crypto.randomBytes(64).toString('hex');
-      // const newDerivedKey = await new Promise((resolve, reject) => {
-      //   crypto.pbkdf2(newPassword, newSalt, 10000, 64, 'sha512', (err, derivedKey) => {
-      //     if (err) reject(err);
-      //     resolve(derivedKey.toString('hex'));
-      //   });
-      // });
+      //   // Save user with new password
+      //   await user.save();
   
-      // // Update salt and hash in the database
-      // user.salt = newSalt;
-      // user.hash = newDerivedKey;
-      // await user.save();
+      //   // Redirect or respond with success message
+      //   console.log("Password changed");
+      // });
+      
       res.render("home",{
         userStories: user.stories,
         gems : req.user.gems,
@@ -822,6 +804,8 @@ export function profileManage(req,res){
       //     console.log("password changed");
       //   }
       // })
+
+      
       res.render("profile",{
         gems : req.user.gems,
         parrots : req.user.parrots,
