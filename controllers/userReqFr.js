@@ -195,10 +195,12 @@ export async function postPhonenumberFr(req, res) {
   try {
     if(req.isAuthenticated()){
       const mobileNumber =  req.body.prephoneNumber + "-" + req.body.phoneNumber;
-      globalNumber = mobileNumber;
-      justNumber = req.body.prephoneNumber + req.body.phoneNumber;
-      // console.log(mobileNumber);
-      const foundUser = await User.findOne({ phoneNumber: mobileNumber });
+      const cleanedMobileNumber = mobileNumber.replace(/\s/g, ''); // Removes all spaces from mobileNumber
+      globalNumber = cleanedMobileNumber;
+      // console.log(globalNumber);
+      justNumber = (req.body.prephoneNumber + req.body.phoneNumber).replace(/\s/g, '');
+      // console.log(justNumber);
+      const foundUser = await User.findOne({ phoneNumber: cleanedMobileNumber });
   
       if (foundUser) {
         // If a user with the same phone number exists
