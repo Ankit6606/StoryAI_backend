@@ -30,7 +30,9 @@ import {rootRenderFr,
         clickStoriesFr,
         userLogoutFr,
         rendertncPageFr,
-        renderppPageFr
+        renderppPageFr,
+        getOTPForPasswordFr,
+        changePasswordFr
         } from '../controllers/userReqFr.js';
 
 
@@ -63,7 +65,9 @@ import {rootRender,
         otpVerification,
         clickStories,
         rendertncPage,
-        renderppPage
+        renderppPage,
+        getOTPForPassword,
+        changePassword
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -101,6 +105,8 @@ router.get("/fr/values",renderValuesFr);
 router.get("/fr/storyhistory", rendershpFr);
 router.get("/fr/storyoutput",showStoriesFr);
 router.get("/logout",userLogoutFr);
+router.get("/fr/passwordotp",getOTPForPasswordFr);
+router.get("/fr/changePassword", changePasswordFr);
 
 // router.get("/storyoutput",getStoryOutput);
 router.get("/fr/success",success);
@@ -144,6 +150,8 @@ router.get("/emotions",renderEmotions);
 router.get("/values",renderValues);
 router.get("/storyhistory", rendershp);
 router.get("/storyoutput",showStories);
+router.get("/passwordotp",getOTPForPassword);
+router.get("/changePassword", changePassword);
 
 // router.get("/storyoutput",getStoryOutput);
 router.get("/success",success);

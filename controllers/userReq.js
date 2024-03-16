@@ -874,3 +874,10 @@ export async function editProfile(req, res) {
 };
 
 
+export async function getOTPForPassword(req,res){
+  res.render("recoverPass1");
+}
+
+export async function changePassword(req,res){
+  res.render("recoverPass2");
+}

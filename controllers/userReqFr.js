@@ -806,3 +806,10 @@ export async function editProfileFr(req, res) {
 };
 
 
+export async function getOTPForPasswordFr(req,res){
+  res.render("fr/recoverPass1");
+}
+
+export async function changePasswordFr(req,res){
+  res.render("fr/recoverPass2");
+}
