@@ -194,6 +194,7 @@ export function getphoneNumber(req,res){
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
       if(initialLang==="eng"){
+        console.log(initialLang);
         res.render("otp1");
       }else{
         res.redirect("/fr/phonenumber");
