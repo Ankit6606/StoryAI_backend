@@ -813,3 +813,6 @@ export async function getOTPForPasswordFr(req,res){
 export async function changePasswordFr(req,res){
   res.render("fr/recoverPass2");
 }
+export async function changePassword2Fr(req,res){
+  res.render("fr/changePass");
+}

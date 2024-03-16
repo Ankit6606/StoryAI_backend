@@ -882,3 +882,7 @@ export async function getOTPForPassword(req,res){
 export async function changePassword(req,res){
   res.render("recoverPass2");
 }
+
+export async function changePassword2(req,res){
+  res.render("changePass");
+}
