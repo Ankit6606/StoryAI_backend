@@ -264,7 +264,7 @@ line-height: 150%; /* 27px */
     background-image: linear-gradient(180deg, #9665D3, #223276);
     background-size: 150%;
     background-repeat: repeat;
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
