@@ -177,7 +177,7 @@ html {
     padding: 2px 6px;
     color: var(--white);
     font-family: Volkhov;
-    font-size: 1.8em;
+    font-size: 1.28em;
     text-decoration: none;
     transform: skew(16deg);
     z-index: 1; /* Ensure the text appears above the ::before pseudo-element */
