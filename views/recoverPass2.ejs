@@ -48,7 +48,7 @@
       <div class="ellipse"></div>
 
       <!-- Button Container -->
-      <form action="/register" method="POST">
+      <form action="/recoverPassword" method="POST">
         <div class="flexbox" id="flexbox" style="display: block;">
           <div class="title">Recover Password</div>
           <div class="subtitle">Recover your password using your<br>Email id & Phone Number</div>
@@ -56,7 +56,7 @@
             <!-- Sign-up fields and button -->
             <div class="boxz">
               <div class="header-text">Recovery Key</div>
-              <input id="signUpFullName" class="input-field" type="text" placeholder="Recovery Key Sent To Your Registered Ph. No." name="name" required>
+              <input id="signUpFullName" class="input-field" type="text" placeholder="Recovery Key Sent To Your Registered Ph. No." name="recoveryOtp" required oninput="removeSpaces(event)">
             </div>
            
             <div class="boxz">
@@ -71,7 +71,7 @@
             <div class="boxz">
                 <div class="header-text">Confirm New Password</div>
                 <div class="password-container">
-                  <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirm New Password" name="password" required>
+                  <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirm New Password" name="confirmedPassword" required>
                   <div class="password-toggle" onclick="togglePasswordVisibility()">
                     <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                   </div>
@@ -86,7 +86,7 @@
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="showNextPage()">
-            <a href="/"><span
+            <a href="/passwordotp"><span
               class="sign-in-text" id="toggle-text">Go Back</span></a></div>
         </div>
       </form>
@@ -95,6 +95,12 @@
       <script src="js/signup.js"></script>
     </div>
   </div>
+  <script>
+    function removeSpaces(event) {
+      const input = event.target;
+      input.value = input.value.replace(/\s/g, ''); // Remove any spaces
+    }
+  </script>
 </body>
 
 </html>

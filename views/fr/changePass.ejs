@@ -47,7 +47,7 @@
       <div class="ellipse"></div>
 
       <!-- Button Container -->
-      <form action="/fr/register" method="POST">
+      <form action="/fr/changePassword" method="POST">
         <div class="flexbox" id="flexbox" style="display: block;">
           <div class="title">Change Password</div>
           <div class="subtitle">Change your password using your<br>current password</div>
@@ -56,7 +56,7 @@
             <div class="boxz">
               <div class="header-text">Current Password</div>
               <div class="password-container">
-                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Enter Current Password" name="password" required>
+                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Enter Current Password" name="currentPassword" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
@@ -75,7 +75,7 @@
             <div class="boxz">
               <div class="header-text">Confirm New Password</div>
               <div class="password-container">
-                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirm New Password" name="password" required>
+                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirm New Password" name="confirmedPassword" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>

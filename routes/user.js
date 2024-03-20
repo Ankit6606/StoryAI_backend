@@ -33,7 +33,10 @@ import {rootRenderFr,
         renderppPageFr,
         getOTPForPasswordFr,
         changePasswordFr,
-        changePassword2Fr
+        changePassword2Fr,
+        verifyEmailAndNumberFr,
+        otpVerificationForPasswordChangeFr,
+        passwordChangeFromProfileFr
         } from '../controllers/userReqFr.js';
 
 
@@ -69,7 +72,10 @@ import {rootRender,
         renderppPage,
         getOTPForPassword,
         changePassword,
-        changePassword2
+        changePassword2,
+        verifyEmailAndNumber,
+        otpVerificationForPasswordChange,
+        passwordChangeFromProfile
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -108,7 +114,7 @@ router.get("/fr/storyhistory", rendershpFr);
 router.get("/fr/storyoutput",showStoriesFr);
 router.get("/logout",userLogoutFr);
 router.get("/fr/passwordotp",getOTPForPasswordFr);
-router.get("/fr/recoverPass", changePasswordFr);
+router.get("/fr/recoverPassword", changePasswordFr);
 router.get("/fr/changePassword", changePassword2Fr);
 router.get("/fr/success",success);
 router.get("/fr/failure",failure);
@@ -131,8 +137,13 @@ router.post("/fr/profile",editProfileFr);
 router.post("/fr/subscribe",makepayment);
 router.post("/fr/storyhistory",clickStoriesFr);
 router.post("/fr/webhook",manageInvoiceFr);
+router.post("/fr/passwordotp", verifyEmailAndNumberFr);
+router.post("/fr/recoverPassword", otpVerificationForPasswordChangeFr);
+router.post("/fr/changePassword", passwordChangeFromProfileFr);
 
-//English
+
+//--------English---------//
+
 router.get("/T&C", rendertncPage);
 router.get("/PrivacyPolicy", renderppPage);
 router.get("/home",rootRender);
@@ -154,7 +165,7 @@ router.get("/storyoutput",showStories);
 //recoverpass1 -moy
 router.get("/passwordotp",getOTPForPassword);
 //recoverpass2 -moy
-router.get("/recoverPass", changePassword);
+router.get("/recoverPassword", changePassword);
 //changepass -moy
 router.get("/changePassword", changePassword2);
 
@@ -180,5 +191,8 @@ router.post("/profile",editProfile);
 router.post("/subscribe",makepayment);
 router.post("/storyhistory",clickStories);
 router.post("/webhook",manageInvoice);
+router.post("/passwordotp", verifyEmailAndNumber);
+router.post("/recoverPassword", otpVerificationForPasswordChange);
+router.post("/changePassword", passwordChangeFromProfile);
 
 export { router as userApp };
