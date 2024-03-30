@@ -68,7 +68,7 @@ export const makepayment = async (req, res) => {
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       const  selectedBoxId  = req.body.selectedBoxId;
-  // console.log('Received planId:', selectedBoxId);
+      console.log('Received planId:', selectedBoxId);
   try {
 
     let selectedpriceId;
