@@ -1,4 +1,4 @@
-// paymentModule.mjs
+
 
 import stripePackage from 'stripe';
 import 'dotenv/config';
@@ -68,7 +68,7 @@ export const makepayment = async (req, res) => {
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       const  selectedBoxId  = req.body.selectedBoxId;
-  // console.log('Received planId:', selectedBoxId);
+  console.log('Received planId:', selectedBoxId);
   try {
 
     let selectedpriceId;
@@ -303,7 +303,8 @@ export const manageInvoice = async (req, res) => {
         user.parrots += parrotsToAdd;
         await user.save(); // Save the updated user
       } else {
-        console.log("User not found");
+        console.log("Webhook User not found");
+        console.log('paymentdetails.customerId:', customerId);
     // Handle the case where the user is not found
         return res.status(404).send("User not found");
       }
