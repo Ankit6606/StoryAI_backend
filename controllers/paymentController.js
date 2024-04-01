@@ -1,5 +1,4 @@
 
-
 import stripePackage from 'stripe';
 import 'dotenv/config';
 import User from '../models/users.js';
@@ -301,10 +300,11 @@ export const manageInvoice = async (req, res) => {
       if (user) {
         user.gems += gemsToAdd;
         user.parrots += parrotsToAdd;
+        console.log(gemsToAdd);
         await user.save(); // Save the updated user
       } else {
         console.log("Webhook User not found");
-        console.log('paymentdetails.customerId:', customerId);
+        console.log('paymentdetails.customerId:', user.paymentdetails[0].customerId);
     // Handle the case where the user is not found
         return res.status(404).send("User not found");
       }
