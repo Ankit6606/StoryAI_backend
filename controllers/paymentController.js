@@ -67,11 +67,11 @@ export const makepayment = async (req, res) => {
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       const  selectedBoxId  = req.body.selectedBoxId;
-<<<<<<< HEAD
+
       console.log('Received planId:', selectedBoxId);
-=======
+
   console.log('Received planId:', selectedBoxId);
->>>>>>> b9744b9f2c662e9bfb2eda5ca3319ccdba8a5018
+
   try {
 
     let selectedpriceId;
@@ -256,7 +256,7 @@ export const manageInvoice = async (req, res) => {
   // console.log('Webhook Event Type:', event.type);
 
   switch (event.type) {
-    case 'invoice.payment_succeeded':
+    case 'invoice.paid':
       const subscriptionId = event.data.object.subscription;
       const customerId = event.data.object.customer;
       const amountPaid = event.data.object.amount_paid;
@@ -317,9 +317,9 @@ export const manageInvoice = async (req, res) => {
   
   
     
-    case "invoice.payment_failed":
-      console.log("Invoice generation is not successful");
-      break;
+    // case "invoice.payment_failed":
+    //   console.log("Invoice generation is not successful");
+    //   break;
     // Handle other event types as needed
   }
 
