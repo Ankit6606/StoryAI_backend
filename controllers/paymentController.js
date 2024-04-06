@@ -187,7 +187,7 @@ export const cancelSubscription = async (req, res) => {
         });
         const user = await User.findOne({_id : uid});
         if(user){
-          if(user.stories){
+          if(user.stories && user.stories.length > 0){
           user.gems = 0;
           user.parrots = 0;
           }else{
