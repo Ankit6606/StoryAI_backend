@@ -299,7 +299,7 @@ export const manageInvoice = async (req, res) => {
         parrotsToAdd = 40;
       }
 
-      const paymentUser = await Payment.find({'customerId': customerId});
+      const paymentUser = await Payment.findOne({'customerId': customerId});
       if(paymentUser){
         const user = await User.findOne({ '_id': paymentUser.userId });
         if (user) {
@@ -309,6 +309,7 @@ export const manageInvoice = async (req, res) => {
           await user.save(); // Save the updated user
       }else{
         console.log("Webhook User not found");
+        console.log(user._id);
       }
       } else {
         console.log("userid:",paymentUser.userId);
