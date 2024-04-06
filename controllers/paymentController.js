@@ -107,8 +107,8 @@ export const makepayment = async (req, res) => {
       try {
         // Retrieve the user's current subscription details from Stripe
         const subscription = await stripe.subscriptions.retrieve(paidUser.subscriptionId);
-        
-        // Cancel the current subscription
+        if(subscription.status === 'active'){
+          // Cancel the current subscription
         await stripe.subscriptions.update(paidUser.subscriptionId, {
           cancel_at_period_end: false, // Cancel instantly
         });
@@ -128,6 +128,7 @@ export const makepayment = async (req, res) => {
         });
         // Redirect the user to the checkout session for the new plan
         res.redirect(session.url);
+        }
       }
        catch (error) {
         console.error('Error upgrading subscription:', error);
