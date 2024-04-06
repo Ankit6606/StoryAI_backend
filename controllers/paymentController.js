@@ -426,9 +426,9 @@ const success = async (req, res) => {
   try {
       res.render('success');
       // Redirect to home page after 3 seconds
-    setTimeout(() => {
-      res.redirect("/home");
-    }, 3000);
+    // setTimeout(() => {
+    //   res.redirect("/home");
+    // }, 3000);
   } catch (error) {
       console.log(error.message);
   }
