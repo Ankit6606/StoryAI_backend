@@ -102,11 +102,12 @@ export const makepayment = async (req, res) => {
     }
 
     if (req.user.subscriptionPlan !== "basic") {
-      const paidUser = await Payment.findOne({userid : uid, active : "true"}); 
+      const paidUser = await Payment.findOne({userId : uid, active : "true"}); 
       if(paidUser){
       try {
         // Retrieve the user's current subscription details from Stripe
         const subscription = await stripe.subscriptions.retrieve(paidUser.subscriptionId);
+
         if(subscription.status === 'active'){
           // Cancel the current subscription
         await stripe.subscriptions.update(paidUser.subscriptionId, {
