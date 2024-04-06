@@ -256,7 +256,7 @@ export const manageInvoice = async (req, res) => {
   // console.log('Webhook Event Type:', event.type);
 
   switch (event.type) {
-    case 'invoice.paid':
+    case 'invoice.payment_succeeded':
       const subscriptionId = event.data.object.subscription;
       const customerId = event.data.object.customer;
       const amountPaid = event.data.object.amount_paid;
@@ -320,9 +320,9 @@ export const manageInvoice = async (req, res) => {
       }
       break;
      
-    // case "invoice.payment_failed":
-    //   console.log("Invoice generation is not successful");
-    //   break;
+    case "invoice.payment_failed":
+      console.log("Invoice generation is not successful");
+      break;
     // Handle other event types as needed
   }
 
@@ -426,11 +426,8 @@ export const manageInvoiceFr = async (req, res) => {
 
 const success = async (req, res) => {
   try {
-      res.render('success');
-      // Redirect to home page after 3 seconds
-    // setTimeout(() => {
-    //   res.redirect("/home");
-    // }, 3000);
+      // res.render('success');
+     res.redirect("/home");
   } catch (error) {
       console.log(error.message);
   }
