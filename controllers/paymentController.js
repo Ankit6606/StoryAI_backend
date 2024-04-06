@@ -1,4 +1,4 @@
-
+// paymentModule.mjs
 import stripePackage from 'stripe';
 import 'dotenv/config';
 import User from '../models/users.js';
@@ -313,10 +313,7 @@ export const manageInvoice = async (req, res) => {
         return res.status(404).send("User not found");
       }
       break;
-    // Handle other event types as needed
-  
-  
-    
+     
     // case "invoice.payment_failed":
     //   console.log("Invoice generation is not successful");
     //   break;
@@ -424,6 +421,10 @@ export const manageInvoiceFr = async (req, res) => {
 const success = async (req, res) => {
   try {
       res.render('success');
+      // Redirect to home page after 3 seconds
+    setTimeout(() => {
+      res.redirect("/home");
+    }, 3000);
   } catch (error) {
       console.log(error.message);
   }
@@ -432,7 +433,7 @@ const success = async (req, res) => {
 
 const failure = async (req, res) => {
     try {
-        res.render('payment_failure');
+        res.redirect("/subscribe");
     } catch (error) {
         console.log(error.message);
     }
