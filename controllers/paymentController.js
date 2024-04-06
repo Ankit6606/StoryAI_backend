@@ -299,16 +299,19 @@ export const manageInvoice = async (req, res) => {
         parrotsToAdd = 40;
       }
 
-  
-      const user = await User.findOne({ 'paymentdetails.customerId': customerId });
-      if (user) {
-        user.gems += gemsToAdd;
-        user.parrots += parrotsToAdd;
-        console.log(gemsToAdd);
-        await user.save(); // Save the updated user
-      } else {
+      const paymentUser = await Payment.find({'customerId': customerId});
+      if(paymentUser){
+        const user = await User.findOne({ '_id': paymentUser.userId });
+        if (user) {
+          user.gems += gemsToAdd;
+          user.parrots += parrotsToAdd;
+          console.log(gemsToAdd);
+          await user.save(); // Save the updated user
+      }else{
         console.log("Webhook User not found");
-        console.log('paymentdetails.customerId:', user.paymentdetails[0].customerId);
+      }
+      } else {
+        console.log("userid:",paymentUser.userId);
     // Handle the case where the user is not found
         return res.status(404).send("User not found");
       }
