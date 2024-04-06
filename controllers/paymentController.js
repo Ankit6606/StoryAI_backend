@@ -299,9 +299,11 @@ export const manageInvoice = async (req, res) => {
         parrotsToAdd = 40;
       }
 
-      const paymentUser = await Payment.findOne({'customerId': customerId});
+     
+
+      const paymentUser = await Payment.findOne({customerId: customerId});
       if(paymentUser){
-        const user = await User.findOne({ '_id': paymentUser.userId });
+        const user = await User.findOne({ _id: paymentUser.userId });
         if (user) {
           user.gems += gemsToAdd;
           user.parrots += parrotsToAdd;
