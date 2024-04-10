@@ -177,9 +177,11 @@ export const cancelSubscription = async (req, res) => {
       if(req.user.phoneNumber){
         // Check if the user has an active subscription
       const subscribedUser  = await Payment.findOne({userId : uid, active : "true"});
+      console.log(subscribedUser.subscriptionId);
       if(subscribedUser){
       // Retrieve the subscription details from Stripe
       const subscription = await stripe.subscriptions.retrieve(subscribedUser.subscriptionId);
+      console.log(subscription.status);
 
       // Check if the subscription is cancelable
       if (subscription.status === 'active') {
@@ -187,6 +189,7 @@ export const cancelSubscription = async (req, res) => {
         await stripe.subscriptions.update(subscribedUser.subscriptionId, {
           cancel_at_period_end: false, // Cancel instantly
         });
+        console.log("after cancellation:",subscription.status);
         const user = await User.findOne({_id : uid});
         if(user){
           if(user.stories && user.stories.length > 0){
