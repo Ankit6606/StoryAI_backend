@@ -186,9 +186,7 @@ export const cancelSubscription = async (req, res) => {
       // Check if the subscription is cancelable
       if (subscription.status === 'active') {
         // Cancel the subscription
-        await stripe.subscriptions.cancel(subscribedUser.subscriptionId, {
-          cancel_at_period_end: false, // Cancel instantly
-        });
+        await stripe.subscriptions.cancel(subscribedUser.subscriptionId);
         console.log("after cancellation:",subscription.status);
         const user = await User.findOne({_id : uid});
         if(user){
