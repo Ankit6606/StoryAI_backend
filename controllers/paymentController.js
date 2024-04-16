@@ -110,9 +110,7 @@ export const makepayment = async (req, res) => {
 
         if(subscription.status === 'active'){
           // Cancel the current subscription
-        await stripe.subscriptions.update(paidUser.subscriptionId, {
-          cancel_at_period_end: false, // Cancel instantly
-        });
+          await stripe.subscriptions.cancel(paidUser.subscriptionId);
         
         paidUser.active = "false";
         await paidUser.save();
