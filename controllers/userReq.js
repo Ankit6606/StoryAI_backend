@@ -34,6 +34,13 @@ let justNumber= "";
 let story = [];
 let storyHistory = 0;
 let initialLang = "french";
+export function renderpublishPage(req,res){
+  res.render("publish");
+};
+
+export function renderaiPage(req,res){
+  res.render("ai");
+};
 
 export function renderppPage(req,res){
   res.render("pp");

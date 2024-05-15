@@ -34,6 +34,13 @@ let lang="";
 let story = [];
 let storyHistoryFr = 0;
 
+export function renderpublishPageFr(req,res){
+  res.render("fr/publish");
+};
+
+export function renderaiPageFr(req,res){
+  res.render("fr/ai");
+};
 
 export function renderppPageFr(req,res){
   res.render("fr/pp");

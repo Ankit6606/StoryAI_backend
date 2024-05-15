@@ -33,7 +33,9 @@ import {rootRenderFr,
         renderppPageFr,
         getOTPForPasswordFr,
         changePasswordFr,
-        changePassword2Fr
+        changePassword2Fr,
+        renderpublishPageFr,
+        renderaiPageFr
         } from '../controllers/userReqFr.js';
 
 
@@ -69,7 +71,9 @@ import {rootRender,
         renderppPage,
         getOTPForPassword,
         changePassword,
-        changePassword2
+        changePassword2,
+        renderaiPage,
+        renderpublishPage
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -89,6 +93,8 @@ const router = express.Router();
 
 //Get requests
 //French
+router.get("/fr/publishers", renderpublishPageFr);
+router.get("/fr/aiact", renderaiPageFr);
 router.get("/fr/T&C", rendertncPageFr);
 router.get("/fr/PrivacyPolicy", renderppPageFr);
 router.get("/fr/home",rootRenderFr);
@@ -133,6 +139,8 @@ router.post("/fr/storyhistory",clickStoriesFr);
 router.post("/fr/webhook",manageInvoiceFr);
 
 //English
+router.get("/publishers", renderpublishPage);
+router.get("/aiact", renderaiPage);
 router.get("/T&C", rendertncPage);
 router.get("/PrivacyPolicy", renderppPage);
 router.get("/home",rootRender);
