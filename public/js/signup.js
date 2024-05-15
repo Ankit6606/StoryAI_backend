@@ -86,11 +86,11 @@
                         flexbox.classList.add("fade-in-up");
                     }
                 }
-                function showNextPage() {
+                // function showNextPage() {
                 
                 
-                    // Wait for the animation to complete, then redirect to the next page
-                    setTimeout(function () {
-                        window.location.href = "/register2"; // Replace with the actual URL of the next page
-                    }, 1000); // Adjust the timeout based on your fadeOut animation duration
-                }
+                //     // Wait for the animation to complete, then redirect to the next page
+                //     setTimeout(function () {
+                //         window.location.href = "/register2"; // Replace with the actual URL of the next page
+                //     }, 1000); // Adjust the timeout based on your fadeOut animation duration
+                // }

@@ -1,5 +1,4 @@
 // paymentModule.mjs
-
 import stripePackage from 'stripe';
 import 'dotenv/config';
 import User from '../models/users.js';
@@ -68,7 +67,11 @@ export const makepayment = async (req, res) => {
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
       const  selectedBoxId  = req.body.selectedBoxId;
-  // console.log('Received planId:', selectedBoxId);
+
+      console.log('Received planId:', selectedBoxId);
+
+  console.log('Received planId:', selectedBoxId);
+
   try {
 
     let selectedpriceId;
@@ -99,16 +102,15 @@ export const makepayment = async (req, res) => {
     }
 
     if (req.user.subscriptionPlan !== "basic") {
-      const paidUser = await Payment.findOne({userid : uid, active : "true"}); 
+      const paidUser = await Payment.findOne({userId : uid, active : "true"}); 
       if(paidUser){
       try {
         // Retrieve the user's current subscription details from Stripe
         const subscription = await stripe.subscriptions.retrieve(paidUser.subscriptionId);
-        
-        // Cancel the current subscription
-        await stripe.subscriptions.update(paidUser.subscriptionId, {
-          cancel_at_period_end: false, // Cancel instantly
-        });
+
+        if(subscription.status === 'active'){
+          // Cancel the current subscription
+          await stripe.subscriptions.cancel(paidUser.subscriptionId);
         
         paidUser.active = "false";
         await paidUser.save();
@@ -125,6 +127,7 @@ export const makepayment = async (req, res) => {
         });
         // Redirect the user to the checkout session for the new plan
         res.redirect(session.url);
+        }
       }
        catch (error) {
         console.error('Error upgrading subscription:', error);
@@ -172,19 +175,20 @@ export const cancelSubscription = async (req, res) => {
       if(req.user.phoneNumber){
         // Check if the user has an active subscription
       const subscribedUser  = await Payment.findOne({userId : uid, active : "true"});
+      console.log(subscribedUser.subscriptionId);
       if(subscribedUser){
       // Retrieve the subscription details from Stripe
       const subscription = await stripe.subscriptions.retrieve(subscribedUser.subscriptionId);
+      console.log(subscription.status);
 
       // Check if the subscription is cancelable
       if (subscription.status === 'active') {
         // Cancel the subscription
-        await stripe.subscriptions.update(subscribedUser.subscriptionId, {
-          cancel_at_period_end: false, // Cancel instantly
-        });
+        await stripe.subscriptions.cancel(subscribedUser.subscriptionId);
+        console.log("after cancellation:",subscription.status);
         const user = await User.findOne({_id : uid});
         if(user){
-          if(user.stories){
+          if(user.stories && user.stories.length > 0){
           user.gems = 0;
           user.parrots = 0;
           }else{
@@ -296,22 +300,27 @@ export const manageInvoice = async (req, res) => {
         parrotsToAdd = 40;
       }
 
-  
-      const user = await User.findOne({ 'paymentdetails.customerId': customerId });
-      if (user) {
-        user.gems += gemsToAdd;
-        user.parrots += parrotsToAdd;
-        await user.save(); // Save the updated user
+     
+
+      const paymentUser = await Payment.findOne({customerId: customerId});
+      if(paymentUser){
+        const user = await User.findOne({ _id: paymentUser.userId });
+        if (user) {
+          user.gems += gemsToAdd;
+          user.parrots += parrotsToAdd;
+          console.log(gemsToAdd);
+          await user.save(); // Save the updated user
+      }else{
+        console.log("Webhook User not found");
+        console.log(user._id);
+      }
       } else {
-        console.log("User not found");
+        console.log("userid:",paymentUser.userId);
     // Handle the case where the user is not found
         return res.status(404).send("User not found");
       }
       break;
-    // Handle other event types as needed
-  
-  
-    
+     
     case "invoice.payment_failed":
       console.log("Invoice generation is not successful");
       break;
@@ -418,7 +427,8 @@ export const manageInvoiceFr = async (req, res) => {
 
 const success = async (req, res) => {
   try {
-      res.render('success');
+      // res.render('success');
+     res.redirect("/home");
   } catch (error) {
       console.log(error.message);
   }
@@ -427,7 +437,7 @@ const success = async (req, res) => {
 
 const failure = async (req, res) => {
     try {
-        res.render('payment_failure');
+        res.redirect("/subscribe");
     } catch (error) {
         console.log(error.message);
     }

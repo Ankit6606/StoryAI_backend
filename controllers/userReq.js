@@ -29,18 +29,13 @@ let character = "";
 let scenario = "";
 let emotions = "";
 let values = "";
-let globalNumber = "";
-let justNumber= "";
+let globalNumber = "";   //For storing in database
+let globalNumber2 = "";
+let justNumber= "";  //For Twilio
+let justNumber2 = "";  //For twilio password recovery
 let story = [];
 let storyHistory = 0;
 let initialLang = "french";
-export function renderpublishPage(req,res){
-  res.render("publish");
-};
-
-export function renderaiPage(req,res){
-  res.render("ai");
-};
 
 export function renderppPage(req,res){
   res.render("pp");
@@ -111,13 +106,17 @@ User.register({ username: username }, password, (err, user) => {
     if (err.code === 11000 && err.keyPattern.username === 1) {
       // Handle duplicate email error
       console.log('Duplicate email found.');
-      return res.redirect("/login");
+      const message = "An user with this email is already present, please login ";
+      const script = `<script>alert("${message}"); window.location.href="/login";</script>`;
+      return res.send(script);
       // Redirect or show an error message
     } 
     else {
-      console.log(err);
+      console.log("error:",err);
       // Handle other errors
-      return res.redirect("/login");
+      const message = "An user with this email is already present, please login ";
+      const script = `<script>alert("${message}"); window.location.href="/login";</script>`;
+      return res.send(script);
     }
   } else {
     passport.authenticate("local")(req, res, () => {
@@ -881,15 +880,149 @@ export async function editProfile(req, res) {
   }
 };
 
-
+//GET//
 export async function getOTPForPassword(req,res){
   res.render("recoverPass1");
 }
 
 export async function changePassword(req,res){
-  res.render("recoverPass2");
+  if(passwordRecovery === "yes"){
+    res.render("recoverPass2");
+  }else{
+    res.redirect("/passwordotp");
+  }
 }
 
 export async function changePassword2(req,res){
-  res.render("changePass");
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      res.render("changePass");
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+}
+
+
+//POST//
+
+export async function verifyEmailAndNumber(req,res){
+  const emailId = req.body.username;
+  const phnNumber = req.body.prephoneNumber + "-" + req.body.phoneNumber;
+  // console.log(phnNumber);
+  globalNumber2 = phnNumber;
+  justNumber2 = req.body.prephoneNumber + req.body.phoneNumber;
+  const user = await User.findOne({phoneNumber : phnNumber});
+  if(user){
+    if(user.username === emailId){
+      passwordRecovery = "yes";
+      const verification = await client.verify.v2.services(verifySid)
+      .verifications.create({ to: justNumber2, channel: "sms" });
+    
+      console.log(verification.status); // Log the verification status
+      res.redirect("/recoverPassword");
+     
+    }else{
+      const errorMessage = "Please check your email id, it does not match with the email id of the registered user";
+      const script = `<script>alert("${errorMessage}"); window.location.href="/passwordotp";</script>`;
+      return res.send(script);
+    }
+  }else{
+    const errorMessage = "No such user is present with this phone number, please create a new account.";
+    const script = `<script>alert("${errorMessage}"); window.location.href="/authenticate";</script>`;
+    return res.send(script);
+  }
+};
+
+export async function otpVerificationForPasswordChange(req,res){
+  if(passwordRecovery === "yes"){
+    const recoveryOtp = req.body.recoveryOtp;
+  const newPassword  = req.body.password;
+  const confirmPassword = req.body.confirmedPassword;
+
+  const verification_check = await client.verify.v2
+      .services(verifySid)
+      .verificationChecks.create({ 
+        to: justNumber2, 
+        code: recoveryOtp,
+        channel : "sms",
+        customCode: "Storyia: Your verification code for password change is {{code}}."
+       });
+
+       // Check verification status
+    if (verification_check.status === 'approved'){
+      //verification successful
+      console.log("Verification successful");
+      const user = await User.findOne({phoneNumber : globalNumber2});
+      if(user){
+        if(newPassword === confirmPassword){
+          user.setPassword(confirmPassword, async () => {
+          
+          // Save user with new password
+          await user.save();
+    
+          // Redirect or respond with success message
+          console.log("Password changed");
+          const message = "Your password has been changed successfully."
+          const script = `<script> alert("${message}"); window.location.href = "/login"; </script>`;
+          return res.send(script);
+        });
+        }else{
+          console.log(newPassword + "!=" + confirmPassword);
+          const errMsg = "The 'Confirm New Password' must be same as 'New Password'. Try again."
+          const script = `<script> alert("${errMsg}"); window.location.href = "/passwordotp"; </script>`;
+          return res.send(script);
+        }
+      }
+    }
+    else {
+      // Verification failed
+      console.log('Verification failed. Please try again.'); // You can also redirect to a failure page
+      const errorMessage = "Verification failed. Please try again.";
+      const script = `<script>alert("${errorMessage}"); window.location.href="/passwordotp";</script>`;
+      return res.send(script);
+    }
+  }else{
+    res.redirect("/passwordotp");
+  }
+};
+
+export async function passwordChangeFromProfile(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      const oldPassword = req.body.currentPassword;
+      const newPassword = req.body.password;
+      const confirmPassword = req.body.confirmedPassword;
+
+      const user = await User.findOne({_id: req.user.id});
+      if(user){
+        if(newPassword === confirmPassword){
+          //----------For Password change----------------//
+          user.changePassword(oldPassword,confirmPassword,function(err){
+            if(err){
+              const errMsg = "The current password you entered is wrong, please check again.";
+              const script = `<script>alert("${errMsg}"); window.location.href="/changePassword";</script>`;
+              return res.send(script);
+            }else{
+              console.log("password changed");
+              const msg = "Your password has been successfully changed";
+              const script = `<script>alert("${msg}"); window.location.href="/profile";</script>`;
+              return res.send(script);
+            }
+          })
+        }
+      }else{
+        console.log("User not found");
+        const errMsg = "There was an error. Please login.";
+        const script = `<script>alert("${errMsg}"); window.location.href="/authenticate2";</script>`;
+        return res.send(script);
+      }
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
 }

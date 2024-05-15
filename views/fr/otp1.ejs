@@ -527,7 +527,7 @@ padding: 0;}
                   <!-- Add more options as needed -->
                 </select>
                 <input id="signUpPhoneNumber" class="input-field" type="tel" placeholder="Numéro de téléphone" name="phoneNumber" required
-                  style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;">
+                  style="width: 321.282px; height: 44.724px; margin-left: 11px; flex-shrink: 0;" oninput="removeSpaces(event)">
               </div>
             </div>
           
@@ -549,6 +549,12 @@ padding: 0;}
       <script src="../js/signup.js"></script>
     </div>
   </div>
+  <script>
+    function removeSpaces(event) {
+      const input = event.target;
+      input.value = input.value.replace(/\s/g, ''); // Remove any spaces
+    }
+  </script>
 </body>
 
 </html>
