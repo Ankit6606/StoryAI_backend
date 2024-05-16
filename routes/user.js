@@ -31,14 +31,22 @@ import {rootRenderFr,
         userLogoutFr,
         rendertncPageFr,
         renderppPageFr,
+        renderpublishPageFr,
+        renderaiPageFr,
         getOTPForPasswordFr,
+        passwordChangeFromProfileFr,
         changePasswordFr,
+        verifyEmailAndNumberFr,
+        otpVerificationForPasswordChangeFr,
         changePassword2Fr
         } from '../controllers/userReqFr.js';
 
 
 import {rootRender,
         rootPost,
+        otpVerificationForPasswordChange,
+        passwordChangeFromProfile,
+        verifyEmailAndNumber,
         authenticateRender,
         authenticateRender2,
         loginRender, 
@@ -63,6 +71,8 @@ import {rootRender,
         showStories,
         getphoneNumber,
         postPhonenumber,
+        renderaiPage,
+        renderpublishPage,
         otpVerification,
         clickStories,
         rendertncPage,
@@ -140,6 +150,8 @@ router.post("/fr/changePassword", passwordChangeFromProfileFr);
 
 //English
 router.get("/T&C", rendertncPage);
+router.get("/publishers", renderpublishPage);
+router.get("/aiact", renderaiPage);
 router.get("/PrivacyPolicy", renderppPage);
 router.get("/home",rootRender);
 router.get("/",renderlandingPage);

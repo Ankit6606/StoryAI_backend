@@ -45,6 +45,14 @@ export function rendertncPage(req,res){
   res.render("tnc");
 };
 
+export function renderpublishPage(req,res){
+  res.render("publish");
+};
+
+export function renderaiPage(req,res){
+  res.render("ai");
+};
+
 export function renderlandingPage(req,res){
   if(req.isAuthenticated()){
     res.redirect("/home");

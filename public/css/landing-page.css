@@ -282,9 +282,41 @@ opacity: 0.8;
 background-image: url("assets/subx2b.png"); /* Add the path to your new image */
 }
 
+.sign-in-text {
+  color: #D1B5FE;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+.sign-in-text:hover {
+  color: #ffffff;
+}
+.text {
+  margin-top: 25px;
+  color: #FFF;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  margin-bottom: 2vh;
+}
 /*Hover Animations */
 
+.downloadapp-flexbox {
+  display: flex;
+  max-width: 30vw;
+  margin-bottom: 2vh;
+  
+}
 
+.downloadapp-button {
+  flex: 1;
+  margin: 0 10px; /* Optional margin between images */
+}
+
+.downloadapp-button img {
+  max-width: 100%;
+  height: auto;
+}
 
 @media (max-width: 768px) {
     body {

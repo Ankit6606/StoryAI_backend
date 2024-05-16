@@ -60,70 +60,7 @@ body.loaded::after {
 
             }
 
-            .box-1 {
-                max-width: 85.5vw;
-               height: 60px !important;
-                border: 2px solid #FFF;
-                background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
-                background-size: cover, cover;
-                /* Set background-size for both layers */
-                background-repeat: no-repeat;
-                background-image: url("css/assets/sub1.png")
-            }
-            .box-2 { 
-            max-width: 85.5vw;
-            height: 60px !important;
-            flex-shrink: 0;
-            background-color: #e0e0e0; /* Adding a background color for visualization */
-            transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
-            border: 2px solid #FFF;
-            background: #FDF0F2;
-            background-size: cover, cover;
-            /* Set background-size for both layers */
-            background-repeat: no-repeat;
-            background-image: url("css/assets/subx2a.png");
-
-        }
-            .box-3 {
-                max-width: 85.5vw;
-                height: 60px !important;
-                /* New height for box-5 */
-                border: 2px solid #FFF;
-               
-                background-size: cover, cover;
-                /* Set background-size for both layers */
-                background-repeat: no-repeat;
-                background-image: url("css/assets/sub2.png")
-            }
-
-            .box-5 {
-                max-width: 85.5vw;
-                height: 60px !important;
-                /* New height for box-5 */
-                border: 2px solid #FFF;
-         
-                background-size: cover, cover;
-                /* Set background-size for both layers */
-                background-repeat: no-repeat;
-                background-image: url("css/assets/sub4.png");
-            }
-
-            .box-4 {
-                max-width: 90.5vw !important;
-                height: 8vh !important;
-               
-                background-size: cover, cover;
-                /* Set background-size for both layers */
-                background-repeat: no-repeat;
-                background-image: url("css/assets/sub3.png");
-
-            }
-
-            .next-button {
-                max-height: 50px;
-                max-width: 80.5vw;
-                margin-left: 3px !important;
-            }
+            
             .box-1:hover {
       width: 640px;
       height: 100px !important;
@@ -318,7 +255,44 @@ body.loaded::after {
       opacity: 0.8;
       background-image: url("css/assets/subx2b.png"); /* Add the path to your new image */
     }
-    
+    .primary_child{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #0000004e;
+        height: fit-content;
+        width: 90vw;
+        margin: auto;
+        margin-top: 80px;
+        align-self: center;
+        border-radius: 20px;
+    }
+    .heading{
+        color: #e0e0e0;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        font-size: 32px;
+        font-weight: bold;
+        font-family: volkov;
+    }
+    .secondary_child{
+
+        margin-top: 0px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        height: fit-content;
+        width: 80vw;
+        max-height: 80vh;
+        overflow-y: scroll;
+        font-size: 24px;
+        font-family: noto-sans;
+        
+        color: #e0e0e0;
+    }
     </style>
 
 </head>
@@ -326,21 +300,21 @@ body.loaded::after {
 <body>
    
       
-      <script>function toggleLanguage() {
-          var toggleSwitch = document.getElementById('language-toggle');
-          var redirectUrl;
-      
-          if (toggleSwitch.checked) {
-              // Redirect to URL for BN (Bangla)
-              redirectUrl = '/fr/subscribe';
-          } else {
-              // Redirect to URL for EN (English)
-              redirectUrl = '/fr/subscribe';
-          }
-      
-          // Redirect to the specified URL
-          window.location.href = redirectUrl;
-      }</script>
+    <script>function toggleLanguage() {
+        var toggleSwitch = document.getElementById('language-toggle');
+        var redirectUrl;
+    
+        if (toggleSwitch.checked) {
+            // Redirect to URL for BN (Bangla)
+            redirectUrl = '/fr/t&c';
+        } else {
+            // Redirect to URL for EN (English)
+            redirectUrl = '/fr/t&c';
+        }
+    
+        // Redirect to the specified URL
+        window.location.href = redirectUrl;
+    }</script>
     <button class="navTrigger" id="navTrigger">
         <svg viewBox="0 0 64 48">
             <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
@@ -358,7 +332,10 @@ body.loaded::after {
                   <span class="off">FR</span>
               </div>
               </li>
-            <li>
+              <li>
+                <a href="/">Home</a>
+            </li>
+            <!-- <li>
                 <a href="/">Home</a>
             </li>
             <li>
@@ -372,11 +349,11 @@ body.loaded::after {
             </li>
             <li>
                 <a href="/subscribe">Subscription</a>
-            </li>
+            </li> -->
         </ul>
     </nav>
     <div class="navbar">
-      
+       
         <div class="nav-button-container">
                 <div class="switch">
                   <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
@@ -384,11 +361,12 @@ body.loaded::after {
                   <span class="on">EN</span>
                   <span class="off">FR</span>
               </div>
-            <a href="/" class="nav-button">Home</a>
+              <a href="/" class="nav-button">Home</a>
+            <!-- <a href="/" class="nav-button">Home</a>
           <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a>
           <a href="/storyhistory" class="nav-button">Story History</a>
-          <a href="/story" class="special-button">Create Story</a>
+          <a href="/story" class="special-button">Create Story</a> -->
         </div>
         
       </div>
@@ -396,6 +374,148 @@ body.loaded::after {
 
     <div class="ellipse"></div>
     <!-- subscription-form.ejs -->
+
+    <div class="primary_child">
+        <div class="heading" >Privacy Policy</div>
+        <div class="secondary_child">
+            <br>1. Publisher Identification <br>
+&emsp;Company Name: FWK CORPORATION - FZCO <br>
+&emsp;Legal Form: Free Zone Company <br>
+&emsp;Headquarters Address: Dubai Silicon Oasis, DDP, Building A1, Dubai, United Arab Emirates <br>
+&emsp;Registration Number: 31720 <br>
+&emsp;Email Address: contact@storyia.app <br>
+
+<br>2. Director of Publication <br>
+&emsp;Name: Storyia <br>
+
+<br>3. Website Hosting <br>
+&emsp;Hosting Provider Name: Microsoft Azure <br>
+&emsp;Hosting Provider Address: One Microsoft Way, Redmond, WA 98052, United States <br>
+
+<br>4. Terms of Use <br>
+&emsp;The terms of use of Storyia.app are accessible on the site at all times under the 'Terms and Conditions' section, and each user is committed to adhering to them. <br>
+
+<br>5. Intellectual Property <br>
+&emsp;All elements of Storyia.app, including texts, graphics, logos, sounds, photographs, animations, are protected by intellectual property laws. <br>
+&emsp;Unauthorized use of any site content without the written consent of Storyia.app is strictly prohibited. <br>
+
+<br>6. Data Protection <br>
+&emsp;Compliance with data protection laws is detailed in the privacy policy available on the site. <br>
+
+<br>1. Description of AI Use <br>
+&emsp;Storyia.app utilizes artificial intelligence provided by OpenAI for generating text and speech synthesis (TTS), along with data storage and management <br>
+&emsp;technologies via Azure and MongoDB. <br>
+&emsp;These AI systems operate according to a pre-established structured script, ensuring predictable and secure interactions without making autonomous decisions. <br>
+
+<br>2. Objective of AI Use <br>
+&emsp;The use of AI on Storyia.app aims to enhance the user experience by offering personalization in the creation of children's stories while adhering to <br>
+&emsp;strict guidelines against violence and promoting positive values. <br>
+
+<br>3. Data Management <br>
+&emsp;Data is handled with strict security measures through the use of Azure and MongoDB, ensuring the protection of users' personal information's confidentiality and <br>
+&emsp;integrity. <br>
+
+<br>4. Measures for Non-discrimination and Bias Prevention <br>
+&emsp;The deployed AI systems are regularly assessed by OpenAI to prevent biases and ensure a fair and non-discriminatory service distribution. <br>
+&emsp;These assessments help to identify and correct any potential biases. <br>
+
+<br>5. User Feedback and Interventions <br>
+&emsp;Users can provide their feedback or contest decisions influenced by AI through email. Storyia.app commits to reviewing such feedback and providing appropriate <br>
+&emsp;support, including the possibility of human intervention. <br>
+
+<br>6. Compliance and Regular Audits <br>
+&emsp;Storyia.app commits to conducting regular compliance audits to ensure that the AI technologies used are up-to-date with the latest regulations and ethical standards. <br>
+&emsp;These audits include frequent reviews of AI practices and technologies to maintain high service quality and security. <br>
+
+<br>7. Partnerships and Suppliers <br>
+&emsp;In collaboration with OpenAI, Storyia.app ensures that the AI services provided fully comply with the AI Act's obligations. This cooperation guarantees continuous <br>
+&emsp;regulatory and technological monitoring to stay at the forefront of AI compliance. <br>
+
+<br>1. Acceptance of Terms <br>
+&emsp;By accessing and using Storyia.app, you confirm your acceptance of these Terms of Use and agree to comply with them. If you do not accept these terms, you must <br>
+&emsp;not use this service. <br>
+
+<br>2. Description of Service <br>
+&emsp;Storyia.app provides a platform that allows users to create, customize, and listen to children’s stories. The services include the ability to modify the age of <br>
+&emsp;characters, as well as integrate specific emotions and values into the stories. <br>
+
+<br>3. Access and Registration <br>
+&emsp;To access certain services, you must create an account providing reliable and up-to-date information. You are responsible for the confidentiality of your login <br>
+&emsp;credentials and all activities on your account. <br>
+
+<br>4. Acceptable Use <br>
+&emsp;You agree not to use Storyia.app for illegal or unauthorized purposes and not to violate intellectual property rights while using the service. <br>
+
+<br>5. Payments, Fees, and Renewals <br>
+&emsp;Services on Storyia.app are available via subscriptions. Details of fees and payment options are specified on the site. Subscriptions are automatically renewable <br>
+&emsp;unless cancelled by you. <br>
+
+<br>6. Right of Withdrawal and Refund Policy <br>
+&emsp;You may cancel your subscription at any time. However, in accordance with current regulations on digital content, the right of withdrawal may be limited. <br>
+
+<br>7. Intellectual Property <br>
+&emsp;Content generated by users remains their property, but by using the site, you grant Storyia.app a non-exclusive license to use this content for the operation of the <br>
+&emsp;site. <br>
+
+<br>8. Liability <br>
+&emsp;Storyia.app strives to keep the service accessible but cannot guarantee this availability or the absence of bugs. Liability of Storyia.app will be limited to the extent <br>
+&emsp;permitted by law. <br>
+
+<br>9. Modifications to the Terms and Service <br>
+&emsp;Storyia.app reserves the right to modify the Terms of Use as well as the services offered. Users will be informed of substantial changes via the site or by email. <br>
+
+<br>10. Dispute Resolution <br>
+&emsp;Any disputes will first be subject to an attempt at amicable resolution. If unresolved, disputes will be submitted to the competent jurisdictions according to <br>
+&emsp;applicable law. <br>
+
+<br>11. Contact <br>
+&emsp;For any questions or concerns, please contact Storyia.app support through the contact means provided on the site. <br>
+
+<br>1. Introduction <br>
+&emsp;At Storyia.app, we take your privacy seriously and are committed to protecting the personal data of our users. This privacy policy explains how we collect, use, and <br>
+&emsp;manage your personal information. <br>
+
+<br>2. Information Collection <br>
+&emsp;We collect the following types of information from our users: <br>
+&emsp;Names <br>
+&emsp;Email addresses <br>
+&emsp;Telephone numbers <br>
+&emsp;This information is collected when you use our services, for example during registration, while using our services, or when communicating with us. <br>
+
+<br>3. Use of Information <br>
+&emsp;Your personal information is used for the following purposes: <br>
+&emsp;Marketing: To send you promotional information and personalized offers, subject to your consent. <br>
+&emsp;Service Improvement: To understand the needs of our users and to improve the quality and experience of our services. <br>
+
+<br>4. Information Sharing <br>
+&emsp;We do not share your personal information with third parties, except as required by law. <br>
+
+<br>5. Storage and Security <br>
+&emsp;Your personal information is securely stored in a database. We implement technical and organizational security measures to protect your data from unauthorized <br>
+&emsp;access, alteration, disclosure, or destruction. <br>
+
+<br>6. User Rights <br>
+&emsp;As a user, you have the following rights regarding your personal data: <br>
+&emsp;Access your personal data. <br>
+&emsp;Modify or update your information. <br>
+&emsp;Request the deletion of your personal data. <br>
+&emsp;To exercise these rights, please contact us using the details provided at the end of this policy. <br>
+
+<br>7. Cookies and Tracking Technologies <br>
+&emsp;We use cookies and other tracking technologies such as Google Analytics, Meta Ads, and TikTok Ads to analyze traffic and improve your experience on our site. <br>
+&emsp;You can configure your browser to reject some or all cookies. <br>
+
+<br>8. Changes to the Privacy Policy <br>
+&emsp;We may update our privacy policy from time to time. We encourage you to regularly review this page to stay informed of any changes. <br>
+
+<br>9. Contact Us <br>
+&emsp;If you have any questions about this privacy policy or how we handle your personal data, please do not hesitate to contact us at contact@storyia.com. <br>
+
+
+           </div>
+
+    </div>
+
 
 
 
@@ -413,7 +533,7 @@ body.loaded::after {
     <script src="js/vnav.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <script src="js/subscription.js"></script>
+    <!-- <script src="js/subscription.js"></script> -->
 </body>
 
 </html>
