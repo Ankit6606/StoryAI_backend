@@ -3,21 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>Story Generation Page 4</title>
     <link rel="stylesheet" href="../css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/meta/vertical-navbar.css">
 
 
     <style>
-        body::after {
+         body::after {
     content: "";
     display: block;
     width: 1px;
@@ -29,6 +30,7 @@
 body.loaded::after {
     transform: translateY(0);
 }
+
         body {
             margin: 0;
             padding: 0;
@@ -57,6 +59,43 @@ body.loaded::after {
                 
 
             }
+
+            
+            .box-1:hover {
+      width: 640px;
+      height: 100px !important;
+      opacity: 0.8;
+      background-image: url("css/assets/subx1b.png"); /* Add the path to your new image */
+    }
+
+        .box-3:hover {
+      width: 640px;
+      height: 100px !important;
+      opacity: 0.8;
+      background-image: url("css/assets/subx3b.png"); /* Add the path to your new image */
+    }
+
+        .box-5:hover {
+      width: 640px;
+      height: 100px !important;
+      opacity: 0.8;
+      background-image: url("css/assets/subx5b.png"); /* Add the path to your new image */
+    }
+
+        .box-4:hover {
+      width: 640px;
+      height: 115px !important;
+      opacity: 0.8;
+      background-image: url("css/assets/subx4b.png"); /* Add the path to your new image */
+    }
+        .box-2:hover {
+      width: 640px;
+      height: 100px !important;
+      opacity: 0.8;
+      background-image: url("css/assets/subx2b.png"); /* Add the path to your new image */
+    }
+    
+
 
         }
 
@@ -90,9 +129,96 @@ body.loaded::after {
     box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518); /* Enhance raise effect */
     /* Lift the card slightly on hover */
     z-index: 999; /* Make the hovered card appear above other cards */
+}
+
+        .box-1 {
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+           
+            border: 2px solid #FFF;
+            
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx1a.png")
         }
 
-       
+        .box-3 {
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            /* New height for box-5 */
+            border: 2px solid #FFF;
+            background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx3a.png")
+        }
+
+        .box-5 {
+            width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            /* New height for box-5 */
+            border: 2px solid #FFF;
+            background: var(--Linear, linear-gradient(180deg, #1F1751 0%, #070C21 157.08%));
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx5a.png");
+        }
+
+        .box-4 { width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            border: 2px solid #FFF;
+            
+            background: #FDF0F2;
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx4a.png");
+
+        }
+        .selected-box {
+    border: 3px solid #F669B3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+    z-index: 999;
+}
+.box-2.selected-box {
+    border: 3px solid #F669B3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 20px 40px 0px rgba(255, 255, 255, 0.518);
+    z-index: 999;
+}
+
+        .box-2 { width: 600px;
+      height: 100px;
+      flex-shrink: 0;
+      background-color: #e0e0e0; /* Adding a background color for visualization */
+      transition: height 0.5s, width 0.5s, opacity 0.5s, background-image 0.5s;
+            border: 2px solid #FFF;
+            
+            background: #FDF0F2;
+            background-size: cover, cover;
+            /* Set background-size for both layers */
+            background-repeat: no-repeat;
+            background-image: url("css/assets/subx2a.png");
+
+        }
         /*Hover Animations */
 
 
@@ -100,42 +226,99 @@ body.loaded::after {
       width: 640px;
       height: 180px;
       opacity: 0.8;
-      background-image: url("../css/assets/fr/sub/EXPANDED/sub131.png"); /* Add the path to your new image */
-     }
-
-        .box-2:hover {
-      width: 640px;
-      height: 180px;
-      opacity: 0.8;
-      background-image: url("../css/assets/fr/sub/EXPANDED/sub130.png"); /* Add the path to your new image */
-    }
-
-        .box-4:hover {
-      width: 640px;
-      height: 180px;
-      opacity: 0.8;
-      background-image: url("../css/assets/fr/sub/EXPANDED/sub132.png"); /* Add the path to your new image */
+      background-image: url("css/assets/subx1b.png"); /* Add the path to your new image */
     }
 
         .box-3:hover {
       width: 640px;
       height: 180px;
       opacity: 0.8;
-      background-image: url("../css/assets/fr/sub/EXPANDED/sub177.png"); /* Add the path to your new image */
+      background-image: url("css/assets/subx3b.png"); /* Add the path to your new image */
     }
-        .box-d:hover {
+
+        .box-5:hover {
       width: 640px;
       height: 180px;
       opacity: 0.8;
-      background-image: url("../css/assets/fr/sub/EXPANDED/sub129.png"); /* Add the path to your new image */
+      background-image: url("css/assets/subx5b.png"); /* Add the path to your new image */
     }
-    
+
+        .box-4:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx4b.png"); /* Add the path to your new image */
+    }
+        .box-2:hover {
+      width: 640px;
+      height: 180px;
+      opacity: 0.8;
+      background-image: url("css/assets/subx2b.png"); /* Add the path to your new image */
+    }
+    .primary_child{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #0000004e;
+        height: 90vh;
+        width: 90vw;
+        margin: auto;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        align-self: center;
+        box-shadow: inset 0px 0px 25px rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        border: 1px solid #ffffff31;
+        backdrop-filter: blur(7PX);
+        background-color: #ffffff05;
+    }
+    .heading{
+        color: #e0e0e0;
+        margin-bottom: 20px;
+        margin-top: 5vh;
+        font-size: 32px;
+        font-weight: bold;
+        font-family: volkov;
+    }
+    .secondary_child{
+
+        margin-top: 0px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        height: fit-content;
+        width: 80vw;
+        max-height: 80vh;
+        overflow-y: scroll;
+        font-size: 24px;
+        font-family: noto-sans;
+        color: #e0e0e0;
+    }
     </style>
 
 </head>
 
 <body>
- 
+   
+      
+    <script>function toggleLanguage() {
+        var toggleSwitch = document.getElementById('language-toggle');
+        var redirectUrl;
+    
+        if (toggleSwitch.checked) {
+            // Redirect to URL for BN (Bangla)
+            redirectUrl = '/PrivacyPolicy';
+        } else {
+            // Redirect to URL for EN (English)
+            redirectUrl = '/PrivacyPolicy';
+        }
+    
+        // Redirect to the specified URL
+        window.location.href = redirectUrl;
+    }</script>
     <button class="navTrigger" id="navTrigger">
         <svg viewBox="0 0 64 48">
             <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
@@ -152,59 +335,100 @@ body.loaded::after {
                   <span class="on">FR</span>
                   <span class="off">EN</span>
               </div>
-             
               </li>
               <li>
-                <a href="/fr/">Accueil</a><!--Home-->
+                <a href="/fr/">Accueil</a>
             </li>
             <!-- <li>
-                <a href="/fr/story">Créer Histoire</a>
+                <a href="/">Home</a>
             </li>
             <li>
-                <a href="/fr/storyhistory">Mes Histoires</a>
+                <a href="/story">Create Story</a>
             </li>
             <li>
-                <a href="/fr/profile">Profil</a>
+                <a href="/storyhistory">Story History</a>
             </li>
             <li>
-                <a href="/fr/subscribe">Abonnement</a>
+                <a href="/profile">Profile</a>
+            </li>
+            <li>
+                <a href="/subscribe">Subscription</a>
             </li> -->
         </ul>
     </nav>
     <div class="navbar">
-        
+       
         <div class="nav-button-container">
-            <div class="switch">
-                <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
-                <label for="language-toggle"></label>
-                <span class="on">FR</span>
-                <span class="off">EN</span>
-            </div>
-            <script>function toggleLanguage() {
-                var toggleSwitch = document.getElementById('language-toggle');
-                var redirectUrl;
-            
-                if (toggleSwitch.checked) {
-                    // Redirect to URL for BN (Bangla)
-                    redirectUrl = '/PrivacyPolicy';
-                } else {
-                    // Redirect to URL for EN (English)
-                    redirectUrl = '/PrivacyPolicy';
-                }
-            
-                // Redirect to the specified URL
-                window.location.href = redirectUrl;
-            }</script>
-            <a href="/fr/" class="nav-button">Accueil</a>
-            <!-- <a href="/fr/subscribe" class="nav-button">Abonnement</a>
-            <a href="/fr/profile" class="nav-button">Profil</a>
-            <a href="/fr/storyhistory" class="nav-button">Mes Histoires</a>
-            <a href="/fr/story" class="special-button">Créer Histoire</a> -->
-          </div>
+                <div class="switch">
+                  <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
+                  <label for="language-toggle"></label>
+                  <span class="off">EN</span>
+                  <span class="on">FR</span>
+              </div>
+              <a  href="/fr/" class="nav-button">Accueil</a>
+            <!-- <a href="/" class="nav-button">Home</a>
+          <a href="/subscribe" class="nav-button">Subscription</a>
+          <a href="/profile" class="nav-button">Profile</a>
+          <a href="/storyhistory" class="nav-button">Story History</a>
+          <a href="/story" class="special-button">Create Story</a> -->
+        </div>
+        
       </div>
     
 
     <div class="ellipse"></div>
+    <!-- subscription-form.ejs -->
+
+    <div class="primary_child">
+        <div class="heading">Politique de Confidentialité</div>
+        <div class="secondary_child">
+            <br>1. Introduction <br>
+&emsp;Chez Storyia.app, nous prenons votre vie privée au sérieux et nous nous engageons à protéger les données personnelles de nos utilisateurs. Cette politique de confidentialité explique comment nous collectons, utilisons et <br>
+&emsp;gérons vos informations personnelles. <br>
+
+<br>2. Collecte d'Informations <br>
+&emsp;Nous collectons les types d'informations suivants auprès de nos utilisateurs : <br>
+&emsp;Noms <br>
+&emsp;Adresses email <br>
+&emsp;Numéros de téléphone <br>
+&emsp;Ces informations sont collectées lorsque vous utilisez nos services, par exemple lors de l'inscription, pendant l'utilisation de nos services, ou lorsque vous communiquez avec nous. <br>
+
+<br>3. Utilisation des Informations <br>
+&emsp;Vos informations personnelles sont utilisées pour les finalités suivantes : <br>
+&emsp;Marketing : Pour vous envoyer des informations promotionnelles et des offres personnalisées, sous réserve de votre consentement. <br>
+&emsp;Amélioration du Service : Pour comprendre les besoins de nos utilisateurs et améliorer la qualité et l'expérience de nos services. <br>
+
+<br>4. Partage des Informations <br>
+&emsp;Nous ne partageons pas vos informations personnelles avec des tiers, sauf si la loi l'exige. <br>
+
+<br>5. Stockage et Sécurité <br>
+&emsp;Vos informations personnelles sont stockées en toute sécurité dans une base de données. Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données contre tout accès non autorisé, <br>
+&emsp;modification, divulgation ou destruction. <br>
+
+<br>6. Droits des Utilisateurs <br>
+&emsp;En tant qu'utilisateur, vous avez les droits suivants concernant vos données personnelles : <br>
+&emsp;Accéder à vos données personnelles. <br>
+&emsp;Modifier ou mettre à jour vos informations. <br>
+&emsp;Demander la suppression de vos données personnelles. <br>
+&emsp;Pour exercer ces droits, veuillez nous contacter en utilisant les coordonnées fournies à la fin de cette politique. <br>
+
+<br>7. Cookies et Technologies de Suivi <br>
+&emsp;Nous utilisons des cookies et d'autres technologies de suivi telles que Google Analytics, Meta Ads et TikTok Ads pour analyser le trafic et améliorer votre expérience sur notre site. <br>
+&emsp;Vous pouvez configurer votre navigateur pour rejeter certains ou tous les cookies. <br>
+
+<br>8. Modifications de la Politique de Confidentialité <br>
+&emsp;Nous pouvons mettre à jour notre politique de confidentialité de temps en temps. Nous vous encourageons à consulter régulièrement cette page pour rester informé de tout changement. <br>
+
+<br>9. Contactez-nous <br>
+&emsp;Si vous avez des questions concernant cette politique de confidentialité ou la manière dont nous traitons vos données personnelles, n'hésitez pas à nous contacter à contact@storyia.com. <br>
+
+
+           </div>
+
+    </div>
+
+
+
 
     
     
@@ -216,12 +440,11 @@ body.loaded::after {
             document.body.classList.add('loaded');
         });
     </script>
-    
 
     <script src="../js/vnav.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <!-- <script src="../js/subscription.js"></script> -->
+    <!-- <script src="js/subscription.js"></script> -->
 </body>
 
 </html>

@@ -1002,8 +1002,45 @@ line-height: 148.5%; /* 53.46px */
     line-height: 153.2%; /* 30.64px */}
 
 
+    .sign-in-text {
+  color: #D1B5FE;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+.sign-in-text:hover {
+  color: #ffffff;
+}
+.text {
+  margin-top: 25px;
+  color: #FFF;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  margin-bottom: 2vh;
+}
+/*Hover Animations */
 
+.downloadapp-flexbox {
+  display: flex;
+  max-width: 30vw;
+  margin-bottom: 2vh;
+  
+}
 
+.downloadapp-button {
+  flex: 1;
+  margin: 0 10px; /* Optional margin between images */
+}
+
+.downloadapp-button img {
+  max-width: 100%;
+  height: auto;
+}
+
+a   {
+            text-decoration: none;
+    }
 
 .image-box-container-x {
     
@@ -1538,12 +1575,20 @@ line-height: 148.5%; /* 53.46px */
                 height: 65px; margin-bottom: 10vh;" >Créez maintenant !</button>
                 </a>
             </div>
-            <a href="../../https://drive.google.com/file/d/0B1HXnM1lBuoqMzVhZjcwNTAtZWI5OS00ZDg3LWEyMzktNzZmYWY2Y2NhNWQx/view?hl=en&resourcekey=0-5DqnTtXPFvySMiWstuAYdA"></a>
-            <div class="button-box-x">
-              <button class="next-button" style="width: 320px;
-              height: 65px; margin-bottom: 10vh;" >Terms And Conditions</button>
-              </a>
-          </div>
+            <div class="downloadapp-flexbox">
+              <div class="downloadapp-button">
+                <img src="../css/assets/iosdownload.png" alt="Download for IOS">
+              </div>
+              <div class="downloadapp-button">
+                <img src="../css/assets/androiddownload.png" alt="Download for Android">
+              </div>
+            </div>
+            <div class="text">
+          <a href="/fr/t&c"><span class="sign-in-text">Conditions d'Utilisation</span></a>  |  
+          <a href="/fr/PrivacyPolicy"><span class="sign-in-text">Politique de Confidentialité</span></a>  |  
+          <a href="/fr/aiact"><span class="sign-in-text">Conformité à l'AI ACT</span></a>  |  
+          <a href="/fr/publishers"><span class="sign-in-text">Mentions Légales</span></a>
+      </div>
         </div>
     </div>
 
