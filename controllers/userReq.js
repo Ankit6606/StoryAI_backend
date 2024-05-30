@@ -337,7 +337,9 @@ export async function rootRender(req,res){
       //   // Redirect or respond with success message
       //   console.log("Password changed");
       // });
-      
+      // user.gems += 10000;
+      // user.parrots += 10000;
+      // await user.save();
       res.render("home",{
         userStories: user.stories,
         gems : req.user.gems,
