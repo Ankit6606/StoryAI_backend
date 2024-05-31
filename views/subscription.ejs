@@ -434,7 +434,9 @@ body.loaded::after {
         <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
             height: 63px;
          ">Upgrade plan</button>
+         <% if(userSubscriptionPlan !== "basic"){ %>
              <button type="button" class="next-button" style="margin-top: 0px; width: 413px; color: red; height: 63px;" onclick="navigateToCancelPlan()">Cancel Subscription</button>
+             <% } %>
 
               <a href="/home" style="color: #FFF;
 

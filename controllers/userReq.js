@@ -216,6 +216,7 @@ export function getphoneNumber(req,res){
   }
 };
 
+
 //OTP is send to the given number
 
 export async function postPhonenumber(req, res) {
@@ -315,21 +316,12 @@ export async function rootRender(req,res){
       .select('+salt +hash')
       .populate('stories')
       .exec();
+
+      
       
       if (!user) {
         throw new Error('User not found');
       }
-
-
-      //--------Password Recovery function---------//
-      // user.setPassword("1234567", async () => {
-        
-      //   // Save user with new password
-      //   await user.save();
-  
-      //   // Redirect or respond with success message
-      //   console.log("Password changed");
-      // });
       
       res.render("home",{
         userStories: user.stories,
@@ -730,7 +722,7 @@ export function clickStories(req,res){
 } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
-}
+  }
 };
 
 
@@ -822,7 +814,6 @@ export function profileManage(req,res){
     }else{
       res.redirect("/phonenumber");
     }
-    
   }else{
     res.redirect("/authenticate2");
   }

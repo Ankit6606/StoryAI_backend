@@ -229,8 +229,6 @@ export const cancelSubscription = async (req, res) => {
 };
 
 
-
-
 //--------Webhook Stripe----------//
 
 
@@ -299,9 +297,6 @@ export const manageInvoice = async (req, res) => {
         gemsToAdd = 40;
         parrotsToAdd = 40;
       }
-
-     
-
       const paymentUser = await Payment.findOne({customerId: customerId});
       if(paymentUser){
         const user = await User.findOne({ _id: paymentUser.userId });
@@ -330,8 +325,6 @@ export const manageInvoice = async (req, res) => {
   // Respond to the webhook
   res.json({ received: true });
 };
-
-
 
 
 
@@ -428,7 +421,7 @@ export const manageInvoiceFr = async (req, res) => {
 const success = async (req, res) => {
   try {
       // res.render('success');
-     res.redirect("/home");
+     res.redirect("/fr/home");
   } catch (error) {
       console.log(error.message);
   }
@@ -437,7 +430,7 @@ const success = async (req, res) => {
 
 const failure = async (req, res) => {
     try {
-        res.redirect("/subscribe");
+        res.redirect("/fr/subscribe");
     } catch (error) {
         console.log(error.message);
     }
