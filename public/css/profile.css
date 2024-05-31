@@ -91,7 +91,7 @@ padding: 0;}
     }
 .text{margin-top: 0px !important;}
     .signup-box {
-        margin-top:150px !important;
+        margin-top:15vh !important;
     }
 .boxz{width: 100%;
     max-width: 300px;
@@ -151,7 +151,7 @@ padding: 0;}
         font-size: 17px !important;
         font-weight: 500;
         line-height: 27px;
-        margin-bottom: 100px !important;
+        /* margin-bottom: 100px !important; */
     }
     .next-button{
         width: 100%;
@@ -183,8 +183,9 @@ padding: 0;}
 }
 
 .flexbox {
+
     position: absolute;
-    top: 50%;
+    top: 40vh;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 99;
@@ -195,6 +196,7 @@ padding: 0;}
     justify-content: center;
     opacity: 1;
     transition: opacity 0.5s ease;
+    margin-bottom: 5vh;
     /* Add a transition for smoother and slower opacity change */
 }
 
@@ -231,7 +233,7 @@ padding: 0;}
 }
 
 .signup-box {
-    margin-top: 10%;
+    margin-top: 20vh;
     display: flex;
     flex-direction: column;
     z-index: 100;

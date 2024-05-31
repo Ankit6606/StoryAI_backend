@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
+    <link rel="icon" href="css/assets/parrot.png" type="image/x-icon">
     <link rel="stylesheet" href="css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="stylesheet" href="css/profile.css">
@@ -15,6 +16,40 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/meta/vertical-navbar.css">
+    <style>
+      .sign-in-text {
+  color: #D1B5FE;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+.sign-in-text:hover {
+  color: #ffffff;
+}
+.text {
+  margin-top: 25px;
+  color: #FFF;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  margin-bottom: 2vh;
+}
+.footer{
+  margin-top: 5vh;
+  padding-top: 2vh;
+  position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 1vh; /* Adjust the padding below the div */
+    
+    text-align: center;
+    
+    z-index: 9999999;
+}
+a   {
+            text-decoration: none;
+    }
+    </style>
 </head>
 
 
@@ -130,12 +165,18 @@
                         <a href="/logout" class="nav-button" style="color: red;">Log Out</a>
                     </div>
                     <a href="/changePassword" class="nav-button" style="margin: 10px auto;" >Change Password</a>
+                    
+                    
+
                 </form>
-               
+                
                 <script src="js/signup.js"></script>
                 <script src="js/vnav.js"></script>
             </div>
+              
         </div>
+        <div class="footer"> <div class="text"><a href="/t&c"><span class="sign-in-text">Terms Of Use  </span></a>  |  <a href="/PrivacyPolicy"><span class="sign-in-text">  Privacy Policy  </span></a>  |  <a href="/aiact"><span class="sign-in-text">  AI ACT Compliance  </span></a>  |  <a href="/publishers"><span class="sign-in-text">  Legal Notices  </span></a>
+        </div></div> 
         <script>
     //        function logout() {
     //   // Clear cookies

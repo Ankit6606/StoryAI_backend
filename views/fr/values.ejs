@@ -200,7 +200,7 @@ line-height: 150%; /* 48px */
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 48px */">Loading...<p>
+  line-height: 150%; /* 48px */">Chargement...<p>
   
   <div class="loading-bar">
       <div class="filling-progress"></div>
@@ -209,7 +209,7 @@ line-height: 150%; /* 48px */
   <div class="percentage-tracker">0.00%</div>
 
   <div class="loading-text">
-      <p id="loadingText">Generating Story</p>
+      <p id="loadingText">Génération de l'histoire</p>
   </div>
 </div>
     <script src="../js/values.js"></script>
@@ -288,7 +288,7 @@ function fillProgressBar() {
         if (percentage < 33) {
             fillingProgress.style.width = `${percentage}%`;
             percentageTracker.textContent = `${percentage.toFixed(2)}%`;
-            loadingText.textContent = 'Generating Story';
+            loadingText.textContent = 'Génération de l`histoire';
             percentage += 0.1;
         } else if (percentage < 66) {
             clearInterval(fill);
@@ -310,7 +310,7 @@ function fillProgressBarStageTwo() {
         if (percentage < 66) {
             fillingProgress.style.width = `${percentage}%`;
             percentageTracker.textContent = `${percentage.toFixed(2)}%`;
-            loadingText.textContent = 'Generating Image';
+            loadingText.textContent = 'Génération de l`image';
             percentage += 0.1;
         } else if (percentage < 99) {
             clearInterval(fill);
@@ -332,7 +332,7 @@ function fillProgressBarStageThree() {
         if (percentage < 99) {
             fillingProgress.style.width = `${percentage}%`;
             percentageTracker.textContent = `${percentage.toFixed(2)}%`;
-            loadingText.textContent = 'Generating Audio';
+            loadingText.textContent = 'Génération de l`audio';
             percentage += 0.1;
         } else {
             clearInterval(fill);

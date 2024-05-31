@@ -36,7 +36,6 @@ let justNumber2 = "";  //For twilio password recovery
 let story = [];
 let storyHistory = 0;
 let initialLang = "french";
-let passwordRecovery = "no";
 
 export function renderppPage(req,res){
   res.render("pp");
@@ -44,6 +43,14 @@ export function renderppPage(req,res){
 
 export function rendertncPage(req,res){
   res.render("tnc");
+};
+
+export function renderpublishPage(req,res){
+  res.render("publish");
+};
+
+export function renderaiPage(req,res){
+  res.render("ai");
 };
 
 export function renderlandingPage(req,res){
@@ -322,6 +329,17 @@ export async function rootRender(req,res){
       if (!user) {
         throw new Error('User not found');
       }
+
+
+      //--------Password Recovery function---------//
+      // user.setPassword("1234567", async () => {
+        
+      //   // Save user with new password
+      //   await user.save();
+  
+      //   // Redirect or respond with success message
+      //   console.log("Password changed");
+      // });
       
       res.render("home",{
         userStories: user.stories,

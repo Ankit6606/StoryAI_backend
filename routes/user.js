@@ -31,17 +31,22 @@ import {rootRenderFr,
         userLogoutFr,
         rendertncPageFr,
         renderppPageFr,
+        renderpublishPageFr,
+        renderaiPageFr,
         getOTPForPasswordFr,
+        passwordChangeFromProfileFr,
         changePasswordFr,
-        changePassword2Fr,
         verifyEmailAndNumberFr,
         otpVerificationForPasswordChangeFr,
-        passwordChangeFromProfileFr
+        changePassword2Fr
         } from '../controllers/userReqFr.js';
 
 
 import {rootRender,
         rootPost,
+        otpVerificationForPasswordChange,
+        passwordChangeFromProfile,
+        verifyEmailAndNumber,
         authenticateRender,
         authenticateRender2,
         loginRender, 
@@ -66,16 +71,15 @@ import {rootRender,
         showStories,
         getphoneNumber,
         postPhonenumber,
+        renderaiPage,
+        renderpublishPage,
         otpVerification,
         clickStories,
         rendertncPage,
         renderppPage,
         getOTPForPassword,
         changePassword,
-        changePassword2,
-        verifyEmailAndNumber,
-        otpVerificationForPasswordChange,
-        passwordChangeFromProfile
+        changePassword2
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -95,6 +99,8 @@ const router = express.Router();
 
 //Get requests
 //French
+router.get("/fr/publishers", renderpublishPageFr);
+router.get("/fr/aiact", renderaiPageFr);
 router.get("/fr/T&C", rendertncPageFr);
 router.get("/fr/PrivacyPolicy", renderppPageFr);
 router.get("/fr/home",rootRenderFr);
@@ -142,9 +148,10 @@ router.post("/fr/recoverPassword", otpVerificationForPasswordChangeFr);
 router.post("/fr/changePassword", passwordChangeFromProfileFr);
 
 
-//--------English---------//
-
+//English
 router.get("/T&C", rendertncPage);
+router.get("/publishers", renderpublishPage);
+router.get("/aiact", renderaiPage);
 router.get("/PrivacyPolicy", renderppPage);
 router.get("/home",rootRender);
 router.get("/",renderlandingPage);

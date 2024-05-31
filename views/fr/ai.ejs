@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Privacy Policies</title>
-    <link rel="icon" href="css/assets/parrot.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/meta/global.css">
+    <title>Story Generation Page 4</title>
+    <link rel="stylesheet" href="../css/meta/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/meta/vertical-navbar.css">
+    <link rel="stylesheet" href="../css/meta/vertical-navbar.css">
 
 
     <style>
@@ -36,7 +35,7 @@ body.loaded::after {
             margin: 0;
             padding: 0;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.74) 20.09%, rgba(0, 0, 0, 0.64) 48.97%, rgba(0, 0, 0, 0.75) 100%),
-                url('css/assets/subs.png') center/cover no-repeat;
+                url('../css/assets/subs.png') center/cover no-repeat;
             height: 100vh;
             font-family: Arial, sans-serif;
             overflow: hidden;
@@ -311,10 +310,10 @@ body.loaded::after {
     
         if (toggleSwitch.checked) {
             // Redirect to URL for BN (Bangla)
-            redirectUrl = '/fr/PrivacyPolicy';
+            redirectUrl = '/aiact';
         } else {
             // Redirect to URL for EN (English)
-            redirectUrl = '/fr/PrivacyPolicy';
+            redirectUrl = '/aiact';
         }
     
         // Redirect to the specified URL
@@ -333,12 +332,12 @@ body.loaded::after {
                 <div class="switch">
                   <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
                   <label for="language-toggle"></label>
-                  <span class="on">EN</span>
-                  <span class="off">FR</span>
+                  <span class="off">EN</span>
+                  <span class="on">FR</span>
               </div>
               </li>
               <li>
-                <a href="/">Home</a>
+                <a href="/fr/">Accueil</a>
             </li>
             <!-- <li>
                 <a href="/">Home</a>
@@ -363,10 +362,10 @@ body.loaded::after {
                 <div class="switch">
                   <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onclick="toggleLanguage()">
                   <label for="language-toggle"></label>
-                  <span class="on">EN</span>
-                  <span class="off">FR</span>
+                  <span class="off">EN</span>
+                  <span class="on">FR</span>
               </div>
-              <a href="/" class="nav-button">Home</a>
+              <a href="/fr/" class="nav-button">Accueil</a>
             <!-- <a href="/" class="nav-button">Home</a>
           <a href="/subscribe" class="nav-button">Subscription</a>
           <a href="/profile" class="nav-button">Profile</a>
@@ -381,47 +380,37 @@ body.loaded::after {
     <!-- subscription-form.ejs -->
 
     <div class="primary_child">
-        <div class="heading" >Privacy Policy</div>
+        <div class="heading">Conformité à l'AI ACT</div>
         <div class="secondary_child">
-            <br>1. Introduction <br>
-&emsp;At Storyia.app, we take your privacy seriously and are committed to protecting the personal data of our users. This privacy policy explains how we collect, use, and <br>
-&emsp;manage your personal information. <br>
+            <br>1. Description de l'Utilisation de l'IA <br>
+&emsp;Storyia.app utilise l'intelligence artificielle fournie par OpenAI pour générer du texte et de la synthèse vocale (TTS), ainsi que des technologies de stockage et de gestion <br>
+&emsp;des données via Azure et MongoDB. <br>
+&emsp;Ces systèmes d'IA fonctionnent selon un script structuré préétabli, garantissant des interactions prévisibles et sécurisées sans prendre de décisions autonomes. <br>
 
-<br>2. Information Collection <br>
-&emsp;We collect the following types of information from our users: <br>
-&emsp;Names <br>
-&emsp;Email addresses <br>
-&emsp;Telephone numbers <br>
-&emsp;This information is collected when you use our services, for example during registration, while using our services, or when communicating with us. <br>
+<br>2. Objectif de l'Utilisation de l'IA <br>
+&emsp;L'utilisation de l'IA sur Storyia.app vise à améliorer l'expérience utilisateur en offrant une personnalisation dans la création d'histoires pour enfants tout en respectant <br>
+&emsp;des directives strictes contre la violence et en promouvant des valeurs positives. <br>
 
-<br>3. Use of Information <br>
-&emsp;Your personal information is used for the following purposes: <br>
-&emsp;Marketing: To send you promotional information and personalized offers, subject to your consent. <br>
-&emsp;Service Improvement: To understand the needs of our users and to improve the quality and experience of our services. <br>
+<br>3. Gestion des Données <br>
+&emsp;Les données sont traitées avec des mesures de sécurité strictes grâce à l'utilisation d'Azure et de MongoDB, garantissant la protection de la confidentialité et <br>
+&emsp;l'intégrité des informations personnelles des utilisateurs. <br>
 
-<br>4. Information Sharing <br>
-&emsp;We do not share your personal information with third parties, except as required by law. <br>
+<br>4. Mesures de Prévention de la Discrimination et des Biais <br>
+&emsp;Les systèmes d'IA déployés sont régulièrement évalués par OpenAI pour prévenir les biais et garantir une distribution de services équitable et non discriminatoire. <br>
+&emsp;Ces évaluations aident à identifier et corriger tout biais potentiel. <br>
 
-<br>5. Storage and Security <br>
-&emsp;Your personal information is securely stored in a database. We implement technical and organizational security measures to protect your data from unauthorized <br>
-&emsp;access, alteration, disclosure, or destruction. <br>
+<br>5. Retour d'Utilisateur et Interventions <br>
+&emsp;Les utilisateurs peuvent fournir leurs retours ou contester des décisions influencées par l'IA par email. Storyia.app s'engage à examiner ces retours et à fournir un <br>
+&emsp;soutien approprié, y compris la possibilité d'une intervention humaine. <br>
 
-<br>6. User Rights <br>
-&emsp;As a user, you have the following rights regarding your personal data: <br>
-&emsp;Access your personal data. <br>
-&emsp;Modify or update your information. <br>
-&emsp;Request the deletion of your personal data. <br>
-&emsp;To exercise these rights, please contact us using the details provided at the end of this policy. <br>
+<br>6. Conformité et Audits Réguliers <br>
+&emsp;Storyia.app s'engage à réaliser des audits de conformité réguliers pour s'assurer que les technologies d'IA utilisées sont à jour avec les dernières réglementations et normes éthiques. <br>
+&emsp;Ces audits incluent des examens fréquents des pratiques et technologies d'IA pour maintenir une haute qualité de service et de sécurité. <br>
 
-<br>7. Cookies and Tracking Technologies <br>
-&emsp;We use cookies and other tracking technologies such as Google Analytics, Meta Ads, and TikTok Ads to analyze traffic and improve your experience on our site. <br>
-&emsp;You can configure your browser to reject some or all cookies. <br>
+<br>7. Partenariats et Fournisseurs <br>
+&emsp;En collaboration avec OpenAI, Storyia.app s'assure que les services d'IA fournis sont entièrement conformes aux obligations de l'AI Act. Cette coopération garantit une surveillance <br>
+&emsp;réglementaire et technologique continue pour rester à la pointe de la conformité en matière d'IA. <br>
 
-<br>8. Changes to the Privacy Policy <br>
-&emsp;We may update our privacy policy from time to time. We encourage you to regularly review this page to stay informed of any changes. <br>
-
-<br>9. Contact Us <br>
-&emsp;If you have any questions about this privacy policy or how we handle your personal data, please do not hesitate to contact us at contact@storyia.com. <br>
 
 
            </div>
@@ -442,7 +431,7 @@ body.loaded::after {
         });
     </script>
 
-    <script src="js/vnav.js"></script>
+    <script src="../js/vnav.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!-- <script src="js/subscription.js"></script> -->
