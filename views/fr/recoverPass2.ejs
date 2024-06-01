@@ -49,28 +49,28 @@
       <!-- Button Container -->
       <form action="/fr/recoverPassword" method="POST">
         <div class="flexbox" id="flexbox" style="display: block;">
-          <div class="title">Recover Password</div>
-          <div class="subtitle">Recover your password using your<br>Email id & Phone Number</div>
+          <div class="title">Récupérer le mot de passe</div>
+          <div class="subtitle">Récupérez votre mot de passe en utilisant votre<br>adresse e-mail et numéro de téléphone</div>
           <div class="signup-box">
             <!-- Sign-up fields and button -->
             <div class="boxz">
-              <div class="header-text">Recovery Key</div>
-              <input id="signUpFullName" class="input-field" type="text" placeholder="Recovery Key Sent To Your Registered Ph. No." name="recoveryOtp" required oninput="removeSpaces(event)">
+              <div class="header-text">Clé de récupération</div>
+              <input id="signUpFullName" class="input-field" type="text" placeholder="Clé de récupération envoyée à votre numéro de téléphone enregistré." name="recoveryOtp" required oninput="removeSpaces(event)">
             </div>
            
             <div class="boxz">
-              <div class="header-text">New Password</div>
+              <div class="header-text">Nouveau mot de passe</div>
               <div class="password-container">
-                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="New Password" name="password" required>
+                <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Nouveau mot de passe" name="password" required>
                 <div class="password-toggle" onclick="togglePasswordVisibility()">
                   <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                 </div>
               </div>
             </div>
             <div class="boxz">
-                <div class="header-text">Confirm New Password</div>
+                <div class="header-text">Confirmer le nouveau mot de passe</div>
                 <div class="password-container">
-                  <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirm New Password" name="confirmedPassword" required>
+                  <input id="signUpPasswordInput" class="input-field" type="password" placeholder="Confirmer le nouveau mot de passe" name="confirmedPassword" required>
                   <div class="password-toggle" onclick="togglePasswordVisibility()">
                     <span class="password-toggle-icon" id="eye-icon">&#128065;</span>
                   </div>
@@ -81,12 +81,12 @@
             border: 2px solid #A288CB; color: white;
             
             background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
-            ">Change Password</button>
+            ">Changer le mot de passe</button>
           </div>
 
           <div class="text" id="toggle-sign-in" onclick="showNextPage()">
             <a href="/fr/passwordotp"><span
-              class="sign-in-text" id="toggle-text">Go Back</span></a></div>
+              class="sign-in-text" id="toggle-text">Retour</span></a></div>
         </div>
       </form>
       

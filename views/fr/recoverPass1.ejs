@@ -50,21 +50,21 @@
       <!-- Button Container -->
       <form action="/fr/passwordotp" method="POST">
         <div class="flexbox" id="flexbox" style="display: block;">
-            <div class="title">Recover Password</div>
-            <div class="subtitle">Recover your password using your<br>Email id & Phone Number</div>
+            <div class="title">Récupérer le mot de passe</div>
+            <div class="subtitle">Récupérez votre mot de passe en utilisant votre<br>adresse e-mail et numéro de téléphone</div>
             <div class="signup-box">
               <!-- Sign-up fields and button -->
               <div class="boxz" style="visibility: hidden;">
-                <div class="header-text">Full Name</div>
+                <div class="header-text">Nom complet</div>
                 <input id="signUpFullName" class="input-field" type="text" placeholder="Name" name="name" >
               </div>
               <div class="boxz">
-                <div class="header-text">Email</div>
+                <div class="header-text">Adresse e-mail</div>
                 <input id="signUpEmail" class="input-field" type="email" placeholder="Email" name="username" required>
               </div>
               
               <div class="boxz">
-                  <div class="header-text">Phone Number</div>
+                  <div class="header-text">Numéro de téléphone</div>
                   <!-- Country code and phone input fields -->
                   <div style="display: flex; align-items: center;">
                     <select id="signUpCountryCode" class="country-code" name="prephoneNumber" required>
@@ -85,12 +85,12 @@
               border: 2px solid #A288CB; color: white;
               
               background: var(--Linear, linear-gradient(180deg, #22185B 0%, rgba(22, 14, 68, 0.86) 100%));
-              ">Continue Recovery</button>
+              ">Continuer la récupération</button>
             </div>
   
             <div class="text" id="toggle-sign-in" onclick="showNextPage()">
               <a href="/fr/"><span
-                class="sign-in-text" id="toggle-text">Go Back</span></a></div>
+                class="sign-in-text" id="toggle-text">Retour</span></a></div>
           </div>
       </form>
       

@@ -949,7 +949,7 @@ export async function passwordChangeFromProfileFr(req,res){
               return res.send(script);
             }else{
               console.log("password changed");
-              const msg = "Your password has been successfully changed";
+              const msg = "Votre mot de passe a été changé avec succès";
               const script = `<script>alert("${msg}"); window.location.href="/fr/profile";</script>`;
               return res.send(script);
             }
