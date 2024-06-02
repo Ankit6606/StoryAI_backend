@@ -66,12 +66,12 @@ export function renderlandingPage(req,res){
 //--Authentication pages--//
 
 export function authenticateRender(req,res){
-  initialLang = "eng";
+  // initialLang = "eng";
   res.render("authenticate");
 };
 
 export function authenticateRender2(req,res){
-  initialLang = "eng";
+  // initialLang = "eng";
   res.render("authenticate2");
 };
 
