@@ -6,6 +6,14 @@ function initializeTwilioClient(accountSid, authToken) {
 
 let initialLang = "none";
 
+function setInitialLang(lang) {
+  initialLang = lang;
+}
+
+function getInitialLang() {
+  return initialLang;
+}
+
 export default initializeTwilioClient;
 
-export {initialLang};
+export {setInitialLang, getInitialLang};
