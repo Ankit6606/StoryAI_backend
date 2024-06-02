@@ -35,7 +35,7 @@ let justNumber2 = "";
 let lang="";
 let story = [];
 let storyHistoryFr = 0;
-let initialLang = "eng";
+let initialLang = "none";
 let passwordRecovery = "no";
 
 export function renderpublishPageFr(req,res){
@@ -67,11 +67,13 @@ export function renderlandingPageFr(req,res){
 
 export function authenticateRenderFr(req,res){
   initialLang = "french";
+  console.log(initialLang);
   res.render("fr/authenticate");
 };
 
 export function authenticateRender2Fr(req,res){
   initialLang = "french";
+  console.log(initialLang);
   res.render("fr/authenticate2");
 };
 

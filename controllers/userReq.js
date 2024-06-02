@@ -35,7 +35,7 @@ let justNumber= "";  //For Twilio
 let justNumber2 = "";  //For twilio password recovery
 let story = [];
 let storyHistory = 0;
-let initialLang = "french";
+let initialLang = "none";
 let passwordRecovery = "no";
 
 export function renderppPage(req,res){
