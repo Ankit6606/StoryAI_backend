@@ -10,7 +10,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import https from 'https';
 import { createInterface } from 'readline';
-import initializeTwilioClient from './twilioclient.js';
+import initializeTwilioClient, { initialLang } from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -35,8 +35,10 @@ let justNumber2 = "";
 let lang="";
 let story = [];
 let storyHistoryFr = 0;
-let initialLang = "none";
+// let initialLang = "none";
 let passwordRecovery = "no";
+
+
 
 export function renderpublishPageFr(req,res){
   res.render("fr/publish");

@@ -11,7 +11,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import https from 'https';
 import { createInterface } from 'readline';
-import initializeTwilioClient from './twilioclient.js';
+import initializeTwilioClient, {initialLang} from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -35,8 +35,10 @@ let justNumber= "";  //For Twilio
 let justNumber2 = "";  //For twilio password recovery
 let story = [];
 let storyHistory = 0;
-let initialLang = "none";
+// let initialLang = "none";
 let passwordRecovery = "no";
+
+
 
 export function renderppPage(req,res){
   res.render("pp");
@@ -66,12 +68,12 @@ export function renderlandingPage(req,res){
 //--Authentication pages--//
 
 export function authenticateRender(req,res){
-  // initialLang = "eng";
+  initialLang = "eng";
   res.render("authenticate");
 };
 
 export function authenticateRender2(req,res){
-  // initialLang = "eng";
+  initialLang = "eng";
   res.render("authenticate2");
 };
 
