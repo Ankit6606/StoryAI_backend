@@ -83,7 +83,7 @@ import {rootRender,
         routeFixTemp
         } from '../controllers/userReq.js';
 
-import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
+import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr,  cancelSubscription} from '../controllers/paymentController.js';
 
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
