@@ -68,15 +68,20 @@ export function renderlandingPage(req,res){
 //--Authentication pages--//
 
 export function authenticateRender(req,res){
-  setInitialLang("eng");
+  // setInitialLang("eng");
   res.render("authenticate");
 };
 
 export function authenticateRender2(req,res){
-  setInitialLang("eng");
+  // setInitialLang("eng");
   // console.log(getInitialLang());
   res.render("authenticate2");
 };
+
+export function routeFixTemp(req,res){
+  console.log("its working");
+  res.redirect("/auth/google");
+}
 
 export function registerRender(req,res){
     res.render("register");
@@ -211,7 +216,7 @@ export function getphoneNumber(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-      currentLang = getInitialLang();
+      // currentLang = getInitialLang();
       if(currentLang==="eng"){
         console.log(currentLang);
         res.render("otp1");

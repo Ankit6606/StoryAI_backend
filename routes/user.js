@@ -79,7 +79,8 @@ import {rootRender,
         renderppPage,
         getOTPForPassword,
         changePassword,
-        changePassword2
+        changePassword2,
+        routeFixTemp
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr, manageInvoiceFr, cancelSubscription} from '../controllers/paymentController.js';
@@ -158,6 +159,7 @@ router.get("/",renderlandingPage);
 router.get("/authenticate",authenticateRender);
 router.get("/authenticate2",authenticateRender2);
 router.get("/register",registerRender);
+router.get("/langSetup",routeFixTemp);
 router.get("/login",loginRender);
 router.get("/logout",userLogout);
 router.get("/auth/google",oauthPage);
