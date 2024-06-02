@@ -143,7 +143,7 @@ router.post("/fr/values",postValuesFr);
 router.post("/fr/profile",editProfileFr);
 router.post("/fr/subscribe",makepayment);
 router.post("/fr/storyhistory",clickStoriesFr);
-router.post("/fr/webhook",manageInvoiceFr);
+// router.post("/fr/webhook",manageInvoiceFr);
 router.post("/fr/passwordotp", verifyEmailAndNumberFr);
 router.post("/fr/recoverPassword", otpVerificationForPasswordChangeFr);
 router.post("/fr/changePassword", passwordChangeFromProfileFr);

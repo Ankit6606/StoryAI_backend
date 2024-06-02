@@ -332,92 +332,92 @@ export const manageInvoice = async (req, res) => {
 
 //FRENCH
 
-export const manageInvoiceFr = async (req, res) => {
-  const payload = req.rawbody;
-  // console.log('Webhook Payload:', payload);
-  const sig = req.headers['stripe-signature'];
+// export const manageInvoiceFr = async (req, res) => {
+//   const payload = req.rawbody;
+//   // console.log('Webhook Payload:', payload);
+//   const sig = req.headers['stripe-signature'];
 
-  // Check if the Stripe-Signature header is present
-  if (!sig) {
-    console.error('Webhook Error: Missing Stripe-Signature header');
-    return res.status(400).send('Webhook Error: Missing Stripe-Signature header');
-  }
+//   // Check if the Stripe-Signature header is present
+//   if (!sig) {
+//     console.error('Webhook Error: Missing Stripe-Signature header');
+//     return res.status(400).send('Webhook Error: Missing Stripe-Signature header');
+//   }
 
-  let event;
+//   let event;
 
-  try {
-    event = stripe.webhooks.constructEvent(payload, sig, STRIPE_ENDPOINT_SECRET1);
-  } catch (err) {
-    console.error('Webhook Error:', err.message);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
-  }
+//   try {
+//     event = stripe.webhooks.constructEvent(payload, sig, STRIPE_ENDPOINT_SECRET1);
+//   } catch (err) {
+//     console.error('Webhook Error:', err.message);
+//     return res.status(400).send(`Webhook Error: ${err.message}`);
+//   }
 
   
-  // console.log('Webhook Event Type:', event.type);
+//   // console.log('Webhook Event Type:', event.type);
 
-  // Handle the event
-  switch (event.type) {
-    case 'invoice.payment_succeeded':
-      // console.log(uid);
-      console.log('Payment Succeeded Event Received:', {
-        customerId: event.data.object.customer,
-        subscriptionId: event.data.object.subscription,
-      });
+//   // Handle the event
+//   switch (event.type) {
+//     case 'invoice.payment_succeeded':
+//       // console.log(uid);
+//       console.log('Payment Succeeded Event Received:', {
+//         customerId: event.data.object.customer,
+//         subscriptionId: event.data.object.subscription,
+//       });
   
-      // Retrieve user by Stripe customer ID
+//       // Retrieve user by Stripe customer ID
       
-      const customerId = event.data.object.customer;
-      const amountPaid = event.data.object.amount_paid;
-      const payUser = await Payment.create({
-          userId : uid,
-          customerId : customerId,
-          paymentAmount:amountPaid/100,
-          paymentDate: new Date(),
-      }); 
-      // console.log(payUser.id);
-      let objId = new mongoose.Types.ObjectId(payUser.id);
+//       const customerId = event.data.object.customer;
+//       const amountPaid = event.data.object.amount_paid;
+//       const payUser = await Payment.create({
+//           userId : uid,
+//           customerId : customerId,
+//           paymentAmount:amountPaid/100,
+//           paymentDate: new Date(),
+//       }); 
+//       // console.log(payUser.id);
+//       let objId = new mongoose.Types.ObjectId(payUser.id);
 
-      await User.updateOne(
-        { _id: uid },
-        {
-          $push: {
-            paymentdetails: objId,
-          },
-          $set: {
-            subscriptionPlan: plan,
-          },
-        },
-        { upsert: false, new: true }
-      );
+//       await User.updateOne(
+//         { _id: uid },
+//         {
+//           $push: {
+//             paymentdetails: objId,
+//           },
+//           $set: {
+//             subscriptionPlan: plan,
+//           },
+//         },
+//         { upsert: false, new: true }
+//       );
       
 
   
-      const user = await User.findOne({ 'paymentdetails.customerId': customerId });
+//       const user = await User.findOne({ 'paymentdetails.customerId': customerId });
 
-      if (user) {
-        user.gems += gemsToAdd;
-        user.parrots += parrotsToAdd;
-        await user.save(); // Save the updated user
-      } else {
-        console.log("User not found");
-    // Handle the case where the user is not found
-        return res.status(404).send("User not found");
-      }
+//       if (user) {
+//         user.gems += gemsToAdd;
+//         user.parrots += parrotsToAdd;
+//         await user.save(); // Save the updated user
+//       } else {
+//         console.log("User not found");
+//     // Handle the case where the user is not found
+//         return res.status(404).send("User not found");
+//       }
   
-      break;
-    // Handle other event types as needed
+//       break;
+//     // Handle other event types as needed
   
   
     
-    case "invoice.payment_failed":
-      console.log("Invoice generation is not successful");
-      break;
-    // Handle other event types as needed
-  }
+//     case "invoice.payment_failed":
+//       console.log("Invoice generation is not successful");
+//       break;
+//     // Handle other event types as needed
+//   }
 
-  // Respond to the webhook
-  res.json({ received: true });
-};
+//   // Respond to the webhook
+//   res.json({ received: true });
+// };
 
 
 const success = async (req, res) => {
