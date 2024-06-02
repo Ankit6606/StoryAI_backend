@@ -216,6 +216,7 @@ export function getphoneNumber(req,res){
     if(!req.user.phoneNumber){
       if(initialLang==="eng"){
         console.log(initialLang);
+        initialLang = "none";
         res.render("otp1");
       }else{
         res.redirect("/fr/phonenumber");
