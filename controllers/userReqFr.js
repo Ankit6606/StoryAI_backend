@@ -69,13 +69,13 @@ export function renderlandingPageFr(req,res){
 
 export function authenticateRenderFr(req,res){
   setInitialLang("french");
-  // console.log(getInitialLang());
+  console.log(getInitialLang());
   res.render("fr/authenticate");
 };
 
 export function authenticateRender2Fr(req,res){
   setInitialLang("french");
-  // console.log(getInitialLang());
+  console.log(getInitialLang());
   res.render("fr/authenticate2");
 };
 

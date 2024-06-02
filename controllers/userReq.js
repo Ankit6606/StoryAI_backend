@@ -11,7 +11,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import https from 'https';
 import { createInterface } from 'readline';
-import initializeTwilioClient from './twilioclient.js';
+import initializeTwilioClient,{getInitialLang, setInitialLang} from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -68,13 +68,14 @@ export function renderlandingPage(req,res){
 //--Authentication pages--//
 
 export function authenticateRender(req,res){
-  // setInitialLang("eng");
+  setInitialLang("eng");
+  console.log(getInitialLang());
   res.render("authenticate");
 };
 
 export function authenticateRender2(req,res){
-  // setInitialLang("eng");
-  // console.log(getInitialLang());
+  setInitialLang("eng");
+  console.log(getInitialLang());
   res.render("authenticate2");
 };
 
@@ -217,9 +218,9 @@ export function getphoneNumber(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-      // currentLang = getInitialLang();
-      if(initialLang==="eng"){
-        console.log(initialLang);
+      currentLang = getInitialLang();
+      if(currentLang==="eng"){
+        console.log(currentLang);
         res.render("otp1");
       }else{
         res.redirect("/fr/phonenumber");
