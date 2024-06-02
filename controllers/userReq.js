@@ -11,7 +11,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import https from 'https';
 import { createInterface } from 'readline';
-import initializeTwilioClient, {getInitialLang, setInitialLang} from './twilioclient.js';
+import initializeTwilioClient from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -35,7 +35,7 @@ let justNumber= "";  //For Twilio
 let justNumber2 = "";  //For twilio password recovery
 let story = [];
 let storyHistory = 0;
-// let initialLang = "none";
+let initialLang = "none";
 let passwordRecovery = "no";
 
 
@@ -80,6 +80,7 @@ export function authenticateRender2(req,res){
 
 export function routeFixTemp(req,res){
   console.log("its working");
+  initialLang = "eng";
   res.redirect("/auth/google");
 }
 
@@ -217,8 +218,8 @@ export function getphoneNumber(req,res){
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
       // currentLang = getInitialLang();
-      if(currentLang==="eng"){
-        console.log(currentLang);
+      if(initialLang==="eng"){
+        console.log(initialLang);
         res.render("otp1");
       }else{
         res.redirect("/fr/phonenumber");
