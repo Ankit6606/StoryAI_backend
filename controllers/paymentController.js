@@ -13,7 +13,7 @@ let plan = " ";
 let uid = " ";
 let gemsToAdd = 0;
 let parrotsToAdd = 0;
-
+let lang = "none";
  
 
 
@@ -21,6 +21,7 @@ let parrotsToAdd = 0;
 export function selectSubscription(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      lang = "eng";
       uid = req.user.id;
       const userSubscriptionPlan = req.user.subscriptionPlan; 
 
@@ -43,6 +44,7 @@ export function selectSubscription(req,res){
 export function selectSubscriptionFr(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      lang = "french";
       uid = req.user.id;
       const userSubscriptionPlanFr = req.user.subscriptionPlan;
 
@@ -420,8 +422,11 @@ export const manageInvoiceFr = async (req, res) => {
 
 const success = async (req, res) => {
   try {
-      // res.render('success');
-     res.redirect("/fr/home");
+    if(lang == "french"){
+      res.render('success', { redirectUrl: "/fr/home" });
+    }else{
+      res.render('success', { redirectUrl: "/home" });
+    }
   } catch (error) {
       console.log(error.message);
   }
@@ -430,7 +435,11 @@ const success = async (req, res) => {
 
 const failure = async (req, res) => {
     try {
+      if(lang=="french"){
         res.redirect("/fr/subscribe");
+      }else{
+        res.redirect("/subscribe");
+      }
     } catch (error) {
         console.log(error.message);
     }
