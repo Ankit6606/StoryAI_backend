@@ -74,7 +74,7 @@
             <div class="button-container">
                 <div class="img-box"></div>
                 <div class="text-box">Stories Like Never Before</div>
-                <a href="/langSetup" class="btn1 btn1-white btn1-animated" role="button" style="width: auto;">Sign In With Google</a>
+                <a href="/auth/google" id="google-signin-button" class="btn1 btn1-white btn1-animated" role="button" style="width: auto;">Sign In With Google</a>
                 <a href="/login" class="btn btn-white btn-animated" style="width: auto;">Sign In With Email</a>
                 <div class="line"></div>
                 <div class="text">Dont have an Account? <a href="/authenticate"><span class="sign-in-text">Sign Up</span></a>
@@ -83,6 +83,15 @@
           </form>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const googleSigninButton = document.getElementById("google-signin-button");
+            googleSigninButton.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent the default click behavior
+                window.location.href = "/langSetup"; // Redirect to the desired URL
+            });
+        });
+    </script>
 </body>
 
 </html>
