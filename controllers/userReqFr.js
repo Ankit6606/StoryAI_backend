@@ -10,7 +10,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import https from 'https';
 import { createInterface } from 'readline';
-import initializeTwilioClient, { getInitialLang, setInitialLang } from './twilioclient.js';
+import initializeTwilioClient from './twilioclient.js';
 // import passportLocalMongoose from 'passport-local-mongoose';
 // import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
@@ -68,14 +68,10 @@ export function renderlandingPageFr(req,res){
 //--Authentication pages--//
 
 export function authenticateRenderFr(req,res){
-  setInitialLang("french");
-  console.log(getInitialLang());
   res.render("fr/authenticate");
 };
 
 export function authenticateRender2Fr(req,res){
-  setInitialLang("french");
-  console.log(getInitialLang());
   res.render("fr/authenticate2");
 };
 
@@ -196,14 +192,7 @@ export function getphoneNumberFr(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-      const currentLang = getInitialLang();
-      if(currentLang==="french"){
-        console.log(currentLang);
-        res.render("fr/otp1");
-      }else{
-        res.redirect("/phonenumber");
-      }
-      
+        res.render("fr/otp1"); 
     }
     else{
       res.redirect("/fr/home");
