@@ -45,7 +45,16 @@
     background: transparent;
     transition: transform 0.1s;
 }
-
+.center-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #FDF0F2;
+        }
 body.loaded::after {
     transform: translateY(0);
 }
@@ -437,7 +446,7 @@ body.loaded::after {
 <form action="/subscribe" method="post" id="subscriptionForm" onsubmit="updateHiddenInput()">
     <div class="box-m">
         <% if(userSubscriptionPlan !== "basic"){ %>
-            <h1 style="color: #FDF0F2;">You are currently subscribed to "<%= userSubscriptionPlan %>".</h1>
+            <div class="center-align"><h2 style="color: #FDF0F2;">You are currently subscribed to "<%= userSubscriptionPlan %>".</h2></div>
             <% } %>
         <% boxIds.forEach((boxId, index) => { %>
             <% index += 1 %>

@@ -35,6 +35,18 @@
 
 
     <style>
+
+.center-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #FDF0F2;
+        }
+
         body::after {
    content: "";
    display: block;
@@ -434,7 +446,7 @@ align-items: center;
     <form action="/fr/subscribe" method="post" id="subscriptionForm" onsubmit="updateHiddenInput()">
         <div class="box-m">
             <% if(userSubscriptionPlanFr !== "basic"){ %>
-                <h1 style="color: #FDF0F2;">You are currently subscribed to "<%= userSubscriptionPlanFr %>".</h1>
+                <div class="center-align"><h2 style="color: #FDF0F2;">Vous êtes actuellement abonné à "<%= userSubscriptionPlanFr %>".</h2></div>
                 <% } %>
             <% boxIdsFr.forEach((boxId, index) => { %>
                 <% index += 1 %>
@@ -450,9 +462,9 @@ align-items: center;
 
             <button class="next-button" type="submit" id="nextPaymentButton" style="width: 413px;
                 height: 63px;
-             ">Upgrade plan</button>
+             ">Améliorer</button>
              <% if(userSubscriptionPlanFr !== "basic"){ %>
-                 <button type="button" class="next-button" style="margin-top: 0px; width: 413px; color: red; height: 63px;" onclick="navigateToCancelPlan()">Cancel Subscription</button>
+                 <button type="button" class="next-button" style="margin-top: 0px; width: 413px; color: red; height: 63px;" onclick="navigateToCancelPlan()">Annuler l'abonnement</button>
                  <% } %>
            <a href="/fr/home" style="color: #FFF;
 
