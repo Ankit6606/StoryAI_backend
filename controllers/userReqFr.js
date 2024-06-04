@@ -18,6 +18,7 @@ const accountSid = process.env.accountSid;
 const authToken = process.env.authToken;
 const verifySid = process.env.verifySid;
 
+
 const client = initializeTwilioClient(accountSid, authToken);
 
 
@@ -35,10 +36,8 @@ let justNumber2 = "";
 let lang="";
 let story = [];
 let storyHistoryFr = 0;
-// let initialLang = "none";
+let initialLang = "eng";
 let passwordRecovery = "no";
-
-
 
 export function renderpublishPageFr(req,res){
   res.render("fr/publish");
@@ -68,10 +67,12 @@ export function renderlandingPageFr(req,res){
 //--Authentication pages--//
 
 export function authenticateRenderFr(req,res){
+  initialLang = "french";
   res.render("fr/authenticate");
 };
 
 export function authenticateRender2Fr(req,res){
+  initialLang = "french";
   res.render("fr/authenticate2");
 };
 
@@ -192,7 +193,13 @@ export function getphoneNumberFr(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-        res.render("fr/otp1"); 
+      if(initialLang==="french"){
+        console.log(initialLang);
+        res.render("fr/otp1");
+      }else{
+        res.redirect("/phonenumber");
+      }
+      
     }
     else{
       res.redirect("/fr/home");
