@@ -38,7 +38,8 @@ import {rootRenderFr,
         changePasswordFr,
         verifyEmailAndNumberFr,
         otpVerificationForPasswordChangeFr,
-        changePassword2Fr
+        changePassword2Fr,
+        loadingToHomeFr
         } from '../controllers/userReqFr.js';
 
 
@@ -80,7 +81,8 @@ import {rootRender,
         getOTPForPassword,
         changePassword,
         changePassword2,
-        routeFixTemp
+        routeFixTemp,
+        loadingToHome
         } from '../controllers/userReq.js';
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr,  cancelSubscription} from '../controllers/paymentController.js';
@@ -113,6 +115,7 @@ router.get("/fr/login",loginRenderFr);
 router.get("/fr/auth/google",oauthPageFr);
 router.get("/fr/auth/google/story",oauthVerificationFr);
 router.get("/fr/phonenumber",getphoneNumberFr);
+router.get("/fr/loadinghome",loadingToHomeFr);
 router.get("/fr/story",storyPageFr);
 router.get("/fr/scenario",renderScenarioFr);
 router.get("/fr/emotions",renderEmotionsFr);
@@ -165,6 +168,7 @@ router.get("/logout",userLogout);
 router.get("/auth/google",oauthPage);
 router.get("/auth/google/story",oauthVerification);
 router.get("/phonenumber",getphoneNumber);
+router.get("/loadinghome",loadingToHome);
 router.get("/story",storyPage);
 router.get("/scenario",renderScenario);
 router.get("/emotions",renderEmotions);

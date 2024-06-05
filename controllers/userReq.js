@@ -298,7 +298,7 @@ export async function otpVerification(req,res){
       console.log('Verification successful!'); 
       await User.findOneAndUpdate({ _id: req.user.id }, { phoneNumber: globalNumber });
       const message = "Your phone number is verified";
-      const script = `<script>alert("${message}"); window.location.href="/home";</script>`;
+      const script = `<script>alert("${message}"); window.location.href="/loadinghome";</script>`;
       return res.send(script);
     } 
     else {
@@ -320,6 +320,19 @@ export async function otpVerification(req,res){
 };
 
 
+//Loading page to reach Home page
+
+export async function loadingToHome(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      res.render('loadingHome', { redirectUrl: "/home" });
+    }else{
+      res.redirect("/phonenumber");
+    }
+  }else{
+    res.redirect("/authenticate2");
+  }
+};
 
 //-- Home page --//
 

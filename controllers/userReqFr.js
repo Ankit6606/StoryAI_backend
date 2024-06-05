@@ -281,10 +281,24 @@ export async function otpVerificationFr(req,res){
     
   } catch (err) {
     console.error(err);
-    res.redirect('/fr/error'); // Redirect to an error page
+    res.redirect('/error'); // Redirect to an error page
   }
 
 };
+
+//Loading page to reach Home page
+
+export async function loadingToHomeFr(req,res){
+  if(req.isAuthenticated()){
+    if(req.user.phoneNumber){
+      res.render('fr/loadingHome', { redirectUrl: "/fr/home" });
+    }else{
+      res.redirect("/fr/phonenumber");
+    }
+  }else{
+    res.redirect("/fr/authenticate2");
+  }
+}
 
 
 
