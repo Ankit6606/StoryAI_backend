@@ -36,8 +36,9 @@ let justNumber2 = "";
 let lang="";
 let story = [];
 let storyHistoryFr = 0;
-let initialLang = "eng";
 let passwordRecovery = "no";
+
+
 
 export function renderpublishPageFr(req,res){
   res.render("fr/publish");
@@ -67,12 +68,10 @@ export function renderlandingPageFr(req,res){
 //--Authentication pages--//
 
 export function authenticateRenderFr(req,res){
-  initialLang = "french";
   res.render("fr/authenticate");
 };
 
 export function authenticateRender2Fr(req,res){
-  initialLang = "french";
   res.render("fr/authenticate2");
 };
 
@@ -193,13 +192,7 @@ export function getphoneNumberFr(req,res){
   // console.log(req.user.phoneNumber);
   if(req.isAuthenticated()){
     if(!req.user.phoneNumber){
-      if(initialLang==="french"){
-        console.log(initialLang);
-        res.render("fr/otp1");
-      }else{
-        res.redirect("/phonenumber");
-      }
-      
+        res.render("fr/otp1"); 
     }
     else{
       res.redirect("/fr/home");
