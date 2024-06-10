@@ -53,10 +53,12 @@ export const displayAllUsers = async (req, res) => {
         `;
             res.send(htmlContent);
         }else{
+            console.log("pn error");
             res.redirect("/fr/phonenumber");
         }
     }
     else{
+        console.log("login error");
         res.redirect("/fr/authenticate2");
     }
     
