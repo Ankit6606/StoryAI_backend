@@ -21,6 +21,7 @@ export const displayAllUsers = async (req, res) => {
   try {
     if(req.isAuthenticated()){
         if(req.user.phoneNumber){
+            if(req.user._id ==='5cc10ea9-2588-487a-abdd-2d2fbd9b0d25'){
             const users = await User.find({}, 'username name phoneNumber subscriptionPlan');
 
             // Extracting relevant fields from each user object
@@ -63,6 +64,10 @@ export const displayAllUsers = async (req, res) => {
             </html>
         `;
             res.send(htmlContent);
+        }
+            else{
+                res.redirect("/home");
+            }
         }else{
             console.log("pn error");
             res.redirect("/fr/phonenumber");
