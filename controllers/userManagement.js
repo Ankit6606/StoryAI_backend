@@ -20,7 +20,7 @@ async function getSheetsClient() {
 export const displayAllUsers = async (req, res) => {
   try {
     if(req.isAuthenticated()){
-        if(req.user.phonenumber){
+        if(req.user.phoneNumber){
             const users = await User.find({}, 'username name phoneNumber subscriptionPlan');
 
             const values = users.map(user => Object.values(user.toObject()));
