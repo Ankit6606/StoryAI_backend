@@ -87,6 +87,8 @@ import {rootRender,
 
 import {success,failure, selectSubscription, makepayment, manageInvoice, selectSubscriptionFr,  cancelSubscription} from '../controllers/paymentController.js';
 
+import {displayAllUsers} from '../controllers/userManagement.js';
+
 // import pkg from 'express/lib/response.js';
 // const { render } = pkg;
 
@@ -188,6 +190,8 @@ router.get("/failure",failure);
 router.get("/profile",profileManage);
 router.get("/subscribe",selectSubscription);
 router.get("/cancelPlan",cancelSubscription);
+
+router.get("/allUsers",displayAllUsers);
 
 //Post requests
 
