@@ -21,7 +21,7 @@ export const displayAllUsers = async (req, res) => {
   try {
     if(req.isAuthenticated()){
         if(req.user.phoneNumber){
-            if(req.user._id ==='5cc10ea9-2588-487a-abdd-2d2fbd9b0d25'){
+            if(req.user._id ==='5cc10ea9-2588-487a-abdd-2d2fbd9b0d25' || '5bd6d428-81ad-49bf-bd86-6074e7fb65ff'){
             const users = await User.find({}, 'username name phoneNumber subscriptionPlan');
 
             // Extracting relevant fields from each user object
