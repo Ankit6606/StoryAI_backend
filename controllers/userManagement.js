@@ -24,7 +24,16 @@ export const displayAllUsers = async (req, res) => {
             const users = await User.find({}, 'username name phoneNumber subscriptionPlan');
 
             // Extracting relevant fields from each user object
-            const values = users.map(user => [user.username, user.name, user.phoneNumber, user.subscriptionPlan]);
+            const values = users.map(user => {
+                const userData = [user.username, user.name];
+                if (user.phoneNumber) {
+                  userData.push(user.phoneNumber);
+                } else {
+                  userData.push(''); // Add an empty string if phone number doesn't exist
+                }
+                userData.push(user.subscriptionPlan);
+                return userData;
+              });
     
             const sheetsClient = await getSheetsClient();
             const spreadsheetId = '1tMVSfsGpCp9QqNjxhFOmwHIJu6VMKFGeG1wiQWomeTM';
