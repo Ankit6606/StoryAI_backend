@@ -23,22 +23,24 @@ export const displayAllUsers = async (req, res) => {
         if(req.user.phoneNumber){
             const users = await User.find({}, 'username name phoneNumber subscriptionPlan');
 
-            const values = users.map(user => Object.values(user.toObject()));
-
+            // Extracting relevant fields from each user object
+            const values = users.map(user => [user.username, user.name, user.phoneNumber, user.subscriptionPlan]);
+    
             const sheetsClient = await getSheetsClient();
             const spreadsheetId = '1tMVSfsGpCp9QqNjxhFOmwHIJu6VMKFGeG1wiQWomeTM';
             const range = 'Sheet1!A1';
-
+    
+            // Updating the Google Sheet with extracted user data
             await sheetsClient.spreadsheets.values.update({
-            spreadsheetId,
-            range,
-            valueInputOption: 'RAW',
-            resource: {
+              spreadsheetId,
+              range,
+              valueInputOption: 'RAW',
+              resource: {
                 values: [
-                Object.keys(users[0].toObject()), // Header row
-                ...values // Data rows
+                  ['Username', 'Name', 'Phone Number', 'Subscription Plan'], // Header row
+                  ...values // Data rows
                 ],
-            },
+              },
             });
 
             const htmlContent = `
