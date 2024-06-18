@@ -50,12 +50,17 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
             color: #FDF0F2;
             height: auto;
             text-align: center;
-
+        }
+        @media (max-width: 600px) 
+        {
+            .center-align {
+                font-size: 18px;
+            }
         }
 body.loaded::after {
     transform: translateY(0);
