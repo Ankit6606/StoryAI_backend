@@ -351,9 +351,6 @@ export async function rootRender(req,res){
         throw new Error('User not found');
       }
 
-      user.gems += 100;
-      user.parrots += 100;
-      await user.save();
       //--------Password Recovery function---------//
       // user.setPassword("1234567", async () => {
         
