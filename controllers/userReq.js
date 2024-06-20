@@ -141,6 +141,7 @@ User.register({ username: username }, password, (err, user) => {
           foundUser.authType = "email";
           foundUser.save()
             .then(() => {
+              initialLang = "eng";
               res.redirect("/phonenumber");
             }).catch((err) => {
               console.log(err);
