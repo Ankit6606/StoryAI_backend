@@ -265,7 +265,7 @@ export async function otpVerificationFr(req,res){
       console.log('Verification successful!'); 
       await User.findOneAndUpdate({ _id: req.user.id }, { phoneNumber: globalNumber });
       const message = "Your phone number is verified";
-      const script = `<script>alert("${message}"); window.location.href="/fr/home";</script>`;
+      const script = `<script>alert("${message}"); window.location.href="/fr/loadinghome";</script>`;
       return res.send(script);
     } 
     else {
