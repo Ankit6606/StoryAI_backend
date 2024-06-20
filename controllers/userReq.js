@@ -325,6 +325,7 @@ export async function otpVerification(req,res){
 export async function loadingToHome(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      console.log("reached");
       res.render('loadingHome', { redirectUrl: "/home" });
     }else{
       res.redirect("/phonenumber");
