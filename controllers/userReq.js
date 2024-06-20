@@ -79,7 +79,7 @@ export function routeFixTemp(req,res){
   console.log("its working");
   initialLang = "eng";
   res.redirect("/auth/google");
-}
+};
 
 export function registerRender(req,res){
     res.render("register");
@@ -340,6 +340,7 @@ export async function loadingToHome(req,res){
 export async function rootRender(req,res){
   if(req.isAuthenticated()){
     if(req.user.phoneNumber){
+      initialLang = "none"; 
       storyHistory = 0;
       const user = await User.findById(req.user._id)
       .select('+salt +hash')
